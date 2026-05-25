@@ -1,0 +1,97 @@
+/**
+ * Atom: Botão Gatilho de Busca CSS (btn-busca-trigger)
+ *
+ * Estilos para o botão que simula um input no desktop/tablet
+ * e vira um ícone circular no mobile.
+ */
+
+.btn-busca-trigger {
+    display: flex;
+    align-items: center;
+    gap: var(--space-300);
+    width: 100%;
+    background-color: var(--neutral-800);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-200);
+    padding: var(--space-200) var(--space-400);
+    height: 40px;
+    color: var(--neutral-400);
+    font-family: var(--font-body);
+    font-size: var(--text-xs-size);
+    font-weight: var(--font-weight-100);
+    line-height: 1.5;
+    cursor: pointer;
+    text-align: left;
+    outline: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
+}
+
+.btn-busca-trigger:hover {
+    border-color: var(--neutral-400);
+    background-color: var(--neutral-900);
+    color: var(--neutral-200);
+}
+
+.btn-busca-trigger:focus-visible {
+    border-color: var(--color-primary);
+    color: var(--neutral-100);
+    background-color: var(--neutral-900);
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.btn-busca-trigger__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+}
+
+.btn-busca-trigger__icon svg {
+    width: var(--icon-sm);
+    height: var(--icon-sm);
+    fill: var(--neutral-400);
+    transition: fill 0.3s ease, transform 0.3s ease;
+}
+
+.btn-busca-trigger:hover .btn-busca-trigger__icon svg {
+    fill: var(--color-primary);
+    transform: scale(1.1);
+}
+
+.btn-busca-trigger:focus-visible .btn-busca-trigger__icon svg {
+    fill: var(--color-primary);
+}
+
+.btn-busca-trigger__text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 500;
+}
+
+/* Responsividade: em mobile, vira apenas um botão de ícone circular */
+@media (max-width: 767px) {
+    .btn-busca-trigger {
+        width: 36px;
+        height: 36px;
+        padding: 0;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: transparent;
+        border: none;
+    }
+    
+    .btn-busca-trigger:hover,
+    .btn-busca-trigger:focus-visible {
+        background-color: rgba(255, 255, 255, 0.05);
+        border: none;
+    }
+    
+    .btn-busca-trigger__text {
+        display: none;
+    }
+}

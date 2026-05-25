@@ -1,0 +1,75 @@
+/**
+ * Atom: Meta Autor CSS (meta-autor)
+ *
+ * Estilização premium para exibição do avatar circular do autor do post
+ * e seu respectivo link de perfil com hover tátil.
+ */
+
+.meta-autor {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-200); /* 8px */
+    vertical-align: middle;
+}
+
+/* Moldura do Avatar Circular */
+.meta-autor__avatar-frame {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 1px solid var(--color-border);
+    background-color: var(--neutral-900);
+}
+
+.meta-autor__avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Fallback de Avatar baseada em Capitular */
+.meta-autor__avatar-fallback {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--brand-900) 0%, var(--brand-800) 100%);
+    color: var(--brand-200);
+    font-family: var(--font-body);
+    font-size: var(--text-xxs-size); /* 12px */
+    font-weight: var(--font-weight-600);
+    user-select: none;
+}
+
+/* Informações do Autor */
+.meta-autor__info {
+    display: flex;
+    align-items: center;
+    font-family: var(--font-body);
+    font-size: var(--text-xxs-size); /* 12px */
+    line-height: 1.2;
+}
+
+/* Prefixo "Por" */
+.meta-autor__label {
+    color: var(--neutral-400);
+    font-weight: var(--font-weight-400);
+    margin-right: var(--space-100);
+}
+
+/* Nome do Autor */
+.meta-autor__name,
+.meta-autor__name-link {
+    font-weight: var(--font-weight-600);
+    color: var(--neutral-200);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.meta-autor__name-link:hover {
+    color: var(--color-primary);
+}

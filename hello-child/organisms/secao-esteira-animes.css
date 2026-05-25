@@ -1,0 +1,149 @@
+/**
+ * Organism: Seção de Esteira de Animes CSS (secao-esteira-animes)
+ *
+ * Estilização em formato de trilho horizontal (esteira/carousel) otimizada para Core Web Vitals.
+ * Utiliza Scroll Snap nativo acelerado por hardware para rolagem gestual perfeita.
+ */
+
+.secao-esteira-animes {
+    width: 100%;
+    margin-bottom: var(--space-800); /* 56px de espaço inferior */
+    position: relative;
+}
+
+/* ==========================================================================
+   CABEÇALHO DA SEÇÃO (Título + Link "Ver Todos")
+   ========================================================================== */
+.secao-esteira-animes__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: var(--space-500); /* 32px */
+    padding: 0 var(--space-100);
+}
+
+.secao-esteira-animes__title {
+    font-family: var(--font-heading);
+    font-size: clamp(var(--text-sm-size), 4vw, var(--text-md-sm-size)); /* 20px a 24px */
+    font-weight: 700;
+    color: var(--neutral-100);
+    margin: 0;
+    text-transform: capitalize;
+}
+
+.secao-esteira-animes__link-all {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-100);
+    font-size: var(--text-xxs-size); /* 12px */
+    font-weight: var(--font-weight-100);
+    color: var(--neutral-400);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.25s ease;
+}
+
+.secao-esteira-animes__link-icon {
+    width: 1rem;
+    height: 1rem;
+    stroke-width: 2.5px;
+    transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Hover no link "Ver Todos" */
+.secao-esteira-animes__link-all:hover {
+    color: var(--color-primary);
+}
+
+.secao-esteira-animes__link-all:hover .secao-esteira-animes__link-icon {
+    transform: translateX(3px);
+}
+
+/* ==========================================================================
+   TRILHO E SLIDER (Scroll Snap Track)
+   ========================================================================== */
+.secao-esteira-animes__wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.secao-esteira-animes__track {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    width: 100%;
+    gap: var(--space-300); /* 16px de espaçamento entre os cards - UX otimizada para catálogos */
+    padding: var(--space-200) var(--space-100) var(--space-400) var(--space-100); /* Padding extra para acomodar sombras e bordas no hover */
+    margin: 0;
+    
+    /* Suporte a física de toque fluida no iOS (60fps native swipe) */
+    -webkit-overflow-scrolling: touch;
+    
+    /* Ocultação de barra de rolagem padrão no Firefox e IE */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    
+    /* Premium Drag-to-Scroll UX */
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Ocultação de barra de rolagem no Chrome, Safari, Opera e Edge */
+.secao-esteira-animes__track::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+/* Estado ativo de arrasto físico */
+.secao-esteira-animes__track.is-dragging {
+    cursor: grabbing;
+    scroll-behavior: auto !important;
+}
+
+/* Evita que links e imagens capturem eventos ou sejam arrastados pelo browser durante o drag */
+.secao-esteira-animes__track.is-dragging a,
+.secao-esteira-animes__track.is-dragging img {
+    pointer-events: none !important;
+    user-drag: none;
+    -webkit-user-drag: none;
+}
+
+/* Slide Individual (Largura fixa sincronizada com o card de anime) */
+.secao-esteira-animes__slide {
+    flex: 0 0 auto;
+    width: var(--width-card-anime, 12.5rem);
+    scroll-snap-align: start;
+}
+
+/* ==========================================================================
+   SETAS DE NAVEGAÇÃO LATERAIS
+   ========================================================================== */
+.secao-esteira-animes__arrow {
+    position: absolute;
+    /* Alinha verticalmente com o centro da imagem de capa (proporção 2:3, que é largura * 1.5) */
+    top: calc(var(--width-card-anime, 12.5rem) * 1.5 * 0.5); 
+    transform: translateY(-50%);
+    z-index: 10;
+    opacity: 1;
+    pointer-events: all;
+    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s ease;
+}
+
+.secao-esteira-animes__arrow--prev {
+    left: -1rem;
+}
+
+.secao-esteira-animes__arrow--next {
+    right: -1rem;
+}
+
+
+
+

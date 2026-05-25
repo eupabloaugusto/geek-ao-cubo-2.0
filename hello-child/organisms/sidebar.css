@@ -1,0 +1,98 @@
+/**
+ * Organism: Barra Lateral (Sidebar) CSS
+ */
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-600); /* 40px de espaçamento entre widgets */
+    width: 100%;
+}
+
+/* Widgets Modulares */
+.sidebar-widget {
+    background-color: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-300);
+    padding: var(--space-500);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-widget__title {
+    font-family: var(--font-heading);
+    font-size: var(--text-xs-size);
+    font-weight: var(--font-weight-100);
+    color: var(--neutral-100);
+    text-transform: uppercase;
+    letter-spacing: 0.75px;
+    margin-bottom: var(--space-400);
+    border-bottom: 2px solid var(--neutral-700);
+    padding-bottom: var(--space-200);
+    display: flex;
+    align-items: center;
+    gap: var(--space-200);
+}
+
+.sidebar-widget__title::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 16px;
+    background-color: var(--color-primary);
+    border-radius: var(--border-radius-100);
+}
+
+/* Destaques List */
+.sidebar-destaques-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-400);
+}
+
+.sidebar-destaque-item {
+    border-bottom: 1px dashed var(--neutral-700);
+    padding-bottom: var(--space-300);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-200);
+}
+
+.sidebar-destaque-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.sidebar-destaque-item__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-200);
+    flex-wrap: wrap;
+}
+
+.sidebar-destaque-item__title {
+    font-family: var(--font-body);
+    font-size: var(--text-xs-size);
+    font-weight: var(--font-weight-100);
+    color: var(--neutral-200);
+    text-decoration: none;
+    line-height: 1.4;
+    transition: color 0.2s ease-in-out;
+}
+
+.sidebar-destaque-item__title:hover {
+    color: var(--color-primary);
+}
+
+/* Otimização de Anúncios na Sidebar */
+.sidebar-widget--ads {
+    padding: var(--space-300);
+}
+
+.sidebar-widget--ads .anuncio-adsense {
+    margin: 0;
+}
+
+.sidebar-widget--ads .anuncio-adsense__container {
+    min-height: 250px;
+}

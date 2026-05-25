@@ -1,0 +1,158 @@
+/**
+ * Atom: Banner de Anúncio Editorial CSS (banner-anuncio-editorial)
+ *
+ * Estilização premium com suporte a gradiente dark mesh, imagem de fundo opcional,
+ * glassmorphic left border e transições dinâmicas responsivas.
+ */
+
+.banner-editorial {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-400); /* 24px */
+    padding: var(--space-500) var(--space-600); /* 32px 40px */
+    border-radius: var(--border-radius-300); /* 16px */
+    background: linear-gradient(135deg, #0d0e11 0%, #1c0e06 50%, #351705 100%);
+    background-size: 200% 200%;
+    background-position: left center;
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-primary);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                background-position 0.6s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Animação suave de profundidade em hover */
+.banner-editorial:hover {
+    transform: translateY(-2px);
+    border-color: rgba(245, 107, 21, 0.3);
+    box-shadow: 0 12px 40px rgba(245, 107, 21, 0.08);
+}
+
+/* Variação específica quando possui imagem de fundo */
+.banner-editorial--has-image {
+    background-size: cover;
+    background-position: center;
+}
+
+/* Conteúdo de Texto */
+.banner-editorial__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+    z-index: 2;
+}
+
+/* Badge Superior */
+.banner-editorial__badge {
+    font-family: var(--font-body);
+    font-size: var(--text-xxs-size); /* 12px */
+    font-weight: var(--font-weight-600);
+    color: var(--color-primary);
+    background-color: rgba(245, 107, 21, 0.09);
+    padding: var(--space-100) var(--space-200); /* 4px 8px */
+    border-radius: var(--border-radius-100);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: inline-block;
+    margin-bottom: var(--space-200);
+    line-height: 1;
+}
+
+/* Título */
+.banner-editorial__title {
+    font-family: var(--font-heading);
+    font-size: clamp(var(--text-xs-size), 4vw, var(--text-md-sm-size)); /* 20px a 24px */
+    font-weight: var(--font-weight-700);
+    color: var(--neutral-100);
+    line-height: 1.25;
+    margin-bottom: var(--space-100);
+}
+
+/* Descrição */
+.banner-editorial__description {
+    font-family: var(--font-body);
+    font-size: 0.875rem; /* 14px */
+    color: var(--neutral-300);
+    line-height: 1.45;
+    font-weight: var(--font-weight-400);
+    max-width: 650px;
+}
+
+/* Ações / Botão */
+.banner-editorial__actions {
+    flex-shrink: 0;
+    z-index: 2;
+}
+
+/* Botão de Call To Action */
+.banner-editorial__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-200);
+    background-color: var(--color-primary);
+    color: var(--color-secondary); /* #0D0E11 */
+    font-family: var(--font-body);
+    font-size: var(--text-xxs-size);
+    font-weight: var(--font-weight-600);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: var(--space-300) var(--space-400); /* 16px 24px - Atualizado conforme solicitado */
+    border-radius: var(--border-radius-200);
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(245, 107, 21, 0.2);
+}
+
+.banner-editorial__btn:hover {
+    background-color: var(--brand-300);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(245, 107, 21, 0.35);
+}
+
+/* Estilização e animação da seta SVG (Traçado aumentado para 3px) */
+.banner-editorial__btn-arrow {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    stroke-width: 3px; /* Aumentado o traçado */
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.banner-editorial__btn:hover .banner-editorial__btn-arrow {
+    transform: translateX(4px);
+}
+
+/* =========================================
+   RESPONSIVIDADE (Mobile First / Tablet)
+   ========================================= */
+@media (max-width: 768px) {
+    .banner-editorial {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-400);
+        padding: var(--space-400); /* 24px */
+    }
+
+    .banner-editorial__actions {
+        width: 100%;
+    }
+
+    .banner-editorial__btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

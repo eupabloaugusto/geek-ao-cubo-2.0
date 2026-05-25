@@ -1,0 +1,21 @@
+/**
+ * Atom: Rótulo de Input CSS (input-label)
+ */
+
+.input-label {
+    display: block;
+    margin-bottom: var(--space-200);
+    font-family: var(--font-heading);
+    font-size: var(--text-xxs-size);
+    font-weight: var(--font-weight-100);
+    color: var(--neutral-400);
+    text-transform: uppercase;
+    letter-spacing: 0.75px;
+    line-height: 1.2;
+    transition: color 0.3s ease;
+}
+
+/* Modifica a cor do label no hover ou quando o campo associado for focado */
+.input-label:hover {
+    color: var(--neutral-300);
+}

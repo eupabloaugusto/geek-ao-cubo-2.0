@@ -1,0 +1,22 @@
+/**
+ * Atom: Drawer Overlay CSS
+ */
+
+.drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(13, 14, 17, 0.8); /* Fundo escuro baseado no neutral-900 */
+    backdrop-filter: blur(4px);
+    z-index: 900; /* Abaixo do drawer, mas acima do restante da página */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.drawer-overlay--active {
+    opacity: 1;
+    visibility: visible;
+}

@@ -1,0 +1,68 @@
+/**
+ * Atom: Rating Score CSS (rating-score)
+ *
+ * Bloco de alta fidelidade visual para destaque de pontuação na página de anime.
+ * Baseado no sistema de design tokens do Geek ao Cubo.
+ */
+
+.rating-score {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--neutral-900);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-200); /* 8px */
+    padding: var(--space-400) var(--space-500); /* 24px 32px */
+    min-width: 140px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
+}
+
+/* Hover interativo sutil */
+.rating-score:hover {
+    border-color: var(--neutral-500);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Rótulo superior contextual */
+.rating-score__label {
+    font-family: var(--font-body);
+    font-size: var(--text-xxs-size); /* 12px */
+    font-weight: var(--font-weight-700);
+    color: var(--neutral-400);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-200); /* 8px */
+    line-height: 1;
+}
+
+/* Valor numérico gigante da nota */
+.rating-score__value {
+    font-family: var(--font-heading);
+    font-size: var(--text-lg-size); /* 3rem / 48px */
+    font-weight: var(--text-lg-weight);
+    line-height: 1;
+    color: var(--warning-400); /* Amarelo/Dourado padrão para notas boas */
+    margin-bottom: var(--space-200); /* 8px */
+    transition: color 0.3s ease;
+}
+
+/* Rótulo inferior secundário (ex: contagem de votos) */
+.rating-score__votes {
+    font-family: var(--font-body);
+    font-size: var(--text-xxs-size); /* 12px */
+    font-weight: var(--font-weight-400);
+    color: var(--neutral-500);
+    line-height: 1;
+}
+
+/* =========================================
+   VARIAÇÃO PARA NOTAS BAIXAS
+   ========================================= */
+
+.rating-score--error .rating-score__value {
+    color: var(--error-400); /* Vermelho Coral */
+}

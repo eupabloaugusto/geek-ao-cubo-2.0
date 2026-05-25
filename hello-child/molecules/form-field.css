@@ -1,0 +1,61 @@
+/**
+ * Molecule: Grupo de Input CSS (form-field)
+ */
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: var(--space-400);
+}
+
+.form-field__control {
+    position: relative;
+    width: 100%;
+}
+
+/* Modificações estéticas extras se o campo de input associado contiver um erro */
+.form-field--error .input-field {
+    border-color: var(--error-500) !important;
+}
+
+.form-field--error .input-field:focus {
+    background-color: var(--neutral-900);
+}
+
+.form-field--error .input-search-icon svg {
+    fill: var(--error-400) !important;
+}
+
+.form-field--error .input-select-arrow svg {
+    fill: var(--error-400) !important;
+}
+
+/* --- ESTADO: DESABILITADO --- */
+
+/*
+ * Aplicado no wrapper da molécula quando disabled=true.
+ * Transmite o estado para o label e o helper sem precisar
+ * de classes adicionais em cada átomo filho.
+ */
+
+.form-field--disabled {
+    cursor: not-allowed;
+}
+
+/* Label apagado: sinaliza que o campo não está disponível */
+.form-field--disabled .input-label {
+    opacity: 0.45;
+    cursor: not-allowed;
+    user-select: none;
+}
+
+/* Helper apagado no estado desabilitado */
+.form-field--disabled .input-helper {
+    opacity: 0.4;
+}
+
+/* O wrapper do input bloqueia interações */
+.form-field--disabled .input-wrapper {
+    pointer-events: none;
+}

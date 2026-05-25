@@ -1,0 +1,85 @@
+/**
+ * Organism: Formulário com Campos Desabilitados CSS (form-bloqueado)
+ */
+
+/* Painel container */
+.form-bloqueado {
+    background: linear-gradient(135deg, var(--neutral-800) 0%, var(--neutral-900) 100%);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-300);
+    padding: var(--space-600);
+    width: 100%;
+}
+
+/* Cabeçalho do formulário */
+.form-bloqueado__header {
+    margin-bottom: var(--space-600);
+    padding-bottom: var(--space-400);
+    border-bottom: 1px solid var(--neutral-700);
+}
+
+.form-bloqueado__title {
+    font-family: var(--font-heading);
+    font-size: var(--text-sm-size);
+    font-weight: 700;
+    color: var(--neutral-100);
+    margin-bottom: var(--space-200);
+}
+
+.form-bloqueado__subtitle {
+    font-size: var(--text-xxs-size);
+    font-weight: var(--font-weight-100);
+    color: var(--neutral-400);
+    display: flex;
+    align-items: center;
+    gap: var(--space-100);
+}
+
+.form-bloqueado__lock-icon {
+    font-size: var(--text-xs-size);
+    font-weight: var(--font-weight-100);
+}
+
+/* Grid de campos: 2 colunas em telas maiores */
+.form-bloqueado__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-400);
+    margin-bottom: var(--space-200);
+}
+
+@media (max-width: 680px) {
+    .form-bloqueado__row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Linha de campos bloqueados: sutil linha tracejada de fundo */
+.form-bloqueado__row--locked {
+    padding: var(--space-400);
+    background-color: rgba(13, 14, 17, 0.4);
+    border: 1px dashed var(--neutral-700);
+    border-radius: var(--border-radius-200);
+    margin-bottom: var(--space-400);
+}
+
+/* Rodapé com botões de ação */
+.form-bloqueado__footer {
+    display: flex;
+    gap: var(--space-300);
+    justify-content: flex-end;
+    padding-top: var(--space-500);
+    border-top: 1px solid var(--neutral-700);
+    margin-top: var(--space-200);
+}
+
+@media (max-width: 480px) {
+    .form-bloqueado__footer {
+        flex-direction: column-reverse;
+    }
+
+    .form-bloqueado__footer .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

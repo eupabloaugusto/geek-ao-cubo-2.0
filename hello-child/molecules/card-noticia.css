@@ -1,0 +1,440 @@
+/**
+ * Molecule: Card de Notícia (card-noticia) CSS
+ *
+ * Estilos BEM de altíssima fidelidade e padrão premium de UX Design.
+ * Inspirado nas melhores práticas de interface moderna ( Crunchyroll News, Vercel, Stripe).
+ * Proporciona hierarquia visual estrita, micro-interações de deleite e suporte a acessibilidade.
+ */
+
+/* ==========================================================================
+   1. Bloco Principal (Card Container)
+   ========================================================================== */
+.card-noticia {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.05); /* Borda ultra-sutil moderna */
+    border-radius: var(--border-radius-400); /* 24px - Cantos arredondados premium */
+    overflow: hidden;
+    height: 100%;
+    text-decoration: none;
+    outline: none;
+    position: relative;
+    box-sizing: border-box;
+    
+    /* Transições aceleradas por hardware para altíssima fluidez */
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                box-shadow 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                border-color 0.3s ease;
+}
+
+.card-noticia * {
+    box-sizing: border-box;
+}
+
+/* Hover UX Delight - Elevação física, borda brilhante e sombra profunda */
+.card-noticia:hover {
+    transform: translateY(-6px);
+    border-color: rgba(245, 107, 21, 0.35); /* Brilho sutil do laranja primário */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45), 
+                0 0 0 1px rgba(245, 107, 21, 0.1);
+}
+
+/* Foco Acessível (Keyboard Navigation) */
+.card-noticia:focus-visible {
+    outline: 2px solid var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+/* ==========================================================================
+   2. Capa / Mídia Widescreen (Proporção Rígida 16:9 contra CLS)
+   ========================================================================== */
+.card-noticia__media-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background-color: var(--neutral-900);
+    flex-shrink: 0;
+}
+
+.card-noticia__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    
+    /* Transição suave de escala e saturação no hover */
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1),
+                filter 0.4s ease;
+}
+
+/* Escala e iluminação no Hover da imagem */
+.card-noticia:hover .card-noticia__image {
+    transform: scale(1.05);
+}
+
+/* Overlay Escuro com Gradiente para garantir legibilidade e profundidade */
+.card-noticia__dark-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.4) 100%);
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.card-noticia:hover .card-noticia__dark-overlay {
+    opacity: 0.8;
+}
+
+/* Fallback de Imagem */
+.card-noticia__fallback {
+    background: linear-gradient(135deg, var(--neutral-800) 0%, var(--brand-900) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.card-noticia__fallback-text {
+    font-family: var(--font-heading);
+    font-weight: var(--font-weight-100);
+    color: var(--neutral-500);
+    font-size: var(--text-xxs-size);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* ==========================================================================
+   3. Conteúdo Textual em 3 Atos
+   ========================================================================== */
+.card-noticia__content {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-400); /* 24px */
+    flex-grow: 1;
+    gap: var(--space-300); /* 16px - Distribuição equilibrada dos blocos */
+    justify-content: center !important; /* Centraliza verticalmente o conteúdo de forma global e inequívoca */
+}
+
+/* --- ATO 1: Header (Badge Categoria + Título) --- */
+.card-noticia__header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-200); /* 8px - Proximidade estrita */
+}
+
+/* Badge de Categoria estilo Pill Premium */
+.card-noticia__eyebrow {
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    width: fit-content;
+    display: inline-flex;
+    align-items: center;
+    background-color: rgba(245, 107, 21, 0.08); /* Backdrop laranja translúcido */
+    padding: 4px 10px;
+    border-radius: 100px;
+    border: 1px solid rgba(245, 107, 21, 0.15);
+    
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Hover no Badge - Transição para preenchimento sólido */
+.card-noticia:hover .card-noticia__eyebrow {
+    background-color: var(--color-primary);
+    color: var(--neutral-900);
+    border-color: var(--color-primary);
+}
+
+/* Título da Manchete */
+.card-noticia__title {
+    color: var(--neutral-100);
+    font-family: var(--font-heading);
+    font-size: var(--text-sm-size); /* 20px - Destaque ideal */
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    transition: color 0.25s ease;
+    
+    /* Truncamento inteligente de 3 linhas */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+
+/* Hover no Título */
+.card-noticia:hover .card-noticia__title {
+    color: var(--color-primary);
+}
+
+/* --- ATO 2: Body (Resumo) --- */
+.card-noticia__body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Parágrafo Descritivo */
+.card-noticia__excerpt {
+    color: var(--neutral-400);
+    font-family: var(--font-body);
+    font-size: 14px; /* Otimizado para leitura */
+    line-height: 1.55;
+    
+    /* Truncamento inteligente de 2 linhas */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+/* --- ATO 3: Footer (Metadados com Divider) --- */
+.card-noticia__footer {
+    margin-top: 0; /* Agrupamento natural por padrão (Grid e List se alinham coesos) */
+    padding-top: var(--space-300); /* 16px */
+    border-top: 1px solid rgba(255, 255, 255, 0.06); /* Linha divisória ultra fina */
+    transition: border-color 0.3s ease;
+}
+
+/* Destaque sutil na linha ao hover */
+.card-noticia:hover .card-noticia__footer {
+    border-color: rgba(245, 107, 21, 0.2);
+}
+
+.card-noticia__meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-200); /* 8px */
+    color: var(--neutral-500);
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.card-noticia:hover .card-noticia__meta {
+    color: var(--neutral-400);
+}
+
+/* Micro-itens de Metadados (Ícone + Texto) */
+.card-noticia__meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px; /* Distância perfeita ícone-texto */
+}
+
+/* Separador do metadado */
+.card-noticia__meta-sep {
+    color: var(--neutral-700);
+}
+
+/* Micro-Ícones (SVGs) */
+.card-noticia__icon {
+    color: var(--neutral-500);
+    flex-shrink: 0;
+    transition: color 0.3s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Hover nos Micro-Ícones - Mudança para laranja e leve batida */
+.card-noticia:hover .card-noticia__icon {
+    color: var(--color-primary);
+}
+
+
+/* ==========================================================================
+   4. Variações Especializadas de Layout
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   A. LAYOUT GRID (Destaque Vertical Compactado e Totalmente Centralizado)
+   -------------------------------------------------------------------------- */
+.card-noticia--grid {
+    flex-direction: column;
+}
+
+.card-noticia--grid .card-noticia__content {
+    padding: var(--space-400); /* 24px - Compactação e equilíbrio */
+    justify-content: center !important; /* Força a centralização vertical das informações na div */
+    gap: var(--space-200); /* Espaço reduzido de 8px para um bloco coeso */
+}
+
+.card-noticia--grid .card-noticia__title {
+    font-size: var(--text-sm-size); /* 20px */
+}
+
+.card-noticia--grid .card-noticia__footer {
+    margin-top: 0 !important; /* Remove e anula definitivamente a margem flex-auto global */
+}
+
+/* --------------------------------------------------------------------------
+   B. LAYOUT LIST (Destaque Horizontal Compactado e Centralizado)
+   -------------------------------------------------------------------------- */
+.card-noticia--list {
+    flex-direction: row;
+    max-height: var(--height-card-list-max); /* 196px - Limita a altura para uma proporção horizontal ultra-elegante e compacta */
+}
+
+.card-noticia--list .card-noticia__media-wrapper {
+    width: 40%;
+    aspect-ratio: auto; /* Desativa a proporção rígida 16/9 */
+    align-self: stretch; /* Estica verticalmente de ponta a ponta, eliminando faixas pretas */
+}
+
+.card-noticia--list .card-noticia__content {
+    width: 60%;
+    padding: var(--space-300) var(--space-400); /* Padding reduzido para se ajustar perfeitamente ao limite de altura */
+    justify-content: center !important; /* Força a centralização vertical das informações ao lado da imagem */
+    gap: var(--space-200);
+}
+
+.card-noticia--list .card-noticia__title {
+    font-size: var(--text-sm-size); /* 20px */
+    -webkit-line-clamp: 2; /* Truncamento ideal */
+}
+
+.card-noticia--list .card-noticia__excerpt {
+    -webkit-line-clamp: 1; /* Excerpt limitado a 1 linha para garantir compacidade perfeita e evitar clipping */
+}
+
+.card-noticia--list .card-noticia__footer {
+    margin-top: 0 !important; /* Remove e anula definitivamente a margem flex-auto global */
+}
+
+/* --------------------------------------------------------------------------
+   C. LAYOUT HERO HORIZONTAL (Manchete de Destaque Principal Gigante / Widescreen)
+   -------------------------------------------------------------------------- */
+.card-noticia--hero {
+    flex-direction: row;
+}
+
+.card-noticia--hero .card-noticia__media-wrapper {
+    width: 60%;
+    aspect-ratio: 16 / 9;
+}
+
+.card-noticia--hero .card-noticia__content {
+    width: 40%;
+    padding: var(--space-600) var(--space-700); /* Paddings generosos do Destaque topo */
+    justify-content: center;
+    gap: var(--space-400); /* 24px - Gaps amplos e respiráveis de alta escala */
+}
+
+.card-noticia--hero .card-noticia__title {
+    font-size: clamp(var(--text-xs-size), 3vw, var(--text-md-size)); /* Tipografia fluida */
+    line-height: 1.25;
+    -webkit-line-clamp: 4;
+}
+
+.card-noticia--hero .card-noticia__excerpt {
+    font-size: var(--text-xs-size); /* 16px */
+    font-weight: var(--font-weight-100);
+    -webkit-line-clamp: 3;
+}
+
+.card-noticia--hero .card-noticia__footer {
+    margin-top: auto !important; /* Exclusivo do Hero: joga o rodapé para a base do card gigante */
+}
+
+/* --------------------------------------------------------------------------
+   D. LAYOUT HERO VERTICAL (Novo Destaque Estritamente Vertical)
+   -------------------------------------------------------------------------- */
+.card-noticia--hero-vertical {
+    flex-direction: column;
+}
+
+.card-noticia--hero-vertical .card-noticia__media-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+}
+
+.card-noticia--hero-vertical .card-noticia__content {
+    width: 100%;
+    padding: var(--space-500); /* Espaçamento generoso premium */
+    gap: var(--space-300); /* 16px - Distanciamento ideal */
+}
+
+.card-noticia--hero-vertical .card-noticia__title {
+    font-size: clamp(var(--text-sm-size), 2.2vw, var(--text-md-sm-size)); /* 20px a 24px - Tipografia fluida de manchete */
+    line-height: 1.3;
+    -webkit-line-clamp: 3;
+}
+
+.card-noticia--hero-vertical .card-noticia__excerpt {
+    font-size: var(--text-xs-size); /* 16px */
+    font-weight: var(--font-weight-100);
+    line-height: 1.6;
+    -webkit-line-clamp: 3;
+}
+
+.card-noticia--hero-vertical .card-noticia__footer {
+    margin-top: auto !important; /* Joga o rodapé para a base do card vertical */
+}
+
+
+/* ==========================================================================
+   5. Responsividade Completa (Media Queries)
+   ========================================================================== */
+
+/* Responsividade List (Horizontal ➜ Vertical em Smartphones) */
+@media (max-width: 768px) {
+    .card-noticia--list {
+        flex-direction: column;
+        max-height: none; /* Libera o limite de altura no colapso vertical mobile */
+    }
+    
+    .card-noticia--list .card-noticia__media-wrapper {
+        width: 100%;
+        aspect-ratio: 16 / 9; /* Restaura a proporção widescreen 16/9 no mobile */
+        align-self: auto; /* Reseta o alinhamento de stretch horizontal */
+    }
+    
+    .card-noticia--list .card-noticia__content {
+        width: 100%;
+        padding: var(--space-400);
+    }
+}
+
+/* Responsividade Hero Horizontal (Horizontal ➜ Vertical em Tablets/Smartphones) */
+@media (max-width: 992px) {
+    .card-noticia--hero {
+        flex-direction: column;
+    }
+    
+    .card-noticia--hero .card-noticia__media-wrapper {
+        width: 100%;
+    }
+    
+    .card-noticia--hero .card-noticia__content {
+        width: 100%;
+        padding: var(--space-500);
+        gap: var(--space-300);
+    }
+    
+    .card-noticia--hero .card-noticia__title {
+        font-size: var(--text-sm-size);
+        -webkit-line-clamp: 3;
+    }
+}
+
+/* Responsividade Hero Vertical (Ajustes de Escala em Mobile/Tablets) */
+@media (max-width: 992px) {
+    .card-noticia--hero-vertical .card-noticia__content {
+        padding: var(--space-400); /* Redução sutil de 32px para 24px */
+        gap: var(--space-300);
+    }
+    
+    .card-noticia--hero-vertical .card-noticia__title {
+        font-size: var(--text-sm-size); /* 20px */
+        -webkit-line-clamp: 3;
+    }
+    
+    .card-noticia--hero-vertical .card-noticia__excerpt {
+        -webkit-line-clamp: 2; /* Truncamento mais enxuto em telas menores */
+    }
+}

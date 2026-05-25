@@ -1,0 +1,72 @@
+/**
+ * Organism: Seção de Carrossel de Destaques (secao-carrossel-destaque) CSS
+ *
+ * Trilho responsivo horizontal com Scroll Snap nativo acelerado por GPU.
+ * Combina CLS zero e total compatibilidade de gestos swipe mobile.
+ */
+
+.secao-carrossel-destaque {
+    position: relative;
+    width: 100%;
+    margin-bottom: var(--space-800); /* 56px de espaço inferior */
+}
+
+/* Trilho Horizontal (Scroll Snap Track) */
+.secao-carrossel-destaque__track {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    width: 100%;
+    border-radius: var(--border-radius-400); /* 24px - Cantos arredondados unificados */
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    
+    /* Suporte a física de toque fluida no iOS (60fps native) */
+    -webkit-overflow-scrolling: touch;
+    
+    /* Ocultação de barra de rolagem padrão no Firefox e IE */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+/* Ocultação de barra de rolagem no Chrome, Safari, Opera e Edge Chromium */
+.secao-carrossel-destaque__track::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+/* Slide Individual (Ocupa exatamente 100% da viewport do container) */
+.secao-carrossel-destaque__slide {
+    flex: 0 0 100%;
+    width: 100%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always; /* Impede que o usuário pule múltiplos slides no swipe brusco */
+}
+
+/* Ajustes no Card de Notícia interno do Carrossel */
+.secao-carrossel-destaque__slide .card-noticia--hero {
+    width: 100%;
+    height: 100%;
+    border-radius: 0; /* Trilho controla os cantos, remove do card individual para evitar rebarbas */
+    border: none; /* Deixa o trilho visualmente clean */
+    box-shadow: none; /* Elimina sombras internas conflitantes */
+}
+
+/* Evita translações que quebrem as margens do carrossel no hover do card */
+.secao-carrossel-destaque__slide .card-noticia--hero:hover {
+    transform: none; 
+    box-shadow: none;
+}
+
+/* Barra de controles inferior */
+.secao-carrossel-destaque__nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,100 @@
+/**
+ * Atom: Drawer Link CSS
+ */
+
+.drawer-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-300);
+    padding: var(--space-400) var(--space-500);
+    color: var(--neutral-400);
+    font-family: var(--font-heading);
+    font-size: var(--text-sm-size);
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    border-radius: var(--border-radius-200);
+    margin-bottom: var(--space-100);
+    outline: none;
+}
+
+/* Normalização para quando o link for um elemento <button> (dropdown) */
+button.drawer-link {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    line-height: inherit;
+    box-shadow: none;
+    padding: var(--space-400) var(--space-500); /* Força padding idêntico */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.drawer-link:hover,
+.drawer-link:focus-visible {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--neutral-100);
+}
+
+.drawer-link:focus-visible {
+    outline: 2px solid var(--color-primary);
+}
+
+/* Estado Ativo (página atual) */
+.drawer-link--active {
+    background-color: rgba(245, 107, 21, 0.1); /* Laranja com 10% de opacidade */
+    color: var(--color-primary);
+}
+
+/* Texto do Link */
+.drawer-link__text {
+    flex-grow: 1;
+    text-align: left;
+}
+
+/* Ícones */
+.drawer-link__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.drawer-link__icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: currentColor;
+    transition: fill 0.2s ease;
+}
+
+/* Seta de Dropdown */
+.drawer-link__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--neutral-500);
+}
+
+.drawer-link__toggle svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    fill: currentColor;
+}
+
+/* Estado aberto: rotaciona seta */
+.drawer-link--open .drawer-link__toggle {
+    transform: rotate(180deg);
+    color: var(--neutral-200);
+}
+
+.drawer-link:hover .drawer-link__toggle,
+.drawer-link:focus-visible .drawer-link__toggle {
+    color: var(--neutral-200);
+}
+
+.drawer-link--active .drawer-link__toggle {
+    color: var(--color-primary);
+}
+

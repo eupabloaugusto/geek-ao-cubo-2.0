@@ -1,0 +1,261 @@
+/**
+ * Organism: Responsive Header CSS
+ *
+ * Cabeçalho sticky fixo no topo com glassmorphism premium.
+ * Layout Mobile-First com 3 breakpoints:
+ *   - Mobile  (< 768px):  hamburger + logo centralizada + sem busca no header
+ *   - Tablet  (768–1023px): hamburger + logo esquerda + busca compactada
+ *   - Desktop (≥ 1024px): logo esquerda + nav centralizado + busca expandida
+ */
+
+/* ============================
+   CONTAINER PRINCIPAL DO HEADER
+   ============================ */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 950; /* Abaixo do drawer (1000) e do overlay (900) */
+    height: 80px;
+    background-color: rgba(13, 14, 17, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                background-color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+/* Estado retrátil no scroll */
+.header--scrolled {
+    height: 64px;
+    background-color: rgba(13, 14, 17, 0.96);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* ============================
+   GRID INTERNO DO HEADER
+   ============================ */
+.header__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--space-500);
+    gap: var(--space-500);
+}
+
+/* ============================
+   LOGOTIPO
+   ============================ */
+.header__logo {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    /* Mobile: centralizada absolutamente, desktop: posicionamento normal do fluxo */
+}
+
+.header__logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    outline: none;
+    border-radius: var(--border-radius-100);
+    transition: opacity 0.2s ease;
+}
+
+.header__logo-link:hover {
+    opacity: 0.85;
+}
+
+.header__logo-link:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+}
+
+/* SVG do logo: altura fluida, largura automática */
+.header__logo-link svg {
+    height: 28px;
+    width: auto;
+    display: block;
+    transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header--scrolled .header__logo-link svg {
+    height: 22px;
+}
+
+/* Fallback de texto caso o SVG não exista */
+.header__logo-text {
+    font-family: var(--font-heading);
+    font-size: var(--text-sm-size);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    background: linear-gradient(135deg, var(--neutral-100) 0%, var(--color-primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ============================
+   GATILHO HAMBURGER (Mobile/Tablet)
+   ============================ */
+.header__mobile-trigger {
+    flex-shrink: 0;
+    /* Oculto em desktop, visível em mobile/tablet */
+    display: flex;
+    align-items: center;
+}
+
+/* ============================
+   MENU DE NAVEGAÇÃO HORIZONTAL (Desktop)
+   ============================ */
+.header__nav {
+    flex: 1;
+    display: none; /* Oculto por padrão (mobile), exibido em desktop */
+    justify-content: center;
+}
+
+.header__menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: var(--space-600);
+    height: 100%;
+}
+
+.header__menu-item {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+/* ============================
+   BARRA DE BUSCA (Tablet e Desktop)
+   ============================ */
+.header__search {
+    flex-shrink: 0;
+    display: none; /* Oculta em mobile, exibida em tablet/desktop */
+    align-items: center;
+    width: clamp(200px, 25vw, 340px);
+    transition: width 0.3s ease;
+}
+
+/* Ajuste do input-busca-compact no contexto do header */
+.header__search .input-busca-compact-wrapper {
+    max-width: 100%;
+    width: 100%;
+}
+
+.header__search .input-busca-compact {
+    height: 40px;
+    font-size: var(--text-xs-size);
+    font-weight: var(--font-weight-100);
+}
+
+/* ============================
+   BREAKPOINT: TABLET (≥ 768px)
+   ============================ */
+@media (min-width: 768px) {
+
+    .header__container {
+        padding: 0 var(--space-600);
+    }
+
+    /* Busca aparece a partir do tablet */
+    .header__search {
+        display: flex;
+    }
+
+    /* Compacta a largura da busca no tablet */
+    .header__search {
+        width: clamp(180px, 20vw, 260px);
+    }
+
+    /* Logo move para a esquerda natural do fluxo */
+    .header__logo {
+        order: 1; /* hamburger=0, logo=1, (nav oculto), search=2 */
+    }
+
+    .header__mobile-trigger {
+        order: 0;
+    }
+
+    .header__search {
+        order: 2;
+    }
+}
+
+/* ============================
+   BREAKPOINT: DESKTOP (≥ 1024px)
+   ============================ */
+@media (min-width: 1024px) {
+
+    /* Hamburger some no desktop */
+    .header__mobile-trigger {
+        display: none;
+    }
+
+    /* Nav aparece e fica no centro */
+    .header__nav {
+        display: flex;
+        order: 2;
+    }
+
+    /* Ordem de layout: logo(1) | nav(2) | busca(3) */
+    .header__logo {
+        order: 1;
+    }
+
+    .header__search {
+        order: 3;
+        width: clamp(220px, 22vw, 340px);
+    }
+
+    /* No desktop não há hamburger, logo ocupa o fluxo natural */
+    .header__container {
+        padding: 0 var(--space-800);
+    }
+}
+
+/* ============================
+   MOBILE: Logo centralizada
+   ============================ */
+@media (max-width: 767px) {
+    .header__container {
+        position: relative; /* Para posicionamento absoluto da logo */
+        padding: 0 var(--space-300);
+        justify-content: flex-start;
+    }
+
+    /* Centraliza a logo absolutamente em mobile */
+    .header__logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* Hamburger à esquerda */
+    .header__mobile-trigger {
+        position: relative;
+        z-index: 1;
+    }
+}
+
+/* ============================
+   ESPAÇADOR DE PÁGINA (Evita que o conteúdo fique debaixo do header fixo)
+   ============================ */
+.header-spacer {
+    height: 80px;
+    transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header--scrolled ~ .header-spacer,
+body.header-scrolled .header-spacer {
+    height: 64px;
+}

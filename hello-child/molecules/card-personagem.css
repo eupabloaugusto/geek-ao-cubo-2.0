@@ -1,0 +1,309 @@
+/**
+ * Molecule CSS: Card de Personagem (card-personagem)
+ *
+ * Card premium em formato de pôster cinematográfico.
+ * Layout: full-bleed portrait 2:3 com overlay glassmorphic na base.
+ *
+ * @package hello-elementor-child
+ */
+
+/* =============================================
+   BASE DO CARD — Pôster Cinematográfico
+   ============================================= */
+
+.card-personagem {
+	/* Reset para <a> e <div> */
+	display: block;
+	text-decoration: none;
+	color: inherit;
+
+	/* Layout de pôster: proporção 2:3 (largura × 1.5) */
+	position: relative;
+	aspect-ratio: 2 / 3;
+	width: 100%;
+	overflow: hidden;
+	border-radius: var(--border-radius-300);
+	background-color: var(--neutral-800);
+
+	/* Borda sutil inicial */
+	border: 1px solid var(--color-border);
+
+	/* Cursor apenas quando é link */
+	cursor: default;
+
+	/* Transição suave para todos os efeitos */
+	transition:
+		transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+		box-shadow 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+		border-color 0.3s ease;
+
+	/* Fix box-sizing */
+	box-sizing: border-box;
+}
+
+/* Link clicável */
+a.card-personagem {
+	cursor: pointer;
+}
+
+/* =============================================
+   HOVER — Elevação + Brilho de Acento
+   ============================================= */
+
+.card-personagem:hover {
+	transform: translateY(-6px) scale(1.015);
+	border-color: var(--brand-500);
+	box-shadow:
+		0 0 0 1px rgba(245, 107, 21, 0.35),
+		0 16px 48px rgba(0, 0, 0, 0.55),
+		0 4px 16px rgba(245, 107, 21, 0.18);
+}
+
+/* =============================================
+   IMAGEM — Cobre 100% do card
+   ============================================= */
+
+.card-personagem__image {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: top center;
+
+	/* Zoom suave no hover */
+	transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	will-change: transform;
+}
+
+.card-personagem:hover .card-personagem__image {
+	transform: scale(1.08);
+}
+
+/* =============================================
+   FALLBACK — Gradiente com Inicial
+   ============================================= */
+
+.card-personagem__fallback {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: linear-gradient(
+		160deg,
+		var(--neutral-700) 0%,
+		var(--neutral-900) 100%
+	);
+}
+
+.card-personagem__initial {
+	font-family: var(--font-heading);
+	font-size: var(--text-xl-size);
+	font-weight: var(--font-weight-700);
+	color: var(--neutral-500);
+	line-height: 1;
+	text-transform: uppercase;
+	user-select: none;
+
+	/* Sombra sutil para dar profundidade */
+	text-shadow: 0 2px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* =============================================
+   OVERLAY — Gradiente de Profundidade
+   ============================================= */
+
+.card-personagem__overlay {
+	position: absolute;
+	inset: 0;
+	/* Gradiente tricamadas para legibilidade total do texto */
+	background:
+		linear-gradient(
+			to top,
+			rgba(0, 0, 0, 0.95) 0%,
+			rgba(0, 0, 0, 0.6) 35%,
+			rgba(0, 0, 0, 0.15) 65%,
+			transparent 100%
+		);
+	pointer-events: none;
+
+	/* Transição para suavizar no hover */
+	transition: opacity 0.35s ease;
+}
+
+.card-personagem:hover .card-personagem__overlay {
+	opacity: 0.9;
+}
+
+/* =============================================
+   PAINEL GLASSMORPHIC — Base do Card
+   ============================================= */
+
+.card-personagem__panel {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: var(--space-400);
+
+	/* Layout interno */
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-300);
+	align-items: flex-start;
+
+	/* Transformação que sobe levemente no hover */
+	transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card-personagem:hover .card-personagem__panel {
+	transform: translateY(-3px);
+}
+
+/* =============================================
+   BADGE DE PAPEL
+   ============================================= */
+
+.card-personagem__badge {
+	display: inline-flex;
+	align-items: center;
+	align-self: flex-start;
+
+	font-family: var(--font-body);
+	font-size: var(--text-xxs-size);
+	font-weight: var(--font-weight-700);
+	letter-spacing: 0.07em;
+	text-transform: uppercase;
+	line-height: 1;
+
+	padding: 0.25em 0.625em;
+	border-radius: var(--border-radius-100);
+
+	/* Transição para micro-animação */
+	transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.card-personagem:hover .card-personagem__badge {
+	transform: translateY(-1px);
+}
+
+/* Variante Principal — Laranja da Marca */
+.card-personagem__badge--main {
+	background-color: var(--brand-500);
+	color: var(--neutral-900);
+}
+
+/* Variante Secundário — Cinza translúcido */
+.card-personagem__badge--supporting {
+	background-color: rgba(100, 116, 137, 0.55);
+	color: var(--neutral-100);
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
+	border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Variante Outros */
+.card-personagem__badge--other {
+	background-color: rgba(74, 85, 103, 0.5);
+	color: var(--neutral-200);
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* =============================================
+   INFORMAÇÕES DO PERSONAGEM
+   ============================================= */
+
+.card-personagem__info {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	text-align: left;
+	gap: 2px;
+	width: 100%;
+}
+
+.card-personagem__name {
+	font-family: var(--font-heading);
+	font-size: var(--text-sm-size);
+	font-weight: var(--font-weight-700);
+	color: var(--neutral-100);
+	line-height: 1.25;
+	margin: 0;
+	text-align: left;
+
+	/* Evita quebra de linha em nomes longos */
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+
+	/* Sombra de texto para legibilidade máxima */
+	text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
+}
+
+/* Nome em Kanji / Japonês */
+.card-personagem__name-kanji {
+	font-family: var(--font-body);
+	font-size: var(--text-xxs-size);
+	font-weight: var(--font-weight-400);
+	color: var(--neutral-400);
+	margin: 0;
+	line-height: 1.2;
+	text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+	text-align: left;
+
+	/* Anima opacity no hover */
+	opacity: 0.75;
+	transition: opacity 0.25s ease;
+}
+
+.card-personagem:hover .card-personagem__name-kanji {
+	opacity: 1;
+}
+
+/* =============================================
+   VARIANTE POR PAPEL — Acento da Borda Principal
+   ============================================= */
+
+.card-personagem--main {
+	border-color: rgba(245, 107, 21, 0.25);
+}
+
+.card-personagem--main:hover {
+	border-color: var(--brand-500);
+	box-shadow:
+		0 0 0 1px rgba(245, 107, 21, 0.5),
+		0 16px 48px rgba(0, 0, 0, 0.6),
+		0 4px 20px rgba(245, 107, 21, 0.22);
+}
+
+/* =============================================
+   ESTADO DE FOCO — Acessibilidade por Teclado
+   ============================================= */
+
+a.card-personagem:focus-visible {
+	outline: 2px solid var(--brand-500);
+	outline-offset: 3px;
+	border-color: var(--brand-500);
+}
+
+/* =============================================
+   RESPONSIVIDADE (SEM CLAMPS OU CALCULOS)
+   ============================================= */
+
+@media (max-width: 768px) {
+	.card-personagem__panel {
+		padding: var(--space-300);
+	}
+
+	.card-personagem__initial {
+		font-size: var(--text-md-lg-size);
+	}
+
+	.card-personagem__name {
+		font-size: var(--text-xs-size);
+	}
+}

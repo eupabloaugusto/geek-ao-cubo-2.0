@@ -1,0 +1,91 @@
+/**
+ * Atom: Aviso Adblock CSS
+ */
+
+.aviso-adblock {
+    background: linear-gradient(135deg, var(--neutral-800) 0%, var(--neutral-900) 100%);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-300);
+    padding: clamp(var(--space-400), 2.5vw, var(--space-600));
+    max-width: 650px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-300);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.aviso-adblock:hover {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+/* Barra de destaque colorida no lado esquerdo */
+.aviso-adblock::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--color-primary), var(--brand-700));
+}
+
+.aviso-adblock__header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-300);
+}
+
+.aviso-adblock__icon {
+    background-color: rgba(245, 107, 21, 0.1);
+    color: var(--color-primary);
+    width: var(--icon-lg);
+    height: var(--icon-lg);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-sm-size);
+    font-weight: 700;
+    box-shadow: 0 0 10px rgba(245, 107, 21, 0.2);
+}
+
+.aviso-adblock__title {
+    font-family: var(--font-heading);
+    font-size: var(--text-xs-size);
+    font-size: var(--text-xs-size);
+    font-weight: var(--font-weight-100);
+    color: var(--color-text);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.aviso-adblock__text {
+    font-family: var(--font-body);
+    font-size: var(--text-xs-size);
+    font-weight: var(--font-weight-100);
+    color: var(--neutral-300);
+    line-height: var(--text-xs-height);
+}
+
+.aviso-adblock__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-300);
+    margin-top: var(--space-100);
+}
+
+/* Responsividade de botões para telas menores */
+@media (max-width: 480px) {
+    .aviso-adblock__buttons {
+        flex-direction: column;
+    }
+    
+    .aviso-adblock__buttons .btn {
+        width: 100%;
+        text-align: center;
+    }
+}

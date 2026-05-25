@@ -1,0 +1,66 @@
+/**
+ * Organism: Seção de Destaque (secao-destaque) CSS
+ *
+ * Estrutura responsiva de grid e flexbox para a seção de destaque principal da home.
+ * Organiza o card Hero (esquerda) ao lado de um stack vertical de 3 cards List (direita).
+ */
+
+.secao-destaque {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr; /* 60% esquerda, 40% direita */
+    gap: var(--space-500); /* 32px de vão premium */
+    width: 100%;
+    margin-bottom: var(--space-800); /* 56px de separação inferior para outros blocos */
+}
+
+/* Coluna Principal da Esquerda (Hero) */
+.secao-destaque__main {
+    display: flex;
+    flex-direction: column;
+    min-width: 0; /* Previne quebras de layout flexbox */
+}
+
+.secao-destaque__main .card-noticia--hero {
+    height: 100%; /* Faz o card Hero ocupar toda a altura disponível da coluna */
+}
+
+/* Coluna Lateral da Direita (Stack de 3 Lista) */
+.secao-destaque__sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-400); /* 24px entre os cards da lista */
+    min-width: 0;
+    justify-content: space-between; /* Distribui os 3 cards igualmente se o Hero for mais alto */
+}
+
+.secao-destaque__sidebar .card-noticia--list {
+    flex-grow: 1; /* Faz os cards expandirem de forma equilibrada */
+}
+
+/* ==========================================================================
+   Responsividade Completa (Breakpoints)
+   ========================================================================== */
+
+/* Telas de Tablets / Netbooks (Colapso de Lado a Lado para Empilhado) */
+@media (max-width: 1024px) {
+    .secao-destaque {
+        grid-template-columns: 1fr; /* Coluna única */
+        gap: var(--space-500);
+    }
+
+    .secao-destaque__sidebar {
+        justify-content: flex-start; /* Sem espalhamento no empilhamento vertical */
+    }
+}
+
+/* Smartphones Pequenos (Ajuste fino de respiros) */
+@media (max-width: 480px) {
+    .secao-destaque {
+        gap: var(--space-400);
+        margin-bottom: var(--space-600);
+    }
+    
+    .secao-destaque__sidebar {
+        gap: var(--space-300); /* 16px de vão em celulares muito pequenos */
+    }
+}

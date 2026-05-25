@@ -1,0 +1,82 @@
+/* ==========================================================================
+   Atom: Logo
+   Arquivo: atoms/logo.css
+   Controla tamanho, alinhamento e responsividade de todas as variantes de logo.
+   ========================================================================== */
+
+.logo {
+	display: inline-flex;
+	align-items: center;
+	flex-shrink: 0;
+}
+
+.logo__link {
+	display: inline-flex;
+	align-items: center;
+	text-decoration: none;
+	outline-offset: 0.25rem;
+	border-radius: var(--border-radius-100);
+	transition: opacity 0.2s ease;
+}
+
+.logo__link:hover,
+.logo__link:focus-visible {
+	opacity: 0.85;
+}
+
+.logo__svg {
+	display: flex;
+	align-items: center;
+	line-height: 0;
+}
+
+.logo__svg svg {
+	display: block;
+	height: auto;
+}
+
+.logo__fallback {
+	font-family: var(--font-heading);
+	font-size: var(--text-md-sm-size);
+	font-weight: 700;
+	color: var(--color-text);
+	letter-spacing: -0.02em;
+}
+
+/* --------------------------------------------------------------------------
+   Variante: horizontal-01 — ícone branco + wordmark laranja (349×65)
+   -------------------------------------------------------------------------- */
+.logo--horizontal-01 .logo__svg svg {
+	width: clamp(9rem, 22vw, 13rem);
+}
+
+/* --------------------------------------------------------------------------
+   Variante: horizontal-02 — ícone quadrado laranja + wordmark branco (352×69)
+   Padrão do header principal
+   -------------------------------------------------------------------------- */
+.logo--horizontal-02 .logo__svg svg {
+	width: clamp(8.5rem, 20vw, 12.5rem);
+}
+
+/* --------------------------------------------------------------------------
+   Variante: wordmark — só o texto (275×36)
+   -------------------------------------------------------------------------- */
+.logo--wordmark .logo__svg svg {
+	width: clamp(7rem, 18vw, 10rem);
+}
+
+/* --------------------------------------------------------------------------
+   Variante: icone-quadrado — ícone com fundo quadrado laranja (69×69)
+   -------------------------------------------------------------------------- */
+.logo--icone-quadrado .logo__svg svg {
+	width: clamp(2rem, 5vw, 3rem);
+	height: clamp(2rem, 5vw, 3rem);
+}
+
+/* --------------------------------------------------------------------------
+   Variante: icone-simples — símbolo G sem fundo (62×69)
+   -------------------------------------------------------------------------- */
+.logo--icone-simples .logo__svg svg {
+	width: clamp(1.75rem, 4vw, 2.75rem);
+	height: auto;
+}

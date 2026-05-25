@@ -1,0 +1,36 @@
+/**
+ * Atom: Badge de Horário CSS
+ */
+
+.badge-horario {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-100);
+    background-color: rgba(13, 14, 17, 0.8);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: var(--neutral-100);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: var(--space-100) var(--space-200);
+    border-radius: var(--border-radius-100);
+    font-family: var(--font-heading);
+    font-weight: var(--font-weight-100);
+    font-size: var(--text-xxs-size);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.5px;
+    line-height: 1;
+    transition: all 0.2s ease-in-out;
+}
+
+.badge-horario__icon {
+    fill: var(--color-primary); /* Relógio em Laranja Vibrante */
+    width: var(--icon-xs);
+    height: var(--icon-xs);
+}
+
+/* Hover e Efeitos Visuais */
+.badge-horario:hover {
+    background-color: var(--neutral-900);
+    border-color: var(--color-primary);
+    transform: scale(1.03);
+}

@@ -1,0 +1,19 @@
+/**
+ * Atom: Texto Auxiliar / Mensagem de Erro CSS (input-helper)
+ */
+
+.input-helper {
+    display: block;
+    margin-top: var(--space-200);
+    font-family: var(--font-body);
+    font-size: var(--text-xxs-size);
+    font-weight: var(--font-weight-100);
+    color: var(--neutral-500);
+    line-height: 1.4;
+    transition: color 0.3s ease;
+}
+
+/* Modificador: Mensagem de Erro */
+.input-helper--error {
+    color: var(--error-400); /* Coral/Vermelho translúcido para alertas de erro */
+}

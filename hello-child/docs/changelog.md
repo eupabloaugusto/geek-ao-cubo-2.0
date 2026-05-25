@@ -2,6 +2,14 @@
 
 Todas as alterações notáveis, adições e exclusões de componentes do projeto serão documentadas neste arquivo de forma contínua.
 
+## [1.9.0] — 2026-05-25
+
+### Adicionado
+- **Molécula `card-recomendacao`** (`molecules/card-recomendacao.php` & `.css`): Card horizontal compacto para exibir animes recomendados. Layout `[thumbnail poster 2:3] [título + contador de recomendações com ícone]`. O card inteiro é clicável via `anime_url` opcional. Reutiliza o átomo `imagem-capa`. Responsivo com thumbnail menor em `≤ 30rem`.
+- **Documentação `docs/molecules/card-recomendacao.md`**: Manual técnico com parâmetros, tokens CSS e exemplos.
+
+---
+
 ## [1.8.0] — 2026-05-25
 
 ### Adicionado

@@ -42,6 +42,7 @@
   <link rel="stylesheet" href="molecules/card-personagem.css">
   <link rel="stylesheet" href="molecules/card-personagem-dublador.css">
   <link rel="stylesheet" href="molecules/card-staff.css">
+  <link rel="stylesheet" href="molecules/card-recomendacao.css">
   <link rel="stylesheet" href="organisms/secao-esteira-animes.css">
   <link rel="stylesheet" href="organisms/secao-artigo-unico.css">
   <link rel="stylesheet" href="molecules/breadcrumb.css">
@@ -1967,7 +1968,7 @@
             <span class="sb-stat-label">Átomos</span>
           </div>
           <div class="sb-stat-card">
-            <span class="sb-stat-num">17</span>
+            <span class="sb-stat-num">18</span>
             <span class="sb-stat-label">Moléculas</span>
           </div>
           <div class="sb-stat-card">
@@ -1975,7 +1976,7 @@
             <span class="sb-stat-label">Organismos</span>
           </div>
           <div class="sb-stat-card sb-stat-card--total">
-            <span class="sb-stat-num">64</span>
+            <span class="sb-stat-num">65</span>
             <span class="sb-stat-label">Componentes Ativos</span>
           </div>
         </div>
@@ -3880,6 +3881,83 @@ mm_render_component( 'molecules', 'card-staff', array(
 mm_render_component( 'molecules', 'card-staff', array(
     'staff_name' => 'Yuki Kajiura',
     'staff_role' => 'Composição Musical',
+) );
+?&gt;</pre>
+            </div>
+          </article>
+
+          <!-- Card de Anime Recomendado (card-recomendacao) -->
+          <article class="sb-component" id="card-recomendacao-preview">
+            <header class="sb-component__header">
+              <div class="sb-component__header-info">
+                <h3 class="sb-component__name">Card de Anime Recomendado (card-recomendacao)</h3>
+                <p class="sb-component__desc">Card horizontal compacto: thumbnail poster 2:3 + título (até 2 linhas) + contador de recomendações com ícone. O card inteiro é clicável quando <code>anime_url</code> é fornecido.</p>
+              </div>
+              <div class="sb-component__meta">
+                <code class="sb-component__file">molecules/card-recomendacao.php</code>
+              </div>
+            </header>
+            <div class="sb-component__preview" style="background-color: var(--neutral-900); padding: var(--space-600); display: flex; flex-direction: column; gap: var(--space-300); width: 100%; max-width: 480px;">
+
+              <!-- Com imagem, link e contador -->
+              <a href="#" class="card-recomendacao" aria-label="Ver recomendação: Fullmetal Alchemist: Brotherhood">
+                <div class="card-recomendacao__thumb">
+                  <div class="imagem-capa-container card-recomendacao__imagem">
+                    <img class="imagem-capa" src="https://cdn.myanimelist.net/images/anime/1208/94745.jpg" alt="Capa de Fullmetal Alchemist: Brotherhood" loading="lazy" decoding="async">
+                  </div>
+                </div>
+                <div class="card-recomendacao__info">
+                  <span class="card-recomendacao__title">Fullmetal Alchemist: Brotherhood</span>
+                  <span class="card-recomendacao__count">
+                    <svg class="card-recomendacao__count-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M11 7C12.6569 7 14 5.65685 14 4C14 2.34315 12.6569 1 11 1C9.34315 1 8 2.34315 8 4C8 5.65685 9.34315 7 11 7Z" fill="currentColor" opacity="0.6"/><path d="M5 8C6.65685 8 8 6.65685 8 5C8 3.34315 6.65685 2 5 2C3.34315 2 2 3.34315 2 5C2 6.65685 3.34315 8 5 8Z" fill="currentColor"/><path d="M5 9C2.79086 9 1 10.7909 1 13V15H9V13C9 10.7909 7.20914 9 5 9Z" fill="currentColor"/><path d="M11 8C9.76 8 8.63 8.45 7.76 9.2C8.54 10.06 9 11.18 9 12.4V15H15V13C15 10.7909 13.2091 9 11 9Z" fill="currentColor" opacity="0.6"/></svg>
+                    142 recomendações
+                  </span>
+                </div>
+              </a>
+
+              <!-- Com imagem, sem contador -->
+              <a href="#" class="card-recomendacao" aria-label="Ver recomendação: Attack on Titan">
+                <div class="card-recomendacao__thumb">
+                  <div class="imagem-capa-container card-recomendacao__imagem">
+                    <img class="imagem-capa" src="https://cdn.myanimelist.net/images/anime/10/47347.jpg" alt="Capa de Attack on Titan" loading="lazy" decoding="async">
+                  </div>
+                </div>
+                <div class="card-recomendacao__info">
+                  <span class="card-recomendacao__title">Attack on Titan</span>
+                </div>
+              </a>
+
+              <!-- Sem imagem, sem link -->
+              <div class="card-recomendacao">
+                <div class="card-recomendacao__thumb">
+                  <div class="imagem-capa-container card-recomendacao__imagem">
+                    <div class="imagem-capa-placeholder" aria-label="Capa não disponível"><span class="imagem-capa-placeholder__text">Sem Imagem</span></div>
+                  </div>
+                </div>
+                <div class="card-recomendacao__info">
+                  <span class="card-recomendacao__title">Título do Anime Recomendado com Nome Bem Longo Para Testar Truncamento</span>
+                  <span class="card-recomendacao__count">
+                    <svg class="card-recomendacao__count-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M11 7C12.6569 7 14 5.65685 14 4C14 2.34315 12.6569 1 11 1C9.34315 1 8 2.34315 8 4C8 5.65685 9.34315 7 11 7Z" fill="currentColor" opacity="0.6"/><path d="M5 8C6.65685 8 8 6.65685 8 5C8 3.34315 6.65685 2 5 2C3.34315 2 2 3.34315 2 5C2 6.65685 3.34315 8 5 8Z" fill="currentColor"/><path d="M5 9C2.79086 9 1 10.7909 1 13V15H9V13C9 10.7909 7.20914 9 5 9Z" fill="currentColor"/><path d="M11 8C9.76 8 8.63 8.45 7.76 9.2C8.54 10.06 9 11.18 9 12.4V15H15V13C15 10.7909 13.2091 9 11 9Z" fill="currentColor" opacity="0.6"/></svg>
+                    8 recomendações
+                  </span>
+                </div>
+              </div>
+
+            </div>
+            <div class="sb-component__code">
+              <pre>&lt;?php
+// Card completo:
+mm_render_component( 'molecules', 'card-recomendacao', array(
+    'anime_title' => 'Fullmetal Alchemist: Brotherhood',
+    'anime_image' => 'https://cdn.myanimelist.net/images/...',
+    'anime_url'   => home_url( '/anime/fma-brotherhood/' ),
+    'rec_count'   => 142,
+) );
+
+// Card sem link:
+mm_render_component( 'molecules', 'card-recomendacao', array(
+    'anime_title' => 'Attack on Titan',
+    'anime_image' => 'https://cdn.myanimelist.net/images/...',
 ) );
 ?&gt;</pre>
             </div>

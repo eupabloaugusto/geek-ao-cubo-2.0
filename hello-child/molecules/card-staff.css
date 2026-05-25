@@ -114,7 +114,5 @@ a.card-staff:hover .card-staff__name {
 		min-height: 2.5rem !important;
 	}
 
-	.card-staff__name {
-		font-size: var(--text-xxs-size);
-	}
+
 }

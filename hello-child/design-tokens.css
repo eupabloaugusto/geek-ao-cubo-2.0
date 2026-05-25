@@ -201,3 +201,27 @@
    --bp-tablet: 768px;
    --bp-desktop: 1280px;
 }
+
+/* =========================================
+    GLOBAL BASE — Tap Highlight & Selection
+    Remove o realce azul/cinza que o browser
+    aplica ao clicar ou tocar em elementos.
+   ========================================= */
+
+*,
+*::before,
+*::after {
+   -webkit-tap-highlight-color: transparent;
+}
+
+a,
+button,
+[role="button"],
+input,
+label,
+select,
+summary,
+textarea {
+   -webkit-tap-highlight-color: transparent;
+   touch-action: manipulation;
+}

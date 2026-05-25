@@ -3891,55 +3891,55 @@ mm_render_component( 'molecules', 'card-staff', array(
             <header class="sb-component__header">
               <div class="sb-component__header-info">
                 <h3 class="sb-component__name">Card de Anime Recomendado (card-recomendacao)</h3>
-                <p class="sb-component__desc">Card horizontal compacto: thumbnail poster 2:3 + título (até 2 linhas) + contador de recomendações com ícone. O card inteiro é clicável quando <code>anime_url</code> é fornecido.</p>
+                <p class="sb-component__desc">Card vertical: thumbnail poster 2:3 em cima + título (até 2 linhas) + contador de recomendações abaixo. Largura fixa de 9rem. O card inteiro é clicável quando <code>anime_url</code> é fornecido.</p>
               </div>
               <div class="sb-component__meta">
                 <code class="sb-component__file">molecules/card-recomendacao.php</code>
               </div>
             </header>
-            <div class="sb-component__preview" style="background-color: var(--neutral-900); padding: var(--space-600); display: flex; flex-direction: column; gap: var(--space-300); width: 100%; max-width: 480px;">
+            <div class="sb-component__preview" style="background-color: var(--neutral-900); padding: var(--space-600); display: flex; flex-direction: row; flex-wrap: wrap; gap: var(--space-400); align-items: flex-start;">
 
               <!-- Com imagem, link e contador -->
-              <a href="#" class="card-recomendacao" aria-label="Ver recomendação: Fullmetal Alchemist: Brotherhood">
-                <div class="card-recomendacao__thumb">
-                  <div class="imagem-capa-container card-recomendacao__imagem">
-                    <img class="imagem-capa" src="https://cdn.myanimelist.net/images/anime/1208/94745.jpg" alt="Capa de Fullmetal Alchemist: Brotherhood" loading="lazy" decoding="async">
+              <div class="card-recomendacao">
+                <a href="#" class="card-recomendacao__media" aria-label="Ver detalhes do anime recomendado Fullmetal Alchemist: Brotherhood">
+                  <div class="imagem-capa-container">
+                    <img class="imagem-capa" src="https://cdn.myanimelist.net/images/anime/1208/94745.jpg" alt="Capa do anime: Fullmetal Alchemist: Brotherhood" loading="lazy" decoding="async">
                   </div>
-                </div>
-                <div class="card-recomendacao__info">
-                  <span class="card-recomendacao__title">Fullmetal Alchemist: Brotherhood</span>
-                  <span class="card-recomendacao__count">
+                </a>
+                <div class="card-recomendacao__content">
+                  <div class="card-recomendacao__count">
                     <svg class="card-recomendacao__count-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M11 7C12.6569 7 14 5.65685 14 4C14 2.34315 12.6569 1 11 1C9.34315 1 8 2.34315 8 4C8 5.65685 9.34315 7 11 7Z" fill="currentColor" opacity="0.6"/><path d="M5 8C6.65685 8 8 6.65685 8 5C8 3.34315 6.65685 2 5 2C3.34315 2 2 3.34315 2 5C2 6.65685 3.34315 8 5 8Z" fill="currentColor"/><path d="M5 9C2.79086 9 1 10.7909 1 13V15H9V13C9 10.7909 7.20914 9 5 9Z" fill="currentColor"/><path d="M11 8C9.76 8 8.63 8.45 7.76 9.2C8.54 10.06 9 11.18 9 12.4V15H15V13C15 10.7909 13.2091 9 11 9Z" fill="currentColor" opacity="0.6"/></svg>
                     142 recomendações
-                  </span>
+                  </div>
+                  <h3 class="card-recomendacao__title"><a href="#" class="card-recomendacao__title-link">Fullmetal Alchemist: Brotherhood</a></h3>
                 </div>
-              </a>
+              </div>
 
               <!-- Com imagem, sem contador -->
-              <a href="#" class="card-recomendacao" aria-label="Ver recomendação: Attack on Titan">
-                <div class="card-recomendacao__thumb">
-                  <div class="imagem-capa-container card-recomendacao__imagem">
-                    <img class="imagem-capa" src="https://cdn.myanimelist.net/images/anime/10/47347.jpg" alt="Capa de Attack on Titan" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="card-recomendacao__info">
-                  <span class="card-recomendacao__title">Attack on Titan</span>
-                </div>
-              </a>
-
-              <!-- Sem imagem, sem link -->
               <div class="card-recomendacao">
-                <div class="card-recomendacao__thumb">
-                  <div class="imagem-capa-container card-recomendacao__imagem">
+                <a href="#" class="card-recomendacao__media" aria-label="Ver detalhes do anime recomendado Attack on Titan">
+                  <div class="imagem-capa-container">
+                    <img class="imagem-capa" src="https://cdn.myanimelist.net/images/anime/10/47347.jpg" alt="Capa do anime: Attack on Titan" loading="lazy" decoding="async">
+                  </div>
+                </a>
+                <div class="card-recomendacao__content">
+                  <h3 class="card-recomendacao__title"><a href="#" class="card-recomendacao__title-link">Attack on Titan</a></h3>
+                </div>
+              </div>
+
+              <!-- Sem imagem — testa truncamento -->
+              <div class="card-recomendacao">
+                <a href="#" class="card-recomendacao__media" aria-label="Ver detalhes do anime recomendado">
+                  <div class="imagem-capa-container">
                     <div class="imagem-capa-placeholder" aria-label="Capa não disponível"><span class="imagem-capa-placeholder__text">Sem Imagem</span></div>
                   </div>
-                </div>
-                <div class="card-recomendacao__info">
-                  <span class="card-recomendacao__title">Título do Anime Recomendado com Nome Bem Longo Para Testar Truncamento</span>
-                  <span class="card-recomendacao__count">
+                </a>
+                <div class="card-recomendacao__content">
+                  <div class="card-recomendacao__count">
                     <svg class="card-recomendacao__count-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M11 7C12.6569 7 14 5.65685 14 4C14 2.34315 12.6569 1 11 1C9.34315 1 8 2.34315 8 4C8 5.65685 9.34315 7 11 7Z" fill="currentColor" opacity="0.6"/><path d="M5 8C6.65685 8 8 6.65685 8 5C8 3.34315 6.65685 2 5 2C3.34315 2 2 3.34315 2 5C2 6.65685 3.34315 8 5 8Z" fill="currentColor"/><path d="M5 9C2.79086 9 1 10.7909 1 13V15H9V13C9 10.7909 7.20914 9 5 9Z" fill="currentColor"/><path d="M11 8C9.76 8 8.63 8.45 7.76 9.2C8.54 10.06 9 11.18 9 12.4V15H15V13C15 10.7909 13.2091 9 11 9Z" fill="currentColor" opacity="0.6"/></svg>
                     8 recomendações
-                  </span>
+                  </div>
+                  <h3 class="card-recomendacao__title"><a href="#" class="card-recomendacao__title-link">Título Muito Longo Para Testar Truncamento em Duas Linhas</a></h3>
                 </div>
               </div>
 

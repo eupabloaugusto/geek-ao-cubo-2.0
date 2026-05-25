@@ -43,6 +43,7 @@
   <link rel="stylesheet" href="molecules/card-personagem-dublador.css">
   <link rel="stylesheet" href="molecules/card-staff.css">
   <link rel="stylesheet" href="molecules/card-recomendacao.css">
+  <link rel="stylesheet" href="molecules/relacionado-item.css">
   <link rel="stylesheet" href="organisms/secao-esteira-animes.css">
   <link rel="stylesheet" href="organisms/secao-artigo-unico.css">
   <link rel="stylesheet" href="molecules/breadcrumb.css">
@@ -1968,7 +1969,7 @@
             <span class="sb-stat-label">Átomos</span>
           </div>
           <div class="sb-stat-card">
-            <span class="sb-stat-num">18</span>
+            <span class="sb-stat-num">17</span>
             <span class="sb-stat-label">Moléculas</span>
           </div>
           <div class="sb-stat-card">
@@ -1976,7 +1977,7 @@
             <span class="sb-stat-label">Organismos</span>
           </div>
           <div class="sb-stat-card sb-stat-card--total">
-            <span class="sb-stat-num">65</span>
+            <span class="sb-stat-num">66</span>
             <span class="sb-stat-label">Componentes Ativos</span>
           </div>
         </div>
@@ -3958,6 +3959,77 @@ mm_render_component( 'molecules', 'card-recomendacao', array(
 mm_render_component( 'molecules', 'card-recomendacao', array(
     'anime_title' => 'Attack on Titan',
     'anime_image' => 'https://cdn.myanimelist.net/images/...',
+) );
+?&gt;</pre>
+            </div>
+          </article>
+
+          <!-- Item de Anime Relacionado (relacionado-item) -->
+          <article class="sb-component" id="relacionado-item-preview">
+            <header class="sb-component__header">
+              <div class="sb-component__header-info">
+                <h3 class="sb-component__name">Item de Anime Relacionado (relacionado-item)</h3>
+                <p class="sb-component__desc">Card horizontal compacto: thumbnail 4rem proporção 2:3 + tipo de relação em laranja uppercase + título (2 linhas). Clicável via <code>anime_url</code>. Hover com deslize lateral e borda laranja.</p>
+              </div>
+              <div class="sb-component__meta">
+                <code class="sb-component__file">molecules/relacionado-item.php</code>
+              </div>
+            </header>
+            <div class="sb-component__preview" style="background-color: var(--neutral-900); padding: var(--space-600); display: flex; flex-direction: column; gap: var(--space-300); width: 100%; max-width: 480px;">
+
+              <!-- Com imagem, link e tipo de relação: Sequência -->
+              <a href="#" class="relacionado-item" aria-label="Ver anime relacionado: Attack on Titan: The Final Season">
+                <div class="relacionado-item__thumb">
+                  <div class="imagem-capa-container">
+                    <img class="imagem-capa" src="https://cdn.myanimelist.net/images/anime/1000/110531.jpg" alt="Capa de Attack on Titan: The Final Season" loading="lazy" decoding="async">
+                  </div>
+                </div>
+                <div class="relacionado-item__info">
+                  <span class="relacionado-item__relation">Sequência</span>
+                  <span class="relacionado-item__title">Attack on Titan: The Final Season</span>
+                </div>
+              </a>
+
+              <!-- Com imagem, link e tipo de relação: Adaptação -->
+              <a href="#" class="relacionado-item" aria-label="Ver anime relacionado: Fullmetal Alchemist (2003)">
+                <div class="relacionado-item__thumb">
+                  <div class="imagem-capa-container">
+                    <img class="imagem-capa" src="https://cdn.myanimelist.net/images/anime/4/19644.jpg" alt="Capa de Fullmetal Alchemist (2003)" loading="lazy" decoding="async">
+                  </div>
+                </div>
+                <div class="relacionado-item__info">
+                  <span class="relacionado-item__relation">Adaptação</span>
+                  <span class="relacionado-item__title">Fullmetal Alchemist (2003)</span>
+                </div>
+              </a>
+
+              <!-- Sem imagem, sem link, sem tipo -->
+              <div class="relacionado-item">
+                <div class="relacionado-item__thumb">
+                  <div class="imagem-capa-container">
+                    <div class="imagem-capa-placeholder" aria-label="Capa não disponível"><span class="imagem-capa-placeholder__text">Sem Imagem</span></div>
+                  </div>
+                </div>
+                <div class="relacionado-item__info">
+                  <span class="relacionado-item__title">Título Muito Longo Para Testar Truncamento em Duas Linhas Completas</span>
+                </div>
+              </div>
+
+            </div>
+            <div class="sb-component__code">
+              <pre>&lt;?php
+// Item completo:
+mm_render_component( 'molecules', 'relacionado-item', array(
+    'anime_title'   => 'Attack on Titan: The Final Season',
+    'anime_image'   => 'https://cdn.myanimelist.net/images/...',
+    'anime_url'     => home_url( '/anime/attack-on-titan-final/' ),
+    'relation_type' => 'Sequência',
+) );
+
+// Sem imagem e sem link:
+mm_render_component( 'molecules', 'relacionado-item', array(
+    'anime_title'   => 'Fullmetal Alchemist (2003)',
+    'relation_type' => 'Adaptação',
 ) );
 ?&gt;</pre>
             </div>

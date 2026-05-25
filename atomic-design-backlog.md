@@ -47,7 +47,7 @@
 | `tag-artigo` | Tag clicável no rodapé do artigo (plana, sem cor de status) |
 | `logo` | Logotipo da marca em 5 variantes: `horizontal-01`, `horizontal-02`, `wordmark`, `icone-quadrado`, `icone-simples`. SVG inline, responsivo, com link opcional |
 
-### 🧬 Moléculas (16 componentes)
+### 🧬 Moléculas (17 componentes)
 
 | Componente | Descrição |
 |---|---|
@@ -64,7 +64,8 @@
 | `meta-artigo-header` | Bloco de metadados do topo do artigo: categoria + autor + data |
 | `sidebar-assistir-agora` | Card promocional lateral (CTA) para direcionar usuários a assistir em canais oficiais |
 | `stat-bloco` | Bloco de estatísticas: nota grande + número de membros + rank |
-| `card-recomendacao` | Card horizontal compacto de anime recomendado: thumbnail poster + título + contador de recomendações |
+| `card-recomendacao` | Card vertical de anime recomendado: thumbnail poster 2:3 + título + contador de recomendações (estilo card-anime) |
+| `relacionado-item` | Card horizontal compacto de anime relacionado: thumbnail 4rem 2:3 + tipo de relação (laranja) + título |
 | `card-staff` | Card horizontal compacto de membro da equipe: avatar + nome + cargo (Diretor, Compositor, etc.) |
 | `tags-artigo` | Linha de tags clicáveis no rodapé do conteúdo |
 
@@ -101,7 +102,7 @@ Todos os 36 componentes atômicos estão implementados no projeto físico.
 
 ---
 
-### 🧬 Moléculas — Faltam 2 componentes
+### 🧬 Moléculas — Falta 1 componente
 
 #### 🔴 Prioridade ALTA
 
@@ -109,9 +110,7 @@ Todos os 36 componentes atômicos estão implementados no projeto físico.
 
 #### 🟡 Prioridade MÉDIA
 
-| Componente | Descrição | Fonte |
-|---|---|---|
-| `relacionado-item` | Item de anime relacionado: thumbnail pequena + título + tipo de relação ("Sequência", "Prequel") | 🔵 |
+> Nenhuma molécula de média prioridade restante.
 
 #### 🟢 Prioridade BAIXA
 
@@ -154,9 +153,9 @@ Todos os 36 componentes atômicos estão implementados no projeto físico.
 | Nível | Existem | Faltam | Total previsto |
 |---|---|---|---|
 | ⚛️ Átomos | 36 | 0 | 36 |
-| 🧬 Moléculas | 16 | 2 | 18 |
+| 🧬 Moléculas | 17 | 1 | 18 |
 | 🧫 Organismos | 13 | 9 | 22 |
-| **Total** | **65** | **11** | **76** |
+| **Total** | **66** | **10** | **76** |
 
 ---
 

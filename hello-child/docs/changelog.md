@@ -2,6 +2,14 @@
 
 Todas as alterações notáveis, adições e exclusões de componentes do projeto serão documentadas neste arquivo de forma contínua.
 
+## [2.0.0] — 2026-05-25
+
+### Adicionado
+- **Molécula `relacionado-item`** (`molecules/relacionado-item.php` & `.css`): Card horizontal compacto para exibir animes relacionados. Layout `[thumbnail 4rem 2:3] [tipo de relação em laranja uppercase + título 2 linhas]`. Clicável via `anime_url` opcional. Hover com `translateX` + borda laranja.
+- **Documentação `docs/molecules/relacionado-item.md`**: Manual técnico com parâmetros, tabela de tipos de relação Jikan API, tokens CSS e exemplos.
+
+---
+
 ## [1.9.0] — 2026-05-25
 
 ### Adicionado

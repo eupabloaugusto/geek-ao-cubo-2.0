@@ -1,0 +1,139 @@
+/**
+ * Molecule CSS: Item de Anime Relacionado (relacionado-item)
+ *
+ * Card horizontal compacto: [thumbnail 4rem 2:3] [tipo de relação + título]
+ * O card inteiro é clicável quando envolto em <a>.
+ *
+ * @package hello-elementor-child
+ */
+
+/* ==========================================================================
+   CARD BASE
+   ========================================================================== */
+
+.relacionado-item {
+	display: flex;
+	align-items: stretch;
+	gap: 0;
+	background-color: var(--neutral-800);
+	border: 0.0625rem solid var(--neutral-700);
+	border-radius: var(--border-radius-200);
+	overflow: hidden;
+	box-sizing: border-box;
+	text-decoration: none;
+	color: inherit;
+	transition:
+		border-color     0.2s ease,
+		transform        0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Hover — só ativado quando o card é um <a> */
+a.relacionado-item:hover {
+	border-color: var(--color-primary);
+	transform: translateX(0.125rem);
+}
+
+a.relacionado-item:focus-visible {
+	outline: 0.125rem solid var(--color-primary);
+	outline-offset: 0.125rem;
+	border-radius: var(--border-radius-200);
+}
+
+/* ==========================================================================
+   THUMBNAIL — 4rem de largura, proporção 2:3
+   ========================================================================== */
+
+.relacionado-item__thumb {
+	flex-shrink: 0;
+	width: 4rem;
+}
+
+.relacionado-item__thumb .imagem-capa-container {
+	width: 100%;
+	height: 100%;
+	border-radius: 0;
+}
+
+.relacionado-item__thumb .imagem-capa {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	border-radius: 0;
+	transition: transform 0.25s ease;
+}
+
+a.relacionado-item:hover .imagem-capa {
+	transform: scale(1.05);
+}
+
+.relacionado-item__thumb .imagem-capa-placeholder {
+	width: 100%;
+	height: 100%;
+	min-height: 5.5rem;
+	border-radius: 0;
+	border: none;
+}
+
+/* ==========================================================================
+   BLOCO DE INFORMAÇÕES
+   ========================================================================== */
+
+.relacionado-item__info {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: var(--space-100);
+	padding: var(--space-300) var(--space-400);
+	flex: 1;
+	min-width: 0;
+}
+
+/* Tipo de Relação — badge/label compacto */
+.relacionado-item__relation {
+	display: inline-block;
+	font-family: var(--font-body);
+	font-size: var(--text-xxs-size);
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: var(--color-primary);
+	line-height: 1;
+}
+
+/* Título */
+.relacionado-item__title {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	font-family: var(--font-heading);
+	font-size: var(--text-xs-size);
+	font-weight: 600;
+	line-height: 1.35;
+	color: var(--neutral-100);
+	transition: color 0.2s ease;
+}
+
+a.relacionado-item:hover .relacionado-item__title {
+	color: var(--color-primary);
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+
+/*
+ * Modo compacto (≤ 30rem / ~480px)
+ * Thumbnail ligeiramente menor, padding reduzido.
+ */
+@media (max-width: 30rem) {
+	.relacionado-item__thumb {
+		width: 3.5rem;
+	}
+
+	.relacionado-item__info {
+		padding: var(--space-200) var(--space-300);
+	}
+}

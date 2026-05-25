@@ -2,6 +2,14 @@
 
 Todas as alterações notáveis, adições e exclusões de componentes do projeto serão documentadas neste arquivo de forma contínua.
 
+## [2.1.0] — 2026-05-25
+
+### Adicionado
+- **Organismo `hero-anime`** (`organisms/hero-anime.php` & `.css`): Hero principal da página de detalhe do anime. Backdrop desfocado + gradiente + poster + info completa (badges, título H1, score MAL, gêneros, meta grid, sinopse, CTAs). Schema.org `TVSeries`. Mobile-first: flex-column → flex-row ≥ 48rem.
+- **Documentação `docs/organisms/hero-anime.md`**: Manual técnico completo com parâmetros, schema, tokens CSS, responsividade e exemplo de uso.
+
+---
+
 ## [2.0.0] — 2026-05-25
 
 ### Adicionado

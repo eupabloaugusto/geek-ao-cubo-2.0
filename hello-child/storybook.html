@@ -44,6 +44,7 @@
   <link rel="stylesheet" href="molecules/card-staff.css">
   <link rel="stylesheet" href="molecules/card-recomendacao.css">
   <link rel="stylesheet" href="molecules/relacionado-item.css">
+  <link rel="stylesheet" href="organisms/hero-anime.css">
   <link rel="stylesheet" href="organisms/secao-esteira-animes.css">
   <link rel="stylesheet" href="organisms/secao-artigo-unico.css">
   <link rel="stylesheet" href="molecules/breadcrumb.css">
@@ -1973,11 +1974,11 @@
             <span class="sb-stat-label">Moléculas</span>
           </div>
           <div class="sb-stat-card">
-            <span class="sb-stat-num">11</span>
+            <span class="sb-stat-num">12</span>
             <span class="sb-stat-label">Organismos</span>
           </div>
           <div class="sb-stat-card sb-stat-card--total">
-            <span class="sb-stat-num">66</span>
+            <span class="sb-stat-num">67</span>
             <span class="sb-stat-label">Componentes Ativos</span>
           </div>
         </div>
@@ -4886,6 +4887,103 @@ mm_render_component('molecules', 'sidebar-assistir-agora', [
       <section class="sb-section" id="organisms">
         <h2 class="sb-section__title">Organismos</h2>
         <div class="sb-components-list">
+
+          <!-- Hero Anime (hero-anime) -->
+          <article class="sb-component" id="hero-anime-preview">
+            <header class="sb-component__header">
+              <div class="sb-component__header-info">
+                <h3 class="sb-component__name">Hero Anime (hero-anime)</h3>
+                <p class="sb-component__desc">Hero principal da página de detalhe do anime: backdrop desfocado + gradiente escuro + poster + info completa (status, título H1, score MAL, gêneros, meta grid, sinopse, CTAs). Schema.org TVSeries. Mobile-first: coluna → linha ≥ 48rem.</p>
+              </div>
+              <div class="sb-component__meta">
+                <code class="sb-component__file">organisms/hero-anime.php</code>
+              </div>
+            </header>
+            <div class="sb-component__preview" style="padding: 0; overflow: hidden; border-radius: var(--border-radius-200);">
+
+              <section class="hero-anime" aria-label="Detalhes do anime: Fullmetal Alchemist: Brotherhood">
+                <div class="hero-anime__backdrop" style="background-image: url('https://cdn.myanimelist.net/images/anime/1208/94745l.jpg');" aria-hidden="true"></div>
+                <div class="hero-anime__overlay" aria-hidden="true"></div>
+                <div class="hero-anime__inner">
+
+                  <div class="hero-anime__poster">
+                    <div class="imagem-capa-container">
+                      <img class="imagem-capa" src="https://cdn.myanimelist.net/images/anime/1208/94745.jpg" alt="Capa oficial do anime Fullmetal Alchemist: Brotherhood" loading="lazy" decoding="async">
+                    </div>
+                  </div>
+
+                  <div class="hero-anime__info">
+
+                    <div class="hero-anime__badges">
+                      <span class="badge-status badge-status--completed">Finalizado</span>
+                      <span class="hero-anime__tipo">TV</span>
+                    </div>
+
+                    <h1 class="hero-anime__title">Fullmetal Alchemist: Brotherhood</h1>
+                    <p class="hero-anime__title-jp" lang="ja">鈴の錬金術師 FULLMETAL ALCHEMIST</p>
+
+                    <div class="hero-anime__score-row">
+                      <span class="nota-mal hero-anime__nota">
+                        <svg class="nota-mal__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <span class="nota-mal__val">9.10</span>
+                      </span>
+                      <span class="hero-anime__score-label">no MyAnimeList</span>
+                    </div>
+
+                    <div class="hero-anime__genres" role="list" aria-label="Gêneros do anime">
+                      <a href="#" class="badge-genero" role="listitem">Ação</a>
+                      <a href="#" class="badge-genero" role="listitem">Aventura</a>
+                      <a href="#" class="badge-genero" role="listitem">Fantasia</a>
+                      <a href="#" class="badge-genero" role="listitem">Drama</a>
+                    </div>
+
+                    <dl class="hero-anime__meta">
+                      <div class="hero-anime__meta-item"><dt class="hero-anime__meta-label">Tipo</dt><dd class="hero-anime__meta-value">TV</dd></div>
+                      <div class="hero-anime__meta-item"><dt class="hero-anime__meta-label">Episódios</dt><dd class="hero-anime__meta-value">64</dd></div>
+                      <div class="hero-anime__meta-item"><dt class="hero-anime__meta-label">Estúdio</dt><dd class="hero-anime__meta-value"><a href="#" class="hero-anime__meta-link">Bones</a></dd></div>
+                      <div class="hero-anime__meta-item"><dt class="hero-anime__meta-label">Temporada</dt><dd class="hero-anime__meta-value">Primavera 2009</dd></div>
+                      <div class="hero-anime__meta-item"><dt class="hero-anime__meta-label">Duração</dt><dd class="hero-anime__meta-value">24 min/ep</dd></div>
+                      <div class="hero-anime__meta-item"><dt class="hero-anime__meta-label">Classificação</dt><dd class="hero-anime__meta-value">PG-13</dd></div>
+                    </dl>
+
+                    <div class="hero-anime__sinopse">
+                      <p class="hero-anime__sinopse-text">Após perder seus corpos em uma tentativa fracassada de ressuscitar sua mãe usando alquimia, os irmãos Edward e Alphonse Elric iniciam uma jornada em busca da Pedra Filosófal — o único objeto capaz de restaurá-los. Mas cada passo os aproxima de uma conspiração que pode destruir o mundo inteiro. Uma história épica de sacríficio, poder e identidade humana.</p>
+                    </div>
+
+                    <div class="hero-anime__ctas">
+                      <a href="#" class="btn btn--primary hero-anime__cta-assistir">Assistir Agora</a>
+                      <a href="#" class="btn btn--secondary hero-anime__cta-lista">Adicionar à Lista</a>
+                    </div>
+
+                  </div>
+                </div>
+              </section>
+
+            </div>
+            <div class="sb-component__code">
+              <pre>&lt;?php
+mm_render_component( 'organisms', 'hero-anime', array(
+    'titulo'          => 'Fullmetal Alchemist: Brotherhood',
+    'titulo_japones'  => '鈴の錬金術師 FULLMETAL ALCHEMIST',
+    'imagem_backdrop' => get_field( 'imagem_backdrop' ),
+    'imagem_poster'   => get_field( 'imagem_poster' ),
+    'nota'            => get_field( 'nota_mal' ),
+    'status'          => 'completed',
+    'tipo'            => 'TV',
+    'episodios'       => 64,
+    'duracao'         => '24 min/ep',
+    'studio'          => array( 'name' => 'Bones', 'url' => home_url( '/studio/bones/' ) ),
+    'ano'             => 2009,
+    'temporada'       => 'Primavera 2009',
+    'classificacao'   => 'PG-13',
+    'generos'         => array( 'Ação', 'Aventura', 'Fantasia', 'Drama' ),
+    'sinopse'         => get_field( 'sinopse' ),
+    'url_assistir'    => 'https://www.crunchyroll.com/fullmetal-alchemist-brotherhood',
+    'url_lista'       => home_url( '/lista/?add=fma-brotherhood' ),
+) );
+?&gt;</pre>
+            </div>
+          </article>
 
           <!-- Seção de Destaque Principal (secao-destaque) -->
           <article class="sb-component" id="secao-destaque-preview">

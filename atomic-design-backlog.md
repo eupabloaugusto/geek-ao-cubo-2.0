@@ -69,10 +69,11 @@
 | `card-staff` | Card horizontal compacto de membro da equipe: avatar + nome + cargo (Diretor, Compositor, etc.) |
 | `tags-artigo` | Linha de tags clicáveis no rodapé do conteúdo |
 
-### 🧫 Organismos (13 componentes)
+### 🧫 Organismos (14 componentes)
 
 | Componente | Descrição |
 |---|---|
+| `hero-anime` | Hero da página de detalhe: backdrop desfocado + poster + título H1 + score MAL + gêneros + meta grid + sinopse + CTAs. Schema.org TVSeries |
 | `barra-filtros` | Barra de filtros por categoria/gênero |
 | `footer` | Rodapé principal do site com links semânticos descritivos |
 | `form-bloqueado` | Formulário bloqueado (login required) |
@@ -124,9 +125,7 @@ Todos os 36 componentes atômicos estão implementados no projeto físico.
 
 #### 🔴 Prioridade ALTA
 
-| Componente | Descrição | Fonte |
-|---|---|---|
-| `hero-anime` | Hero da página de detalhe do anime: banner + título + score + badges de status + CTA "Adicionar à Lista" | 🔵 |
+> Nenhum organismo de alta prioridade restante.
 
 #### 🟡 Prioridade MÉDIA
 
@@ -154,8 +153,8 @@ Todos os 36 componentes atômicos estão implementados no projeto físico.
 |---|---|---|---|
 | ⚛️ Átomos | 36 | 0 | 36 |
 | 🧬 Moléculas | 17 | 1 | 18 |
-| 🧫 Organismos | 13 | 9 | 22 |
-| **Total** | **66** | **10** | **76** |
+| 🧫 Organismos | 14 | 8 | 22 |
+| **Total** | **67** | **9** | **76** |
 
 ---
 

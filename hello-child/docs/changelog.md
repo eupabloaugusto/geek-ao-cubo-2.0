@@ -2,6 +2,14 @@
 
 Todas as alterações notáveis, adições e exclusões de componentes do projeto serão documentadas neste arquivo de forma contínua.
 
+## [1.8.0] — 2026-05-25
+
+### Adicionado
+- **Molécula `card-staff`** (`molecules/card-staff.php` & `.css`): Card horizontal compacto para exibir membros da equipe de produção. Layout `[avatar] [nome + cargo]`. O card inteiro é clicável via `staff_url` opcional. Suporta fallback de avatar e truncamento de texto. Responsivo com modo compacto em `≤ 30rem`.
+- **Documentação `docs/molecules/card-staff.md`**: Manual técnico com parâmetros, tokens CSS e exemplos.
+
+---
+
 ## [1.7.0] — 2026-05-25
 
 ### Adicionado

@@ -41,6 +41,7 @@
   <link rel="stylesheet" href="molecules/autor-profile-box.css">
   <link rel="stylesheet" href="molecules/card-personagem.css">
   <link rel="stylesheet" href="molecules/card-personagem-dublador.css">
+  <link rel="stylesheet" href="molecules/card-staff.css">
   <link rel="stylesheet" href="organisms/secao-esteira-animes.css">
   <link rel="stylesheet" href="organisms/secao-artigo-unico.css">
   <link rel="stylesheet" href="molecules/breadcrumb.css">
@@ -1966,7 +1967,7 @@
             <span class="sb-stat-label">Átomos</span>
           </div>
           <div class="sb-stat-card">
-            <span class="sb-stat-num">16</span>
+            <span class="sb-stat-num">17</span>
             <span class="sb-stat-label">Moléculas</span>
           </div>
           <div class="sb-stat-card">
@@ -1974,7 +1975,7 @@
             <span class="sb-stat-label">Organismos</span>
           </div>
           <div class="sb-stat-card sb-stat-card--total">
-            <span class="sb-stat-num">63</span>
+            <span class="sb-stat-num">64</span>
             <span class="sb-stat-label">Componentes Ativos</span>
           </div>
         </div>
@@ -3809,6 +3810,76 @@ mm_render_component( 'molecules', 'card-personagem-dublador', array(
     'character_role' => 'Secundário',
     'va_name'        => 'Hiro Shimono',
     'va_language'    => 'Japonês',
+) );
+?&gt;</pre>
+            </div>
+          </article>
+
+          <!-- Card de Membro da Equipe (card-staff) -->
+          <article class="sb-component" id="card-staff-preview">
+            <header class="sb-component__header">
+              <div class="sb-component__header-info">
+                <h3 class="sb-component__name">Card de Membro da Equipe (card-staff)</h3>
+                <p class="sb-component__desc">Card horizontal compacto: avatar circular + nome + cargo. O card inteiro é clicável quando <code>staff_url</code> é fornecido. Usado em seções de equipe de produção (Diretor, Compositor, etc.).</p>
+              </div>
+              <div class="sb-component__meta">
+                <code class="sb-component__file">molecules/card-staff.php</code>
+              </div>
+            </header>
+            <div class="sb-component__preview" style="background-color: var(--neutral-900); padding: var(--space-600); display: flex; flex-direction: column; gap: var(--space-300); width: 100%; max-width: 480px;">
+
+              <!-- Com link e imagem -->
+              <a href="#" class="card-staff" aria-label="Ver perfil de Haruo Sotozaki">
+                <div class="avatar-personagem card-staff__avatar" style="width:48px;height:48px;min-width:48px;min-height:48px;" title="Haruo Sotozaki">
+                  <img class="avatar-personagem__image" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&q=80" alt="Avatar de Haruo Sotozaki" loading="lazy" width="48" height="48">
+                </div>
+                <div class="card-staff__info">
+                  <span class="card-staff__name">Haruo Sotozaki</span>
+                  <span class="card-staff__role">Diretor</span>
+                </div>
+              </a>
+
+              <!-- Com link, sem imagem -->
+              <a href="#" class="card-staff" aria-label="Ver perfil de Yuki Kajiura">
+                <div class="avatar-personagem card-staff__avatar" style="width:48px;height:48px;min-width:48px;min-height:48px;" title="Yuki Kajiura">
+                  <div class="avatar-personagem__fallback" aria-label="Avatar de Yuki Kajiura (Sem Foto)" role="img">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50" fill="var(--neutral-800)"/><path d="M50 20C42.3 20 36 26.3 36 34C36 37.6 37.4 40.9 39.7 43.3C30.4 46.2 23.5 54.8 23.0 65.3C22.9 66.8 24.1 68 25.6 68H74.4C75.9 68 77.1 66.8 77.0 65.3C76.5 54.8 69.6 46.2 60.3 43.3C62.6 40.9 64 37.6 64 34C64 26.3 57.7 20 50 20Z" fill="var(--neutral-600)"/></svg>
+                  </div>
+                </div>
+                <div class="card-staff__info">
+                  <span class="card-staff__name">Yuki Kajiura</span>
+                  <span class="card-staff__role">Composição Musical</span>
+                </div>
+              </a>
+
+              <!-- Sem link (div não clicável) -->
+              <div class="card-staff">
+                <div class="avatar-personagem card-staff__avatar" style="width:48px;height:48px;min-width:48px;min-height:48px;" title="Akira Matsushima">
+                  <div class="avatar-personagem__fallback" aria-label="Avatar de Akira Matsushima (Sem Foto)" role="img">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50" fill="var(--neutral-800)"/><path d="M50 20C42.3 20 36 26.3 36 34C36 37.6 37.4 40.9 39.7 43.3C30.4 46.2 23.5 54.8 23.0 65.3C22.9 66.8 24.1 68 25.6 68H74.4C75.9 68 77.1 66.8 77.0 65.3C76.5 54.8 69.6 46.2 60.3 43.3C62.6 40.9 64 37.6 64 34C64 26.3 57.7 20 50 20Z" fill="var(--neutral-600)"/></svg>
+                  </div>
+                </div>
+                <div class="card-staff__info">
+                  <span class="card-staff__name">Akira Matsushima</span>
+                  <span class="card-staff__role">Design de Personagens</span>
+                </div>
+              </div>
+
+            </div>
+            <div class="sb-component__code">
+              <pre>&lt;?php
+// Card com foto e link:
+mm_render_component( 'molecules', 'card-staff', array(
+    'staff_name'  => 'Haruo Sotozaki',
+    'staff_image' => 'https://cdn.myanimelist.net/images/...',
+    'staff_role'  => 'Diretor',
+    'staff_url'   => home_url( '/staff/haruo-sotozaki/' ),
+) );
+
+// Card somente com nome e cargo:
+mm_render_component( 'molecules', 'card-staff', array(
+    'staff_name' => 'Yuki Kajiura',
+    'staff_role' => 'Composição Musical',
 ) );
 ?&gt;</pre>
             </div>

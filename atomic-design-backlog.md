@@ -47,7 +47,7 @@
 | `tag-artigo` | Tag clicável no rodapé do artigo (plana, sem cor de status) |
 | `logo` | Logotipo da marca em 5 variantes: `horizontal-01`, `horizontal-02`, `wordmark`, `icone-quadrado`, `icone-simples`. SVG inline, responsivo, com link opcional |
 
-### 🧬 Moléculas (14 componentes)
+### 🧬 Moléculas (15 componentes)
 
 | Componente | Descrição |
 |---|---|
@@ -64,6 +64,7 @@
 | `meta-artigo-header` | Bloco de metadados do topo do artigo: categoria + autor + data |
 | `sidebar-assistir-agora` | Card promocional lateral (CTA) para direcionar usuários a assistir em canais oficiais |
 | `stat-bloco` | Bloco de estatísticas: nota grande + número de membros + rank |
+| `card-staff` | Card horizontal compacto de membro da equipe: avatar + nome + cargo (Diretor, Compositor, etc.) |
 | `tags-artigo` | Linha de tags clicáveis no rodapé do conteúdo |
 
 ### 🧫 Organismos (13 componentes)
@@ -99,7 +100,7 @@ Todos os 36 componentes atômicos estão implementados no projeto físico.
 
 ---
 
-### 🧬 Moléculas — Faltam 4 componentes
+### 🧬 Moléculas — Faltam 3 componentes
 
 #### 🔴 Prioridade ALTA
 
@@ -109,7 +110,6 @@ Todos os 36 componentes atômicos estão implementados no projeto físico.
 
 | Componente | Descrição | Fonte |
 |---|---|---|
-| `card-staff` | Card de membro da equipe: foto + nome + cargo (Diretor, Compositor, etc.) | 🔵 |
 | `card-recomendacao` | Card de anime recomendado: thumbnail + título + qtd de recomendações | 🔵 |
 | `relacionado-item` | Item de anime relacionado: thumbnail pequena + título + tipo de relação ("Sequência", "Prequel") | 🔵 |
 
@@ -154,9 +154,9 @@ Todos os 36 componentes atômicos estão implementados no projeto físico.
 | Nível | Existem | Faltam | Total previsto |
 |---|---|---|---|
 | ⚛️ Átomos | 36 | 0 | 36 |
-| 🧬 Moléculas | 14 | 4 | 18 |
+| 🧬 Moléculas | 15 | 3 | 18 |
 | 🧫 Organismos | 13 | 9 | 22 |
-| **Total** | **63** | **13** | **76** |
+| **Total** | **64** | **12** | **76** |
 
 ---
 

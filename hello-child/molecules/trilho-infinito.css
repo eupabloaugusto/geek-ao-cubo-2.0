@@ -13,8 +13,15 @@
    ========================================================================== */
 
 .trilho-infinito {
+	--trilho-fade: var(--space-400); /* 1.5rem mobile — sincronizado com padding-inline do track */
 	position: relative;
 	width: 100%;
+}
+
+@media (min-width: 64rem) {
+	.trilho-infinito {
+		--trilho-fade: var(--space-600); /* 2.5rem desktop */
+	}
 }
 
 /* ==========================================================================
@@ -27,7 +34,7 @@
 	position: absolute;
 	top: 0;
 	bottom: var(--space-400); /* exclui a área do padding inferior do track */
-	width: 5rem;
+	width: var(--trilho-fade); /* sincronizado com o padding-inline do track */
 	z-index: 6; /* acima do track (1), abaixo das setas (10) */
 	pointer-events: none;
 }
@@ -63,6 +70,7 @@
 	scroll-behavior: smooth;
 	scroll-snap-type: x mandatory;
 	-webkit-overflow-scrolling: touch;
+	scroll-padding-inline: var(--trilho-fade); /* snap respect padding */
 
 	/* Scrollbar oculta — Firefox */
 	scrollbar-width: none;
@@ -98,7 +106,6 @@
 .trilho-infinito__track.is-dragging a,
 .trilho-infinito__track.is-dragging img {
 	pointer-events: none !important;
-	user-drag: none;
 	-webkit-user-drag: none;
 }
 

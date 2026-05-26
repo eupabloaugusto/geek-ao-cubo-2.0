@@ -24,7 +24,7 @@
 
 .secao-novos-episodios__header {
 	margin-bottom: var(--space-500);
-	padding: 0 var(--space-100);
+	padding: 0 var(--space-400); /* inline = --trilho-fade mobile */
 }
 
 .secao-novos-episodios__title {
@@ -50,8 +50,19 @@
 	scroll-snap-type: x mandatory;
 	-webkit-overflow-scrolling: touch;
 	gap: var(--space-300);
-	padding: var(--space-200) var(--space-100) var(--space-400) var(--space-100);
+	padding: var(--space-200) var(--space-400) var(--space-400) var(--space-400); /* inline = --trilho-fade mobile */
 	width: 100%;
+}
+
+/* Desktop (≥ 64rem) */
+@media (min-width: 64rem) {
+	.secao-novos-episodios__header {
+		padding-inline: var(--space-600); /* inline = --trilho-fade desktop */
+	}
+
+	.secao-novos-episodios__track {
+		padding-inline: var(--space-600);
+	}
 }
 
 /* Slide individual (largura sincronizada com card-anime) */

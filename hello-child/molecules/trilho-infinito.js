@@ -69,23 +69,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 isTeleporting = true;
                 track.style.scrollBehavior = 'auto';
                 track.style.scrollSnapType = 'none';
-                track.scrollLeft = sl + ssw;
-                setTimeout(() => {
-                    track.style.scrollBehavior = 'smooth';
-                    track.style.scrollSnapType = 'x mandatory';
-                    isTeleporting = false;
-                }, 50);
+                track.scrollLeft = Math.round(sl + ssw);
+                // Double RAF: 1º frame pinta a nova posição, 2º reativa snap sem race condition
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        track.style.scrollSnapType = 'x mandatory';
+                        track.style.scrollBehavior = 'smooth';
+                        isTeleporting = false;
+                    });
+                });
 
             } else if (sl >= ssw * 2) {
                 isTeleporting = true;
                 track.style.scrollBehavior = 'auto';
                 track.style.scrollSnapType = 'none';
-                track.scrollLeft = sl - ssw;
-                setTimeout(() => {
-                    track.style.scrollBehavior = 'smooth';
-                    track.style.scrollSnapType = 'x mandatory';
-                    isTeleporting = false;
-                }, 50);
+                track.scrollLeft = Math.round(sl - ssw);
+                // Double RAF: 1º frame pinta a nova posição, 2º reativa snap sem race condition
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        track.style.scrollSnapType = 'x mandatory';
+                        track.style.scrollBehavior = 'smooth';
+                        isTeleporting = false;
+                    });
+                });
             }
         };
 

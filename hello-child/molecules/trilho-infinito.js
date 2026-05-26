@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     track.style.scrollBehavior = 'smooth';
                     track.style.scrollSnapType = 'x mandatory';
                     isTeleporting = false;
-                }, 0);
+                }, 50);
 
             } else if (sl >= ssw * 2) {
                 isTeleporting = true;
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     track.style.scrollBehavior = 'smooth';
                     track.style.scrollSnapType = 'x mandatory';
                     isTeleporting = false;
-                }, 0);
+                }, 50);
             }
         };
 

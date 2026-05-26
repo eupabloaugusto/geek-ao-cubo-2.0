@@ -1,40 +1,31 @@
-# 🚀 Backlog de Desenvolvimento — Fase 4: Monetização de Elite, Newsletter, Expansão Geek (Mangás/Games) & Recursos de Comunidade
+# 🚀 Backlog de Desenvolvimento — Fase 4: Construção das Páginas do Portal (Home, Arquivos, Busca & Categorias) & Navegação Completa
 
-> **Status do Projeto:** A Fase 1 (Visual Estático), Fase 2 (Conectividade CMS & IA Local) e Sprints 1 e 2 da Fase 3 (Carga de Animes Jikan MAL API & Agendador Orquestrador Python) estão 100% concluídas e operando localmente no **LocalWP** e versionadas via **GitHub**. As tarefas de infraestrutura física, DNS, SSL e segurança em nuvem (Sprints 3 e 4 da Fase 3) permanecem em aberto e serão executadas no momento da contratação do plano Hostinger Business após a Copa do Mundo.
+> **Status do Projeto:** A Fase 1 (Visual Estático), Fase 2 (Conectividade CMS & IA Local) e Sprints 1 e 2 da Fase 3 (Carga de Animes Jikan MAL API & Agendador Orquestrador Python) estão 100% concluídas e operando localmente no **LocalWP** e versionadas via **GitHub**. As tarefas de infraestrutura física, DNS, SSL e segurança em nuvem (Sprints 3 e 4 da Fase 3) permanecem em aberto para o mês que vem.
 > 
-> **Objetivo da Fase 4 (Mês 6–12):** Maximizar a monetização imune ao AdBlock através de vitrines de afiliados integradas; capturar e reter a audiência por meio de newsletter e comunidades dedicadas; expandir o catálogo editorial para nichos de maior valor comercial (Mangás, Games e Tecnologia Geek) integrando novas APIs (como RAWG); e implementar recursos interativos de engajamento baseados no navegador (favoritos, avaliações locais de usuários) para decolar as métricas de tempo de sessão e páginas vistas.
+> **Objetivo desta Nova Fase 4 (Mês 3-4):** Transicionar o portal de uma vitrine isolada de componentes (`storybook.html`) e templates de detalhes (`single-anime.php`, etc.) para um **site completo, navegável e funcional**. Vamos construir a Página Inicial (Home), os Arquivos de Categorias de Notícias, o Diretório completo de Animes com barra de filtros, os Resultados de Busca Globais e interligar toda a navegação do portal (Header, Footer e Mobile Drawer).
 
 ---
 
-## 🗺️ Fluxo de Valor e Expansão (Fase 4)
+## 🗺️ Fluxo de Telas e Navegação (Fase 4)
 
 ```mermaid
 flowchart TD
-    subgraph Fontes de Conteúdo Adicionais
-        JikanManga[Jikan API - Catálogo de Mangás]
-        RAWG[RAWG API - Banco de Dados de Games]
-    end
-
-    subgraph Automação Python Expandida
-        Pipe[Orquestrador Local Python] -->|Consome dados| JikanManga
-        Pipe -->|Consome dados| RAWG
-        Pipe -->|Valida e Posta| WP[WordPress Local CMS]
-    end
-
-    subgraph CPTs & Metadados (Fase 4)
-        WP -->|CPT manga| ACF1[Dados ACF: Editora, Autor, Volumes]
-        WP -->|CPT game| ACF2[Dados ACF: Plataforma, Desenvolvedora]
-    end
-
-    subgraph Motor de Monetização Local
-        ACF1 -->|Sponsorship Links| Affiliate[Vitrinas Shopee / Amazon / ML]
-        ACF2 -->|AdSense programmatic| Ads[Anúncios Dinâmicos 1/2/3 por Post]
-    end
-
-    subgraph Retenção de Leitores
-        Browser[Navegador do Usuário] -->|Interação local| LocalStor[LocalStorage: Favoritos & Votos]
-        Browser -->|Assinatura| News[API Newsletter: Brevo / MailerLite]
-    end
+    Header[Header / Navegação Global] -->|Clique em Destaques| Home[front-page.php / Home Page]
+    Header -->|Clique em Animes| ArchiveAnime[archive-anime.php / Diretório]
+    Header -->|Clique em Lupa| SearchModal[search-modal.php / Busca]
+    
+    Home -->|Carrossel Destaques| SinglePost[single.php / Artigo]
+    Home -->|Notícias Recentes| CategoryPage[category.php / Categorias]
+    Home -->|Novos Episódios| SingleEp[single-episodio.php / Detalhe Ep]
+    
+    ArchiveAnime -->|Barra de Filtros| ArchiveFiltered[Filtragem por Gêneros/Status]
+    ArchiveAnime -->|Clique em Card| SingleAnime[single-anime.php / Ficha Anime]
+    
+    SearchModal -->|Digitar Termo| SearchPage[search.php / Resultados da Busca]
+    
+    CategoryPage -->|Grade de Artigos| SinglePost
+    
+    404Page[404.php / Página não Encontrada] -->|Redirecionar / Buscar| Home
 ```
 
 ---
@@ -46,85 +37,80 @@ flowchart TD
 
 ---
 
-### 📊 Sprint 1: Motor de Monetização de Elite & AdBlock Immunity
-> **Foco Interno/Local:** Maximizar a receita de afiliados de forma nativa e sutil para contornar o uso massivo de AdBlock (~50% do público geek) e programar o posicionamento de anúncios no tema PHP.
+### 📊 Sprint 1: Página Inicial Editorial (Home / `front-page.php`)
+> **Foco Interno/Local:** Montar a página principal do portal de forma dinâmica, consumindo as notícias cadastradas e os animes/episódios do banco de dados local.
 
-- [ ] **Task 1.1: Componente de Vitrine Editorial e Comparador de Produtos (Afiliados)**
-  * *Descrição:* Desenvolver um conjunto de campos customizados ACF (Grupo: `Ficha de Afiliados`) para armazenar imagens de produtos, notas e links das lojas Shopee, Mercado Livre e Amazon. Criar a molécula `card-produto-afiliado` e o organismo `vitrine-comparativa` (grade horizontal fluida).
-  * *SEO & Padrões:* Links de afiliados obrigatoriamente gerados com a tag `rel="sponsored nofollow"`. Design premium responsivo imune a bloqueadores de anúncios (carregado via dados estáticos do banco).
-  * *Entregáveis:* ACF importado no WordPress local, `molecules/card-produto-afiliado.php` e `.css`, `organisms/vitrine-comparativa.php` e `.css`, documentações na pasta `docs/` e atualização visual no `storybook.html`.
+- [ ] **Task 1.1: Estruturar o Template Físico `front-page.php`**
+  * *Descrição:* Criar o arquivo `front-page.php` na raiz do tema child. Integrar o cabeçalho (`get_header()`) e rodapé (`get_footer()`) semânticos e criar uma grade de duas colunas para desktop (Coluna Principal de 2.2fr + Sidebar de 1fr).
+  * *Entregáveis:* `hello-child/front-page.php`, `hello-child/style.css` atualizado, e documentação estrutural.
 
-- [ ] **Task 1.2: Banner de Engajamento e Conscientização Anti-AdBlock**
-  * *Descrição:* Implementar um banner sutil de rodapé/sidebar (`aviso-adblock` de forma não intrusiva) pedindo educadamente para o usuário adicionar o blog à lista de permissões se detectar o bloqueio de scripts de ads.
-  * *Padrão de Qualidade:* Não usar popups de tela inteira bloqueantes (evitar punição de SEO do Google). Permitir que o usuário feche o banner (comportamento salvo em cookie/session por 7 dias).
-  * *Entregáveis:* `atoms/aviso-adblock.php`, `atoms/aviso-adblock.css`, lógica de detecção nativa em JavaScript sem bibliotecas externas, e documentação do componente.
+- [ ] **Task 1.2: Integrar o Carrossel de Destaques Editoriais (`secao-carrossel-destaque`)**
+  * *Descrição:* Desenvolver o organismo `secao-carrossel-destaque` no topo da Home. A query do WordPress deve buscar os 3 últimos posts com a categoria/tag "Destaque" e renderizá-los em um carrossel fluido com navegação em dots e setas, usando scroll snap CSS (sem carregar jQuery).
+  * *Entregáveis:* `hello-child/organisms/secao-carrossel-destaque.php` e `.css`, arquivos JavaScript de navegação local, e atualização do `storybook.html`.
 
-- [ ] **Task 1.3: Injeção Programática e Inteligente de Anúncios (AdSense)**
-  * *Descrição:* Criar uma lógica no `functions.php` do tema child que insira dinamicamente os containers de anúncios (`anuncio-adsense.php` atom) dentro do `the_content` dos posts.
-  * *Regras de Densidade:* 1 anúncio após o 2º parágrafo em posts curtos (resumos de episódios), 2 anúncios em análises (reviews) e até 3 anúncios distribuídos uniformemente em listas e guias extensos.
-  * *Entregáveis:* Função PHP helper no `functions.php`, validação local com placeholders visuais de anúncios e garantia de não quebrar tags HTML aninhadas durante a injeção.
+- [ ] **Task 1.3: Integrar a Grade de Notícias Recentes (`secao-noticias-recentes`)**
+  * *Descrição:* Implementar o organismo `secao-noticias-recentes` logo abaixo dos destaques. O layout deve conter 1 card em super destaque (Hero Card horizontal) para a notícia mais recente, seguido de uma grade responsiva com 3 cards secundários (`card-noticia.php`). Incluir paginação numérica ou botão de carregamento infinito via AJAX local.
+  * *Entregáveis:* `hello-child/organisms/secao-noticias-recentes.php` e `.css`, e documentação do componente.
 
----
-
-### 📧 Sprint 2: Captura de Audiência e Canais de Comunidade Privados
-> **Foco Interno/Local:** Blindar a receita do portal contra oscilações de algoritmos do Google criando uma base de audiência engajada sob nosso controle direto.
-
-- [ ] **Task 2.1: Sistema de Captura de Leads (Premium Newsletter Box)**
-  * *Descrição:* Desenvolver um organismo de captura de e-mails (`secao-newsletter`) contendo design de alta conversão, micro-animações no envio e helpers de validação dinâmica.
-  * *Integração Técnica:* Criar um endpoint/handler PHP seguro que conecte localmente via cURL com a API REST de uma plataforma de email marketing gratuita e robusta (ex: Brevo / MailerLite) para salvar os leads diretamente em uma lista de assinantes.
-  * *Entregáveis:* `organisms/secao-newsletter.php` e `.css`, scripts JS de validação sem dependências de frameworks, documentação correspondente no `docs/` e atualização do `storybook.html`.
-
-- [ ] **Task 2.2: Widgets de Compartilhamento Social Estáticos & Canal de Transmissão**
-  * *Descrição:* Desenvolver botões de compartilhamento social ultraleves (WhatsApp, Telegram, Twitter/X) usando URLs de compartilhamento puro com ícones SVG inline no rodapé dos posts. Integrar na sidebar e pós-artigo um card visual premium chamando os leitores para o canal de novidades no Telegram/Discord.
-  * *Performance:* Sem carregamento de scripts pesados de terceiros, garantindo pontuação LCP rápida e segurança absoluta.
-  * *Entregáveis:* `molecules/social-share.php` e `.css`, `molecules/card-comunidade.php` e `.css`, e suas respectivas documentações.
+- [ ] **Task 1.4: Integrar a Esteira de Novos Episódios (`secao-novos-episodios`)**
+  * *Descrição:* Inserir na Home uma esteira horizontal (`secao-novos-episodios` usando o `trilho-infinito`) exibindo os episódios mais recentes adicionados do CPT `episodio`, exibindo o número do episódio, a imagem de capa e o status de exibição.
+  * *Entregáveis:* `hello-child/organisms/secao-novos-episodios.php` e `.css`, integrado ao `front-page.php`.
 
 ---
 
-### 🎮 Sprint 3: Expansão Multimídia e Novos Nichos (Mangás & Games)
-> **Foco Interno/Local:** Expandir o escopo editorial para nichos adjacentes de alto valor financeiro (maior RPM), mapeando novas entidades no CMS e programando o pipeline local em Python para alimentar o catálogo automaticamente.
+### 🔍 Sprint 2: Diretório de Animes e Busca Avançada (`archive-anime.php` & `search.php`)
+> **Foco Interno/Local:** Oferecer aos usuários uma interface completa de pesquisa, listagem e filtragem de todo o acervo de 500+ animes cadastrados na base local.
 
-- [ ] **Task 3.1: Cadastro das Novas Entidades de Conteúdo (CPTs e ACF de Mangás & Games)**
-  * *Descrição:* Configurar no WordPress local os novos CPTs `manga` e `game` com seus respectivos grupos de campos ACF.
-  * *Campos Mangá:* Volumes lançados, status de publicação, autor/ilustrador, sinopse, capa, nota MAL e editora nacional com links afiliados.
-  * *Campos Games:* Desenvolvedora, data de lançamento, nota média, plataformas disponíveis e link para guias de troféus.
-  * *Arquitetura:* Configurar os relacionamentos bidirecionais locais para associar livremente um Mangá ou Game a um Anime principal já existente na base.
-  * *Entregáveis:* Definição dos CPTs no `functions.php`, esquemas ACF exportados em JSON na pasta `acf-json/` do tema child.
+- [ ] **Task 2.1: Criar o Template do Diretório (`archive-anime.php`)**
+  * *Descrição:* Desenvolver o template de arquivo do CPT `anime` (`archive-anime.php`) exibindo o cabeçalho do diretório e uma grade responsiva auto-fill (`grid-animes`) que lista de forma paginada todos os animes do acervo usando o componente `card-anime.php`.
+  * *Entregáveis:* `hello-child/archive-anime.php`, `hello-child/organisms/grid-animes.php` e `.css`.
 
-- [ ] **Task 3.2: Pipeline Python para Ingestão Automática de Mangás (Jikan API)**
-  * *Descrição:* Criar um novo script Python (`automation/import_mangas.py`) herdando as regras de rate limit e logging do pipeline anterior para consultar a Jikan API no endpoint `/manga` e cadastrar no CPT `manga` as obras relacionadas aos 500+ animes já importados na base local.
-  * *Entregáveis:* Script `import_mangas.py` funcional e testado localmente, logs integrados e mapeamento dos metadados mapeados nos campos ACF correspondentes.
+- [ ] **Task 2.2: Desenvolver a Barra de Filtros Dinâmicos (`barra-filtros`)**
+  * *Descrição:* Desenvolver o organismo `barra-filtros` no topo do diretório. A barra deve conter seletores para filtrar os animes por Gênero (taxonomia `genero`), Status (taxonomia `status_exibicao`), Temporada (relacionamento) e Ano de Lançamento. O processamento deve atualizar a query do WordPress via AJAX local sem recarregar a página inteira.
+  * *Entregáveis:* `hello-child/organisms/barra-filtros.php` e `.css`, scripts JS associados e documentação de uso.
 
-- [ ] **Task 3.3: Pipeline Python para Ingestão de Games Relacionados (RAWG API)**
-  * *Descrição:* Desenvolver o script Python `automation/import_games.py` para consultar o banco de dados aberto da RAWG API, coletar informações sobre jogos de animes existentes (ex: *Demon Slayer*, *Naruto*, *Dragon Ball*) e cadastrá-los no CPT `game` vinculando-os ao respectivo CPT `anime`.
-  * *Entregáveis:* Script de importação configurado, variáveis de ambiente RAWG_API_KEY no `.env` local e logs operacionais.
-
-- [ ] **Task 3.4: Criação dos Templates e Arquivos de CSS Customizados (Manga & Game)**
-  * *Descrição:* Desenvolver os templates dinâmicos físicos `single-manga.php` e `single-game.php` juntamente com seus arquivos CSS, consumindo os novos campos do ACF e montando blocos visuais na mesma identidade visual estrita de design tokens.
-  * *Entregáveis:* `single-manga.php`, `single-manga.css`, `single-game.php`, `single-game.css`, arquivos de documentação em `docs/` e telas cadastradas no `storybook.html`.
+- [ ] **Task 2.3: Estruturar a Página de Busca Global (`search.php`)**
+  * *Descrição:* Criar o template `search.php` para exibir de forma elegante os termos pesquisados pelo usuário no site. Dividir os resultados em seções claras: "Notícias Encontradas", "Animes Relacionados" e "Análises (Reviews)". Exibir mensagem elegante de "Nenhum resultado encontrado" caso a pesquisa seja vazia.
+  * *Entregáveis:* `hello-child/search.php`, estilizações e layouts semânticos no CSS global.
 
 ---
 
-### 💬 Sprint 4: Recursos Interativos de Engajamento e Gamificação (Browser-Based)
-> **Foco Interno/Local:** Oferecer funcionalidades que façam o usuário passar mais tempo interagindo no portal, utilizando armazenamento no navegador (LocalStorage) para evitar sobrecarga no banco de dados e dispensar logins obrigatórios na fase de lançamento inicial.
+### 📰 Sprint 3: Arquivos de Categorias, Tags e Tratamento de Erros (`category.php` & `404.php`)
+> **Foco Interno/Local:** Garantir que todas as páginas secundárias, listagens editoriais por termos e telas de erro tenham o design premium, acessível e sem dependências de bloat.
 
-- [ ] **Task 4.1: Sistema de Favoritos e Progresso "Minha Lista" (LocalStorage)**
-  * *Descrição:* Desenvolver a molécula `btn-favorito` e o comportamento em Javascript para permitir que o usuário salve animes em sua própria lista de favoritos clicando em "Adicionar à Minha Lista" na página do anime.
-  * *Exibição de Dados:* Exibir uma seção dinâmica (`secao-favoritos-usuario`) no cabeçalho ou página principal do usuário listando em grid os animes salvos localmente no navegador.
-  * *Entregáveis:* Átomo `btn-favorito.php` e `.css`, scripts JS locais de gerenciamento de dados do navegador, template de página curta de Favoritos, e atualização no `storybook.html`.
+- [ ] **Task 3.1: Template de Categorias e Tags de Notícias (`category.php` / `tag.php`)**
+  * *Descrição:* Criar o template genérico de taxonomia e arquivo (`category.php`, `tag.php` e `archive.php`) para exibir as listas de notícias de categorias específicas (como "Guias", "Novidades", "Curiosidades"). O layout deve usar uma grade de `card-noticia.php` com paginação numérica acessível.
+  * *Entregáveis:* `hello-child/category.php`, `hello-child/archive.php` e documentação.
 
-- [ ] **Task 4.2: Sistema de Avaliação dos Leitores (Reader Rating vs Editorial Rating)**
-  * *Descrição:* Criar uma molécula interativa (`leitores-rating`) que permita ao leitor votar em notas de 1 a 10 estrelas para cada anime, salvando a nota no LocalStorage e enviando por requisição assíncrona (AJAX / REST API) a nota para um campo de metadado global do post para computar a "Média da Comunidade".
-  * *Exibição de Contraste:* Exibir no card de estatísticas o comparativo visual entre a "Nota da Redação" e a "Nota dos Leitores" de forma elegante.
-  * *Entregáveis:* Molécula `leitores-rating.php` e `.css`, endpoints AJAX em `functions.php` e lógica JS de votação e proteção contra votos duplicados (cooldown local).
+- [ ] **Task 3.2: Desenvolver a Tela 404 Personalizada (`404.php`)**
+  * *Descrição:* Construir uma tela de Erro 404 (`404.php`) premium com ilustrações temáticas de anime (ex: "Parece que você pegou o caminho errado, como o Zoro!"), uma mensagem explicativa com tom humorado geek, um botão proeminente de retorno para a Home e um formulário de busca integrado.
+  * *Entregáveis:* `hello-child/404.php`, `hello-child/404.css` e documentação.
+
+---
+
+### 🗺️ Sprint 4: Interligação e Fluxo de Navegação Global (Menus & Modais)
+> **Foco Interno/Local:** Ativar os componentes interativos do cabeçalho e rodapé do site para conectar todas as páginas e oferecer caminhos fluidos de transição ao usuário.
+
+- [ ] **Task 4.1: Registrar e Ativar Menus no WordPress (`navigation-drawer` & `header`)**
+  * *Descrição:* Registrar as posições dos menus no `functions.php` (Menu Principal Header, Menu Mobile Drawer, Menu Rodapé). Configurar no painel do WordPress local e renderizar os itens dinamicamente no `organisms/header.php` e no overlay deslizante do `organisms/navigation-drawer.php` via PHP nativo.
+  * *Entregáveis:* Registros no `functions.php` e templates do `header.php` e `navigation-drawer.php` atualizados e funcionando de forma responsiva.
+
+- [ ] **Task 4.2: Conectar o Disparador do Modal Global de Busca (`search-modal`)**
+  * *Descrição:* Integrar o átomo `btn-busca-trigger` no cabeçalho do site. Ao ser clicado, deve disparar a exibição em tela cheia do `organisms/search-modal.php` com animação suave de fade-in, capturando automaticamente o foco do teclado para o campo de input e fechando ao clicar fora ou apertar a tecla `ESC`.
+  * *Entregáveis:* Conexão concluída com scripts JavaScript locais validados para acessibilidade WCAG 2.2 AA.
 
 ---
 
 ## 🏆 Critérios de Aceitação de Pronto (Definition of Done)
 
-Para que as tarefas da Fase 4 sejam consideradas prontas no ambiente de desenvolvimento local, elas devem respeitar os seguintes limites:
+Para que qualquer tela desta Fase 4 seja considerada pronta localmente no repositório:
 
-1. **Acessibilidade WCAG 2.2 AA:** Todos os novos componentes interativos (newsletter, favoritos, comparadores de preços) devem ter contraste mínimo de 4.5:1, foco visível estrito em navegação por teclado e tags HTML semânticas descritivas.
-2. **Zero Dependência Externa no Frontend:** Nenhuma biblioteca de JavaScript pesada ou externa (ex: jQuery plugins, frameworks SPA) deve ser importada no frontend. Todo o controle de estado e LocalStorage deve ser feito em JavaScript puro (Vanilla JS).
-3. **Alinhamento Estrito ao Design System:** Toda propriedade visual de cores, tamanhos, fontes e raios deve fazer referência às variáveis CSS declaradas no `design-tokens.css`.
-4. **Documentação e storybook.html atualizados**: Cada novo componente deve estar documentado na pasta `docs/` e renderizado na seção correspondente do `storybook.html`.
+1. **Navegabilidade 100% Fluida**: É possível navegar por toda a estrutura do site (da Home ao diretório, filtrando animes, fazendo buscas, abrindo o artigo de notícias e voltando para a Home) sem erros de link quebrado (`404`) ou tela em branco.
+2. **Design Fluido por Variáveis**: Nenhum elemento das novas páginas pode conter valores CSS fixos em pixels. Tudo deve referenciar o `design-tokens.css` e usar escalas fluidas com `clamp()`.
+3. **Consumo Correto de Queries WP**: As páginas devem consumir posts e metadados reais locais (nada de conteúdo estático fixado no código).
+4. **Respeito às Windsurfrules**: Cada template PHP deve estar mapeado e referenciado na pasta `docs/` e na vitrine `storybook.html`.
+
+---
+
+## 📅 Próximo Passo sugerido para o Usuário:
+Recomendamos analisar este novo plano de páginas dinâmicas e, se estiver de acordo, responder **"Aprovado o Backlog das Páginas Principais"** para que possamos catalogar oficialmente este documento e iniciar as tarefas no seu repositório local!

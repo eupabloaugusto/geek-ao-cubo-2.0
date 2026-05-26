@@ -17,48 +17,44 @@ $adsense_slot = isset( $args['adsense_slot'] ) ? esc_attr( $args['adsense_slot']
 
 <aside class="sidebar <?php echo $class; ?>" role="complementary" aria-label="<?php esc_attr_e( 'Barra Lateral', 'hello-elementor-child' ); ?>">
 	
-	<!-- Seção/Widget 1: Busca -->
-	<section class="sidebar-widget sidebar-widget--search">
-		<h3 class="sidebar-widget__title"><?php _e( 'Pesquisar Conteúdo', 'hello-elementor-child' ); ?></h3>
-		<?php 
-		// Renderiza a molécula de Busca
-		mm_render_component( 'molecules', 'form-busca', array(
-			'placeholder' => __( 'Buscar no portal...', 'hello-elementor-child' ),
-		) ); 
-		?>
-	</section>
-
-	<!-- Seção/Widget 2: Destaques da Temporada -->
-	<section class="sidebar-widget sidebar-widget--destaques">
-		<h3 class="sidebar-widget__title"><?php _e( 'Destaques da Temporada', 'hello-elementor-child' ); ?></h3>
+	<!-- Seção/Widget: Artigos Recentes (Variação Lista Horizontal) -->
+	<section class="sidebar-widget-clean">
+		<h3 class="sidebar-widget__title" style="margin-left: var(--space-300);"><?php _e( 'Últimas Novidades', 'hello-elementor-child' ); ?></h3>
 		
-		<ul class="sidebar-destaques-list">
+		<div class="sidebar-posts-column" style="display: flex; flex-direction: column; gap: var(--space-400);">
+			<?php 
+			// Busca as 4 últimas notícias usando o helper centralizado
+			$query_sidebar = mm_query_noticias_recentes( 4 );
 			
-			<li class="sidebar-destaque-item">
-				<div class="sidebar-destaque-item__meta">
-					<?php mm_render_component( 'atoms', 'nota-mal', array( 'nota' => '9.13' ) ); ?>
-					<?php mm_render_component( 'atoms', 'badge-status', array( 'status' => 'airing' ) ); ?>
-				</div>
-				<a href="#" class="sidebar-destaque-item__title">Solo Leveling — Temporada 2</a>
-			</li>
-
-			<li class="sidebar-destaque-item">
-				<div class="sidebar-destaque-item__meta">
-					<?php mm_render_component( 'atoms', 'nota-mal', array( 'nota' => '8.92' ) ); ?>
-					<?php mm_render_component( 'atoms', 'badge-status', array( 'status' => 'completed' ) ); ?>
-				</div>
-				<a href="#" class="sidebar-destaque-item__title">Frieren: Beyond Journey's End</a>
-			</li>
-
-			<li class="sidebar-destaque-item">
-				<div class="sidebar-destaque-item__meta">
-					<?php mm_render_component( 'atoms', 'nota-mal', array( 'nota' => '4.85' ) ); ?>
-					<?php mm_render_component( 'atoms', 'badge-status', array( 'status' => 'airing' ) ); ?>
-				</div>
-				<a href="#" class="sidebar-destaque-item__title">Isekai Cheat Magician — Ep 12</a>
-			</li>
-
-		</ul>
+			if ( $query_sidebar->have_posts() ) {
+				while ( $query_sidebar->have_posts() ) {
+					$query_sidebar->the_post();
+					$featured_img  = get_the_post_thumbnail_url( get_the_ID(), 'large' );
+					$categories    = get_the_category();
+					$category_name = ! empty( $categories ) ? $categories[0]->name : __( 'Geral', 'hello-elementor-child' );
+					
+					$post_args = array(
+						'titulo'     => get_the_title(),
+						'url'        => get_permalink(),
+						'imagem_url' => $featured_img,
+						'categoria'  => $category_name,
+						'autor'      => get_the_author(),
+						'data'       => get_the_date(),
+						'resumo'     => get_the_excerpt(),
+						'variacao'   => 'list'
+					);
+					
+					mm_render_component( 'molecules', 'card-noticia', $post_args );
+				}
+				wp_reset_postdata();
+			} else {
+				// Fallback caso não haja posts no banco local
+				?>
+				<p class="sidebar-posts-empty" style="padding-inline: var(--space-400); color: var(--neutral-400); font-family: var(--font-body); font-size: var(--text-xs-size);"><?php _e( 'Nenhum artigo disponível.', 'hello-elementor-child' ); ?></p>
+				<?php
+			}
+			?>
+		</div>
 	</section>
 
 	<!-- Seção/Widget 3: Publicidade -->

@@ -96,3 +96,11 @@
 .sidebar-widget--ads .anuncio-adsense__container {
     min-height: 15.625rem;
 }
+
+/* Widget limpo e transparente para conter cards complexos que já possuem fundo próprio */
+.sidebar-widget-clean {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+

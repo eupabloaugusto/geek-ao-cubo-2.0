@@ -13,12 +13,16 @@
 	margin-inline: auto;
 	padding-inline: var(--space-400);
 	padding-block: var(--space-600);
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-600);
 }
 
 @media (min-width: 64rem) {
 	.home-page {
 		padding-inline: var(--space-500);
 		padding-block: var(--space-800);
+		gap: var(--space-800);
 	}
 }
 
@@ -26,7 +30,6 @@
    1. HERO CARROSSEL PLACEHOLDER (Task 1.2)
    ========================================================================= */
 .home-page__hero-section {
-	margin-bottom: var(--space-600);
 }
 
 .home-placeholder-carousel {
@@ -111,7 +114,9 @@
 .home-page__main {
 	min-width: 0;
 	width: 100%;
-	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-600);
 }
 
 /* Seções da Home */

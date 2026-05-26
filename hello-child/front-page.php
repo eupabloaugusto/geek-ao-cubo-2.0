@@ -203,7 +203,7 @@ get_header();
 			</section>
 
 			<!-- A2. ÚLTIMAS NOTÍCIAS (secao-noticias-recentes) -->
-			<section class="home-section" style="margin-top: var(--space-600);">
+			<section class="home-section">
 				<?php
 				// Busca 5 notícias recentes excluindo as que já aparecem no topo
 				$query_news   = mm_query_noticias_recentes( 5, $exclude_ids );
@@ -241,7 +241,7 @@ get_header();
 			</section>
 
 			<!-- A3. ESTEIRA DE ANIMES: ANIMES DA TEMPORADA (secao-esteira-animes) -->
-			<section class="home-section" style="margin-top: var(--space-600);">
+			<section class="home-section">
 				<?php 
 				// Busca até 10 animes atualmente em exibição
 				$args_season = array(
@@ -300,7 +300,7 @@ get_header();
 			</section>
 
 			<!-- A4. VEJA TAMBÉM (secao-noticias-recentes) -->
-			<section class="home-section" style="margin-top: var(--space-600);">
+			<section class="home-section">
 				<?php
 				// Busca mais 5 notícias excluindo TODOS os posts já exibidos acima (duplicidade zero)
 				$query_see_also = mm_query_noticias_recentes( 5, $exclude_ids );

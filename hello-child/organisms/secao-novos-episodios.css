@@ -15,8 +15,6 @@
 .secao-novos-episodios {
 	width: 100%;
 	max-width: 100%;
-	overflow: hidden;
-	margin-bottom: var(--space-800);
 	position: relative;
 }
 

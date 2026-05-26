@@ -18,6 +18,39 @@
 }
 
 /* ==========================================================================
+   DEGRADÊ LATERAL — mascara o corte dos cards nas bordas da esteira
+   ========================================================================== */
+
+.trilho-infinito::before,
+.trilho-infinito::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	bottom: var(--space-400); /* exclui a área do padding inferior do track */
+	width: 5rem;
+	z-index: 6; /* acima do track (1), abaixo das setas (10) */
+	pointer-events: none;
+}
+
+.trilho-infinito::before {
+	left: 0;
+	background: linear-gradient(
+		to right,
+		var(--color-background) 0%,
+		transparent 100%
+	);
+}
+
+.trilho-infinito::after {
+	right: 0;
+	background: linear-gradient(
+		to left,
+		var(--color-background) 0%,
+		transparent 100%
+	);
+}
+
+/* ==========================================================================
    TRILHO — container rolável horizontal
    ========================================================================== */
 
@@ -85,10 +118,10 @@
 }
 
 .trilho-infinito__arrow--prev {
-	left: -1rem;
+	left: 0;
 }
 
 .trilho-infinito__arrow--next {
-	right: -1rem;
+	right: 0;
 }
 

@@ -8,7 +8,6 @@
 .secao-carrossel-destaque {
     position: relative;
     width: 100%;
-    margin-bottom: var(--space-800); /* 56px de espaço inferior */
 }
 
 /* Trilho Horizontal (Scroll Snap Track) */

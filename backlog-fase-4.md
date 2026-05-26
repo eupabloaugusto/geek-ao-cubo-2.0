@@ -48,7 +48,7 @@ flowchart TD
   * *Descrição:* Desenvolver o organismo `secao-carrossel-destaque` no topo da Home. A query do WordPress deve buscar os 3 últimos posts com a categoria/tag "Destaque" e renderizá-los em um carrossel fluido com navegação em dots e setas, usando scroll snap CSS (sem carregar jQuery).
   * *Entregáveis:* `hello-child/organisms/secao-carrossel-destaque.php` e `.css`, arquivos JavaScript de navegação local, e atualização do `storybook.html`.
 
-- [ ] **Task 1.3: Integrar a Grade de Notícias Recentes (`secao-noticias-recentes`)**
+- [x] **Task 1.3: Integrar a Grade de Notícias Recentes (`secao-noticias-recentes`)**
   * *Descrição:* Implementar o organismo `secao-noticias-recentes` logo abaixo dos destaques. O layout deve conter 1 card em super destaque (Hero Card horizontal) para a notícia mais recente, seguido de uma grade responsiva com 3 cards secundários (`card-noticia.php`). Incluir paginação numérica ou botão de carregamento infinito via AJAX local.
   * *Entregáveis:* `hello-child/organisms/secao-noticias-recentes.php` e `.css`, e documentação do componente.
 

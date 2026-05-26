@@ -131,21 +131,67 @@
 75: 				</div>
 76: 			</section>
 77: 
-78: 			<!-- A2. GRADE DE NOTÍCIAS RECENTES (Task 1.3 — Notícias) -->
-79: 			<section class="home-section" style="margin-top: var(--space-600);">
-80: 				<h2 class="home-section__title"><?php _e( 'Últimas Novidades', 'hello-elementor-child' ); ?></h2>
-81: 				
-82: 				<div class="home-placeholder-news">
-83: 					<div class="home-placeholder-news-hero">
-84: 						<div class="home-placeholder-news-hero__image"></div>
-85: 						<div class="home-placeholder-news-hero__content">
-86: 							<h3 class="home-placeholder-news-hero__title"><?php _e( 'Guia de Animes da Temporada de Primavera 2026: As estreias imperdíveis', 'hello-elementor-child' ); ?></h3>
-87: 							<p class="home-placeholder-news-hero__desc"><?php _e( 'Confira nossa lista completa com sinopse, estúdio de animação, data de lançamento e trailers de todos os novos animes que chegam nesta temporada sazonal.', 'hello-elementor-child' ); ?></p>
-88: 							<span class="home-placeholder-news-hero__status"><?php _e( 'Task 1.3 — Grade de Notícias (Hero Placeholder)', 'hello-elementor-child' ); ?></span>
-89: 						</div>
-90: 					</div>
-91: 				</div>
-92: 			</section>
+78: 						<!-- A2. GRADE DE NOTÍCIAS RECENTES (Task 1.3 — Notícias) -->
+			<section class="home-section" style="margin-top: var(--space-600); display: block;">
+				<?php 
+				// Evita duplicar os posts que já estão aparecendo no carrossel de destaques no topo
+				$exclude_ids = array();
+				if ( isset( $query->posts ) && is_array( $query->posts ) ) {
+					$exclude_ids = wp_list_pluck( $query->posts, 'ID' );
+				}
+
+				$args_news = array(
+					'post_type'      => 'post',
+					'posts_per_page' => 4,
+					'post__not_in'   => $exclude_ids,
+				);
+				$query_news = new WP_Query( $args_news );
+				$noticias_list = array();
+
+				if ( $query_news->have_posts() ) {
+					while ( $query_news->have_posts() ) {
+						$query_news->the_post();
+						$featured_img = get_the_post_thumbnail_url( get_the_ID(), 'large' );
+						$categories = get_the_category();
+						$category_name = ! empty( $categories ) ? $categories[0]->name : __( 'Geral', 'hello-elementor-child' );
+
+						$noticias_list[] = array(
+							'titulo'     => get_the_title(),
+							'url'        => get_permalink(),
+							'imagem_url' => $featured_img,
+							'categoria'  => $category_name,
+							'autor'      => get_the_author(),
+							'data'       => get_the_date(),
+							'resumo'     => get_the_excerpt(),
+						);
+					}
+					wp_reset_postdata();
+				}
+
+				if ( ! empty( $noticias_list ) ) {
+					mm_render_component( 'organisms', 'secao-noticias-recentes', array(
+						'noticias'     => $noticias_list,
+						'titulo'       => __( 'Últimas Novidades', 'hello-elementor-child' ),
+						'ver_mais_url' => home_url( '/noticias/' ),
+					) );
+				} else {
+					// Fallback visual estético caso o banco local não possua posts suficientes
+					?>
+					<h2 class="home-section__title"><?php _e( 'Últimas Novidades', 'hello-elementor-child' ); ?></h2>
+					<div class="home-placeholder-news">
+						<div class="home-placeholder-news-hero">
+							<div class="home-placeholder-news-hero__image"></div>
+							<div class="home-placeholder-news-hero__content">
+								<h3 class="home-placeholder-news-hero__title"><?php _e( 'Nenhuma notícia adicional encontrada no banco de dados local.', 'hello-elementor-child' ); ?></h3>
+								<p class="home-placeholder-news-hero__desc"><?php _e( 'Crie mais alguns posts no seu painel administrativo local para ver o layout editorial em ação!', 'hello-elementor-child' ); ?></p>
+								<span class="home-placeholder-news-hero__status"><?php _e( 'Aguardando mais posts', 'hello-elementor-child' ); ?></span>
+							</div>
+						</div>
+					</div>
+					<?php
+				}
+				?>
+			</section>
 93: 
 94: 		</main>
 95: 

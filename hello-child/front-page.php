@@ -1,34 +1,27 @@
 <?php
 /**
-4:  * Template Name: Página Inicial (Home)
-5:  *
-6:  * Template dinâmico para a página inicial (capa) do portal Modo Maratona / Geek ao Cubo.
-7:  * Coordena a exibição das seções editoriais, carrosséis de episódios e a barra lateral.
-8:  *
-9:  * @package hello-elementor-child
-10:  * @since   2.0.0
-11:  */
-12: 
-13: if ( ! defined( 'ABSPATH' ) ) {
-14: 	exit; // Exit if accessed directly.
-15: }
-16: 
-17: get_header();
-18: 
-19: // Enfileira o estilo específico deste template
-20: wp_enqueue_style(
-21: 	'mm-style-front-page',
-22: 	get_stylesheet_directory_uri() . '/front-page.css',
-23: 	array( 'mm-design-tokens' ),
-24: 	'1.0.0'
-25: );
-26: ?>
-27: 
-28: <div class="home-page">
-29: 	
-30: 	<!-- 1. SEÇÃO DE TOPO / HERO CARROSSEL (Task 1.2 — Destaques) -->
+ * Template Name: Página Inicial (Home)
+ *
+ * Template dinâmico para a página inicial (capa) do portal Modo Maratona / Geek ao Cubo.
+ * Coordena a exibição das seções editoriais, carrosséis de episódios e a barra lateral.
+ *
+ * @package hello-elementor-child
+ * @since   2.0.0
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
+get_header();
+
+?>
+
+<div class="home-page">
+
+	<!-- 1. SEÇÃO DE TOPO / HERO CARROSSEL (Task 1.2 — Destaques) -->
 	<div class="home-page__hero-section">
-		<?php 
+		<?php
 		// Query para buscar os posts de Destaque
 		$args_query = array(
 			'post_type'      => 'post',
@@ -48,7 +41,7 @@
 			),
 		);
 		$query = new WP_Query( $args_query );
-		
+
 		// Fallback: se não encontrar com 'destaque', traz os últimos posts publicados
 		if ( ! $query->have_posts() ) {
 			$args_query_fallback = array(
@@ -62,8 +55,8 @@
 		if ( $query->have_posts() ) {
 			while ( $query->have_posts() ) {
 				$query->the_post();
-				$featured_img = get_the_post_thumbnail_url( get_the_ID(), 'large' );
-				$categories = get_the_category();
+				$featured_img  = get_the_post_thumbnail_url( get_the_ID(), 'large' );
+				$categories    = get_the_category();
 				$category_name = ! empty( $categories ) ? $categories[0]->name : __( 'Geral', 'hello-elementor-child' );
 
 				$posts_carousel[] = array(
@@ -98,16 +91,16 @@
 		}
 		?>
 	</div>
-45: 
-46: 	<!-- 2. LAYOUT EM DUAS COLUNAS (CONTEÚDO PRINCIPAL + SIDEBAR) -->
-47: 	<div class="home-page__layout">
-48: 		
-49: 		<!-- A. COLUNA PRINCIPAL (Esquerda/Centro) -->
-50: 		<main class="home-page__main" id="main-content">
-51: 			
-52: 			<!-- A1. ESTEIRA DE EPISÓDIOS (Task 1.4 — Novos Episódios) -->
+
+	<!-- 2. LAYOUT EM DUAS COLUNAS (CONTEÚDO PRINCIPAL + SIDEBAR) -->
+	<div class="home-page__layout">
+
+		<!-- A. COLUNA PRINCIPAL (Esquerda/Centro) -->
+		<main class="home-page__main" id="main-content">
+
+			<!-- A1. ESTEIRA DE EPISÓDIOS (Task 1.4 — Novos Episódios) -->
 			<section class="home-section">
-				<?php 
+				<?php
 				// Busca os últimos 10 episódios para mapear os animes correspondentes
 				$args_eps = array(
 					'post_type'      => 'episodio',
@@ -115,7 +108,7 @@
 					'orderby'        => 'date',
 					'order'          => 'DESC',
 				);
-				$query_eps = new WP_Query( $args_eps );
+				$query_eps       = new WP_Query( $args_eps );
 				$animes_list_eps = array();
 				$added_anime_ids = array();
 
@@ -124,18 +117,18 @@
 						$query_eps->the_post();
 						$anime_rel = get_field( 'ep_anime_relacionado' );
 						if ( ! empty( $anime_rel ) ) {
-							$anime_post = is_array( $anime_rel ) ? $anime_rel[0] : $anime_rel;
+							$anime_post    = is_array( $anime_rel ) ? $anime_rel[0] : $anime_rel;
 							$anime_post_id = is_object( $anime_post ) ? $anime_post->ID : (int) $anime_post;
 
 							if ( ! in_array( $anime_post_id, $added_anime_ids, true ) ) {
 								$added_anime_ids[] = $anime_post_id;
-								
+
 								$featured_img = get_the_post_thumbnail_url( $anime_post_id, 'large' );
 								if ( empty( $featured_img ) ) {
 									$featured_img = get_field( 'anime_imagem_capa_url', $anime_post_id );
 								}
 
-								$terms_genero = get_the_terms( $anime_post_id, 'genero' );
+								$terms_genero  = get_the_terms( $anime_post_id, 'genero' );
 								$generos_mapped = array();
 								if ( ! empty( $terms_genero ) && ! is_wp_error( $terms_genero ) ) {
 									foreach ( $terms_genero as $term ) {
@@ -181,12 +174,12 @@
 					if ( $query_animes->have_posts() ) {
 						while ( $query_animes->have_posts() ) {
 							$query_animes->the_post();
-							$a_id = get_the_ID();
+							$a_id         = get_the_ID();
 							$featured_img = get_the_post_thumbnail_url( $a_id, 'large' );
 							if ( empty( $featured_img ) ) {
 								$featured_img = get_field( 'anime_imagem_capa_url', $a_id );
 							}
-							$terms_genero = get_the_terms( $a_id, 'genero' );
+							$terms_genero   = get_the_terms( $a_id, 'genero' );
 							$generos_mapped = array();
 							if ( ! empty( $terms_genero ) && ! is_wp_error( $terms_genero ) ) {
 								foreach ( $terms_genero as $term ) {
@@ -231,10 +224,10 @@
 				}
 				?>
 			</section>
-77: 
-78: 						<!-- A2. GRADE DE NOTÍCIAS RECENTES (Task 1.3 — Notícias) -->
+
+			<!-- A2. GRADE DE NOTÍCIAS RECENTES (Task 1.3 — Notícias) -->
 			<section class="home-section" style="margin-top: var(--space-600); display: block;">
-				<?php 
+				<?php
 				// Evita duplicar os posts que já estão aparecendo no carrossel de destaques no topo
 				$exclude_ids = array();
 				if ( isset( $query->posts ) && is_array( $query->posts ) ) {
@@ -246,14 +239,14 @@
 					'posts_per_page' => 4,
 					'post__not_in'   => $exclude_ids,
 				);
-				$query_news = new WP_Query( $args_news );
+				$query_news    = new WP_Query( $args_news );
 				$noticias_list = array();
 
 				if ( $query_news->have_posts() ) {
 					while ( $query_news->have_posts() ) {
 						$query_news->the_post();
-						$featured_img = get_the_post_thumbnail_url( get_the_ID(), 'large' );
-						$categories = get_the_category();
+						$featured_img  = get_the_post_thumbnail_url( get_the_ID(), 'large' );
+						$categories    = get_the_category();
 						$category_name = ! empty( $categories ) ? $categories[0]->name : __( 'Geral', 'hello-elementor-child' );
 
 						$noticias_list[] = array(
@@ -293,23 +286,22 @@
 				}
 				?>
 			</section>
-93: 
-94: 		</main>
-95: 
-96: 		<!-- B. COLUNA LATERAL / SIDEBAR -->
-97: 		<div class="home-page__sidebar">
-98: 			<?php 
-99: 			// Renderiza o organismo da Sidebar já construído!
-100: 			mm_render_component( 'organisms', 'sidebar', array(
-101: 				'adsense_slot' => '9876543210'
-102: 			) ); 
-103: 			?>
-104: 		</div>
-105: 
-106: 	</div>
-107: 
-108: </div>
-109: 
-110: <?php
-111: get_footer();
-112: 
+
+		</main>
+
+		<!-- B. COLUNA LATERAL / SIDEBAR -->
+		<div class="home-page__sidebar">
+			<?php
+			// Renderiza o organismo da Sidebar já construído!
+			mm_render_component( 'organisms', 'sidebar', array(
+				'adsense_slot' => '9876543210'
+			) );
+			?>
+		</div>
+
+	</div>
+
+</div>
+
+<?php
+get_footer();

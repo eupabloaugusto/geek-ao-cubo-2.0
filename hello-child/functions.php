@@ -78,6 +78,16 @@ function mm_hello_child_enqueue_styles() {
 		array('hello-elementor-parent-style', 'mm-design-tokens'),
 		'1.0.0'
 	);
+
+	// 5. Estilos Específicos do Template de Página Inicial (Home)
+	if ( is_front_page() || is_home() ) {
+		wp_enqueue_style(
+			'mm-style-front-page',
+			get_stylesheet_directory_uri() . '/front-page.css',
+			array( 'mm-design-tokens' ),
+			'1.0.0'
+		);
+	}
 }
 add_action( 'wp_enqueue_scripts', 'mm_hello_child_enqueue_styles', 20 );
 

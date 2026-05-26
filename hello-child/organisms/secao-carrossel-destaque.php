@@ -43,15 +43,17 @@ $carousel_id    = 'carousel-destaque-' . wp_rand( 1000, 9999 );
 	</div>
 
 	<!-- Trilho Inferior Unificado de Navegação (Molecule) -->
-	<div class="secao-carrossel-destaque__nav">
-		<?php 
-		mm_render_component( 'molecules', 'carousel-nav', array(
-			'total'        => $total_posts,
-			'active_index' => 0,
-			'show_arrows'  => true,
-			'carousel_id'  => $carousel_id
-		) );
-		?>
-	</div>
+	<?php if ( $total_posts > 1 ) : ?>
+		<div class="secao-carrossel-destaque__nav">
+			<?php 
+			mm_render_component( 'molecules', 'carousel-nav', array(
+				'total'        => $total_posts,
+				'active_index' => 0,
+				'show_arrows'  => true,
+				'carousel_id'  => $carousel_id
+			) );
+			?>
+		</div>
+	<?php endif; ?>
 
 </section>

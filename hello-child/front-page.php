@@ -22,34 +22,8 @@ get_header();
 	<!-- 1. SEÇÃO DE TOPO / HERO CARROSSEL (Task 1.2 — Destaques) -->
 	<div class="home-page__hero-section">
 		<?php
-		// Query para buscar os posts de Destaque
-		$args_query = array(
-			'post_type'      => 'post',
-			'posts_per_page' => 4,
-			'tax_query'      => array(
-				'relation' => 'OR',
-				array(
-					'taxonomy' => 'category',
-					'field'    => 'slug',
-					'terms'    => 'destaque',
-				),
-				array(
-					'taxonomy' => 'post_tag',
-					'field'    => 'slug',
-					'terms'    => 'destaque',
-				),
-			),
-		);
-		$query = new WP_Query( $args_query );
-
-		// Fallback: se não encontrar com 'destaque', traz os últimos posts publicados
-		if ( ! $query->have_posts() ) {
-			$args_query_fallback = array(
-				'post_type'      => 'post',
-				'posts_per_page' => 4,
-			);
-			$query = new WP_Query( $args_query_fallback );
-		}
+		// Query centralizada para buscar os posts de Destaque
+		$query = mm_query_posts_destaque( 4 );
 
 		$posts_carousel = array();
 		if ( $query->have_posts() ) {
@@ -101,14 +75,8 @@ get_header();
 			<!-- A1. ESTEIRA DE EPISÓDIOS (Task 1.4 — Novos Episódios) -->
 			<section class="home-section">
 				<?php
-				// Busca os últimos 10 episódios para mapear os animes correspondentes
-				$args_eps = array(
-					'post_type'      => 'episodio',
-					'posts_per_page' => 10,
-					'orderby'        => 'date',
-					'order'          => 'DESC',
-				);
-				$query_eps       = new WP_Query( $args_eps );
+				// Busca os últimos 10 episódios de forma centralizada
+				$query_eps       = mm_query_recent_episodios( 10 );
 				$animes_list_eps = array();
 				$added_anime_ids = array();
 
@@ -234,12 +202,8 @@ get_header();
 					$exclude_ids = wp_list_pluck( $query->posts, 'ID' );
 				}
 
-				$args_news = array(
-					'post_type'      => 'post',
-					'posts_per_page' => 4,
-					'post__not_in'   => $exclude_ids,
-				);
-				$query_news    = new WP_Query( $args_news );
+				// Busca as últimas notícias de forma centralizada
+				$query_news    = mm_query_noticias_recentes( 4, $exclude_ids );
 				$noticias_list = array();
 
 				if ( $query_news->have_posts() ) {

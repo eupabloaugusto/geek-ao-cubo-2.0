@@ -22,11 +22,11 @@
    ========================================================================== */
 
 .trilho-infinito__track {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	overflow-x: auto;
-	overflow-y: hidden;
+	display: flex !important;
+	flex-direction: row !important;
+	flex-wrap: nowrap !important;
+	overflow-x: auto !important;
+	overflow-y: hidden !important;
 	scroll-behavior: smooth;
 	scroll-snap-type: x mandatory;
 	-webkit-overflow-scrolling: touch;
@@ -39,6 +39,13 @@
 	cursor: grab;
 	user-select: none;
 	-webkit-user-select: none;
+}
+
+/* Garante que os slides reais e clonados NUNCA encolham horizontalmente */
+.js-trilho__slide,
+.js-trilho__clone {
+	flex: 0 0 auto !important;
+	flex-shrink: 0 !important;
 }
 
 /* Scrollbar oculta — WebKit */

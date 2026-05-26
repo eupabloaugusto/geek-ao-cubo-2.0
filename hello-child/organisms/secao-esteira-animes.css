@@ -7,6 +7,8 @@
 
 .secao-esteira-animes {
     width: 100%;
+    max-width: 100%;
+    overflow: hidden;
     margin-bottom: var(--space-800); /* 56px de espaço inferior */
     position: relative;
 }

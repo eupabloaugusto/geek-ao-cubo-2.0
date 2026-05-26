@@ -586,3 +586,85 @@ function mm_get_temporada_do_anime( int $anime_id ) {
 	return ! empty( $posts ) ? $posts[0] : null;
 }
 
+
+// =========================================================================
+// GENERAL / EDITORIAL POSTS (Usados na Página Inicial)
+// =========================================================================
+
+/**
+ * Retorna os posts marcados como destaque (categoria ou tag) ou os últimos posts.
+ * Centraliza a query de Destaques Editoriais.
+ *
+ * @param int $per_page Qtd de posts. Default 4.
+ * @return WP_Query
+ */
+function mm_query_posts_destaque( int $per_page = 4 ) {
+	$args_query = array(
+		'post_type'      => 'post',
+		'post_status'    => 'publish',
+		'posts_per_page' => $per_page,
+		'tax_query'      => array(
+			'relation' => 'OR',
+			array(
+				'taxonomy' => 'category',
+				'field'    => 'slug',
+				'terms'    => 'destaque',
+			),
+			array(
+				'taxonomy' => 'post_tag',
+				'field'    => 'slug',
+				'terms'    => 'destaque',
+			),
+		),
+	);
+	$query = new WP_Query( $args_query );
+
+	// Fallback: se não encontrar com 'destaque', traz os últimos posts publicados
+	if ( ! $query->have_posts() ) {
+		$args_query_fallback = array(
+			'post_type'      => 'post',
+			'post_status'    => 'publish',
+			'posts_per_page' => $per_page,
+		);
+		$query = new WP_Query( $args_query_fallback );
+	}
+
+	return $query;
+}
+
+/**
+ * Retorna as últimas notícias/artigos publicados, excluindo IDs específicos.
+ * Centraliza a query de Notícias Recentes da homepage.
+ *
+ * @param int   $per_page    Qtd de posts. Default 4.
+ * @param array $exclude_ids IDs a serem excluídos da query.
+ * @return WP_Query
+ */
+function mm_query_noticias_recentes( int $per_page = 4, array $exclude_ids = array() ) {
+	$args_news = array(
+		'post_type'      => 'post',
+		'post_status'    => 'publish',
+		'posts_per_page' => $per_page,
+		'post__not_in'   => array_map( 'intval', $exclude_ids ),
+	);
+	return new WP_Query( $args_news );
+}
+
+/**
+ * Retorna os últimos episódios publicados de todos os animes.
+ * Centraliza a query de Novos Episódios da homepage.
+ *
+ * @param int $per_page Qtd de episódios. Default 10.
+ * @return WP_Query
+ */
+function mm_query_recent_episodios( int $per_page = 10 ) {
+	$args_eps = array(
+		'post_type'      => 'episodio',
+		'post_status'    => 'publish',
+		'posts_per_page' => $per_page,
+		'orderby'        => 'date',
+		'order'          => 'DESC',
+	);
+	return new WP_Query( $args_eps );
+}
+

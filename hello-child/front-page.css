@@ -1,0 +1,265 @@
+/**
+ * Template Style: front-page
+ *
+ * Estilos responsivos e premium para o layout da Página Inicial (Home).
+ * Estruturado com base em CSS Custom Properties do Design System.
+ *
+ * @package hello-elementor-child
+ * @since   2.0.0
+ */
+
+.home-page {
+	max-width: var(--container-max, 80rem);
+	margin-inline: auto;
+	padding-inline: var(--space-400);
+	padding-block: var(--space-600);
+}
+
+@media (min-width: 64rem) {
+	.home-page {
+		padding-inline: var(--space-500);
+		padding-block: var(--space-800);
+	}
+}
+
+/* =========================================================================
+   1. HERO CARROSSEL PLACEHOLDER (Task 1.2)
+   ========================================================================= */
+.home-page__hero-section {
+	margin-bottom: var(--space-600);
+}
+
+.home-placeholder-carousel {
+	background: linear-gradient(135deg, var(--neutral-800) 0%, var(--neutral-900) 100%);
+	border: 1px dashed var(--brand-400);
+	border-radius: var(--border-radius-300, 1rem);
+	padding: var(--space-600);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+	position: relative;
+	overflow: hidden;
+}
+
+.home-placeholder-carousel::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 4px;
+	height: 100%;
+	background-color: var(--brand-500);
+}
+
+.home-placeholder-carousel__slide {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-300);
+	max-width: 45rem;
+}
+
+.home-placeholder-carousel__badge {
+	align-self: flex-start;
+	background-color: rgba(245, 107, 21, 0.1);
+	color: var(--brand-500);
+	font-family: var(--font-heading);
+	font-weight: 700;
+	font-size: var(--text-xxs-size, 0.75rem);
+	padding: 0.25rem 0.75rem;
+	border-radius: var(--border-radius-100, 0.25rem);
+	letter-spacing: 0.05em;
+	border: 1px solid rgba(245, 107, 21, 0.2);
+}
+
+.home-placeholder-carousel__title {
+	font-family: var(--font-heading);
+	font-size: clamp(1.5rem, 4vw, 2.25rem);
+	font-weight: var(--text-md-lg-weight, 700);
+	line-height: var(--text-md-lg-height, 1.2);
+	color: var(--neutral-100);
+}
+
+.home-placeholder-carousel__desc {
+	font-size: var(--text-sm-size, 1.125rem);
+	color: var(--neutral-300);
+	line-height: 1.5;
+}
+
+.home-placeholder-carousel__meta {
+	font-size: var(--text-xxs-size, 0.75rem);
+	color: var(--neutral-400);
+	font-weight: 600;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+}
+
+/* =========================================================================
+   2. LAYOUT DUAS COLUNAS
+   ========================================================================= */
+.home-page__layout {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--space-600);
+}
+
+@media (min-width: 64rem) {
+	.home-page__layout {
+		grid-template-columns: 2.2fr 1fr;
+		gap: var(--space-600);
+		align-items: start;
+	}
+}
+
+/* Seções da Home */
+.home-section {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-400);
+}
+
+.home-section__title {
+	font-family: var(--font-heading);
+	font-size: var(--text-md-sm-size, 1.5rem);
+	font-weight: 700;
+	color: var(--neutral-100);
+	border-bottom: 2px solid var(--neutral-800);
+	padding-bottom: var(--space-200);
+	display: flex;
+	align-items: center;
+	gap: var(--space-200);
+}
+
+.home-section__title::before {
+	content: '';
+	display: inline-block;
+	width: 4px;
+	height: 1.25rem;
+	background-color: var(--brand-500);
+	border-radius: var(--border-radius-100, 0.25rem);
+}
+
+.home-section__sub-badge {
+	font-size: var(--text-xxs-size, 0.75rem);
+	background-color: var(--brand-500);
+	color: white;
+	padding: 0.125rem 0.5rem;
+	border-radius: var(--border-radius-100, 0.25rem);
+	letter-spacing: 0.05em;
+	font-weight: 700;
+}
+
+/* =========================================================================
+   3. NOVOS EPISÓDIOS PLACEHOLDER (Task 1.4)
+   ========================================================================= */
+.home-placeholder-episodes {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+	gap: var(--space-300);
+}
+
+.home-placeholder-card {
+	background-color: var(--neutral-800);
+	border: 1px dashed var(--neutral-700);
+	border-radius: var(--border-radius-200, 0.5rem);
+	padding: var(--space-300);
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-200);
+	transition: border-color 0.2s ease;
+}
+
+.home-placeholder-card:hover {
+	border-color: var(--brand-500);
+}
+
+.home-placeholder-card__image {
+	aspect-ratio: 16 / 9;
+	background-color: var(--neutral-900);
+	border-radius: var(--border-radius-100, 0.25rem);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--neutral-400);
+	font-weight: 700;
+	font-size: var(--text-xxs-size, 0.75rem);
+}
+
+.home-placeholder-card__title {
+	font-family: var(--font-heading);
+	font-size: var(--text-xs-size, 1rem);
+	font-weight: 700;
+	color: var(--neutral-100);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.home-placeholder-card__status {
+	font-size: var(--text-xxs-size, 0.75rem);
+	color: var(--neutral-400);
+	font-weight: 600;
+}
+
+/* =========================================================================
+   4. ÚLTIMAS NOTÍCIAS PLACEHOLDER (Task 1.3)
+   ========================================================================= */
+.home-placeholder-news {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-400);
+}
+
+.home-placeholder-news-hero {
+	display: grid;
+	grid-template-columns: 1fr;
+	background-color: var(--neutral-800);
+	border: 1px dashed var(--neutral-700);
+	border-radius: var(--border-radius-300, 1rem);
+	overflow: hidden;
+	transition: border-color 0.2s ease;
+}
+
+@media (min-width: 48rem) {
+	.home-placeholder-news-hero {
+		grid-template-columns: 1.2fr 1fr;
+	}
+}
+
+.home-placeholder-news-hero:hover {
+	border-color: var(--brand-500);
+}
+
+.home-placeholder-news-hero__image {
+	background: linear-gradient(45deg, var(--neutral-800), var(--neutral-900));
+	aspect-ratio: 16 / 10;
+	width: 100%;
+	min-height: 200px;
+}
+
+.home-placeholder-news-hero__content {
+	padding: var(--space-400);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: var(--space-300);
+}
+
+.home-placeholder-news-hero__title {
+	font-family: var(--font-heading);
+	font-size: var(--text-sm-size, 1.25rem);
+	font-weight: 700;
+	color: var(--neutral-100);
+	line-height: 1.3;
+}
+
+.home-placeholder-news-hero__desc {
+	font-size: var(--text-xxs-size, 0.75rem);
+	color: var(--neutral-300);
+	line-height: 1.5;
+}
+
+.home-placeholder-news-hero__status {
+	font-size: var(--text-xxs-size, 0.75rem);
+	color: var(--neutral-400);
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}

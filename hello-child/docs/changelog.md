@@ -2,6 +2,12 @@
 
 Todas as alterações notáveis, adições e exclusões de componentes do projeto serão documentadas neste arquivo de forma contínua.
 
+## [3.6.0] — 2026-05-26
+
+### Adicionado
+- **Template Físico `front-page.php`** (`hello-child/front-page.php`): Criado o template de Página Inicial (Home) do portal estruturado com layout de duas colunas (principal 2.2fr + sidebar 1fr) e placeholders para carrossel e novos episódios.
+- **Estilos da Página Inicial `front-page.css`** (`hello-child/front-page.css`): Criados os estilos dinâmicos e fluidos para a Home Page, utilizando design tokens e grids responsivas.
+
 ## [3.5.0] — 2026-05-26
 
 ### Alterado

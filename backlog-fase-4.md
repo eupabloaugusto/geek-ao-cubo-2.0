@@ -40,9 +40,9 @@ flowchart TD
 ### 📊 Sprint 1: Página Inicial Editorial (Home / `front-page.php`)
 > **Foco Interno/Local:** Montar a página principal do portal de forma dinâmica, consumindo as notícias cadastradas e os animes/episódios do banco de dados local.
 
-- [ ] **Task 1.1: Estruturar o Template Físico `front-page.php`**
+- [x] **Task 1.1: Estruturar o Template Físico `front-page.php`**
   * *Descrição:* Criar o arquivo `front-page.php` na raiz do tema child. Integrar o cabeçalho (`get_header()`) e rodapé (`get_footer()`) semânticos e criar uma grade de duas colunas para desktop (Coluna Principal de 2.2fr + Sidebar de 1fr).
-  * *Entregáveis:* `hello-child/front-page.php`, `hello-child/style.css` atualizado, e documentação estrutural.
+  * *Entregáveis:* `hello-child/front-page.php`, `hello-child/front-page.css`, e documentação estrutural.
 
 - [ ] **Task 1.2: Integrar o Carrossel de Destaques Editoriais (`secao-carrossel-destaque`)**
   * *Descrição:* Desenvolver o organismo `secao-carrossel-destaque` no topo da Home. A query do WordPress deve buscar os 3 últimos posts com a categoria/tag "Destaque" e renderizá-los em um carrossel fluido com navegação em dots e setas, usando scroll snap CSS (sem carregar jQuery).

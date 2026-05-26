@@ -1135,6 +1135,11 @@
       border-radius: var(--border-radius-300);
       padding: var(--space-500);
     }
+    .sidebar-widget-clean {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
     .sidebar-widget__title {
       font-family: var(--font-heading);
       font-size: var(--text-xs-size);
@@ -7099,7 +7104,7 @@ mm_render_component('organisms', 'search-modal', [
             <header class="sb-component__header">
               <div class="sb-component__header-info">
                 <h3 class="sb-component__name">Barra Lateral (sidebar)</h3>
-                <p class="sb-component__desc">Organismo de exibição lateral. Integra busca, lista de destaques da temporada (com Nota MAL e Badge de Status) e bloco de publicidade Adsense com CLS protegido.</p>
+                <p class="sb-component__desc">Organismo de exibição lateral. Integra uma coluna com 4 cards de artigos de Variação Lista Horizontal e bloco de publicidade Adsense com CLS protegido.</p>
               </div>
               <div class="sb-component__meta">
                 <code class="sb-component__file">organisms/sidebar.php</code>
@@ -7108,63 +7113,157 @@ mm_render_component('organisms', 'search-modal', [
             <div class="sb-component__preview" style="width: 100%; max-width: 380px; margin: 0 auto; justify-content: flex-start;">
               <div class="sidebar">
 
-                <!-- Widget: Busca -->
-                <div class="sidebar-widget">
-                  <h3 class="sidebar-widget__title">Pesquisar</h3>
-                  <form class="form-busca" style="max-width:100%;">
-                    <div class="form-busca__wrapper">
-                      <div class="input-wrapper input-wrapper--search form-busca__input">
-                        <input type="search" class="input-field" placeholder="Buscar no portal..." />
-                        <span class="input-search-icon" aria-hidden="true">
-                          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-                          </svg>
-                        </span>
+                <!-- Widget: Artigos Recentes (Variação Lista Horizontal) -->
+                <div class="sidebar-widget-clean">
+                  <h3 class="sidebar-widget__title" style="margin-left: var(--space-300);">Últimas Novidades</h3>
+                  
+                  <div class="sidebar-posts-column" style="display: flex; flex-direction: column; gap: var(--space-400);">
+
+                    <!-- Card 1 -->
+                    <div class="card-noticia card-noticia--list">
+                      <div class="card-noticia__media-wrapper">
+                        <img src="https://images.unsplash.com/photo-1563089145-599997674d42?w=600&q=80" alt="Capa Hunter x Hunter" class="card-noticia__image" />
+                        <div class="card-noticia__dark-overlay"></div>
                       </div>
-                      <button type="submit" class="btn btn--primary form-busca__btn">Buscar</button>
+                      <div class="card-noticia__content">
+                        <div class="card-noticia__header">
+                          <span class="card-noticia__eyebrow">Mangá</span>
+                          <h3 class="card-noticia__title">Hunter x Hunter retorna com capítulos inéditos em publicação regular na Shonen Jump</h3>
+                        </div>
+                        <div class="card-noticia__body">
+                          <p class="card-noticia__excerpt">Após um longo hiato, Yoshihiro Togashi retoma a obra mais aguardada pelos fãs.</p>
+                        </div>
+                        <div class="card-noticia__footer">
+                          <div class="card-noticia__meta">
+                            <span class="card-noticia__meta-item card-noticia__author">
+                              <svg class="card-noticia__icon" viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                              </svg>
+                              por Redação
+                            </span>
+                            <span class="card-noticia__meta-sep" aria-hidden="true">•</span>
+                            <span class="card-noticia__meta-item card-noticia__date">
+                              <svg class="card-noticia__icon" viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                              </svg>
+                              há 6 horas
+                            </span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </form>
-                </div>
 
-                <!-- Widget: Destaques da Temporada -->
-                <div class="sidebar-widget">
-                  <h3 class="sidebar-widget__title">Destaques da Temporada</h3>
-                  <ul class="sidebar-destaques-list">
-
-                    <li class="sidebar-destaque-item">
-                      <div class="sidebar-destaque-item__meta">
-                        <span class="nota-mal">
-                          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                          9.13
-                        </span>
-                        <span class="badge-status badge-status--airing">Em exibição</span>
+                    <!-- Card 2 -->
+                    <div class="card-noticia card-noticia--list">
+                      <div class="card-noticia__media-wrapper">
+                        <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&q=80" alt="Capa Solo Leveling" class="card-noticia__image" />
+                        <div class="card-noticia__dark-overlay"></div>
                       </div>
-                      <a href="#" class="sidebar-destaque-item__title">Solo Leveling — Temporada 2</a>
-                    </li>
-
-                    <li class="sidebar-destaque-item">
-                      <div class="sidebar-destaque-item__meta">
-                        <span class="nota-mal">
-                          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                          8.92
-                        </span>
-                        <span class="badge-status badge-status--completed">Finalizado</span>
+                      <div class="card-noticia__content">
+                        <div class="card-noticia__header">
+                          <span class="card-noticia__eyebrow">Anime</span>
+                          <h3 class="card-noticia__title">Solo Leveling Temporada 2: Teaser oficial revela data de estreia para 2026!</h3>
+                        </div>
+                        <div class="card-noticia__body">
+                          <p class="card-noticia__excerpt">A-1 Pictures confirma retorno do fenômeno mundial Solo Leveling para a temporada de Janeiro de 2026.</p>
+                        </div>
+                        <div class="card-noticia__footer">
+                          <div class="card-noticia__meta">
+                            <span class="card-noticia__meta-item card-noticia__author">
+                              <svg class="card-noticia__icon" viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                              </svg>
+                              por Redação
+                            </span>
+                            <span class="card-noticia__meta-sep" aria-hidden="true">•</span>
+                            <span class="card-noticia__meta-item card-noticia__date">
+                              <svg class="card-noticia__icon" viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                              </svg>
+                              ontem
+                            </span>
+                          </div>
+                        </div>
                       </div>
-                      <a href="#" class="sidebar-destaque-item__title">Frieren: Beyond Journey's End</a>
-                    </li>
+                    </div>
 
-                    <li class="sidebar-destaque-item">
-                      <div class="sidebar-destaque-item__meta">
-                        <span class="nota-mal nota-mal--error">
-                          <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                          4.85
-                        </span>
-                        <span class="badge-status badge-status--upcoming">Em breve</span>
+                    <!-- Card 3 -->
+                    <div class="card-noticia card-noticia--list">
+                      <div class="card-noticia__media-wrapper">
+                        <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&q=80" alt="Capa Chainsaw Man" class="card-noticia__image" />
+                        <div class="card-noticia__dark-overlay"></div>
                       </div>
-                      <a href="#" class="sidebar-destaque-item__title">Isekai Cheat Magician — Ep 12</a>
-                    </li>
+                      <div class="card-noticia__content">
+                        <div class="card-noticia__header">
+                          <span class="card-noticia__eyebrow">Novidades</span>
+                          <h3 class="card-noticia__title">Chainsaw Man: Filme do Arco de Reze tem trailer de tirar o fôlego divulgado</h3>
+                        </div>
+                        <div class="card-noticia__body">
+                          <p class="card-noticia__excerpt">Estúdio MAPPA revela trailer cinematográfico completo para a adaptação do aclamado arco de Reze.</p>
+                        </div>
+                        <div class="card-noticia__footer">
+                          <div class="card-noticia__meta">
+                            <span class="card-noticia__meta-item card-noticia__author">
+                              <svg class="card-noticia__icon" viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                              </svg>
+                              por Redação
+                            </span>
+                            <span class="card-noticia__meta-sep" aria-hidden="true">•</span>
+                            <span class="card-noticia__meta-item card-noticia__date">
+                              <svg class="card-noticia__icon" viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                              </svg>
+                              há 2 dias
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
 
-                  </ul>
+                    <!-- Card 4 -->
+                    <div class="card-noticia card-noticia--list">
+                      <div class="card-noticia__media-wrapper">
+                        <img src="https://images.unsplash.com/photo-1580477667995-2b94f01c9516?w=600&q=80" alt="Capa Demon Slayer" class="card-noticia__image" />
+                        <div class="card-noticia__dark-overlay"></div>
+                      </div>
+                      <div class="card-noticia__content">
+                        <div class="card-noticia__header">
+                          <span class="card-noticia__eyebrow">Destaque</span>
+                          <h3 class="card-noticia__title">Demon Slayer: Filme Trilogia do Castelo Infinito ganha nova arte promocional</h3>
+                        </div>
+                        <div class="card-noticia__body">
+                          <p class="card-noticia__excerpt">Ufotable impressiona fãs com novo pôster visual focado no confronto final no Castelo Infinito.</p>
+                        </div>
+                        <div class="card-noticia__footer">
+                          <div class="card-noticia__meta">
+                            <span class="card-noticia__meta-item card-noticia__author">
+                              <svg class="card-noticia__icon" viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                              </svg>
+                              por Redação
+                            </span>
+                            <span class="card-noticia__meta-sep" aria-hidden="true">•</span>
+                            <span class="card-noticia__meta-item card-noticia__date">
+                              <svg class="card-noticia__icon" viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                              </svg>
+                              há 3 dias
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
                 </div>
 
                 <!-- Widget: Publicidade -->

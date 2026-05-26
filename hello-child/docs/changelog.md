@@ -7,6 +7,7 @@ Todas as alterações notáveis, adições e exclusões de componentes do projet
 ### Adicionado
 - **Template Físico `front-page.php`** (`hello-child/front-page.php`): Criado o template de Página Inicial (Home) do portal estruturado com layout de duas colunas (principal 2.2fr + sidebar 1fr) e placeholders para carrossel e novos episódios.
 - **Estilos da Página Inicial `front-page.css`** (`hello-child/front-page.css`): Criados os estilos dinâmicos e fluidos para a Home Page, utilizando design tokens e grids responsivas.
+- **Carrossel Dinâmico de Destaques** (`hello-child/front-page.php`): Integrada a query oficial do WordPress no topo da página inicial para buscar dinamicamente posts com categoria ou tag `'destaque'`. Renderiza o organismo `secao-carrossel-destaque` e possui um fallback seguro para os últimos posts caso nenhuma tag esteja cadastrada, garantindo a exibição perfeita da capa desde o primeiro dia.
 
 ## [3.5.0] — 2026-05-26
 

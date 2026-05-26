@@ -52,7 +52,7 @@ flowchart TD
   * *Descrição:* Implementar o organismo `secao-noticias-recentes` logo abaixo dos destaques. O layout deve conter 1 card em super destaque (Hero Card horizontal) para a notícia mais recente, seguido de uma grade responsiva com 3 cards secundários (`card-noticia.php`). Incluir paginação numérica ou botão de carregamento infinito via AJAX local.
   * *Entregáveis:* `hello-child/organisms/secao-noticias-recentes.php` e `.css`, e documentação do componente.
 
-- [ ] **Task 1.4: Integrar a Esteira de Novos Episódios (`secao-novos-episodios`)**
+- [x] **Task 1.4: Integrar a Esteira de Novos Episódios (`secao-novos-episodios`)**
   * *Descrição:* Inserir na Home uma esteira horizontal (`secao-novos-episodios` usando o `trilho-infinito`) exibindo os episódios mais recentes adicionados do CPT `episodio`, exibindo o número do episódio, a imagem de capa e o status de exibição.
   * *Entregáveis:* `hello-child/organisms/secao-novos-episodios.php` e `.css`, integrado ao `front-page.php`.
 

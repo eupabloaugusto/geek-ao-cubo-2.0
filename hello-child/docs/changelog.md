@@ -9,6 +9,7 @@ Todas as alterações notáveis, adições e exclusões de componentes do projet
 - **Estilos da Página Inicial `front-page.css`** (`hello-child/front-page.css`): Criados os estilos dinâmicos e fluidos para a Home Page, utilizando design tokens e grids responsivas.
 - **Carrossel Dinâmico de Destaques** (`hello-child/front-page.php`): Integrada a query oficial do WordPress no topo da página inicial para buscar dinamicamente posts com categoria ou tag `'destaque'`. Renderiza o organismo `secao-carrossel-destaque` e possui um fallback seguro para os últimos posts caso nenhuma tag esteja cadastrada, garantindo a exibição perfeita da capa desde o primeiro dia.
 - **Grade Editorial de Notícias Recentes** (`hello-child/front-page.php`): Desenvolvida a query de postagem com **anti-duplicação inteligente**, excluindo de forma automatizada do fluxo de listagem os IDs dos posts já renderizados no carrossel de destaques. Renderiza o organismo `secao-noticias-recentes` exibindo a manchete destaque (Hero horizontal) e a grade responsiva de 3 colunas de novidades.
+- **Esteira de Novos Episódios do Dia** (`hello-child/front-page.php`): Integrada a query dinâmica para recuperar as últimas postagens do CPT `episodio` lançadas, resolvendo seus respectivos animes de origem para renderizar o carrossel horizontal de scroll infinito `secao-novos-episodios` (usando a molécula `trilho-infinito`). Possui fallback seguro para buscar os últimos animes do catálogo caso não haja episódios inseridos.
 
 ## [3.5.0] — 2026-05-26
 

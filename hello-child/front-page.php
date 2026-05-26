@@ -106,30 +106,131 @@
 50: 		<main class="home-page__main" id="main-content">
 51: 			
 52: 			<!-- A1. ESTEIRA DE EPISÓDIOS (Task 1.4 — Novos Episódios) -->
-53: 			<section class="home-section">
-54: 				<h2 class="home-section__title">
-55: 					<?php _e( 'Novos Episódios', 'hello-elementor-child' ); ?>
-56: 					<span class="home-section__sub-badge"><?php _e( 'HOJE', 'hello-elementor-child' ); ?></span>
-57: 				</h2>
-58: 				
-59: 				<div class="home-placeholder-episodes">
-60: 					<div class="home-placeholder-card">
-61: 						<div class="home-placeholder-card__image"><span>Episódio 5</span></div>
-62: 						<div class="home-placeholder-card__title">Solo Leveling</div>
-63: 						<div class="home-placeholder-card__status"><?php _e( 'Task 1.4 (Aguardando)', 'hello-elementor-child' ); ?></div>
-64: 					</div>
-65: 					<div class="home-placeholder-card">
-66: 						<div class="home-placeholder-card__image"><span>Episódio 10</span></div>
-67: 						<div class="home-placeholder-card__title">Chainsaw Man</div>
-68: 						<div class="home-placeholder-card__status"><?php _e( 'Task 1.4 (Aguardando)', 'hello-elementor-child' ); ?></div>
-69: 					</div>
-70: 					<div class="home-placeholder-card">
-71: 						<div class="home-placeholder-card__image"><span>Episódio 24</span></div>
-72: 						<div class="home-placeholder-card__title">Frieren</div>
-73: 						<div class="home-placeholder-card__status"><?php _e( 'Task 1.4 (Aguardando)', 'hello-elementor-child' ); ?></div>
-74: 					</div>
-75: 				</div>
-76: 			</section>
+			<section class="home-section">
+				<?php 
+				// Busca os últimos 10 episódios para mapear os animes correspondentes
+				$args_eps = array(
+					'post_type'      => 'episodio',
+					'posts_per_page' => 10,
+					'orderby'        => 'date',
+					'order'          => 'DESC',
+				);
+				$query_eps = new WP_Query( $args_eps );
+				$animes_list_eps = array();
+				$added_anime_ids = array();
+
+				if ( $query_eps->have_posts() ) {
+					while ( $query_eps->have_posts() ) {
+						$query_eps->the_post();
+						$anime_rel = get_field( 'ep_anime_relacionado' );
+						if ( ! empty( $anime_rel ) ) {
+							$anime_post = is_array( $anime_rel ) ? $anime_rel[0] : $anime_rel;
+							$anime_post_id = is_object( $anime_post ) ? $anime_post->ID : (int) $anime_post;
+
+							if ( ! in_array( $anime_post_id, $added_anime_ids, true ) ) {
+								$added_anime_ids[] = $anime_post_id;
+								
+								$featured_img = get_the_post_thumbnail_url( $anime_post_id, 'large' );
+								if ( empty( $featured_img ) ) {
+									$featured_img = get_field( 'anime_imagem_capa_url', $anime_post_id );
+								}
+
+								$terms_genero = get_the_terms( $anime_post_id, 'genero' );
+								$generos_mapped = array();
+								if ( ! empty( $terms_genero ) && ! is_wp_error( $terms_genero ) ) {
+									foreach ( $terms_genero as $term ) {
+										$generos_mapped[] = array(
+											'name' => $term->name,
+											'url'  => get_term_link( $term ),
+										);
+									}
+								}
+
+								// Pega o horário de exibição do anime ou do lançamento do episódio (UTC)
+								$horario_str = get_field( 'anime_horario_exibicao', $anime_post_id );
+								if ( empty( $horario_str ) ) {
+									$ep_date = get_field( 'ep_data_lancamento' );
+									if ( ! empty( $ep_date ) ) {
+										$horario_str = date( 'H:i', strtotime( $ep_date ) );
+									} else {
+										$horario_str = '18:00';
+									}
+								}
+
+								$animes_list_eps[] = array(
+									'titulo'     => get_the_title( $anime_post_id ),
+									'url'        => get_permalink( $anime_post_id ),
+									'imagem_url' => $featured_img,
+									'nota'       => get_field( 'anime_nota_mal', $anime_post_id ) ? number_format( (float) get_field( 'anime_nota_mal', $anime_post_id ), 2 ) : '0.00',
+									'horario'    => $horario_str,
+									'generos'    => $generos_mapped,
+								);
+							}
+						}
+					}
+					wp_reset_postdata();
+				}
+
+				// Fallback: se não encontrar episódios cadastrados, traz os últimos animes do catálogo
+				if ( empty( $animes_list_eps ) ) {
+					$args_animes_fallback = array(
+						'post_type'      => 'anime',
+						'posts_per_page' => 6,
+					);
+					$query_animes = new WP_Query( $args_animes_fallback );
+					if ( $query_animes->have_posts() ) {
+						while ( $query_animes->have_posts() ) {
+							$query_animes->the_post();
+							$a_id = get_the_ID();
+							$featured_img = get_the_post_thumbnail_url( $a_id, 'large' );
+							if ( empty( $featured_img ) ) {
+								$featured_img = get_field( 'anime_imagem_capa_url', $a_id );
+							}
+							$terms_genero = get_the_terms( $a_id, 'genero' );
+							$generos_mapped = array();
+							if ( ! empty( $terms_genero ) && ! is_wp_error( $terms_genero ) ) {
+								foreach ( $terms_genero as $term ) {
+									$generos_mapped[] = array(
+										'name' => $term->name,
+										'url'  => get_term_link( $term ),
+									);
+								}
+							}
+							$animes_list_eps[] = array(
+								'titulo'     => get_the_title(),
+								'url'        => get_permalink(),
+								'imagem_url' => $featured_img,
+								'nota'       => get_field( 'anime_nota_mal', $a_id ) ? number_format( (float) get_field( 'anime_nota_mal', $a_id ), 2 ) : '0.00',
+								'horario'    => '14:00',
+								'generos'    => $generos_mapped,
+							);
+						}
+						wp_reset_postdata();
+					}
+				}
+
+				if ( ! empty( $animes_list_eps ) ) {
+					mm_render_component( 'organisms', 'secao-novos-episodios', array(
+						'animes' => $animes_list_eps,
+					) );
+				} else {
+					// Fallback visual estético absoluto caso o acervo esteja vazio
+					?>
+					<h2 class="home-section__title">
+						<?php _e( 'Novos Episódios', 'hello-elementor-child' ); ?>
+						<span class="home-section__sub-badge"><?php _e( 'HOJE', 'hello-elementor-child' ); ?></span>
+					</h2>
+					<div class="home-placeholder-episodes">
+						<div class="home-placeholder-card">
+							<div class="home-placeholder-card__image"><span>?</span></div>
+							<div class="home-placeholder-card__title"><?php _e( 'Aguardando Importação', 'hello-elementor-child' ); ?></div>
+							<div class="home-placeholder-card__status"><?php _e( 'Sem novos episódios', 'hello-elementor-child' ); ?></div>
+						</div>
+					</div>
+					<?php
+				}
+				?>
+			</section>
 77: 
 78: 						<!-- A2. GRADE DE NOTÍCIAS RECENTES (Task 1.3 — Notícias) -->
 			<section class="home-section" style="margin-top: var(--space-600); display: block;">

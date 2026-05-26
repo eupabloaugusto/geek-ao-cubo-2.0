@@ -269,3 +269,15 @@
 	text-transform: uppercase;
 	letter-spacing: 0.05em;
 }
+
+/* =========================================================================
+   5. BARRA LATERAL STICKY (Task 1.1 - Sidebar Layout & A11y)
+   ========================================================================= */
+@media (min-width: 64rem) {
+	.home-page__sidebar {
+		position: sticky;
+		top: calc(var(--header-height, 5rem) + var(--space-500));
+		align-self: start;
+	}
+}
+

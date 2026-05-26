@@ -1,0 +1,135 @@
+/**
+ * Organism CSS: Sidebar Anime Info (sidebar-anime-info)
+ *
+ * Coluna lateral de informações detalhadas do anime.
+ * Composta por poster 2:3, bloco compacto de estatísticas e lista vertical de metadados.
+ *
+ * @package hello-elementor-child
+ */
+
+/* ==========================================================================
+   SIDEBAR WRAPPER
+   ========================================================================== */
+
+.sidebar-anime-info {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-500);
+	width: 100%;
+	box-sizing: border-box;
+}
+
+/* ==========================================================================
+   ESTATÍSTICAS INTEGRADAS
+   ========================================================================== */
+
+.sidebar-anime-info__stats {
+	width: 100%;
+}
+
+/* Garante que o stat-bloco se ajuste perfeitamente à largura estreita da sidebar */
+.sidebar-anime-info__stats .stat-bloco {
+	background-color: var(--neutral-800);
+	border: 0.0625rem solid var(--neutral-700);
+	padding: var(--space-400);
+	border-radius: var(--border-radius-300);
+}
+
+.sidebar-anime-info__stats .stat-bloco__stats {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-300);
+}
+
+.sidebar-anime-info__stats .stat-bloco__item {
+	border-right: none;
+	border-bottom: 0.0625rem solid var(--neutral-700);
+	padding-bottom: var(--space-200);
+	padding-right: 0;
+	align-items: flex-start;
+}
+
+.sidebar-anime-info__stats .stat-bloco__item:last-child {
+	border-bottom: none;
+	padding-bottom: 0;
+}
+
+/* ==========================================================================
+   LISTA VERTICAL DE METADADOS
+   ========================================================================== */
+
+.sidebar-anime-info__content {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-400);
+	width: 100%;
+}
+
+.sidebar-anime-info__content-title {
+	font-family: var(--font-heading);
+	font-size: var(--text-xs-size);
+	font-weight: 700;
+	color: var(--neutral-100);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	margin: 0;
+	padding-bottom: var(--space-200);
+	border-bottom: 0.125rem solid var(--neutral-700);
+}
+
+.sidebar-anime-info__list {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-300);
+	margin: 0;
+}
+
+.sidebar-anime-info__item {
+	display: flex;
+	flex-direction: column;
+	gap: 0.125rem;
+}
+
+.sidebar-anime-info__label {
+	font-family: var(--font-body);
+	font-size: var(--text-xxs-size);
+	font-weight: 600;
+	color: var(--neutral-400);
+	margin: 0;
+}
+
+.sidebar-anime-info__value {
+	font-family: var(--font-heading);
+	font-size: var(--text-xs-size);
+	font-weight: 700;
+	color: var(--neutral-100);
+	line-height: 1.35;
+	margin: 0;
+}
+
+/* Links semânticos dentro da listagem (ex: Estúdios, Produtores) */
+.sidebar-anime-info__value a {
+	color: var(--color-primary);
+	text-decoration: none;
+	transition: color 0.2s ease;
+}
+
+.sidebar-anime-info__value a:hover {
+	color: var(--brand-300);
+	text-decoration: underline;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE (MOBILE / FLUIDO)
+   ========================================================================== */
+
+@media (max-width: 48rem) {
+	.sidebar-anime-info {
+		padding: var(--space-400) 0;
+	}
+
+	/* Em telas muito pequenas, as estatísticas voltam a ser em coluna fluida */
+	.sidebar-anime-info__stats .stat-bloco__stats {
+		grid-template-columns: 1fr;
+	}
+}

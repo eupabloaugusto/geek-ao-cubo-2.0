@@ -4,11 +4,11 @@
 **Arquivo:** `molecules/card-personagem.php`  
 **CSS:** `molecules/card-personagem.css`  
 **Criado em:** 2026-05-23  
-**Última atualização:** 2026-05-24  
+**Última atualização:** 2026-05-25  
 
 ## Descrição
 
-Card premium em formato de **pôster cinematográfico** (proporção 2:3) para exibição de personagens de anime na página de detalhe. A imagem do personagem cobre 100% do card como fundo; um overlay gradiente tricamadas garante legibilidade máxima do texto; um painel fixo na base exibe o badge de papel e o nome. Possui alinhamento estrito à esquerda em todos os breakpoints (incluindo mobile e tablet), espaçamento generoso de `--space-300` entre o badge e o texto, nome em japonês/Kanji opcional, e suporte a link direto para a página do personagem.
+Card premium em formato de **pôster cinematográfico** (proporção 2:3) para exibição de personagens de anime. A estrutura possui o nome e dados do personagem do lado de fora (abaixo da imagem), enquanto o badge de papel (Principal / Secundário) fica posicionado de forma absoluta sobreposta na imagem. Garante alinhamento estrito à esquerda em todos os breakpoints e uma excelente micro-interação no hover, onde a imagem e o pôster elevam com transição 3D suave, enquanto o texto ganha um acento de cor de forma estática e elegante.
 
 ## Átomos utilizados
 _Nenhum átomo importado via `mm_render_component`. CSS e markup embutidos._
@@ -49,8 +49,8 @@ _Nenhum átomo importado via `mm_render_component`. CSS e markup embutidos._
 
 ## Responsividade
 - Card cresce/encolhe conforme a largura da coluna (ideal em grade `auto-fill`).
-- **Desktop (> 768px):** Nome usa `var(--text-sm-size)`, painel usa padding `var(--space-400)` e a inicial do fallback usa `var(--text-xl-size)`.
-- **Mobile/Tablet (≤ 768px):** Nome ajustado para `var(--text-xs-size)`, painel para padding `var(--space-300)` e inicial do fallback para `var(--text-md-lg-size)` via media queries (sem funções `clamp` ou cálculos complexos de viewport).
+- **Desktop (> 768px):** Nome usa `var(--text-sm-size)` e a inicial do fallback usa `var(--text-xl-size)`.
+- **Mobile/Tablet (≤ 768px):** Nome ajustado para `var(--text-xs-size)`, badge aproximada das bordas para `var(--space-200)` e inicial do fallback para `var(--text-md-lg-size)` via media queries (sem funções `clamp` ou cálculos complexos de viewport).
 
 ## Variantes de badge por papel
 | Valor de `role` | Classe gerada | Aparência |
@@ -60,10 +60,10 @@ _Nenhum átomo importado via `mm_render_component`. CSS e markup embutidos._
 | Qualquer outro | `card-personagem--other` | Badge neutro translúcido |
 
 ## Hover
-- Card sobe `translateY(-6px)` + `scale(1.015)`
+- Apenas o pôster (`.card-personagem__poster`) sobe `translateY(-6px)` + `scale(1.015)`
 - Imagem interna aplica `scale(1.08)` suave
-- Borda e box-shadow com glow laranja
-- Painel sobe `translateY(-3px)`
+- Borda e box-shadow com glow laranja ao redor do pôster
+- Nome do personagem muda de cor para `--brand-300` de forma estática
 - Nome em japonês/kanji aumenta opacity para 1.0
 
 ## Exemplo de uso

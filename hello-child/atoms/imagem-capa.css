@@ -8,9 +8,9 @@
     aspect-ratio: 2 / 3;
     border-radius: var(--border-radius-300);
     overflow: hidden;
-    border: 1px solid var(--color-border);
+    border: 0.0625rem solid var(--color-border);
     background-color: var(--neutral-900);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.35);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -24,9 +24,9 @@
 
 /* Hover interativo */
 .imagem-capa-container:hover {
-    transform: translateY(-4px) scale(1.01);
+    transform: translateY(-0.25rem) scale(1.01);
     border-color: var(--color-primary);
-    box-shadow: 0 12px 25px rgba(245, 107, 21, 0.2);
+    box-shadow: 0 0.75rem 1.5625rem rgba(245, 107, 21, 0.2);
 }
 
 .imagem-capa-container:hover .imagem-capa {
@@ -46,7 +46,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px dashed var(--neutral-700);
+    border: 0.125rem dashed var(--neutral-700);
     border-radius: var(--border-radius-300);
     box-sizing: border-box; /* Previne que o border de 2px cause transbordo horizontal */
 }
@@ -57,7 +57,7 @@
     font-weight: var(--font-weight-100);
     color: var(--neutral-500);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.0625rem;
 }
 
 /* Overlay para Badge */

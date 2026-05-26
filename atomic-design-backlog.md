@@ -47,7 +47,7 @@
 | `tag-artigo` | Tag clicável no rodapé do artigo (plana, sem cor de status) |
 | `logo` | Logotipo da marca em 5 variantes: `horizontal-01`, `horizontal-02`, `wordmark`, `icone-quadrado`, `icone-simples`. SVG inline, responsivo, com link opcional |
 
-### 🧬 Moléculas (17 componentes)
+### 🧬 Moléculas (19 componentes)
 
 | Componente | Descrição |
 |---|---|
@@ -68,11 +68,23 @@
 | `relacionado-item` | Card horizontal compacto de anime relacionado: thumbnail 4rem 2:3 + tipo de relação (laranja) + título |
 | `card-staff` | Card horizontal compacto de membro da equipe: avatar + nome + cargo (Diretor, Compositor, etc.) |
 | `tags-artigo` | Linha de tags clicáveis no rodapé do conteúdo |
+| `review-card` | Card de avaliação de usuário: avatar + nome + data + nota MAL + texto com expand/collapse + link opcional para review completa |
+| `trilho-infinito` | Wrapper reutilizável de scroll horizontal infinito: 2 átomos `btn-nav-arrow` + trilho scroll-snap + JS de loop infinito (clonagem) + drag-to-scroll |
 
-### 🧫 Organismos (14 componentes)
+### 🧫 Organismos (24 componentes)
 
 | Componente | Descrição |
 |---|---|
+| `secao-noticias-recentes` | Grade de `card-noticia` em layout editorial: destaque hero + grid 3 colunas, botão "Ver Mais" |
+| `secao-reviews` | Lista de `review-card` com cabeçalho (título + pill de contagem), limite configurável e botão "Ver mais reviews" opcional |
+| `secao-staff` | Grade de `card-staff` agrupada por cargo (role_group) com subtítulo H3 + barra laranja, limite por grupo e botão opcional |
+| `secao-recomendacoes` | Trilho horizontal scroll snap de `card-recomendacao` com cabeçalho H2 + link "Ver todas" opcional |
+| `secao-estatisticas` | Trilho horizontal scroll snap de `stat-bloco` (score + rank + popularidade + membros), mesmo padrão que `secao-esteira-animes` |
+| `secao-novos-episodios` | Carrossel horizontal de `card-anime` com `badge-horario` visível. Título dinâmico gerado pelo PHP (ex: "Novos Episódios — Domingo"). Usa `trilho-infinito` |
+| `sidebar-anime-info` | Sidebar da página de anime: imagem + metadados (tipo, episódios, status, aired, studios, source, gêneros, duração, rating) |
+| `secao-relacionados` | Lista de `relacionado-item` agrupados dinamicamente por tipo de relação em grades responsivas |
+| `secao-personagens` | Grade de `card-personagem` (pôster 2:3): scroll horizontal mobile, grid auto-fill tablet/desktop |
+| `secao-dubladores` | Grade de `card-personagem-dublador`: grid 4 cols no desktop, scroll horizontal no mobile/tablet |
 | `hero-anime` | Hero da página de detalhe: backdrop desfocado + poster + título H1 + score MAL + gêneros + meta grid + sinopse + CTAs. Schema.org TVSeries |
 | `barra-filtros` | Barra de filtros por categoria/gênero |
 | `footer` | Rodapé principal do site com links semânticos descritivos |
@@ -103,47 +115,15 @@ Todos os 36 componentes atômicos estão implementados no projeto físico.
 
 ---
 
-### 🧬 Moléculas — Falta 1 componente
+### 🧬 Moléculas — Faltam 0 componentes
 
-#### 🔴 Prioridade ALTA
-
-> Nenhuma molécula de alta prioridade restante.
-
-#### 🟡 Prioridade MÉDIA
-
-> Nenhuma molécula de média prioridade restante.
-
-#### 🟢 Prioridade BAIXA
-
-| Componente | Descrição | Fonte |
-|---|---|---|
-| `review-card` | Card de review: autor + data + nota + texto + botão "ler mais" | 🔵 |
+Todas as 19 moléculas estão implementadas no projeto físico.
 
 ---
 
-### 🧫 Organismos — Faltam 8 componentes
+### 🧫 Organismos — Faltam 0 componentes
 
-#### 🔴 Prioridade ALTA
-
-> Nenhum organismo de alta prioridade restante.
-
-#### 🟡 Prioridade MÉDIA
-
-| Componente | Descrição | Fonte |
-|---|---|---|
-| `secao-personagens` | Grid de `card-personagem-dublador` com título "Personagens e Dubladores" | 🔵 |
-| `secao-relacionados` | Lista de `relacionado-item` agrupados por tipo de relação | 🔵 |
-| `sidebar-anime-info` | Sidebar da página de anime: imagem + metadados (tipo, episódios, status, aired, studios, source, gêneros, duração, rating) | 🔵 |
-| `secao-noticias-recentes` | Grade de `card-noticia` para listagem editorial (home ou category page) | 🟠 |
-
-#### 🟢 Prioridade BAIXA
-
-| Componente | Descrição | Fonte |
-|---|---|---|
-| `secao-staff` | Lista de `card-staff` com título "Equipe" | 🔵 |
-| `secao-reviews` | Listagem de `review-card` com paginação | 🔵 |
-| `secao-recomendacoes` | Grid de `card-recomendacao` com título "Recomendações" | 🔵 |
-| `secao-estatisticas` | Bloco com `rating-bar` + distribuição de notas + membros por status | 🔵 |
+Todos os 24 organismos estão implementados no projeto físico.
 
 ---
 
@@ -152,9 +132,9 @@ Todos os 36 componentes atômicos estão implementados no projeto físico.
 | Nível | Existem | Faltam | Total previsto |
 |---|---|---|---|
 | ⚛️ Átomos | 36 | 0 | 36 |
-| 🧬 Moléculas | 17 | 1 | 18 |
-| 🧫 Organismos | 14 | 8 | 22 |
-| **Total** | **67** | **9** | **76** |
+| 🧬 Moléculas | 19 | 0 | 19 |
+| 🧫 Organismos | 24 | 0 | 24 |
+| **Total** | **79** | **0** | **79** |
 
 ---
 
@@ -197,9 +177,25 @@ sidebar-anime-info
   │     └── stat-numero          [EXISTE ✅]
   └── badge-genero               [EXISTE ✅]
 
-secao-personagens
-  └── card-personagem-dublador
+secao-dubladores                [EXISTE ✅]
+  └── card-personagem-dublador  [EXISTE ✅]
         └── avatar-personagem    [EXISTE ✅]
+
+secao-personagens               [EXISTE ✅]
+  └── card-personagem           [EXISTE ✅]
+
+secao-relacionados              [EXISTE ✅]
+  └── relacionado-item          [EXISTE ✅]
+        └── imagem-capa          [EXISTE ✅]
+
+sidebar-anime-info              [EXISTE ✅]
+  ├── imagem-capa                [EXISTE ✅]
+  └── stat-bloco                [EXISTE ✅]
+        ├── rating-score         [EXISTE ✅]
+        └── stat-numero          [EXISTE ✅]
+
+secao-noticias-recentes         [EXISTE ✅]
+  └── card-noticia               [EXISTE ✅]
 
 secao-estatisticas
   ├── rating-bar                 [EXISTE ✅]

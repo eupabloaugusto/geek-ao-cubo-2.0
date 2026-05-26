@@ -2,6 +2,111 @@
 
 Todas as alterações notáveis, adições e exclusões de componentes do projeto serão documentadas neste arquivo de forma contínua.
 
+## [3.4.0] — 2026-05-25
+
+### Adicionado
+- **Organismo `secao-novos-episodios`** (`organisms/secao-novos-episodios.php` / `.css`): carrossel horizontal de `card-anime` com badge de horário (`badge-horario`) visível em cada capa. Título gerado dinamicamente pelo PHP via `date('w')` (ex: "Novos Episódios — Domingo"). Usa `trilho-infinito` para scroll infinito com setas. Documentação em `docs/organisms/secao-novos-episodios.md`.
+
+---
+
+## [3.3.0] — 2026-05-25
+
+### Adicionado
+- **Molécula `trilho-infinito`** (`molecules/trilho-infinito.php` / `.css` / `.js`): wrapper reutilizável de scroll horizontal infinito. Combina 2 átomos `btn-nav-arrow` (prev/next) com trilho scroll-snap. Scroll infinito via clonagem de slides, drag-to-scroll desktop e setas com `scrollBy` 75%. Documentação em `docs/molecules/trilho-infinito.md`.
+
+### Modificado
+- **`secao-esteira-animes`** — migrado para usar `trilho-infinito`; classes `js-esteira-*` substituídas por `js-trilho-*`; `secao-esteira-animes.js` esvaziado/deprecado.
+- **`secao-recomendacoes`** — adicionado `trilho-infinito` (setas + scroll infinito). CSS de scroll/scrollbar removido (delegado à molécula).
+- **`secao-estatisticas`** — adicionado `trilho-infinito` (setas + scroll infinito). CSS de scroll/scrollbar removido (delegado à molécula).
+
+---
+
+## [3.2.0] — 2026-05-25
+
+### Adicionado
+- **Organismo `secao-estatisticas`** (`organisms/secao-estatisticas.php` & `.css`): seção de estatísticas do anime com trilho horizontal scroll snap nativo, padrão idêntico ao `secao-esteira-animes`. Cada slide é um `stat-bloco` (score + rank + popularidade + membros). Slide `20rem` mobile → `24rem` desktop. Sem JS. Documentação em `docs/organisms/secao-estatisticas.md`.
+- **`storybook.html`** — adicionado organismo `secao-estatisticas` na seção Organismos.
+
+---
+
+## [3.1.0] — 2026-05-25
+
+### Adicionado
+- **Organismo `secao-recomendacoes`** (`organisms/secao-recomendacoes.php` & `.css`): seção de animes recomendados em trilho horizontal com scroll snap nativo. Cabeçalho com H2 + link opcional "Ver todas". Cards `card-recomendacao` (poster 2:3 + contador + título). Sem JS. Documentação em `docs/organisms/secao-recomendacoes.md`.
+- **`storybook.html`** — adicionado organismo `secao-recomendacoes` na seção Organismos.
+- **Marco:** com este componente, o projeto atinge **76/76 componentes planejados ✅**.
+
+---
+
+## [3.0.0] — 2026-05-25
+
+### Adicionado
+- **Organismo `secao-staff`** (`organisms/secao-staff.php` & `.css`): seção de equipe de produção da página de detalhe do anime. Agrupa `card-staff` dinamicamente por cargo via campo `role_group`, com subtítulo H3 com barra laranja por grupo, limite configurável por grupo (`$max_per_group`, padrão 6) e botão "Ver equipe completa" opcional. Grade responsiva: 1 col mobile → 2 cols tablet → 3 cols desktop. Sem JS. Documentação em `docs/organisms/secao-staff.md`.
+- **`storybook.html`** — adicionado organismo `secao-staff` na seção Organismos.
+
+---
+
+## [2.9.0] — 2026-05-25
+
+### Adicionado
+- **Organismo `secao-reviews`** (`organisms/secao-reviews.php` & `.css`): seção de avaliações de usuários para a página de detalhe do anime. Lista de `review-card` com cabeçalho (H2 + pill de contagem total), limite configurável via `$max_reviews` (padrão 6) e botão "Ver mais reviews" opcional. Desktop largo (≥ 75rem): grade de 2 colunas. Schema.org `ItemList`. Sem JS próprio. Documentação em `docs/organisms/secao-reviews.md`.
+- **`storybook.html`** — adicionado organismo `secao-reviews` na seção Organismos.
+
+---
+
+## [2.8.0] — 2026-05-25
+
+### Adicionado
+- **Molécula `review-card`** (`molecules/review-card.php`, `.css`, `.js`): Card de avaliação de usuário para a seção de reviews da página de detalhe do anime. Exibe avatar circular do revisor (`avatar-personagem`), nome (clicável se `reviewer_url` fornecido), data, nota MAL (`nota-mal`) e texto da review com expand/collapse in-page via JS. Suporta link externo opcional para a review completa. Schema.org `Review` com `author`, `reviewRating` e `reviewBody`. Documentação em `docs/molecules/review-card.md`.
+- **`storybook.html`** — adicionada molécula `review-card` na seção Moléculas com 3 variantes: card completo, card sem avatar e card sem nota.
+
+---
+
+## [2.7.0] — 2026-05-25
+
+### Adicionado
+- **Organismo `secao-noticias-recentes`** (`organisms/secao-noticias-recentes.php` & `.css`): layout editorial contendo o primeiro artigo destacado como card-noticia--hero ( horizontal split 60/40) e os artigos seguintes em uma grade de 3 colunas de card-noticia--grid. Botão opcional "Ver mais notícias" na base. Documentação em `docs/organisms/secao-noticias-recentes.md`.
+
+---
+
+## [2.6.0] — 2026-05-25
+
+### Adicionado
+- **Organismo `sidebar-anime-info`** (`organisms/sidebar-anime-info.php` & `.css`): barra lateral (sidebar) contendo poster 2:3, bloco integrado de estatísticas do MyAnimeList (stat-bloco) e listagem vertical detalhada de metadados. Documentação em `docs/organisms/sidebar-anime-info.md`.
+
+---
+
+## [2.5.0] — 2026-05-25
+
+### Adicionado
+- **Organismo `secao-relacionados`** (`organisms/secao-relacionados.php` & `.css`): exibe animes, mangás e mídias relacionadas agrupadas dinamicamente por seu tipo de relação (ex: Sequência, Prequel, Adaptação) em grades responsivas (1 col no mobile, 2 col no tablet, 3 col no desktop largo). Documentação em `docs/organisms/secao-relacionados.md`.
+
+---
+
+## [2.4.0] — 2026-05-25
+
+### Alterado
+- **Molécula `card-personagem`** (`molecules/card-personagem.php` & `.css`): restruturado layout do card. O nome e nome em Kanji agora ficam fora e abaixo do poster. O badge de papel (Principal/Secundário) continua sobreposto na imagem (dentro do poster). A elevação 3D, sombras e bordas do hover agora se aplicam apenas ao poster de imagem, mantendo a tipografia perfeitamente estática com um leve acento de cor. Documentação em `docs/molecules/card-personagem.md`.
+
+---
+
+## [2.3.0] — 2026-05-25
+
+### Adicionado
+- **Organismo `secao-personagens`** (`organisms/secao-personagens.php` & `.css`): grade de cards cinematográficos de personagem (`card-personagem`). Mobile `< 48rem`: scroll horizontal snap, cards `7rem`. Tablet `≥ 48rem`: grid `auto-fill minmax(8rem, 1fr)`. Desktop `≥ 64rem`: grid `auto-fill minmax(9rem, 1fr)`. Documentação em `docs/organisms/secao-personagens.md`.
+
+---
+
+## [2.2.0] — 2026-05-25
+
+### Adicionado
+- **Organismo `secao-dubladores`** (`organisms/secao-dubladores.php` & `.css`): seção de voice actors. Desktop: grid 4 colunas. Tablet/Mobile: scroll horizontal com `scroll-snap`. Documentação em `docs/organisms/secao-dubladores.md`.
+
+### Alterado
+- **Molécula `card-personagem-dublador`** — redesign completo (v2.2.0): layout unificado focado no dublador. Avatar circular `5rem` (mobile) / `4.5rem` (desktop). Mobile/tablet: `flex-column` centralizado. Desktop (≥ 64rem): `flex-row`. Novos parâmetros: `character_name`, `episodios`, `ano_inicio`, `ano_fim`. Linha de meta `519 episódios • 2000–2024` gerada automaticamente. Schema.org `Person`.
+
+---
+
 ## [2.1.0] — 2026-05-25
 
 ### Adicionado

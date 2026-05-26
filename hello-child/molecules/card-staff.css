@@ -49,6 +49,10 @@ a.card-staff:focus-visible {
 .card-staff__avatar {
 	flex-shrink: 0;
 	pointer-events: none;
+	width: 3rem;
+	height: 3rem;
+	min-width: 3rem;
+	min-height: 3rem;
 }
 
 /* ==========================================================================
@@ -99,7 +103,6 @@ a.card-staff:hover .card-staff__name {
 /*
  * Modo compacto (≤ 30rem / ~480px)
  * Avatar reduzido para 2.5rem, padding e gap mais apertados.
- * Avatar usa inline style no PHP, então usa !important para sobrescrever.
  */
 @media (max-width: 30rem) {
 	.card-staff {
@@ -108,10 +111,10 @@ a.card-staff:hover .card-staff__name {
 	}
 
 	.card-staff__avatar {
-		width:      2.5rem !important;
-		height:     2.5rem !important;
-		min-width:  2.5rem !important;
-		min-height: 2.5rem !important;
+		width:      2.5rem;
+		height:     2.5rem;
+		min-width:  2.5rem;
+		min-height: 2.5rem;
 	}
 
 

@@ -1,0 +1,105 @@
+/**
+ * Organism CSS: Seção Conteúdo Relacionado (secao-relacionados)
+ *
+ * Agrupa itens relacionados em categorias sob subtítulos (H3) com barras de realce.
+ * Grade responsiva de 1 col (mobile), 2 col (tablet) e 3 col (desktop).
+ *
+ * @package hello-elementor-child
+ */
+
+/* ==========================================================================
+   SEÇÃO BASE
+   ========================================================================== */
+
+.secao-relacionados {
+	width: 100%;
+}
+
+.secao-relacionados__inner {
+	max-width: var(--container-max);
+	margin: 0 auto;
+	padding: var(--space-700) var(--space-400);
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-500);
+}
+
+/* ==========================================================================
+   TÍTULO PRINCIPAL
+   ========================================================================== */
+
+.secao-relacionados__title {
+	font-family: var(--font-heading);
+	font-size: var(--text-sm-size);
+	font-weight: 700;
+	color: var(--neutral-100);
+	margin: 0;
+	line-height: 1.2;
+}
+
+/* ==========================================================================
+   GRUPOS DE RELACIONAMENTO
+   ========================================================================== */
+
+.secao-relacionados__groups {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-600);
+	width: 100%;
+}
+
+.secao-relacionados__group {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+/* Subtítulo do Grupo — Barra de realce laranja à esquerda */
+.secao-relacionados__group-title {
+	font-family: var(--font-heading);
+	font-size: var(--text-xs-size);
+	font-weight: 700;
+	color: var(--neutral-300);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	margin: 0 0 var(--space-300) 0;
+	padding-left: var(--space-200);
+	border-left: 0.1875rem solid var(--color-primary); /* Barra vertical laranja */
+	line-height: 1.1;
+}
+
+/* ==========================================================================
+   GRADE RESPONSIVA (GRID)
+   ========================================================================== */
+
+.secao-relacionados__grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--space-300);
+	width: 100%;
+}
+
+/* Tablet (≥ 48rem) — Grade com 2 colunas */
+@media (min-width: 48rem) {
+	.secao-relacionados__grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+/* Desktop (≥ 64rem) — Ajustes de espaçamento do container */
+@media (min-width: 64rem) {
+	.secao-relacionados__inner {
+		padding-inline: var(--space-600);
+	}
+
+	.secao-relacionados__title {
+		font-size: var(--text-md-sm-size);
+	}
+}
+
+/* Desktop Largo (≥ 75rem) — Grade com 3 colunas */
+@media (min-width: 75rem) {
+	.secao-relacionados__grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}

@@ -191,8 +191,20 @@ $backdrop_url = ! empty( $imagem_backdrop ) ? $imagem_backdrop : $imagem_poster;
 
 			<!-- B6. Sinopse -->
 			<?php if ( ! empty( $sinopse ) ) : ?>
-				<div class="hero-anime__sinopse">
+				<div class="hero-anime__sinopse js-hero-sinopse">
 					<p class="hero-anime__sinopse-text" itemprop="description"><?php echo $sinopse; ?></p>
+					<button
+						type="button"
+						class="hero-anime__sinopse-toggle js-hero-sinopse-toggle"
+						aria-expanded="false"
+						data-label-expand="<?php esc_attr_e( 'Ler tudo', 'hello-elementor-child' ); ?>"
+						data-label-collapse="<?php esc_attr_e( 'Ler menos', 'hello-elementor-child' ); ?>"
+					>
+						<span class="hero-anime__sinopse-toggle-text"><?php _e( 'Ler tudo', 'hello-elementor-child' ); ?></span>
+						<svg class="hero-anime__sinopse-toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+							<polyline points="6 9 12 15 18 9"></polyline>
+						</svg>
+					</button>
 				</div>
 			<?php endif; ?>
 
@@ -227,3 +239,17 @@ $backdrop_url = ! empty( $imagem_backdrop ) ? $imagem_backdrop : $imagem_poster;
 	<!-- /hero-anime__inner -->
 
 </section>
+
+<script>
+document.addEventListener( 'DOMContentLoaded', function () {
+	document.querySelectorAll( '.js-hero-sinopse-toggle' ).forEach( function ( btn ) {
+		btn.addEventListener( 'click', function () {
+			var sinopse  = this.closest( '.js-hero-sinopse' );
+			var expanded = sinopse.classList.toggle( 'hero-anime__sinopse--expanded' );
+			this.setAttribute( 'aria-expanded', expanded ? 'true' : 'false' );
+			this.querySelector( '.hero-anime__sinopse-toggle-text' ).textContent =
+				expanded ? this.dataset.labelCollapse : this.dataset.labelExpand;
+		} );
+	} );
+} );
+</script>

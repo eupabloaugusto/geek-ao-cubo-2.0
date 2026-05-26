@@ -22,18 +22,17 @@ if ( empty( $animes ) || ! is_array( $animes ) ) {
 	return;
 }
 
-$esteira_id = 'esteira-animes-' . wp_rand( 1000, 9999 );
 ?>
 
-<section class="secao-esteira-animes js-esteira-container" id="<?php echo esc_attr( $esteira_id ); ?>" aria-label="<?php echo esc_attr( $titulo_secao ); ?>">
-	
+<section class="secao-esteira-animes" aria-label="<?php echo esc_attr( $titulo_secao ); ?>">
+
 	<!-- 1. Cabeçalho de Título + Link "Ver Todos" -->
 	<?php if ( ! empty( $titulo_secao ) ) : ?>
 		<header class="secao-esteira-animes__header">
 			<h2 class="secao-esteira-animes__title">
 				<?php echo $titulo_secao; ?>
 			</h2>
-			
+
 			<?php if ( ! empty( $url_ver_todos ) ) : ?>
 				<a href="<?php echo $url_ver_todos; ?>" class="secao-esteira-animes__link-all" aria-label="<?php echo esc_attr( sprintf( __( 'Ver todos os animes de: %s', 'hello-elementor-child' ), $titulo_secao ) ); ?>">
 					<span><?php _e( 'Ver Todos', 'hello-elementor-child' ); ?></span>
@@ -45,38 +44,22 @@ $esteira_id = 'esteira-animes-' . wp_rand( 1000, 9999 );
 		</header>
 	<?php endif; ?>
 
-	<!-- 2. Trilho Slider com Setas Flutuantes -->
-	<div class="secao-esteira-animes__wrapper">
-		
-		<!-- Seta Anterior -->
-		<?php 
-		mm_render_component( 'atoms', 'btn-nav-arrow', array( 
-			'direction' => 'prev', 
-			'class'     => 'secao-esteira-animes__arrow secao-esteira-animes__arrow--prev js-esteira-prev' 
-		) ); 
-		?>
+	<!-- 2. Trilho com setas e scroll infinito (molécula trilho-infinito) -->
+	<?php
+	ob_start();
+	foreach ( $animes as $anime_args ) :
+		$anime_args['horario'] = '';
+		echo '<div class="secao-esteira-animes__slide js-trilho__slide">';
+		mm_render_component( 'molecules', 'card-anime', $anime_args );
+		echo '</div>';
+	endforeach;
+	$track_html = ob_get_clean();
 
-		<!-- Trilho Físico de Rolagem Horizontal (Scroll Snap Track) -->
-		<div class="secao-esteira-animes__track js-esteira-track">
-			<?php foreach ( $animes as $anime_args ) : ?>
-				<div class="secao-esteira-animes__slide js-esteira-slide">
-					<?php 
-					// Cards na esteira de catálogo não devem exibir o horário
-					$anime_args['horario'] = '';
-					mm_render_component( 'molecules', 'card-anime', $anime_args ); 
-					?>
-				</div>
-			<?php endforeach; ?>
-		</div>
-
-		<!-- Seta Próxima -->
-		<?php 
-		mm_render_component( 'atoms', 'btn-nav-arrow', array( 
-			'direction' => 'next', 
-			'class'     => 'secao-esteira-animes__arrow secao-esteira-animes__arrow--next js-esteira-next' 
-		) ); 
-		?>
-
-	</div>
+	mm_render_component( 'molecules', 'trilho-infinito', array(
+		'track_html'  => $track_html,
+		'class'       => 'secao-esteira-animes__wrapper',
+		'track_class' => 'secao-esteira-animes__track',
+	) );
+	?>
 
 </section>

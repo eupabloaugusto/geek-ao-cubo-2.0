@@ -72,11 +72,11 @@
    COLUNA DE CONTEÚDO RIO (LEITURA / LEGIBILIDADE)
    ========================================= */
 .secao-artigo-unico__body {
-    max-width: 720px;
+    max-width: 45rem;
     margin: 0 auto var(--space-600) auto;
     font-family: var(--font-body);
-    font-size: clamp(1rem, 2vw, 1.09rem); /* Escala de 16px a 17.5px */
-    color: var(--neutral-200);
+    font-size: clamp(1rem, 2vw, 1.09rem);
+    color: var(--neutral-400);
     line-height: 1.75;
     font-weight: var(--font-weight-400);
 }

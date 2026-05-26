@@ -43,7 +43,7 @@ $attrs = ! empty( $staff_url )
 	mm_render_component( 'atoms', 'avatar-personagem', array(
 		'image_url'      => $staff_image,
 		'character_name' => $staff_name,
-		'size'           => 48,
+		'size'           => 0,
 		'class'          => 'card-staff__avatar',
 	) );
 	?>

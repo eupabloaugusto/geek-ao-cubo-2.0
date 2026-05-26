@@ -73,17 +73,15 @@
 .hero-anime__poster {
 	flex-shrink: 0;
 	width: 8rem;
-	align-self: center;
-	border-radius: var(--border-radius-200);
-	overflow: hidden;
-	box-shadow:
-		0 0.5rem 2rem rgba(0, 0, 0, 0.6),
-		0 0 0 0.0625rem rgba(245, 107, 21, 0.2);
+	align-self: flex-start;
 }
 
 .hero-anime__poster .imagem-capa-container {
-	border-radius: 0;
-	border: none;
+	border-radius: var(--border-radius-200);
+	border-color: rgba(245, 107, 21, 0.2);
+	box-shadow:
+		0 0.5rem 2rem rgba(0, 0, 0, 0.6),
+		0 0 0 0.0625rem rgba(245, 107, 21, 0.2);
 }
 
 /* ==========================================================================
@@ -254,10 +252,48 @@
 	color: var(--neutral-300);
 	margin: 0;
 	display: -webkit-box;
-	-webkit-line-clamp: 4;
-	line-clamp: 4;
+	-webkit-line-clamp: 3;
+	line-clamp: 3;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
+}
+
+.hero-anime__sinopse--expanded .hero-anime__sinopse-text {
+	-webkit-line-clamp: unset;
+	line-clamp: unset;
+	overflow: visible;
+	display: block;
+}
+
+.hero-anime__sinopse-toggle {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-100);
+	margin-top: var(--space-200);
+	padding: 0;
+	background: none;
+	border: none;
+	cursor: pointer;
+	font-family: var(--font-body);
+	font-size: var(--text-xs-size);
+	font-weight: 600;
+	color: var(--color-primary);
+	text-decoration: none;
+	transition: opacity 0.2s ease;
+}
+
+.hero-anime__sinopse-toggle:hover {
+	opacity: 0.75;
+}
+
+.hero-anime__sinopse-toggle-icon {
+	width: 1rem;
+	height: 1rem;
+	transition: transform 0.2s ease;
+}
+
+.hero-anime__sinopse--expanded .hero-anime__sinopse-toggle-icon {
+	transform: rotate(180deg);
 }
 
 /* ==========================================================================
@@ -275,7 +311,7 @@
    RESPONSIVIDADE
    ========================================================================== */
 
-/* Tablet / Desktop (≥ 48rem / ~768px) */
+/* Tablet / Desktop (≥ 48rem) */
 @media (min-width: 48rem) {
 	.hero-anime__inner {
 		flex-direction: row;
@@ -293,19 +329,12 @@
 		gap: var(--space-400);
 	}
 
-	.hero-anime__sinopse-text {
-		-webkit-line-clamp: unset;
-		line-clamp: unset;
-		overflow: visible;
-		display: block;
-	}
-
 	.hero-anime__meta {
 		grid-template-columns: repeat(3, 1fr);
 	}
 }
 
-/* Large Desktop (≥ 64rem / ~1024px) */
+/* Large Desktop (≥ 64rem) */
 @media (min-width: 64rem) {
 	.hero-anime__poster {
 		width: 14rem;
@@ -317,5 +346,16 @@
 
 	.hero-anime__meta {
 		grid-template-columns: repeat(4, 1fr);
+	}
+
+	.hero-anime__sinopse-text {
+		-webkit-line-clamp: unset;
+		line-clamp: unset;
+		overflow: visible;
+		display: block;
+	}
+
+	.hero-anime__sinopse-toggle {
+		display: none;
 	}
 }

@@ -44,8 +44,21 @@
   <link rel="stylesheet" href="molecules/card-staff.css">
   <link rel="stylesheet" href="molecules/card-recomendacao.css">
   <link rel="stylesheet" href="molecules/relacionado-item.css">
+  <link rel="stylesheet" href="organisms/secao-dubladores.css">
+  <link rel="stylesheet" href="organisms/secao-personagens.css">
+  <link rel="stylesheet" href="organisms/secao-relacionados.css">
+  <link rel="stylesheet" href="organisms/sidebar-anime-info.css">
+  <link rel="stylesheet" href="organisms/secao-noticias-recentes.css">
+  <link rel="stylesheet" href="molecules/review-card.css">
+  <link rel="stylesheet" href="organisms/secao-reviews.css">
+  <link rel="stylesheet" href="organisms/secao-staff.css">
+  <link rel="stylesheet" href="organisms/secao-recomendacoes.css">
+  <link rel="stylesheet" href="molecules/stat-bloco.css">
+  <link rel="stylesheet" href="molecules/trilho-infinito.css">
+  <link rel="stylesheet" href="organisms/secao-estatisticas.css">
   <link rel="stylesheet" href="organisms/hero-anime.css">
   <link rel="stylesheet" href="organisms/secao-esteira-animes.css">
+  <link rel="stylesheet" href="organisms/secao-novos-episodios.css">
   <link rel="stylesheet" href="organisms/secao-artigo-unico.css">
   <link rel="stylesheet" href="molecules/breadcrumb.css">
   <link rel="stylesheet" href="molecules/sidebar-assistir-agora.css">
@@ -1970,15 +1983,15 @@
             <span class="sb-stat-label">Átomos</span>
           </div>
           <div class="sb-stat-card">
-            <span class="sb-stat-num">17</span>
+            <span class="sb-stat-num">19</span>
             <span class="sb-stat-label">Moléculas</span>
           </div>
           <div class="sb-stat-card">
-            <span class="sb-stat-num">12</span>
+            <span class="sb-stat-num">24</span>
             <span class="sb-stat-label">Organismos</span>
           </div>
           <div class="sb-stat-card sb-stat-card--total">
-            <span class="sb-stat-num">67</span>
+            <span class="sb-stat-num">79</span>
             <span class="sb-stat-label">Componentes Ativos</span>
           </div>
         </div>
@@ -3663,41 +3676,41 @@ mm_render_component('atoms', 'logo', ['variante' => 'icone-quadrado', 'link' => 
             <div class="sb-component__preview" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--space-400); width: 100%; max-width: 700px; margin: 0 auto;">
               <!-- Tanjiro Kamado: Principal com link -->
               <a href="#" class="card-personagem card-personagem--main" aria-label="Personagem: Tanjiro Kamado">
-                <img class="card-personagem__image" src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=400&q=80" alt="Imagem do personagem Tanjiro Kamado" loading="lazy" decoding="async" />
-                <div class="card-personagem__overlay" aria-hidden="true"></div>
-                <div class="card-personagem__panel">
+                <div class="card-personagem__poster">
+                  <img class="card-personagem__image" src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=400&q=80" alt="Imagem do personagem Tanjiro Kamado" loading="lazy" decoding="async" />
+                  <div class="card-personagem__overlay" aria-hidden="true"></div>
                   <span class="card-personagem__badge card-personagem__badge--main">Principal</span>
-                  <div class="card-personagem__info">
-                    <p class="card-personagem__name">Tanjiro Kamado</p>
-                    <p class="card-personagem__name-kanji" lang="ja">竈門 炭治郎</p>
-                  </div>
+                </div>
+                <div class="card-personagem__info">
+                  <p class="card-personagem__name">Tanjiro Kamado</p>
+                  <p class="card-personagem__name-kanji" lang="ja">竈門 炭治郎</p>
                 </div>
               </a>
 
               <!-- Nezuko Kamado: Fallback sem imagem -->
               <div class="card-personagem card-personagem--main" aria-label="Personagem: Nezuko Kamado">
-                <div class="card-personagem__fallback" aria-hidden="true">
-                  <span class="card-personagem__initial">N</span>
-                </div>
-                <div class="card-personagem__overlay" aria-hidden="true"></div>
-                <div class="card-personagem__panel">
-                  <span class="card-personagem__badge card-personagem__badge--main">Principal</span>
-                  <div class="card-personagem__info">
-                    <p class="card-personagem__name">Nezuko Kamado</p>
+                <div class="card-personagem__poster">
+                  <div class="card-personagem__fallback" aria-hidden="true">
+                    <span class="card-personagem__initial">N</span>
                   </div>
+                  <div class="card-personagem__overlay" aria-hidden="true"></div>
+                  <span class="card-personagem__badge card-personagem__badge--main">Principal</span>
+                </div>
+                <div class="card-personagem__info">
+                  <p class="card-personagem__name">Nezuko Kamado</p>
                 </div>
               </div>
 
               <!-- Zenitsu Agatsuma: Secundário -->
               <div class="card-personagem card-personagem--supporting" aria-label="Personagem: Zenitsu Agatsuma">
-                <img class="card-personagem__image" src="https://images.unsplash.com/photo-1578632767115-351597cf2477?w=400&q=80" alt="Imagem do personagem Zenitsu Agatsuma" loading="lazy" decoding="async" />
-                <div class="card-personagem__overlay" aria-hidden="true"></div>
-                <div class="card-personagem__panel">
+                <div class="card-personagem__poster">
+                  <img class="card-personagem__image" src="https://images.unsplash.com/photo-1578632767115-351597cf2477?w=400&q=80" alt="Imagem do personagem Zenitsu Agatsuma" loading="lazy" decoding="async" />
+                  <div class="card-personagem__overlay" aria-hidden="true"></div>
                   <span class="card-personagem__badge card-personagem__badge--supporting">Secundário</span>
-                  <div class="card-personagem__info">
-                    <p class="card-personagem__name">Zenitsu Agatsuma</p>
-                    <p class="card-personagem__name-kanji" lang="ja">我妻 善逸</p>
-                  </div>
+                </div>
+                <div class="card-personagem__info">
+                  <p class="card-personagem__name">Zenitsu Agatsuma</p>
+                  <p class="card-personagem__name-kanji" lang="ja">我妻 善逸</p>
                 </div>
               </div>
             </div>
@@ -3729,90 +3742,70 @@ mm_render_component( 'molecules', 'card-personagem', array(
             </div>
           </article>
 
-          <!-- Card de Personagem e Dublador (card-personagem-dublador) -->
+          <!-- Card de Dublador (card-personagem-dublador) -->
           <article class="sb-component" id="card-personagem-dublador-preview">
             <header class="sb-component__header">
               <div class="sb-component__header-info">
-                <h3 class="sb-component__name">Card de Personagem e Dublador (card-personagem-dublador)</h3>
-                <p class="sb-component__desc">Card horizontal compacto estilo MAL clássico. Lado esquerdo: avatar + nome + role do personagem. Lado direito (espelhado): idioma + nome + avatar do VA. Cada lado é individualmente clicável.</p>
+                <h3 class="sb-component__name">Card de Dublador (card-personagem-dublador)</h3>
+                <p class="sb-component__desc">Card focado no voice actor: foto circular + nome + personagem dublado + idioma + meta opcional (episódios • anos). Mobile/tablet: flex-column centralizado. Desktop: flex-row.</p>
               </div>
               <div class="sb-component__meta">
                 <code class="sb-component__file">molecules/card-personagem-dublador.php</code>
               </div>
             </header>
-            <div class="sb-component__preview" style="background-color: var(--neutral-900); padding: var(--space-600); display: flex; flex-direction: column; gap: var(--space-500); width: 100%;">
+            <div class="sb-component__preview" style="background-color: var(--neutral-900); padding: var(--space-600); display: flex; flex-direction: row; flex-wrap: wrap; gap: var(--space-600); width: 100%; align-items: flex-start;">
 
-              <!-- Exemplo 1: Principal com imagens e links -->
-              <div class="card-personagem-dublador">
-                <a href="#" class="card-personagem-dublador__side card-personagem-dublador__side--character" aria-label="Ver personagem: Tanjiro Kamado">
-                  <div class="avatar-personagem card-personagem-dublador__avatar" style="width:54px;height:54px;min-width:54px;min-height:54px;" title="Tanjiro Kamado">
-                    <img class="avatar-personagem__image" src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=120&q=80" alt="Avatar de Tanjiro Kamado" loading="lazy" width="54" height="54">
-                  </div>
-                  <div class="card-personagem-dublador__info">
-                    <span class="card-personagem-dublador__name">Tanjiro Kamado</span>
-                    <span class="card-personagem-dublador__role card-personagem-dublador__role--main">Principal</span>
-                  </div>
-                </a>
-                <div class="card-personagem-dublador__divider" aria-hidden="true"></div>
-                <a href="#" class="card-personagem-dublador__side card-personagem-dublador__side--va" aria-label="Ver dublador: Natsuki Hanae">
-                  <div class="card-personagem-dublador__info card-personagem-dublador__info--va">
-                    <span class="card-personagem-dublador__name">Natsuki Hanae</span>
-                    <span class="card-personagem-dublador__language">Japonês</span>
-                  </div>
-                  <div class="avatar-personagem card-personagem-dublador__avatar" style="width:54px;height:54px;min-width:54px;min-height:54px;" title="Natsuki Hanae">
-                    <img class="avatar-personagem__image" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=120&q=80" alt="Avatar de Natsuki Hanae" loading="lazy" width="54" height="54">
-                  </div>
-                </a>
-              </div>
-
-              <!-- Exemplo 2: Secundário com fallback de avatar -->
-              <div class="card-personagem-dublador">
-                <div class="card-personagem-dublador__side card-personagem-dublador__side--character">
-                  <div class="avatar-personagem card-personagem-dublador__avatar" style="width:54px;height:54px;min-width:54px;min-height:54px;" title="Zenitsu Agatsuma">
-                    <div class="avatar-personagem__fallback" aria-label="Avatar de Zenitsu Agatsuma (Sem Foto)" role="img">
-                      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50" fill="var(--neutral-800)"/><path d="M50 20C42.3 20 36 26.3 36 34C36 37.6 37.4 40.9 39.7 43.3C30.4 46.2 23.5 54.8 23.0 65.3C22.9 66.8 24.1 68 25.6 68H74.4C75.9 68 77.1 66.8 77.0 65.3C76.5 54.8 69.6 46.2 60.3 43.3C62.6 40.9 64 37.6 64 34C64 26.3 57.7 20 50 20Z" fill="var(--neutral-600)"/></svg>
-                    </div>
-                  </div>
-                  <div class="card-personagem-dublador__info">
-                    <span class="card-personagem-dublador__name">Zenitsu Agatsuma</span>
-                    <span class="card-personagem-dublador__role card-personagem-dublador__role--supporting">Secundário</span>
+              <!-- Exemplo 1: Com imagem, link e meta completa -->
+              <a href="#" class="card-personagem-dublador" aria-label="Ver perfil do dublador: Romi Park" itemscope itemtype="https://schema.org/Person">
+                <div class="card-personagem-dublador__avatar-wrap">
+                  <div class="avatar-personagem card-personagem-dublador__avatar" style="width:80px;height:80px;min-width:80px;min-height:80px;" title="Romi Park">
+                    <img class="avatar-personagem__image" src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=160&q=80" alt="Avatar de Romi Park" loading="lazy" width="80" height="80">
                   </div>
                 </div>
-                <div class="card-personagem-dublador__divider" aria-hidden="true"></div>
-                <div class="card-personagem-dublador__side card-personagem-dublador__side--va">
-                  <div class="card-personagem-dublador__info card-personagem-dublador__info--va">
-                    <span class="card-personagem-dublador__name">Hiro Shimono</span>
-                    <span class="card-personagem-dublador__language">Japonês</span>
-                  </div>
-                  <div class="avatar-personagem card-personagem-dublador__avatar" style="width:54px;height:54px;min-width:54px;min-height:54px;" title="Hiro Shimono">
-                    <div class="avatar-personagem__fallback" aria-label="Avatar de Hiro Shimono (Sem Foto)" role="img">
-                      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50" fill="var(--neutral-800)"/><path d="M50 20C42.3 20 36 26.3 36 34C36 37.6 37.4 40.9 39.7 43.3C30.4 46.2 23.5 54.8 23.0 65.3C22.9 66.8 24.1 68 25.6 68H74.4C75.9 68 77.1 66.8 77.0 65.3C76.5 54.8 69.6 46.2 60.3 43.3C62.6 40.9 64 37.6 64 34C64 26.3 57.7 20 50 20Z" fill="var(--neutral-600)"/></svg>
+                <div class="card-personagem-dublador__info">
+                  <span class="card-personagem-dublador__name" itemprop="name">Romi Park</span>
+                  <span class="card-personagem-dublador__character">Edward Elric</span>
+                  <span class="card-personagem-dublador__language">Japonês</span>
+                  <span class="card-personagem-dublador__meta">64 episódios • 2009–2010</span>
+                </div>
+              </a>
+
+              <!-- Exemplo 2: Só nome e personagem (sem meta) -->
+              <article class="card-personagem-dublador">
+                <div class="card-personagem-dublador__avatar-wrap">
+                  <div class="avatar-personagem card-personagem-dublador__avatar" style="width:80px;height:80px;min-width:80px;min-height:80px;" title="Maxey Whitehead">
+                    <div class="avatar-personagem__fallback" aria-label="Avatar de Maxey Whitehead (Sem Foto)" role="img">
+                      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50" fill="var(--neutral-800)"/><path d="M50 20C42.3 20 36 26.3 36 34C36 37.6 37.4 40.9 39.7 43.3C30.4 46.2 23.5 54.8 23.0 65.3C22.9 66.8 24.1 68 25.6 68H74.4C75.9 68 77.1 66.8 77.0 65.3C76.5 54.8 69.6 46.2 60.3 43.3C62.6 40.9 64 37.6 64 34C64 26.3 57.7 20 50 20ZM50 26C54.4 26 58 29.6 58 34C58 38.4 54.4 42 50 42C45.6 42 42 38.4 42 34C42 29.6 45.6 26 50 26Z" fill="var(--neutral-600)"/></svg>
                     </div>
                   </div>
                 </div>
-              </div>
+                <div class="card-personagem-dublador__info">
+                  <span class="card-personagem-dublador__name" itemprop="name">Maxey Whitehead</span>
+                  <span class="card-personagem-dublador__character">Alphonse Elric</span>
+                  <span class="card-personagem-dublador__language">Inglês</span>
+                </div>
+              </article>
 
             </div>
             <div class="sb-component__code">
               <pre>&lt;?php
-// Personagem principal com imagens e links:
+// Com imagem, link e meta completa:
 mm_render_component( 'molecules', 'card-personagem-dublador', array(
-    'character_name'  => 'Tanjiro Kamado',
-    'character_image' => 'https://cdn.exemplo.com/tanjiro.jpg',
-    'character_role'  => 'Principal',
-    'character_url'   => home_url( '/personagem/tanjiro-kamado/' ),
-    'va_name'         => 'Natsuki Hanae',
-    'va_image'        => 'https://cdn.exemplo.com/natsuki-hanae.jpg',
-    'va_language'     => 'Japonês',
-    'va_url'          => home_url( '/dublador/natsuki-hanae/' ),
+    'va_name'        => 'Romi Park',
+    'va_image'       => 'https://cdn.myanimelist.net/images/voiceactors/1/54283.jpg',
+    'va_url'         => 'https://myanimelist.net/people/83/Romi_Park',
+    'va_language'    => 'Japonês',
+    'character_name' => 'Edward Elric',
+    'episodios'      => 64,
+    'ano_inicio'     => 2009,
+    'ano_fim'        => 2010,
 ) );
 
-// Personagem secundário sem imagens nem links:
+// Sem URL (article) e sem meta:
 mm_render_component( 'molecules', 'card-personagem-dublador', array(
-    'character_name' => 'Zenitsu Agatsuma',
-    'character_role' => 'Secundário',
-    'va_name'        => 'Hiro Shimono',
-    'va_language'    => 'Japonês',
+    'va_name'        => 'Maxey Whitehead',
+    'va_language'    => 'Inglês',
+    'character_name' => 'Alphonse Elric',
 ) );
 ?&gt;</pre>
             </div>
@@ -3833,7 +3826,7 @@ mm_render_component( 'molecules', 'card-personagem-dublador', array(
 
               <!-- Com link e imagem -->
               <a href="#" class="card-staff" aria-label="Ver perfil de Haruo Sotozaki">
-                <div class="avatar-personagem card-staff__avatar" style="width:48px;height:48px;min-width:48px;min-height:48px;" title="Haruo Sotozaki">
+                <div class="avatar-personagem card-staff__avatar" title="Haruo Sotozaki">
                   <img class="avatar-personagem__image" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&q=80" alt="Avatar de Haruo Sotozaki" loading="lazy" width="48" height="48">
                 </div>
                 <div class="card-staff__info">
@@ -3844,7 +3837,7 @@ mm_render_component( 'molecules', 'card-personagem-dublador', array(
 
               <!-- Com link, sem imagem -->
               <a href="#" class="card-staff" aria-label="Ver perfil de Yuki Kajiura">
-                <div class="avatar-personagem card-staff__avatar" style="width:48px;height:48px;min-width:48px;min-height:48px;" title="Yuki Kajiura">
+                <div class="avatar-personagem card-staff__avatar" title="Yuki Kajiura">
                   <div class="avatar-personagem__fallback" aria-label="Avatar de Yuki Kajiura (Sem Foto)" role="img">
                     <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50" fill="var(--neutral-800)"/><path d="M50 20C42.3 20 36 26.3 36 34C36 37.6 37.4 40.9 39.7 43.3C30.4 46.2 23.5 54.8 23.0 65.3C22.9 66.8 24.1 68 25.6 68H74.4C75.9 68 77.1 66.8 77.0 65.3C76.5 54.8 69.6 46.2 60.3 43.3C62.6 40.9 64 37.6 64 34C64 26.3 57.7 20 50 20Z" fill="var(--neutral-600)"/></svg>
                   </div>
@@ -3857,7 +3850,7 @@ mm_render_component( 'molecules', 'card-personagem-dublador', array(
 
               <!-- Sem link (div não clicável) -->
               <div class="card-staff">
-                <div class="avatar-personagem card-staff__avatar" style="width:48px;height:48px;min-width:48px;min-height:48px;" title="Akira Matsushima">
+                <div class="avatar-personagem card-staff__avatar" title="Akira Matsushima">
                   <div class="avatar-personagem__fallback" aria-label="Avatar de Akira Matsushima (Sem Foto)" role="img">
                     <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50" fill="var(--neutral-800)"/><path d="M50 20C42.3 20 36 26.3 36 34C36 37.6 37.4 40.9 39.7 43.3C30.4 46.2 23.5 54.8 23.0 65.3C22.9 66.8 24.1 68 25.6 68H74.4C75.9 68 77.1 66.8 77.0 65.3C76.5 54.8 69.6 46.2 60.3 43.3C62.6 40.9 64 37.6 64 34C64 26.3 57.7 20 50 20Z" fill="var(--neutral-600)"/></svg>
                   </div>
@@ -4880,6 +4873,126 @@ mm_render_component('molecules', 'sidebar-assistir-agora', [
             </div>
           </article>
 
+          <!-- Card de Review (review-card) -->
+          <article class="sb-component" id="review-card-preview">
+            <header class="sb-component__header">
+              <div class="sb-component__header-info">
+                <h3 class="sb-component__name">Card de Review (review-card)</h3>
+                <p class="sb-component__desc">Card de avaliação de usuário: avatar circular + nome (clicável) + data + nota MAL + texto com expand/collapse in-page. Link opcional para review completa. Schema.org <code>Review</code>.</p>
+              </div>
+              <div class="sb-component__meta">
+                <code class="sb-component__file">molecules/review-card.php</code>
+              </div>
+            </header>
+            <div class="sb-component__preview" style="background-color: var(--neutral-900); padding: var(--space-600); display: flex; flex-direction: column; gap: var(--space-400); width: 100%; max-width: 560px;">
+
+              <!-- Variante 1: Card completo com avatar, nota, expand/collapse e link externo -->
+              <article class="review-card review-card--expandable" id="review-card-sb-1" data-expandable="true" itemscope itemtype="https://schema.org/Review">
+                <header class="review-card__header">
+                  <div class="review-card__identity">
+                    <div class="avatar-personagem review-card__avatar" style="width:40px;height:40px;min-width:40px;min-height:40px;" title="Tanaka_kun">
+                      <img class="avatar-personagem__image" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=80&q=80" alt="Avatar de Tanaka_kun" loading="lazy" width="40" height="40">
+                    </div>
+                    <div class="review-card__meta">
+                      <a href="#" class="review-card__author" rel="nofollow" aria-label="Ver perfil de Tanaka_kun" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Tanaka_kun</span></a>
+                      <time class="review-card__date" itemprop="datePublished">25 mai. 2026</time>
+                    </div>
+                  </div>
+                  <div class="review-card__score" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                    <meta itemprop="ratingValue" content="9.0">
+                    <meta itemprop="bestRating" content="10">
+                    <span class="nota-mal review-card__nota" title="Nota no MyAnimeList">
+                      <svg class="nota-mal__icon" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                      <span class="nota-mal__val">9.0</span>
+                    </span>
+                  </div>
+                </header>
+                <div class="review-card__body" id="review-card-sb-body-1" itemprop="reviewBody">
+                  <div class="review-card__text">
+                    <p>Uma obra-prima do gênero. A direção de arte combina perfeitamente com a trilha sonora épica, criando uma experiência audiovisual raramente vista nos últimos anos. A evolução dos personagens é consistente e emocionante do início ao fim.</p>
+                    <p>Os arcos secundários que poderiam parecer dispensáveis acabam sendo essenciais para a conclusão. Altamente recomendado para qualquer fã de anime.</p>
+                  </div>
+                  <div class="review-card__fade" aria-hidden="true"></div>
+                </div>
+                <footer class="review-card__footer">
+                  <button class="review-card__toggle" type="button" aria-expanded="false" aria-controls="review-card-sb-body-1" data-label-more="Ler mais" data-label-less="Ler menos">
+                    <span class="review-card__toggle-label">Ler mais</span>
+                    <svg class="review-card__toggle-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                  <a href="#" class="review-card__link" rel="nofollow noopener" target="_blank" aria-label="Ver review completa de Tanaka_kun">
+                    Ver review completa
+                    <svg class="review-card__link-icon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </a>
+                </footer>
+              </article>
+
+              <!-- Variante 2: Sem avatar (fallback silhueta), sem nota -->
+              <article class="review-card" data-expandable="false" itemscope itemtype="https://schema.org/Review">
+                <header class="review-card__header">
+                  <div class="review-card__identity">
+                    <div class="avatar-personagem review-card__avatar" style="width:40px;height:40px;min-width:40px;min-height:40px;" title="AnonReviewer">
+                      <div class="avatar-personagem__fallback" aria-label="Avatar de AnonReviewer (Sem Foto)" role="img">
+                        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50" fill="var(--neutral-800)"/><path d="M50 20C42.3 20 36 26.3 36 34C36 37.6 37.4 40.9 39.7 43.3C30.4 46.2 23.5 54.8 23.0 65.3C22.9 66.8 24.1 68 25.6 68H74.4C75.9 68 77.1 66.8 77.0 65.3C76.5 54.8 69.6 46.2 60.3 43.3C62.6 40.9 64 37.6 64 34C64 26.3 57.7 20 50 20Z" fill="var(--neutral-600)"/></svg>
+                      </div>
+                    </div>
+                    <div class="review-card__meta">
+                      <span class="review-card__author" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">AnonReviewer</span></span>
+                      <time class="review-card__date" itemprop="datePublished">10 abr. 2026</time>
+                    </div>
+                  </div>
+                </header>
+                <div class="review-card__body" itemprop="reviewBody">
+                  <div class="review-card__text">
+                    <p>Texto curto de review sem nota e sem avatar real. Perfeito para exibir o estado mínimo do componente.</p>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Variante 3: Nota baixa (--error) -->
+              <article class="review-card" data-expandable="false" itemscope itemtype="https://schema.org/Review">
+                <header class="review-card__header">
+                  <div class="review-card__identity">
+                    <div class="avatar-personagem review-card__avatar" style="width:40px;height:40px;min-width:40px;min-height:40px;" title="CriticoBR">
+                      <img class="avatar-personagem__image" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&q=80" alt="Avatar de CriticoBR" loading="lazy" width="40" height="40">
+                    </div>
+                    <div class="review-card__meta">
+                      <span class="review-card__author" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">CriticoBR</span></span>
+                      <time class="review-card__date" itemprop="datePublished">03 mar. 2026</time>
+                    </div>
+                  </div>
+                  <div class="review-card__score" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                    <meta itemprop="ratingValue" content="3.5">
+                    <meta itemprop="bestRating" content="10">
+                    <span class="nota-mal nota-mal--error review-card__nota" title="Nota no MyAnimeList">
+                      <svg class="nota-mal__icon" viewBox="0 0 24 24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                      <span class="nota-mal__val">3.5</span>
+                    </span>
+                  </div>
+                </header>
+                <div class="review-card__body" itemprop="reviewBody">
+                  <div class="review-card__text">
+                    <p>Decepcionante. A animação é inconsistente e o roteiro desperdiça um conceito promissor.</p>
+                  </div>
+                </div>
+              </article>
+
+            </div>
+            <div class="sb-component__code">
+              <pre>&lt;?php
+mm_render_component( 'molecules', 'review-card', array(
+    'reviewer_name'   => 'Tanaka_kun',
+    'reviewer_avatar' => 'https://cdn.myanimelist.net/images/userimages/123456.jpg',
+    'reviewer_url'    => 'https://myanimelist.net/profile/Tanaka_kun',
+    'review_date'     => '25 mai. 2026',
+    'review_score'    => '9.0',
+    'review_text'     => '&lt;p&gt;Texto completo da review aqui...&lt;/p&gt;',
+    'review_url'      => 'https://myanimelist.net/reviews.php?id=123456',
+    'max_chars'       => 300,
+) );
+?&gt;</pre>
+            </div>
+          </article>
+
         </div>
       </section>
 
@@ -4946,8 +5059,12 @@ mm_render_component('molecules', 'sidebar-assistir-agora', [
                       <div class="hero-anime__meta-item"><dt class="hero-anime__meta-label">Classificação</dt><dd class="hero-anime__meta-value">PG-13</dd></div>
                     </dl>
 
-                    <div class="hero-anime__sinopse">
+                    <div class="hero-anime__sinopse js-hero-sinopse">
                       <p class="hero-anime__sinopse-text">Após perder seus corpos em uma tentativa fracassada de ressuscitar sua mãe usando alquimia, os irmãos Edward e Alphonse Elric iniciam uma jornada em busca da Pedra Filosófal — o único objeto capaz de restaurá-los. Mas cada passo os aproxima de uma conspiração que pode destruir o mundo inteiro. Uma história épica de sacríficio, poder e identidade humana.</p>
+                      <button type="button" class="hero-anime__sinopse-toggle js-hero-sinopse-toggle" aria-expanded="false" data-label-expand="Ler tudo" data-label-collapse="Ler menos">
+                        <span class="hero-anime__sinopse-toggle-text">Ler tudo</span>
+                        <svg class="hero-anime__sinopse-toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                      </button>
                     </div>
 
                     <div class="hero-anime__ctas">
@@ -5187,6 +5304,1078 @@ mm_render_component('organisms', 'secao-destaque', [
         ]
     ]
 ]);
+?&gt;</pre>
+            </div>
+          </article>
+
+          <!-- Seção Dubladores (secao-dubladores) -->
+          <article class="sb-component" id="secao-dubladores-preview">
+            <header class="sb-component__header">
+              <div class="sb-component__header-info">
+                <h3 class="sb-component__name">Seção Dubladores (secao-dubladores)</h3>
+                <p class="sb-component__desc">Grade de cards de voice actors. Desktop (≥ 64rem): grid 4 colunas com cards horizontais. Tablet + Mobile: scroll horizontal com snap, cards verticais de largura fixa.</p>
+              </div>
+              <div class="sb-component__meta">
+                <code class="sb-component__file">organisms/secao-dubladores.php</code>
+              </div>
+            </header>
+            <div class="sb-component__preview" style="background-color: var(--neutral-900); width: 100%; overflow: hidden;">
+              <section class="secao-dubladores" aria-label="Dubladores">
+                <div class="secao-dubladores__inner">
+                  <h2 class="secao-dubladores__titulo">Dubladores</h2>
+                  <div class="secao-dubladores__grid">
+
+                    <a href="#" class="card-personagem-dublador" aria-label="Ver perfil do dublador: Romi Park" itemscope itemtype="https://schema.org/Person">
+                      <div class="card-personagem-dublador__avatar-wrap"><div class="avatar-personagem" style="width:80px;height:80px;min-width:80px;min-height:80px;" title="Romi Park"><img class="avatar-personagem__image" src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=160&q=80" alt="Avatar de Romi Park" loading="lazy" width="80" height="80"></div></div>
+                      <div class="card-personagem-dublador__info"><span class="card-personagem-dublador__name" itemprop="name">Romi Park</span><span class="card-personagem-dublador__character">Edward Elric</span><span class="card-personagem-dublador__language">Japonês</span><span class="card-personagem-dublador__meta">64 episódios • 2009–2010</span></div>
+                    </a>
+
+                    <a href="#" class="card-personagem-dublador" aria-label="Ver perfil do dublador: Rie Kugimiya" itemscope itemtype="https://schema.org/Person">
+                      <div class="card-personagem-dublador__avatar-wrap"><div class="avatar-personagem" style="width:80px;height:80px;min-width:80px;min-height:80px;" title="Rie Kugimiya"><img class="avatar-personagem__image" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=160&q=80" alt="Avatar de Rie Kugimiya" loading="lazy" width="80" height="80"></div></div>
+                      <div class="card-personagem-dublador__info"><span class="card-personagem-dublador__name" itemprop="name">Rie Kugimiya</span><span class="card-personagem-dublador__character">Alphonse Elric</span><span class="card-personagem-dublador__language">Japonês</span><span class="card-personagem-dublador__meta">64 episódios • 2009–2010</span></div>
+                    </a>
+
+                    <a href="#" class="card-personagem-dublador" aria-label="Ver perfil do dublador: Shinichiro Miki" itemscope itemtype="https://schema.org/Person">
+                      <div class="card-personagem-dublador__avatar-wrap"><div class="avatar-personagem" style="width:80px;height:80px;min-width:80px;min-height:80px;" title="Shinichiro Miki"><img class="avatar-personagem__image" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=160&q=80" alt="Avatar de Shinichiro Miki" loading="lazy" width="80" height="80"></div></div>
+                      <div class="card-personagem-dublador__info"><span class="card-personagem-dublador__name" itemprop="name">Shinichiro Miki</span><span class="card-personagem-dublador__character">Roy Mustang</span><span class="card-personagem-dublador__language">Japonês</span><span class="card-personagem-dublador__meta">64 episódios • 2009–2010</span></div>
+                    </a>
+
+                    <article class="card-personagem-dublador" itemscope itemtype="https://schema.org/Person">
+                      <div class="card-personagem-dublador__avatar-wrap"><div class="avatar-personagem" style="width:80px;height:80px;min-width:80px;min-height:80px;" title="Travis Willingham"><div class="avatar-personagem__fallback" aria-label="Avatar de Travis Willingham (Sem Foto)" role="img"><svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50" fill="var(--neutral-800)"/><path d="M50 20C42.3 20 36 26.3 36 34C36 37.6 37.4 40.9 39.7 43.3C30.4 46.2 23.5 54.8 23.0 65.3C22.9 66.8 24.1 68 25.6 68H74.4C75.9 68 77.1 66.8 77.0 65.3C76.5 54.8 69.6 46.2 60.3 43.3C62.6 40.9 64 37.6 64 34C64 26.3 57.7 20 50 20ZM50 26C54.4 26 58 29.6 58 34C58 38.4 54.4 42 50 42C45.6 42 42 38.4 42 34C42 29.6 45.6 26 50 26Z" fill="var(--neutral-600)"/></svg></div></div></div>
+                      <div class="card-personagem-dublador__info"><span class="card-personagem-dublador__name" itemprop="name">Travis Willingham</span><span class="card-personagem-dublador__character">Roy Mustang</span><span class="card-personagem-dublador__language">Inglês</span></div>
+                    </article>
+
+                  </div>
+                </div>
+              </section>
+            </div>
+            <div class="sb-component__code">
+              <pre>&lt;?php
+mm_render_component( 'organisms', 'secao-dubladores', array(
+    'titulo'     => 'Dubladores',
+    'dubladores' => array(
+        array(
+            'va_name'        => 'Romi Park',
+            'va_image'       => 'https://cdn.myanimelist.net/images/voiceactors/1/54283.jpg',
+            'va_url'         => 'https://myanimelist.net/people/83/Romi_Park',
+            'va_language'    => 'Japonês',
+            'character_name' => 'Edward Elric',
+            'episodios'      => 64,
+            'ano_inicio'     => 2009,
+            'ano_fim'        => 2010,
+        ),
+        // ... mais dubladores
+    ),
+) );
+?&gt;</pre>
+            </div>
+          </article>
+
+          <!-- Seção Personagens (secao-personagens) -->
+          <article class="sb-component" id="secao-personagens-preview">
+            <header class="sb-component__header">
+              <div class="sb-component__header-info">
+                <h3 class="sb-component__name">Seção Personagens (secao-personagens)</h3>
+                <p class="sb-component__desc">Grade de cards cinematográficos de personagem (pôster 2:3). Mobile: scroll horizontal snap. Tablet: grid auto-fill 8rem. Desktop: grid auto-fill 9rem.</p>
+              </div>
+              <div class="sb-component__meta">
+                <code class="sb-component__file">organisms/secao-personagens.php</code>
+              </div>
+            </header>
+            <div class="sb-component__preview" style="background-color: var(--neutral-900); width: 100%; overflow: hidden;">
+              <section class="secao-personagens" aria-label="Personagens">
+                <div class="secao-personagens__inner">
+                  <h2 class="secao-personagens__titulo">Personagens</h2>
+                  <div class="secao-personagens__grid">
+
+                    <a href="#" class="card-personagem card-personagem--main" aria-label="Personagem: Edward Elric">
+                      <div class="card-personagem__poster">
+                        <img class="card-personagem__image" src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=400&q=80" alt="Imagem do personagem Edward Elric" loading="lazy" decoding="async">
+                        <div class="card-personagem__overlay" aria-hidden="true"></div>
+                        <span class="card-personagem__badge card-personagem__badge--main">Principal</span>
+                      </div>
+                      <div class="card-personagem__info">
+                        <p class="card-personagem__name">Edward Elric</p>
+                        <p class="card-personagem__name-kanji" lang="ja">エドワード・エルリック</p>
+                      </div>
+                    </a>
+
+                    <div class="card-personagem card-personagem--main" aria-label="Personagem: Alphonse Elric">
+                      <div class="card-personagem__poster">
+                        <img class="card-personagem__image" src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&q=80" alt="Imagem do personagem Alphonse Elric" loading="lazy" decoding="async">
+                        <div class="card-personagem__overlay" aria-hidden="true"></div>
+                        <span class="card-personagem__badge card-personagem__badge--main">Principal</span>
+                      </div>
+                      <div class="card-personagem__info">
+                        <p class="card-personagem__name">Alphonse Elric</p>
+                      </div>
+                    </div>
+
+                    <div class="card-personagem card-personagem--supporting" aria-label="Personagem: Roy Mustang">
+                      <div class="card-personagem__poster">
+                        <img class="card-personagem__image" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80" alt="Imagem do personagem Roy Mustang" loading="lazy" decoding="async">
+                        <div class="card-personagem__overlay" aria-hidden="true"></div>
+                        <span class="card-personagem__badge card-personagem__badge--supporting">Secundário</span>
+                      </div>
+                      <div class="card-personagem__info">
+                        <p class="card-personagem__name">Roy Mustang</p>
+                      </div>
+                    </div>
+
+                    <div class="card-personagem card-personagem--supporting" aria-label="Personagem: Winry Rockbell">
+                      <div class="card-personagem__poster">
+                        <div class="card-personagem__fallback" aria-hidden="true"><span class="card-personagem__initial">W</span></div>
+                        <div class="card-personagem__overlay" aria-hidden="true"></div>
+                        <span class="card-personagem__badge card-personagem__badge--supporting">Secundário</span>
+                      </div>
+                      <div class="card-personagem__info">
+                        <p class="card-personagem__name">Winry Rockbell</p>
+                      </div>
+                    </div>
+
+                    <div class="card-personagem card-personagem--supporting" aria-label="Personagem: Riza Hawkeye">
+                      <div class="card-personagem__poster">
+                        <div class="card-personagem__fallback" aria-hidden="true"><span class="card-personagem__initial">R</span></div>
+                        <div class="card-personagem__overlay" aria-hidden="true"></div>
+                        <span class="card-personagem__badge card-personagem__badge--supporting">Secundário</span>
+                      </div>
+                      <div class="card-personagem__info">
+                        <p class="card-personagem__name">Riza Hawkeye</p>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </section>
+            </div>
+            <div class="sb-component__code">
+              <pre>&lt;?php
+mm_render_component( 'organisms', 'secao-personagens', array(
+    'titulo'      => 'Personagens',
+    'personagens' => array(
+        array(
+            'name'       => 'Edward Elric',
+            'name_kanji' => 'エドワード・エルリック',
+            'image_url'  => 'https://cdn.myanimelist.net/images/characters/9/310307.jpg',
+            'role'       => 'Principal',
+            'url'        => 'https://myanimelist.net/character/11/Edward_Elric',
+        ),
+        array(
+            'name'  => 'Roy Mustang',
+            'role'  => 'Secundário',
+        ),
+        // ... mais personagens
+    ),
+) );
+?&gt;</pre>
+            </div>
+          </article>
+
+          <!-- Seção Conteúdo Relacionado (secao-relacionados) -->
+          <article class="sb-component" id="secao-relacionados-preview">
+            <header class="sb-component__header">
+              <div class="sb-component__header-info">
+                <h3 class="sb-component__name">Seção Conteúdo Relacionado (secao-relacionados)</h3>
+                <p class="sb-component__desc">Seção responsiva que agrupa mídias relacionadas (animes, mangás, mídias alternativas) dinamicamente sob subtítulos com realces visuais em laranja.</p>
+              </div>
+              <div class="sb-component__meta">
+                <code class="sb-component__file">organisms/secao-relacionados.php</code>
+              </div>
+            </header>
+            <div class="sb-component__preview" style="background-color: var(--neutral-900); width: 100%; overflow: hidden;">
+              <section class="secao-relacionados" aria-label="Conteúdo Relacionado">
+                <div class="secao-relacionados__inner">
+                  <h2 class="secao-relacionados__title">Conteúdo Relacionado</h2>
+                  <div class="secao-relacionados__groups">
+
+                    <!-- Grupo: Sequência -->
+                    <div class="secao-relacionados__group">
+                      <h3 class="secao-relacionados__group-title">Sequência</h3>
+                      <div class="secao-relacionados__grid">
+                        
+                        <a href="#" class="relacionado-item">
+                          <div class="relacionado-item__thumb">
+                            <div class="imagem-capa-container">
+                              <img class="imagem-capa" src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=160&q=80" alt="Capa de Fullmetal Alchemist: Brotherhood" loading="lazy" decoding="async">
+                            </div>
+                          </div>
+                          <div class="relacionado-item__info">
+                            <span class="relacionado-item__relation">Sequência</span>
+                            <span class="relacionado-item__title">Fullmetal Alchemist: Brotherhood</span>
+                          </div>
+                        </a>
+
+                        <a href="#" class="relacionado-item">
+                          <div class="relacionado-item__thumb">
+                            <div class="imagem-capa-container">
+                              <img class="imagem-capa" src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=160&q=80" alt="Capa de FMA: Brotherhood Special" loading="lazy" decoding="async">
+                            </div>
+                          </div>
+                          <div class="relacionado-item__info">
+                            <span class="relacionado-item__relation">Sequência</span>
+                            <span class="relacionado-item__title">FMA: Brotherhood Special (2010)</span>
+                          </div>
+                        </a>
+
+                      </div>
+                    </div>
+
+                    <!-- Grupo: Adaptação -->
+                    <div class="secao-relacionados__group">
+                      <h3 class="secao-relacionados__group-title">Adaptação</h3>
+                      <div class="secao-relacionados__grid">
+
+                        <a href="#" class="relacionado-item">
+                          <div class="relacionado-item__thumb">
+                            <div class="imagem-capa-container">
+                              <img class="imagem-capa" src="https://images.unsplash.com/photo-1578632767115-351597cf2477?w=160&q=80" alt="Capa de Fullmetal Alchemist (Manga)" loading="lazy" decoding="async">
+                            </div>
+                          </div>
+                          <div class="relacionado-item__info">
+                            <span class="relacionado-item__relation">Adaptação</span>
+                            <span class="relacionado-item__title">Fullmetal Alchemist (Manga)</span>
+                          </div>
+                        </a>
+
+                      </div>
+                    </div>
+
+                    <!-- Grupo: Spin-off -->
+                    <div class="secao-relacionados__group">
+                      <h3 class="secao-relacionados__group-title">Spin-off</h3>
+                      <div class="secao-relacionados__grid">
+
+                        <div class="relacionado-item">
+                          <div class="relacionado-item__thumb">
+                            <div class="imagem-capa-container">
+                              <div class="imagem-capa-placeholder" style="background: var(--neutral-700); height: 100%; display: flex; align-items: center; justify-content: center;">
+                                <span style="font-size: var(--text-xxs-size); color: var(--neutral-400);">No Cover</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="relacionado-item__info">
+                            <span class="relacionado-item__relation">Spin-off</span>
+                            <span class="relacionado-item__title">Chibi Alchemist Theater</span>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </section>
+            </div>
+            <div class="sb-component__code">
+              <pre>&lt;?php
+mm_render_component( 'organisms', 'secao-relacionados', array(
+    'titulo' => 'Conteúdo Relacionado',
+    'items'  => array(
+        array(
+            'anime_title'   => 'Fullmetal Alchemist: Brotherhood',
+            'anime_image'   => 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=160&q=80',
+            'relation_type' => 'Sequência',
+            'anime_url'     => '#',
+        ),
+        array(
+            'anime_title'   => 'Fullmetal Alchemist (Manga)',
+            'anime_image'   => 'https://images.unsplash.com/photo-1578632767115-351597cf2477?w=160&q=80',
+            'relation_type' => 'Adaptação',
+            'anime_url'     => '#',
+        ),
+        array(
+            'anime_title'   => 'Chibi Alchemist Theater',
+            'relation_type' => 'Spin-off',
+        ),
+    ),
+) );
+?&gt;</pre>
+            </div>
+          </article>
+
+          <!-- Sidebar Anime Info (sidebar-anime-info) -->
+          <article class="sb-component" id="sidebar-anime-info-preview">
+            <header class="sb-component__header">
+              <div class="sb-component__header-info">
+                <h3 class="sb-component__name">Sidebar Anime Info (sidebar-anime-info)</h3>
+                <p class="sb-component__desc">Barra lateral (sidebar) contendo o bloco integrado de estatísticas do MyAnimeList (stat-bloco) e listagem vertical detalhada de metadados não duplicados com o hero-anime.</p>
+              </div>
+              <div class="sb-component__meta">
+                <code class="sb-component__file">organisms/sidebar-anime-info.php</code>
+              </div>
+            </header>
+            <div class="sb-component__preview" style="background-color: var(--neutral-900); padding: var(--space-600); width: 100%; display: flex; justify-content: center; overflow: hidden;">
+              <div style="width: 100%; max-width: 300px;">
+                
+                <aside class="sidebar-anime-info">
+
+                  <!-- 1. Bloco de Estatísticas Integrado -->
+                  <div class="sidebar-anime-info__stats">
+                    <div class="stat-bloco">
+                      <!-- Estatísticas Secundárias (sem Score) -->
+                      <div class="stat-bloco__stats">
+                        <div class="stat-bloco__item">
+                          <span class="stat-bloco__label" style="color: var(--warning-400);">Ranking</span>
+                          <span class="stat-bloco__value">#4</span>
+                        </div>
+                        <div class="stat-bloco__item">
+                          <span class="stat-bloco__label" style="color: var(--brand-400);">Popularidade</span>
+                          <span class="stat-bloco__value">#39</span>
+                        </div>
+                        <div class="stat-bloco__item">
+                          <span class="stat-bloco__label" style="color: var(--success-400);">Membros</span>
+                          <span class="stat-bloco__value">3.2M</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 2. Lista de Metadados Únicos -->
+                  <div class="sidebar-anime-info__content">
+                    <h4 class="sidebar-anime-info__content-title">Informações</h4>
+                    <dl class="sidebar-anime-info__list">
+                      <div class="sidebar-anime-info__item">
+                        <dt class="sidebar-anime-info__label">Exibição</dt>
+                        <dd class="sidebar-anime-info__value">5 de Abr de 2009 a 4 de Jul de 2010</dd>
+                      </div>
+                      <div class="sidebar-anime-info__item">
+                        <dt class="sidebar-anime-info__label">Transmissão</dt>
+                        <dd class="sidebar-anime-info__value">Domingos às 17:00 (JST)</dd>
+                      </div>
+                      <div class="sidebar-anime-info__item">
+                        <dt class="sidebar-anime-info__label">Produtores</dt>
+                        <dd class="sidebar-anime-info__value">Aniplex, Square Enix, MBS</dd>
+                      </div>
+                      <div class="sidebar-anime-info__item">
+                        <dt class="sidebar-anime-info__label">Licenciadores</dt>
+                        <dd class="sidebar-anime-info__value">Aniplex of America, Funimation</dd>
+                      </div>
+                      <div class="sidebar-anime-info__item">
+                        <dt class="sidebar-anime-info__label">Fonte</dt>
+                        <dd class="sidebar-anime-info__value">Mangá</dd>
+                      </div>
+                      <div class="sidebar-anime-info__item">
+                        <dt class="sidebar-anime-info__label">Temas</dt>
+                        <dd class="sidebar-anime-info__value">Militar, Drama, Fantasia</dd>
+                      </div>
+                      <div class="sidebar-anime-info__item">
+                        <dt class="sidebar-anime-info__label">Demografia</dt>
+                        <dd class="sidebar-anime-info__value">Shounen</dd>
+                      </div>
+                    </dl>
+                  </div>
+                </aside>
+
+              </div>
+            </div>
+            <div class="sb-component__code">
+              <pre>&lt;?php
+mm_render_component( 'organisms', 'sidebar-anime-info', array(
+    'rank'       => '#4',
+    'popularity' => '#39',
+    'members'    => '3.2M',
+    'metadata'   => array(
+        'Exibição'      => '5 de Abr de 2009 a 4 de Jul de 2010',
+        'Transmissão'   => 'Domingos às 17:00 (JST)',
+        'Produtores'    => 'Aniplex, Square Enix, MBS',
+        'Licenciadores' => 'Aniplex of America, Funimation',
+        'Fonte'         => 'Mangá',
+        'Temas'         => 'Militar, Drama, Fantasia',
+        'Demografia'    => 'Shounen'
+    ),
+) );
+?&gt;</pre>
+            </div>
+          </article>
+
+          <!-- Seção Notícias Recentes (secao-noticias-recentes) -->
+          <article class="sb-component" id="secao-noticias-recentes-preview">
+            <header class="sb-component__header">
+              <div class="sb-component__header-info">
+                <h3 class="sb-component__name">Seção Notícias Recentes (secao-noticias-recentes)</h3>
+                <p class="sb-component__desc">Layout editorial de alta fidelidade com destaque horizontal hero (60/40 split) + grade de 3 colunas para artigos secundários. Botão opcional "Ver mais notícias".</p>
+              </div>
+              <div class="sb-component__meta">
+                <code class="sb-component__file">organisms/secao-noticias-recentes.php</code>
+              </div>
+            </header>
+            <div class="sb-component__preview" style="background-color: var(--neutral-900); padding: var(--space-600); width: 100%; overflow: hidden;">
+              <section class="secao-noticias-recentes" aria-label="Últimas Notícias">
+                <div class="secao-noticias-recentes__inner">
+
+                  <h2 class="secao-noticias-recentes__title">Últimas Notícias</h2>
+
+                  <!-- Destaque Editorial (Hero) -->
+                  <div class="secao-noticias-recentes__destaque">
+                    <a href="#" class="card-noticia card-noticia--hero" aria-label="Leia mais sobre: Solo Leveling quebra recordes absolutos de audiência mundial">
+                      <div class="card-noticia__media-wrapper">
+                        <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=800&q=80" alt="Capa de: Solo Leveling quebra recordes absolutos de audiência mundial" class="card-noticia__image" loading="lazy">
+                        <div class="card-noticia__dark-overlay"></div>
+                      </div>
+                      <div class="card-noticia__content">
+                        <div class="card-noticia__header">
+                          <span class="card-noticia__eyebrow">Anime</span>
+                          <h3 class="card-noticia__title">Solo Leveling: Episódio final quebra recordes absolutos de audiência mundial</h3>
+                        </div>
+                        <div class="card-noticia__body">
+                          <p class="card-noticia__excerpt">O aclamado anime encerra seu primeiro arco consagrando-se como um dos maiores fenômenos mundiais de streaming do ano.</p>
+                        </div>
+                        <div class="card-noticia__footer">
+                          <div class="card-noticia__meta">
+                            <span class="card-noticia__meta-item card-noticia__author">
+                              <svg class="card-noticia__icon" viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                              por Pablo Augusto
+                            </span>
+                            <span class="card-noticia__meta-sep" aria-hidden="true">•</span>
+                            <span class="card-noticia__meta-item card-noticia__date">
+                              <svg class="card-noticia__icon" viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                              há 2 horas
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+
+                  <!-- Grade Secundária (Grid) -->
+                  <div class="secao-noticias-recentes__grid">
+
+                    <a href="#" class="card-noticia card-noticia--grid" aria-label="Leia mais sobre: Hunter x Hunter retorna com capítulos inéditos">
+                      <div class="card-noticia__media-wrapper">
+                        <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?w=500&q=80" alt="Capa de: Hunter x Hunter retorna com capítulos inéditos" class="card-noticia__image" loading="lazy">
+                        <div class="card-noticia__dark-overlay"></div>
+                      </div>
+                      <div class="card-noticia__content">
+                        <div class="card-noticia__header">
+                          <span class="card-noticia__eyebrow">Mangá</span>
+                          <h3 class="card-noticia__title">Hunter x Hunter retorna com capítulos inéditos na Shonen Jump</h3>
+                        </div>
+                        <div class="card-noticia__footer">
+                          <div class="card-noticia__meta">
+                            <span class="card-noticia__meta-item card-noticia__author">
+                              <svg class="card-noticia__icon" viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                              por Redação
+                            </span>
+                            <span class="card-noticia__meta-sep" aria-hidden="true">•</span>
+                            <span class="card-noticia__meta-item card-noticia__date">
+                              <svg class="card-noticia__icon" viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                              há 5 horas
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+
+                    <a href="#" class="card-noticia card-noticia--grid" aria-label="Leia mais sobre: Demon Slayer recebe data de estreia com dublagem confirmada">
+                      <div class="card-noticia__media-wrapper">
+                        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=500&q=80" alt="Capa de: Demon Slayer recebe data de estreia com dublagem confirmada" class="card-noticia__image" loading="lazy">
+                        <div class="card-noticia__dark-overlay"></div>
+                      </div>
+                      <div class="card-noticia__content">
+                        <div class="card-noticia__header">
+                          <span class="card-noticia__eyebrow">Anime</span>
+                          <h3 class="card-noticia__title">Demon Slayer: Treinamento dos Hashiras recebe data de estreia com dublagem confirmada</h3>
+                        </div>
+                        <div class="card-noticia__footer">
+                          <div class="card-noticia__meta">
+                            <span class="card-noticia__meta-item card-noticia__author">
+                              <svg class="card-noticia__icon" viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                              por Redação
+                            </span>
+                            <span class="card-noticia__meta-sep" aria-hidden="true">•</span>
+                            <span class="card-noticia__meta-item card-noticia__date">
+                              <svg class="card-noticia__icon" viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                              há 1 dia
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+
+                    <a href="#" class="card-noticia card-noticia--grid" aria-label="Leia mais sobre: My Hero Academia revela teaser exclusivo do novo filme">
+                      <div class="card-noticia__media-wrapper">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&q=80" alt="Capa de: My Hero Academia revela teaser exclusivo do novo filme" class="card-noticia__image" loading="lazy">
+                        <div class="card-noticia__dark-overlay"></div>
+                      </div>
+                      <div class="card-noticia__content">
+                        <div class="card-noticia__header">
+                          <span class="card-noticia__eyebrow">Filmes</span>
+                          <h3 class="card-noticia__title">My Hero Academia revela teaser exclusivo e design de novo vilão do filme</h3>
+                        </div>
+                        <div class="card-noticia__footer">
+                          <div class="card-noticia__meta">
+                            <span class="card-noticia__meta-item card-noticia__author">
+                              <svg class="card-noticia__icon" viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                              por Pablo Augusto
+                            </span>
+                            <span class="card-noticia__meta-sep" aria-hidden="true">•</span>
+                            <span class="card-noticia__meta-item card-noticia__date">
+                              <svg class="card-noticia__icon" viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                              há 2 dias
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+
+                  </div>
+
+                  <!-- Botão Ver Mais -->
+                  <div class="secao-noticias-recentes__footer">
+                    <a href="#" class="btn btn--secondary secao-noticias-recentes__button">Ver mais notícias</a>
+                  </div>
+
+                </div>
+              </section>
+            </div>
+            <div class="sb-component__code">
+              <pre>&lt;?php
+mm_render_component( 'organisms', 'secao-noticias-recentes', array(
+    'titulo'       => 'Últimas Notícias',
+    'ver_mais_url' => home_url( '/noticias/' ),
+    'noticias'     => array(
+        array(
+            'titulo'     => 'Solo Leveling: Episódio final quebra recordes...',
+            'url'        => get_permalink(),
+            'imagem_url' => get_the_post_thumbnail_url( null, 'full' ),
+            'categoria'  => 'Anime',
+            'autor'      => 'Pablo Augusto',
+            'data'       => 'há 2 horas',
+            'resumo'     => 'O aclamado anime encerra seu primeiro arco...'
+        ),
+        array(
+            'titulo'     => 'Hunter x Hunter retorna com capítulos inéditos...',
+            'url'        => get_permalink(),
+            'imagem_url' => get_the_post_thumbnail_url( null, 'medium_large' ),
+            'categoria'  => 'Mangá',
+            'autor'      => 'Redação',
+            'data'       => 'há 5 horas'
+        ),
+        // ... mais notícias
+    ),
+) );
+?&gt;</pre>
+            </div>
+          </article>
+
+          <!-- Seção Equipe de Produção (secao-staff) -->
+          <article class="sb-component" id="secao-staff-preview">
+            <header class="sb-component__header">
+              <div class="sb-component__header-info">
+                <h3 class="sb-component__name">Seção Equipe de Produção (secao-staff)</h3>
+                <p class="sb-component__desc">Cards <code>card-staff</code> agrupados por cargo com subtítulo H3 + barra laranja. Limite configurável por grupo (<code>max_per_group</code>). Grade: 1 col mobile → 2 cols tablet → 3 cols desktop. Botão opcional no rodapé.</p>
+              </div>
+              <div class="sb-component__meta">
+                <code class="sb-component__file">organisms/secao-staff.php</code>
+              </div>
+            </header>
+            <div class="sb-component__preview" style="background-color: var(--neutral-900); padding: var(--space-500); width: 100%;">
+
+              <section class="secao-staff" aria-label="Equipe de Produção">
+                <div class="secao-staff__inner" style="padding: var(--space-400);">
+
+                  <h2 class="secao-staff__title">Equipe de Produção</h2>
+
+                  <div class="secao-staff__groups">
+
+                    <!-- Grupo: Direção -->
+                    <div class="secao-staff__group">
+                      <h3 class="secao-staff__group-title">Direção</h3>
+                      <div class="secao-staff__grid">
+                        <a href="#" class="card-staff" aria-label="Ver perfil de Haruo Sotozaki">
+                          <div class="avatar-personagem card-staff__avatar" title="Haruo Sotozaki">
+                            <img class="avatar-personagem__image" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&q=80" alt="Avatar de Haruo Sotozaki" loading="lazy" width="48" height="48">
+                          </div>
+                          <div class="card-staff__info">
+                            <span class="card-staff__name">Haruo Sotozaki</span>
+                            <span class="card-staff__role">Diretor</span>
+                          </div>
+                        </a>
+                        <a href="#" class="card-staff" aria-label="Ver perfil de Toshiyuki Shirai">
+                          <div class="avatar-personagem card-staff__avatar" title="Toshiyuki Shirai">
+                            <div class="avatar-personagem__fallback" aria-label="Avatar de Toshiyuki Shirai (Sem Foto)" role="img"><svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="50" fill="var(--neutral-800)"/><path d="M50 20C42.3 20 36 26.3 36 34C36 37.6 37.4 40.9 39.7 43.3C30.4 46.2 23.5 54.8 23.0 65.3C22.9 66.8 24.1 68 25.6 68H74.4C75.9 68 77.1 66.8 77.0 65.3C76.5 54.8 69.6 46.2 60.3 43.3C62.6 40.9 64 37.6 64 34C64 26.3 57.7 20 50 20Z" fill="var(--neutral-600)"/></svg></div>
+                          </div>
+                          <div class="card-staff__info">
+                            <span class="card-staff__name">Toshiyuki Shirai</span>
+                            <span class="card-staff__role">Diretor de Arte</span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+
+                    <!-- Grupo: Música -->
+                    <div class="secao-staff__group">
+                      <h3 class="secao-staff__group-title">Música</h3>
+                      <div class="secao-staff__grid">
+                        <a href="#" class="card-staff" aria-label="Ver perfil de Yuki Kajiura">
+                          <div class="avatar-personagem card-staff__avatar" title="Yuki Kajiura">
+                            <img class="avatar-personagem__image" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&q=80" alt="Avatar de Yuki Kajiura" loading="lazy" width="48" height="48">
+                          </div>
+                          <div class="card-staff__info">
+                            <span class="card-staff__name">Yuki Kajiura</span>
+                            <span class="card-staff__role">Composição Musical</span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+
+                    <!-- Grupo: Animação -->
+                    <div class="secao-staff__group">
+                      <h3 class="secao-staff__group-title">Animação</h3>
+                      <div class="secao-staff__grid">
+                        <div class="card-staff">
+                          <div class="avatar-personagem card-staff__avatar" title="Akira Matsushima">
+                            <div class="avatar-personagem__fallback" aria-label="Avatar de Akira Matsushima (Sem Foto)" role="img"><svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="50" fill="var(--neutral-800)"/><path d="M50 20C42.3 20 36 26.3 36 34C36 37.6 37.4 40.9 39.7 43.3C30.4 46.2 23.5 54.8 23.0 65.3C22.9 66.8 24.1 68 25.6 68H74.4C75.9 68 77.1 66.8 77.0 65.3C76.5 54.8 69.6 46.2 60.3 43.3C62.6 40.9 64 37.6 64 34C64 26.3 57.7 20 50 20Z" fill="var(--neutral-600)"/></svg></div>
+                          </div>
+                          <div class="card-staff__info">
+                            <span class="card-staff__name">Akira Matsushima</span>
+                            <span class="card-staff__role">Design de Personagens</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <footer class="secao-staff__footer">
+                    <a href="#" class="btn btn--secondary secao-staff__btn" rel="nofollow noopener" target="_blank" aria-label="Ver equipe completa">
+                      Ver equipe completa
+                      <svg class="secao-staff__btn-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                  </footer>
+
+                </div>
+              </section>
+
+            </div>
+            <div class="sb-component__code">
+              <pre>&lt;?php
+mm_render_component( 'organisms', 'secao-staff', array(
+    'titulo'        => 'Equipe de Produção',
+    'max_per_group' => 6,
+    'ver_mais_url'  => 'https://myanimelist.net/anime/5114/staff',
+    'staff'         => array(
+        array(
+            'staff_name'  => 'Haruo Sotozaki',
+            'staff_image' => 'https://cdn.myanimelist.net/images/voiceactors/1/40617.jpg',
+            'staff_url'   => 'https://myanimelist.net/people/8143/',
+            'staff_role'  => 'Diretor',
+            'role_group'  => 'Direção',
+        ),
+        array(
+            'staff_name'  => 'Yuki Kajiura',
+            'staff_role'  => 'Composição Musical',
+            'role_group'  => 'Música',
+        ),
+        // ... mais membros
+    ),
+) );
+?&gt;</pre>
+            </div>
+          </article>
+
+          <!-- Seção de Reviews (secao-reviews) -->
+          <article class="sb-component" id="secao-reviews-preview">
+            <header class="sb-component__header">
+              <div class="sb-component__header-info">
+                <h3 class="sb-component__name">Seção de Reviews (secao-reviews)</h3>
+                <p class="sb-component__desc">Lista de <code>review-card</code> com cabeçalho (título H2 + pill de contagem total) e botão "Ver mais reviews" opcional. Desktop largo: grade de 2 colunas. Schema.org <code>ItemList</code>. Sem JS próprio.</p>
+              </div>
+              <div class="sb-component__meta">
+                <code class="sb-component__file">organisms/secao-reviews.php</code>
+              </div>
+            </header>
+            <div class="sb-component__preview" style="background-color: var(--neutral-900); padding: var(--space-400); width: 100%; overflow: hidden;">
+
+              <section class="secao-reviews" aria-label="Reviews" itemscope itemtype="https://schema.org/ItemList">
+                <meta itemprop="name" content="Reviews">
+                <div class="secao-reviews__inner" style="padding: var(--space-400);">
+
+                  <header class="secao-reviews__header">
+                    <h2 class="secao-reviews__title">Reviews</h2>
+                    <span class="secao-reviews__count" aria-label="2.341 avaliações no total">
+                      2.341
+                      <span class="secao-reviews__count-label">reviews</span>
+                    </span>
+                  </header>
+
+                  <div class="secao-reviews__list" role="list">
+
+                    <!-- Review 1: completo com expand/collapse -->
+                    <div class="secao-reviews__item" role="listitem">
+                      <article class="review-card review-card--expandable" id="review-sb-org-1" data-expandable="true" itemscope itemtype="https://schema.org/Review">
+                        <header class="review-card__header">
+                          <div class="review-card__identity">
+                            <div class="avatar-personagem review-card__avatar" style="width:40px;height:40px;min-width:40px;min-height:40px;" title="Tanaka_kun">
+                              <img class="avatar-personagem__image" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=80&q=80" alt="Avatar de Tanaka_kun" loading="lazy" width="40" height="40">
+                            </div>
+                            <div class="review-card__meta">
+                              <a href="#" class="review-card__author" rel="nofollow" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Tanaka_kun</span></a>
+                              <time class="review-card__date" itemprop="datePublished">25 mai. 2026</time>
+                            </div>
+                          </div>
+                          <div class="review-card__score" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                            <meta itemprop="ratingValue" content="9.0"><meta itemprop="bestRating" content="10">
+                            <span class="nota-mal" title="Nota no MyAnimeList"><svg class="nota-mal__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><span class="nota-mal__val">9.0</span></span>
+                          </div>
+                        </header>
+                        <div class="review-card__body" id="review-sb-org-body-1" itemprop="reviewBody">
+                          <div class="review-card__text"><p>Uma obra-prima do gênero. A direção de arte combina perfeitamente com a trilha sonora épica, criando uma experiência audiovisual raramente vista. A evolução dos personagens é consistente e emocionante do início ao fim. Os arcos secundários que poderiam parecer dispensáveis acabam sendo essenciais para a conclusão.</p></div>
+                          <div class="review-card__fade" aria-hidden="true"></div>
+                        </div>
+                        <footer class="review-card__footer">
+                          <button class="review-card__toggle" type="button" aria-expanded="false" aria-controls="review-sb-org-body-1" data-label-more="Ler mais" data-label-less="Ler menos">
+                            <span class="review-card__toggle-label">Ler mais</span>
+                            <svg class="review-card__toggle-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                          </button>
+                          <a href="#" class="review-card__link" rel="nofollow noopener" target="_blank" aria-label="Ver review completa de Tanaka_kun">Ver review completa <svg class="review-card__link-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                        </footer>
+                      </article>
+                    </div>
+
+                    <!-- Review 2: curto, sem nota, sem avatar real -->
+                    <div class="secao-reviews__item" role="listitem">
+                      <article class="review-card" data-expandable="false" itemscope itemtype="https://schema.org/Review">
+                        <header class="review-card__header">
+                          <div class="review-card__identity">
+                            <div class="avatar-personagem review-card__avatar" style="width:40px;height:40px;min-width:40px;min-height:40px;" title="AnonUser">
+                              <div class="avatar-personagem__fallback" aria-label="Avatar de AnonUser (Sem Foto)" role="img"><svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="50" fill="var(--neutral-800)"/><path d="M50 20C42.3 20 36 26.3 36 34C36 37.6 37.4 40.9 39.7 43.3C30.4 46.2 23.5 54.8 23.0 65.3C22.9 66.8 24.1 68 25.6 68H74.4C75.9 68 77.1 66.8 77.0 65.3C76.5 54.8 69.6 46.2 60.3 43.3C62.6 40.9 64 37.6 64 34C64 26.3 57.7 20 50 20Z" fill="var(--neutral-600)"/></svg></div>
+                            </div>
+                            <div class="review-card__meta">
+                              <span class="review-card__author" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">AnonUser</span></span>
+                              <time class="review-card__date" itemprop="datePublished">12 jan. 2026</time>
+                            </div>
+                          </div>
+                          <div class="review-card__score" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                            <meta itemprop="ratingValue" content="7.5"><meta itemprop="bestRating" content="10">
+                            <span class="nota-mal" title="Nota no MyAnimeList"><svg class="nota-mal__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><span class="nota-mal__val">7.5</span></span>
+                          </div>
+                        </header>
+                        <div class="review-card__body" itemprop="reviewBody">
+                          <div class="review-card__text"><p>Bom anime, mas esperava mais da conclusão. Primeiras temporadas são excelentes.</p></div>
+                        </div>
+                      </article>
+                    </div>
+
+                  </div>
+
+                  <footer class="secao-reviews__footer">
+                    <a href="#" class="btn btn--secondary secao-reviews__btn" rel="nofollow noopener" target="_blank" aria-label="Ver todas as reviews">
+                      Ver todas as reviews
+                      <svg class="secao-reviews__btn-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false"><path d="M3 8H13M9 4L13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                  </footer>
+
+                </div>
+              </section>
+
+            </div>
+            <div class="sb-component__code">
+              <pre>&lt;?php
+mm_render_component( 'organisms', 'secao-reviews', array(
+    'titulo'       => 'Reviews',
+    'total_count'  => 2341,
+    'max_reviews'  => 6,
+    'ver_mais_url' => 'https://myanimelist.net/anime/5114/reviews',
+    'reviews'      => array(
+        array(
+            'reviewer_name'   => 'Tanaka_kun',
+            'reviewer_avatar' => 'https://cdn.myanimelist.net/images/userimages/123.jpg',
+            'reviewer_url'    => 'https://myanimelist.net/profile/Tanaka_kun',
+            'review_date'     => '25 mai. 2026',
+            'review_score'    => '9.0',
+            'review_text'     => '&lt;p&gt;Texto da review...&lt;/p&gt;',
+            'review_url'      => 'https://myanimelist.net/reviews.php?id=123456',
+        ),
+        // ... mais reviews
+    ),
+) );
+?&gt;</pre>
+            </div>
+          </article>
+
+          <!-- Seção de Estatísticas (secao-estatisticas) -->
+          <article class="sb-component" id="secao-estatisticas-preview">
+            <header class="sb-component__header">
+              <div class="sb-component__header-info">
+                <h3 class="sb-component__name">Seção de Estatísticas (secao-estatisticas)</h3>
+                <p class="sb-component__desc">Trilho horizontal scroll snap de blocos <code>stat-bloco</code> (score + rank + popularidade + membros). Mesmo padrão de <code>secao-esteira-animes</code>. Slide <code>20rem</code> mobile → <code>24rem</code> desktop. Sem JS.</p>
+              </div>
+              <div class="sb-component__meta">
+                <code class="sb-component__file">organisms/secao-estatisticas.php</code>
+              </div>
+            </header>
+            <div class="sb-component__preview" style="background-color: var(--neutral-900); width: 100%; overflow: hidden;">
+
+              <section class="secao-estatisticas" aria-label="Estatísticas">
+                <div class="secao-estatisticas__inner" style="padding-block: var(--space-500);">
+
+                  <header class="secao-estatisticas__header">
+                    <h2 class="secao-estatisticas__title">Estatísticas</h2>
+                    <a href="#" class="secao-estatisticas__link-all" aria-label="Ver estatísticas completas">
+                      <span>Ver no MAL</span>
+                      <svg class="secao-estatisticas__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </a>
+                  </header>
+
+                  <div class="trilho-infinito js-trilho secao-estatisticas__wrapper">
+
+                    <button type="button" class="btn-nav-arrow btn-nav-arrow--prev trilho-infinito__arrow trilho-infinito__arrow--prev js-trilho__prev" aria-label="Slide anterior">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="btn-nav-arrow__icon" aria-hidden="true">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                      </svg>
+                    </button>
+
+                    <div class="secao-estatisticas__trilho trilho-infinito__track js-trilho__track">
+
+                      <div class="secao-estatisticas__item js-trilho__slide">
+                        <div class="stat-bloco">
+                          <div class="rating-score">
+                            <span class="rating-score__value">9.37</span>
+                            <div class="rating-score__meta">
+                              <span class="rating-score__label">Nota Média</span>
+                              <span class="rating-score__votes">1,9M votos</span>
+                            </div>
+                          </div>
+                          <div class="stat-bloco__stats">
+                            <div class="stat-bloco__item">
+                              <span class="stat-bloco__label">Ranking</span>
+                              <span class="stat-bloco__value">#1</span>
+                            </div>
+                            <div class="stat-bloco__item">
+                              <span class="stat-bloco__label">Popularidade</span>
+                              <span class="stat-bloco__value">#3</span>
+                            </div>
+                            <div class="stat-bloco__item">
+                              <span class="stat-bloco__label">Membros</span>
+                              <span class="stat-bloco__value">3,5M</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="secao-estatisticas__item js-trilho__slide">
+                        <div class="stat-bloco">
+                          <div class="rating-score">
+                            <span class="rating-score__value">9.12</span>
+                            <div class="rating-score__meta">
+                              <span class="rating-score__label">Temporada 2</span>
+                              <span class="rating-score__votes">870k votos</span>
+                            </div>
+                          </div>
+                          <div class="stat-bloco__stats">
+                            <div class="stat-bloco__item">
+                              <span class="stat-bloco__label">Ranking</span>
+                              <span class="stat-bloco__value">#4</span>
+                            </div>
+                            <div class="stat-bloco__item">
+                              <span class="stat-bloco__label">Popularidade</span>
+                              <span class="stat-bloco__value">#7</span>
+                            </div>
+                            <div class="stat-bloco__item">
+                              <span class="stat-bloco__label">Membros</span>
+                              <span class="stat-bloco__value">2,1M</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="secao-estatisticas__item js-trilho__slide">
+                        <div class="stat-bloco">
+                          <div class="rating-score">
+                            <span class="rating-score__value">8.94</span>
+                            <div class="rating-score__meta">
+                              <span class="rating-score__label">Temporada 3</span>
+                              <span class="rating-score__votes">620k votos</span>
+                            </div>
+                          </div>
+                          <div class="stat-bloco__stats">
+                            <div class="stat-bloco__item">
+                              <span class="stat-bloco__label">Ranking</span>
+                              <span class="stat-bloco__value">#12</span>
+                            </div>
+                            <div class="stat-bloco__item">
+                              <span class="stat-bloco__label">Popularidade</span>
+                              <span class="stat-bloco__value">#11</span>
+                            </div>
+                            <div class="stat-bloco__item">
+                              <span class="stat-bloco__label">Membros</span>
+                              <span class="stat-bloco__value">1,8M</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <button type="button" class="btn-nav-arrow btn-nav-arrow--next trilho-infinito__arrow trilho-infinito__arrow--next js-trilho__next" aria-label="Próximo slide">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="btn-nav-arrow__icon" aria-hidden="true">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                      </svg>
+                    </button>
+
+                  </div>
+
+                </div>
+              </section>
+
+            </div>
+            <div class="sb-component__code">
+              <pre>&lt;?php
+mm_render_component( 'organisms', 'secao-estatisticas', array(
+    'titulo'       => 'Estatísticas',
+    'ver_mais_url' => 'https://myanimelist.net/anime/5114/stats',
+    'estatisticas' => array(
+        array(
+            'score'       => '9.37',
+            'score_label' => 'Nota Média',
+            'score_votes' => '1,9M votos',
+            'rank'        => '#1',
+            'popularity'  => '#3',
+            'members'     => '3,5M',
+        ),
+        array(
+            'score'       => '9.12',
+            'score_label' => 'Temporada 2',
+            'rank'        => '#4',
+            'popularity'  => '#7',
+            'members'     => '2,1M',
+        ),
+        // ... mais blocos
+    ),
+) );
+?&gt;</pre>
+            </div>
+          </article>
+
+          <!-- Seção de Recomendações (secao-recomendacoes) -->
+          <article class="sb-component" id="secao-recomendacoes-preview">
+            <header class="sb-component__header">
+              <div class="sb-component__header-info">
+                <h3 class="sb-component__name">Seção de Recomendações (secao-recomendacoes)</h3>
+                <p class="sb-component__desc">Trilho horizontal com scroll snap nativo de cards <code>card-recomendacao</code> (poster 2:3 + contador + título). Cabeçalho H2 + link opcional “Ver todas”. Sem JS.</p>
+              </div>
+              <div class="sb-component__meta">
+                <code class="sb-component__file">organisms/secao-recomendacoes.php</code>
+              </div>
+            </header>
+            <div class="sb-component__preview" style="background-color: var(--neutral-900); width: 100%; overflow: hidden;">
+
+              <section class="secao-recomendacoes" aria-label="Recomendações">
+                <div class="secao-recomendacoes__inner" style="padding-block: var(--space-500);">
+
+                  <header class="secao-recomendacoes__header">
+                    <h2 class="secao-recomendacoes__title">Recomendações</h2>
+                    <a href="#" class="secao-recomendacoes__link-all" aria-label="Ver todas as recomendações">
+                      <span>Ver todas</span>
+                      <svg class="secao-recomendacoes__link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </a>
+                  </header>
+
+                  <div class="trilho-infinito js-trilho secao-recomendacoes__wrapper">
+
+                    <button type="button" class="btn-nav-arrow btn-nav-arrow--prev trilho-infinito__arrow trilho-infinito__arrow--prev js-trilho__prev" aria-label="Slide anterior">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="btn-nav-arrow__icon" aria-hidden="true">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                      </svg>
+                    </button>
+
+                    <div class="secao-recomendacoes__trilho trilho-infinito__track js-trilho__track">
+
+                      <div class="secao-recomendacoes__item js-trilho__slide">
+                        <div class="card-recomendacao">
+                          <a href="#" class="card-recomendacao__media" aria-label="Ver detalhes do anime recomendado Attack on Titan">
+                            <div class="imagem-capa-container"><img class="imagem-capa" src="https://cdn.myanimelist.net/images/anime/1000/110531l.jpg" alt="Capa do anime: Attack on Titan" loading="lazy"></div>
+                          </a>
+                          <div class="card-recomendacao__content">
+                            <div class="card-recomendacao__count"><svg class="card-recomendacao__count-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M11 7C12.6569 7 14 5.65685 14 4C14 2.34315 12.6569 1 11 1C9.34315 1 8 2.34315 8 4C8 5.65685 9.34315 7 11 7Z" fill="currentColor" opacity="0.6"/><path d="M5 8C6.65685 8 8 6.65685 8 5C8 3.34315 6.65685 2 5 2C3.34315 2 2 3.34315 2 5C2 6.65685 3.34315 8 5 8Z" fill="currentColor"/><path d="M5 9C2.79086 9 1 10.7909 1 13V15H9V13C9 10.7909 7.20914 9 5 9Z" fill="currentColor"/><path d="M11 8C9.76 8 8.63 8.45 7.76 9.2C8.54 10.06 9 11.18 9 12.4V15H15V13C15 10.7909 13.2091 9 11 9Z" fill="currentColor" opacity="0.6"/></svg> 1.842 recomendações</div>
+                            <h3 class="card-recomendacao__title"><a href="#" class="card-recomendacao__title-link">Attack on Titan</a></h3>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="secao-recomendacoes__item js-trilho__slide">
+                        <div class="card-recomendacao">
+                          <a href="#" class="card-recomendacao__media" aria-label="Ver detalhes do anime recomendado Demon Slayer">
+                            <div class="imagem-capa-container"><img class="imagem-capa" src="https://cdn.myanimelist.net/images/anime/1286/99889l.jpg" alt="Capa do anime: Demon Slayer" loading="lazy"></div>
+                          </a>
+                          <div class="card-recomendacao__content">
+                            <div class="card-recomendacao__count"><svg class="card-recomendacao__count-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M11 7C12.6569 7 14 5.65685 14 4C14 2.34315 12.6569 1 11 1C9.34315 1 8 2.34315 8 4C8 5.65685 9.34315 7 11 7Z" fill="currentColor" opacity="0.6"/><path d="M5 8C6.65685 8 8 6.65685 8 5C8 3.34315 6.65685 2 5 2C3.34315 2 2 3.34315 2 5C2 6.65685 3.34315 8 5 8Z" fill="currentColor"/><path d="M5 9C2.79086 9 1 10.7909 1 13V15H9V13C9 10.7909 7.20914 9 5 9Z" fill="currentColor"/><path d="M11 8C9.76 8 8.63 8.45 7.76 9.2C8.54 10.06 9 11.18 9 12.4V15H15V13C15 10.7909 13.2091 9 11 9Z" fill="currentColor" opacity="0.6"/></svg> 967 recomendações</div>
+                            <h3 class="card-recomendacao__title"><a href="#" class="card-recomendacao__title-link">Kimetsu no Yaiba</a></h3>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="secao-recomendacoes__item js-trilho__slide">
+                        <div class="card-recomendacao">
+                          <a href="#" class="card-recomendacao__media" aria-label="Ver detalhes do anime recomendado Hunter x Hunter">
+                            <div class="imagem-capa-container"><img class="imagem-capa" src="https://cdn.myanimelist.net/images/anime/1337/99013l.jpg" alt="Capa do anime: Hunter x Hunter" loading="lazy"></div>
+                          </a>
+                          <div class="card-recomendacao__content">
+                            <div class="card-recomendacao__count"><svg class="card-recomendacao__count-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M11 7C12.6569 7 14 5.65685 14 4C14 2.34315 12.6569 1 11 1C9.34315 1 8 2.34315 8 4C8 5.65685 9.34315 7 11 7Z" fill="currentColor" opacity="0.6"/><path d="M5 8C6.65685 8 8 6.65685 8 5C8 3.34315 6.65685 2 5 2C3.34315 2 2 3.34315 2 5C2 6.65685 3.34315 8 5 8Z" fill="currentColor"/><path d="M5 9C2.79086 9 1 10.7909 1 13V15H9V13C9 10.7909 7.20914 9 5 9Z" fill="currentColor"/><path d="M11 8C9.76 8 8.63 8.45 7.76 9.2C8.54 10.06 9 11.18 9 12.4V15H15V13C15 10.7909 13.2091 9 11 9Z" fill="currentColor" opacity="0.6"/></svg> 743 recomendações</div>
+                            <h3 class="card-recomendacao__title"><a href="#" class="card-recomendacao__title-link">Hunter x Hunter (2011)</a></h3>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="secao-recomendacoes__item js-trilho__slide">
+                        <div class="card-recomendacao">
+                          <a href="#" class="card-recomendacao__media" aria-label="Ver detalhes do anime recomendado Vinland Saga">
+                            <div class="imagem-capa-container"><img class="imagem-capa" src="https://cdn.myanimelist.net/images/anime/1158/98027l.jpg" alt="Capa do anime: Vinland Saga" loading="lazy"></div>
+                          </a>
+                          <div class="card-recomendacao__content">
+                            <div class="card-recomendacao__count"><svg class="card-recomendacao__count-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M11 7C12.6569 7 14 5.65685 14 4C14 2.34315 12.6569 1 11 1C9.34315 1 8 2.34315 8 4C8 5.65685 9.34315 7 11 7Z" fill="currentColor" opacity="0.6"/><path d="M5 8C6.65685 8 8 6.65685 8 5C8 3.34315 6.65685 2 5 2C3.34315 2 2 3.34315 2 5C2 6.65685 3.34315 8 5 8Z" fill="currentColor"/><path d="M5 9C2.79086 9 1 10.7909 1 13V15H9V13C9 10.7909 7.20914 9 5 9Z" fill="currentColor"/><path d="M11 8C9.76 8 8.63 8.45 7.76 9.2C8.54 10.06 9 11.18 9 12.4V15H15V13C15 10.7909 13.2091 9 11 9Z" fill="currentColor" opacity="0.6"/></svg> 512 recomendações</div>
+                            <h3 class="card-recomendacao__title"><a href="#" class="card-recomendacao__title-link">Vinland Saga</a></h3>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="secao-recomendacoes__item js-trilho__slide">
+                        <div class="card-recomendacao">
+                          <a href="#" class="card-recomendacao__media" aria-label="Ver detalhes do anime recomendado Mob Psycho 100">
+                            <div class="imagem-capa-container"><img class="imagem-capa" src="https://cdn.myanimelist.net/images/anime/1430/100834l.jpg" alt="Capa do anime: Mob Psycho 100" loading="lazy"></div>
+                          </a>
+                          <div class="card-recomendacao__content">
+                            <h3 class="card-recomendacao__title"><a href="#" class="card-recomendacao__title-link">Mob Psycho 100</a></h3>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <button type="button" class="btn-nav-arrow btn-nav-arrow--next trilho-infinito__arrow trilho-infinito__arrow--next js-trilho__next" aria-label="Próximo slide">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="btn-nav-arrow__icon" aria-hidden="true">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                      </svg>
+                    </button>
+
+                  </div>
+
+                </div>
+              </section>
+
+            </div>
+            <div class="sb-component__code">
+              <pre>&lt;?php
+mm_render_component( 'organisms', 'secao-recomendacoes', array(
+    'titulo'        => 'Recomendações',
+    'ver_mais_url'  => 'https://myanimelist.net/anime/5114/userrecs',
+    'recomendacoes' => array(
+        array(
+            'anime_title' => 'Attack on Titan',
+            'anime_image' => 'https://cdn.myanimelist.net/images/anime/1000/110531.jpg',
+            'anime_url'   => '/anime/shingeki-no-kyojin/',
+            'rec_count'   => 1842,
+        ),
+        array(
+            'anime_title' => 'Demon Slayer',
+            'anime_image' => 'https://cdn.myanimelist.net/images/anime/1286/99889.jpg',
+            'anime_url'   => '/anime/kimetsu-no-yaiba/',
+            'rec_count'   => 967,
+        ),
+        // ... mais recomendações
+    ),
+) );
 ?&gt;</pre>
             </div>
           </article>
@@ -6016,7 +7205,7 @@ mm_render_component('organisms', 'search-modal', [
             </header>
             <div class="sb-component__preview" style="width: 100%; max-width: 1100px; margin: 0 auto; background: rgba(0,0,0,0.15); padding: var(--space-500); border-radius: var(--border-radius-300); overflow: hidden;">
               
-              <section class="secao-esteira-animes js-esteira-container" id="esteira-animes-storybook" aria-label="Animes em Destaque">
+              <section class="secao-esteira-animes" aria-label="Animes em Destaque">
                 <header class="secao-esteira-animes__header">
                   <h2 class="secao-esteira-animes__title">Animes da Temporada</h2>
                   <a href="#" class="secao-esteira-animes__link-all" aria-label="Ver todos os animes da seção Animes da Temporada">
@@ -6027,19 +7216,19 @@ mm_render_component('organisms', 'search-modal', [
                   </a>
                 </header>
                 
-                <div class="secao-esteira-animes__wrapper">
+                <div class="trilho-infinito js-trilho secao-esteira-animes__wrapper">
                   <!-- Seta Anterior -->
-                  <button type="button" class="btn-nav-arrow btn-nav-arrow--prev secao-esteira-animes__arrow secao-esteira-animes__arrow--prev js-esteira-prev" aria-label="Slide anterior">
+                  <button type="button" class="btn-nav-arrow btn-nav-arrow--prev trilho-infinito__arrow trilho-infinito__arrow--prev js-trilho__prev" aria-label="Slide anterior">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="btn-nav-arrow__icon" aria-hidden="true">
                       <polyline points="15 18 9 12 15 6"></polyline>
                     </svg>
                   </button>
 
                   <!-- Trilho de rolagem horizontal (Scroll Snap Track) -->
-                  <div class="secao-esteira-animes__track js-esteira-track">
+                  <div class="secao-esteira-animes__track trilho-infinito__track js-trilho__track">
                     
                     <!-- Card 1 -->
-                    <div class="secao-esteira-animes__slide js-esteira-slide">
+                    <div class="secao-esteira-animes__slide js-trilho__slide">
                       <div class="card-anime">
                         <a href="#" class="card-anime__media" aria-label="Ver detalhes de Chainsaw Man">
                           <div class="imagem-capa-container">
@@ -6065,7 +7254,7 @@ mm_render_component('organisms', 'search-modal', [
                     </div>
 
                     <!-- Card 2 -->
-                    <div class="secao-esteira-animes__slide js-esteira-slide">
+                    <div class="secao-esteira-animes__slide js-trilho__slide">
                       <div class="card-anime">
                         <a href="#" class="card-anime__media" aria-label="Ver detalhes de Frieren">
                           <div class="imagem-capa-container">
@@ -6091,7 +7280,7 @@ mm_render_component('organisms', 'search-modal', [
                     </div>
 
                     <!-- Card 3 -->
-                    <div class="secao-esteira-animes__slide js-esteira-slide">
+                    <div class="secao-esteira-animes__slide js-trilho__slide">
                       <div class="card-anime">
                         <a href="#" class="card-anime__media" aria-label="Ver detalhes de OPM 3">
                           <div class="imagem-capa-container">
@@ -6113,7 +7302,7 @@ mm_render_component('organisms', 'search-modal', [
                     </div>
 
                     <!-- Card 4 -->
-                    <div class="secao-esteira-animes__slide js-esteira-slide">
+                    <div class="secao-esteira-animes__slide js-trilho__slide">
                       <div class="card-anime">
                         <a href="#" class="card-anime__media" aria-label="Ver detalhes de Demon Slayer">
                           <div class="imagem-capa-container">
@@ -6139,7 +7328,7 @@ mm_render_component('organisms', 'search-modal', [
                     </div>
 
                     <!-- Card 5 -->
-                    <div class="secao-esteira-animes__slide js-esteira-slide">
+                    <div class="secao-esteira-animes__slide js-trilho__slide">
                       <div class="card-anime">
                         <a href="#" class="card-anime__media" aria-label="Ver detalhes de Oshi no Ko">
                           <div class="imagem-capa-container">
@@ -6167,7 +7356,7 @@ mm_render_component('organisms', 'search-modal', [
                   </div>
 
                   <!-- Seta Próxima -->
-                  <button type="button" class="btn-nav-arrow btn-nav-arrow--next secao-esteira-animes__arrow secao-esteira-animes__arrow--next js-esteira-next" aria-label="Próximo slide">
+                  <button type="button" class="btn-nav-arrow btn-nav-arrow--next trilho-infinito__arrow trilho-infinito__arrow--next js-trilho__next" aria-label="Próximo slide">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="btn-nav-arrow__icon" aria-hidden="true">
                       <polyline points="9 18 15 12 9 6"></polyline>
                     </svg>
@@ -6182,6 +7371,182 @@ mm_render_component('organisms', 'search-modal', [
     'url_ver_todos' => '#',
     'animes'        => $animes_dados_array
 ]); ?&gt;</pre>
+            </div>
+          </article>
+
+          <!-- Seção de Novos Episódios (secao-novos-episodios) -->
+          <article class="sb-component" id="secao-novos-episodios-preview">
+            <header class="sb-component__header">
+              <div class="sb-component__header-info">
+                <h3 class="sb-component__name">Seção de Novos Episódios (secao-novos-episodios)</h3>
+                <p class="sb-component__desc">Carrossel horizontal de <code>card-anime</code> com badge de horário visível em cada capa. O campo <code>horario</code> de entrada deve ser fornecido em **UTC** (ex: &ldquo;21:00&rdquo;). O componente converte automaticamente para BRT (America/Sao_Paulo) e ordena os cards de forma crescente pelo horário convertido. Título gerado dinamicamente pelo PHP com o dia da semana em BRT. Usa <code>trilho-infinito</code> para scroll infinito com setas.</p>
+              </div>
+              <div class="sb-component__meta">
+                <code class="sb-component__file">organisms/secao-novos-episodios.php</code>
+              </div>
+            </header>
+            <div class="sb-component__preview" style="width: 100%; max-width: 1100px; margin: 0 auto; background: rgba(0,0,0,0.15); padding: var(--space-500); border-radius: var(--border-radius-300); overflow: hidden;">
+
+              <section class="secao-novos-episodios" aria-label="Novos Episódios &mdash; Domingo">
+                <header class="secao-novos-episodios__header">
+                  <h2 class="secao-novos-episodios__title">Novos Episódios &mdash; Domingo</h2>
+                </header>
+
+                <div class="trilho-infinito js-trilho secao-novos-episodios__wrapper">
+
+                  <button type="button" class="btn-nav-arrow btn-nav-arrow--prev trilho-infinito__arrow trilho-infinito__arrow--prev js-trilho__prev" aria-label="Slide anterior">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="btn-nav-arrow__icon" aria-hidden="true">
+                      <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                  </button>
+
+                  <div class="secao-novos-episodios__track trilho-infinito__track js-trilho__track">
+
+                    <!-- Card 1 -->
+                    <div class="secao-novos-episodios__slide js-trilho__slide">
+                      <div class="card-anime">
+                        <a href="#" class="card-anime__media" aria-label="Ver detalhes do anime Frieren: Beyond Journey's End">
+                          <div class="imagem-capa-container">
+                            <div class="imagem-capa-horario">
+                              <span class="badge-horario" title="Episódio às 00:00 (UTC 21:00 → BRT -3h)">
+                                <svg class="badge-horario__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                                <span class="badge-horario__text">00:00</span>
+                              </span>
+                            </div>
+                            <img class="imagem-capa" src="https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&q=80" alt="Capa do anime: Frieren" loading="lazy" />
+                            <div class="imagem-capa-overlay">
+                              <span class="nota-mal"><svg class="nota-mal__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><span class="nota-mal__val">9.38</span></span>
+                            </div>
+                          </div>
+                        </a>
+                        <div class="card-anime__content">
+                          <div class="card-anime__genres" role="list"><a href="#" class="badge-genero card-anime__genre-badge">Fantasia</a><a href="#" class="badge-genero card-anime__genre-badge">Drama</a></div>
+                          <h3 class="card-anime__title"><a href="#" class="card-anime__title-link">Frieren: Beyond Journey's End</a></h3>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="secao-novos-episodios__slide js-trilho__slide">
+                      <div class="card-anime">
+                        <a href="#" class="card-anime__media" aria-label="Ver detalhes do anime Chainsaw Man">
+                          <div class="imagem-capa-container">
+                            <div class="imagem-capa-horario">
+                              <span class="badge-horario" title="Episódio às 15:00 (UTC 18:00 → BRT -3h)">
+                                <svg class="badge-horario__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                                <span class="badge-horario__text">15:00</span>
+                              </span>
+                            </div>
+                            <img class="imagem-capa" src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&q=80" alt="Capa do anime: Chainsaw Man" loading="lazy" />
+                            <div class="imagem-capa-overlay">
+                              <span class="nota-mal"><svg class="nota-mal__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><span class="nota-mal__val">8.60</span></span>
+                            </div>
+                          </div>
+                        </a>
+                        <div class="card-anime__content">
+                          <div class="card-anime__genres" role="list"><a href="#" class="badge-genero card-anime__genre-badge">Ação</a><a href="#" class="badge-genero card-anime__genre-badge">Gore</a></div>
+                          <h3 class="card-anime__title"><a href="#" class="card-anime__title-link">Chainsaw Man</a></h3>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="secao-novos-episodios__slide js-trilho__slide">
+                      <div class="card-anime">
+                        <a href="#" class="card-anime__media" aria-label="Ver detalhes do anime Demon Slayer">
+                          <div class="imagem-capa-container">
+                            <div class="imagem-capa-horario">
+                              <span class="badge-horario" title="Episódio às 20:15 (UTC 23:15 → BRT -3h)">
+                                <svg class="badge-horario__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                                <span class="badge-horario__text">20:15</span>
+                              </span>
+                            </div>
+                            <img class="imagem-capa" src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=600&q=80" alt="Capa do anime: Demon Slayer" loading="lazy" />
+                            <div class="imagem-capa-overlay">
+                              <span class="nota-mal"><svg class="nota-mal__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><span class="nota-mal__val">8.75</span></span>
+                            </div>
+                          </div>
+                        </a>
+                        <div class="card-anime__content">
+                          <div class="card-anime__genres" role="list"><a href="#" class="badge-genero card-anime__genre-badge">Ação</a><a href="#" class="badge-genero card-anime__genre-badge">Aventura</a></div>
+                          <h3 class="card-anime__title"><a href="#" class="card-anime__title-link">Demon Slayer: Treinamento dos Hashira</a></h3>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="secao-novos-episodios__slide js-trilho__slide">
+                      <div class="card-anime">
+                        <a href="#" class="card-anime__media" aria-label="Ver detalhes do anime Attack on Titan Final Season">
+                          <div class="imagem-capa-container">
+                            <div class="imagem-capa-horario">
+                              <span class="badge-horario" title="Episódio às 12:30 (UTC 15:30 → BRT -3h)">
+                                <svg class="badge-horario__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                                <span class="badge-horario__text">12:30</span>
+                              </span>
+                            </div>
+                            <div class="imagem-capa-placeholder" aria-label="Capa não disponível"><span class="imagem-capa-placeholder__text">AoT Final</span></div>
+                          </div>
+                        </a>
+                        <div class="card-anime__content">
+                          <div class="card-anime__genres" role="list"><a href="#" class="badge-genero card-anime__genre-badge">Drama</a><a href="#" class="badge-genero card-anime__genre-badge">Mistério</a></div>
+                          <h3 class="card-anime__title"><a href="#" class="card-anime__title-link">Attack on Titan: Final Season</a></h3>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="secao-novos-episodios__slide js-trilho__slide">
+                      <div class="card-anime">
+                        <a href="#" class="card-anime__media" aria-label="Ver detalhes do anime Oshi no Ko">
+                          <div class="imagem-capa-container">
+                            <div class="imagem-capa-horario">
+                              <span class="badge-horario" title="Episódio às 09:00 (UTC 12:00 → BRT -3h)">
+                                <svg class="badge-horario__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                                <span class="badge-horario__text">09:00</span>
+                              </span>
+                            </div>
+                            <img class="imagem-capa" src="https://images.unsplash.com/photo-1563089145-599997674d42?w=600&q=80" alt="Capa do anime: Oshi no Ko" loading="lazy" />
+                            <div class="imagem-capa-overlay">
+                              <span class="nota-mal"><svg class="nota-mal__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><span class="nota-mal__val">8.42</span></span>
+                            </div>
+                          </div>
+                        </a>
+                        <div class="card-anime__content">
+                          <div class="card-anime__genres" role="list"><a href="#" class="badge-genero card-anime__genre-badge">Drama</a><a href="#" class="badge-genero card-anime__genre-badge">Mistério</a></div>
+                          <h3 class="card-anime__title"><a href="#" class="card-anime__title-link">Oshi no Ko</a></h3>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <button type="button" class="btn-nav-arrow btn-nav-arrow--next trilho-infinito__arrow trilho-infinito__arrow--next js-trilho__next" aria-label="Próximo slide">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="btn-nav-arrow__icon" aria-hidden="true">
+                      <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                  </button>
+
+                </div>
+              </section>
+
+            </div>
+            <div class="sb-component__code">
+              <pre>&lt;?php
+mm_render_component( 'organisms', 'secao-novos-episodios', array(
+    'animes' =&gt; array(
+        array(
+            'titulo'     =&gt; 'Frieren: Beyond Journey\'s End',
+            'url'        =&gt; '/anime/frieren/',
+            'imagem_url' =&gt; 'https://exemplo.com/frieren.jpg',
+            'nota'       =&gt; '9.38',
+            'horario'    =&gt; '21:00', // UTC → exibe 18:00 BRT
+            'generos'    =&gt; array( 'Fantasia', 'Drama' ),
+        ),
+        // ... mais animes do dia
+    ),
+) );
+?&gt;</pre>
             </div>
           </article>
 
@@ -6966,14 +8331,28 @@ mm_render_component('organisms', 'secao-pos-artigo', [
         }
       });
     }
+
+      // Hero Anime — Toggle de sinopse
+      document.querySelectorAll('.js-hero-sinopse-toggle').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var sinopse  = this.closest('.js-hero-sinopse');
+          var expanded = sinopse.classList.toggle('hero-anime__sinopse--expanded');
+          this.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+          this.querySelector('.hero-anime__sinopse-toggle-text').textContent =
+            expanded ? this.dataset.labelCollapse : this.dataset.labelExpand;
+        });
+      });
+
   </script>
 
   <!-- Real Design System Component Scripts -->
+  <script src="molecules/review-card.js"></script>
   <script src="atoms/embed-video.js"></script>
   <script src="organisms/header.js"></script>
   <script src="organisms/navigation-drawer.js"></script>
   <script src="organisms/search-modal.js"></script>
   <script src="organisms/secao-carrossel-destaque.js"></script>
+  <script src="molecules/trilho-infinito.js"></script>
   <script src="organisms/secao-esteira-animes.js"></script>
 </body>
 </html>

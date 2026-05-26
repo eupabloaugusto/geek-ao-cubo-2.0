@@ -52,40 +52,37 @@ $wrapper_attrs = $has_link
 ?>
 <<?php echo $wrapper_tag; ?> <?php echo $wrapper_attrs; ?>class="card-personagem<?php echo $class ? ' ' . $class : ''; ?><?php echo $role_slug ? ' card-personagem--' . $role_slug : ''; ?>" aria-label="<?php echo $aria_label; ?>">
 
-	<?php if ( ! empty( $image_url ) ) : ?>
-		<img
-			class="card-personagem__image"
-			src="<?php echo $image_url; ?>"
-			alt="<?php echo esc_attr( sprintf( __( 'Imagem do personagem %s', 'hello-elementor-child' ), $name ) ); ?>"
-			loading="lazy"
-			decoding="async"
-		/>
-	<?php else : ?>
-		<!-- Fallback sem imagem: gradiente com inicial -->
-		<div class="card-personagem__fallback" aria-hidden="true">
-			<span class="card-personagem__initial"><?php echo mb_substr( $name, 0, 1 ); ?></span>
-		</div>
-	<?php endif; ?>
+	<div class="card-personagem__poster">
+		<?php if ( ! empty( $image_url ) ) : ?>
+			<img
+				class="card-personagem__image"
+				src="<?php echo $image_url; ?>"
+				alt="<?php echo esc_attr( sprintf( __( 'Imagem do personagem %s', 'hello-elementor-child' ), $name ) ); ?>"
+				loading="lazy"
+				decoding="async"
+			/>
+		<?php else : ?>
+			<!-- Fallback sem imagem: gradiente com inicial -->
+			<div class="card-personagem__fallback" aria-hidden="true">
+				<span class="card-personagem__initial"><?php echo mb_substr( $name, 0, 1 ); ?></span>
+			</div>
+		<?php endif; ?>
 
-	<!-- Gradient overlay para legibilidade do texto -->
-	<div class="card-personagem__overlay" aria-hidden="true"></div>
-
-	<!-- Painel glassmorphic na base do card -->
-	<div class="card-personagem__panel">
+		<!-- Gradient overlay para estética e hover -->
+		<div class="card-personagem__overlay" aria-hidden="true"></div>
 
 		<?php if ( ! empty( $role ) ) : ?>
 			<span class="card-personagem__badge card-personagem__badge--<?php echo $role_slug; ?>">
 				<?php echo $role; ?>
 			</span>
 		<?php endif; ?>
+	</div>
 
-		<div class="card-personagem__info">
-			<p class="card-personagem__name"><?php echo $name; ?></p>
-			<?php if ( ! empty( $name_kanji ) ) : ?>
-				<p class="card-personagem__name-kanji" lang="ja"><?php echo $name_kanji; ?></p>
-			<?php endif; ?>
-		</div>
-
+	<div class="card-personagem__info">
+		<p class="card-personagem__name"><?php echo $name; ?></p>
+		<?php if ( ! empty( $name_kanji ) ) : ?>
+			<p class="card-personagem__name-kanji" lang="ja"><?php echo $name_kanji; ?></p>
+		<?php endif; ?>
 	</div>
 
 </<?php echo $wrapper_tag; ?>>

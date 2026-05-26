@@ -1,0 +1,134 @@
+/**
+ * Organism CSS: Seção Equipe de Produção (secao-staff)
+ *
+ * Membros da equipe agrupados por cargo, grade responsiva:
+ * 1 col (mobile) → 2 cols (tablet) → 3 cols (desktop).
+ *
+ * @package hello-elementor-child
+ */
+
+/* ==========================================================================
+   SEÇÃO BASE
+   ========================================================================== */
+
+.secao-staff {
+	width: 100%;
+}
+
+.secao-staff__inner {
+	max-width: var(--container-max);
+	margin: 0 auto;
+	padding: var(--space-700) var(--space-400);
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-500);
+}
+
+/* ==========================================================================
+   TÍTULO PRINCIPAL
+   ========================================================================== */
+
+.secao-staff__title {
+	font-family: var(--font-heading);
+	font-size: var(--text-sm-size);
+	font-weight: 700;
+	color: var(--neutral-100);
+	margin: 0;
+	line-height: 1.2;
+}
+
+/* ==========================================================================
+   GRUPOS POR CARGO
+   ========================================================================== */
+
+.secao-staff__groups {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-600);
+	width: 100%;
+}
+
+.secao-staff__group {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-300);
+	width: 100%;
+}
+
+/* Subtítulo do grupo — barra laranja à esquerda (padrão do sistema) */
+.secao-staff__group-title {
+	font-family: var(--font-heading);
+	font-size: var(--text-xs-size);
+	font-weight: 700;
+	color: var(--neutral-300);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	margin: 0;
+	padding-left: var(--space-200);
+	border-left: 0.1875rem solid var(--color-primary);
+	line-height: 1.1;
+}
+
+/* ==========================================================================
+   GRADE DE CARDS
+   ========================================================================== */
+
+.secao-staff__grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--space-200);
+	width: 100%;
+}
+
+/* ==========================================================================
+   RODAPÉ: botão "Ver equipe completa"
+   ========================================================================== */
+
+.secao-staff__footer {
+	display: flex;
+	justify-content: center;
+	padding-top: var(--space-200);
+}
+
+.secao-staff__btn {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-200);
+}
+
+.secao-staff__btn-icon {
+	width: var(--icon-xs);
+	height: var(--icon-xs);
+	flex-shrink: 0;
+	transition: transform 0.2s ease;
+}
+
+.secao-staff__btn:hover .secao-staff__btn-icon {
+	transform: translateX(0.125rem);
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+
+/* Tablet (≥ 48rem) — 2 colunas */
+@media (min-width: 48rem) {
+	.secao-staff__grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+/* Desktop (≥ 64rem) — 3 colunas + padding maior */
+@media (min-width: 64rem) {
+	.secao-staff__inner {
+		padding-inline: var(--space-600);
+	}
+
+	.secao-staff__title {
+		font-size: var(--text-md-sm-size);
+	}
+
+	.secao-staff__grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}

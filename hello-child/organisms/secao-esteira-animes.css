@@ -61,87 +61,35 @@
 }
 
 /* ==========================================================================
-   TRILHO E SLIDER (Scroll Snap Track)
+   TRILHO — estilos específicos do organismo
+   Scroll, drag, scrollbar e posicionamento de setas são gerenciados
+   pela molécula trilho-infinito (trilho-infinito.css / trilho-infinito.js).
    ========================================================================== */
-.secao-esteira-animes__wrapper {
-    position: relative;
-    width: 100%;
-}
 
+/* Track: layout essencial + gap e padding específicos desta esteira */
 .secao-esteira-animes__track {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
-    scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
-    width: 100%;
-    gap: var(--space-300); /* 16px de espaçamento entre os cards - UX otimizada para catálogos */
-    padding: var(--space-200) var(--space-100) var(--space-400) var(--space-100); /* Padding extra para acomodar sombras e bordas no hover */
-    margin: 0;
-    
-    /* Suporte a física de toque fluida no iOS (60fps native swipe) */
     -webkit-overflow-scrolling: touch;
-    
-    /* Ocultação de barra de rolagem padrão no Firefox e IE */
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    
-    /* Premium Drag-to-Scroll UX */
-    cursor: grab;
-    user-select: none;
-    -webkit-user-select: none;
+    gap: var(--space-300);
+    padding: var(--space-200) var(--space-100) var(--space-400) var(--space-100);
+    width: 100%;
 }
 
-/* Ocultação de barra de rolagem no Chrome, Safari, Opera e Edge */
-.secao-esteira-animes__track::-webkit-scrollbar {
-    display: none;
-    width: 0;
-    height: 0;
-}
-
-/* Estado ativo de arrasto físico */
-.secao-esteira-animes__track.is-dragging {
-    cursor: grabbing;
-    scroll-behavior: auto !important;
-}
-
-/* Evita que links e imagens capturem eventos ou sejam arrastados pelo browser durante o drag */
-.secao-esteira-animes__track.is-dragging a,
-.secao-esteira-animes__track.is-dragging img {
-    pointer-events: none !important;
-    user-drag: none;
-    -webkit-user-drag: none;
-}
-
-/* Slide Individual (Largura fixa sincronizada com o card de anime) */
+/* Slide Individual (largura sincronizada com card-anime) */
 .secao-esteira-animes__slide {
     flex: 0 0 auto;
     width: var(--width-card-anime, 12.5rem);
     scroll-snap-align: start;
 }
 
-/* ==========================================================================
-   SETAS DE NAVEGAÇÃO LATERAIS
-   ========================================================================== */
-.secao-esteira-animes__arrow {
-    position: absolute;
-    /* Alinha verticalmente com o centro da imagem de capa (proporção 2:3, que é largura * 1.5) */
-    top: calc(var(--width-card-anime, 12.5rem) * 1.5 * 0.5); 
-    transform: translateY(-50%);
-    z-index: 10;
-    opacity: 1;
-    pointer-events: all;
-    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s ease;
-}
-
-.secao-esteira-animes__arrow--prev {
-    left: -1rem;
-}
-
-.secao-esteira-animes__arrow--next {
-    right: -1rem;
+/* Setas: alinhamento vertical ao centro da imagem de capa (proporção 2:3) */
+.secao-esteira-animes__wrapper .trilho-infinito__arrow {
+    top: calc(var(--width-card-anime, 12.5rem) * 1.5 * 0.5);
 }
 
 

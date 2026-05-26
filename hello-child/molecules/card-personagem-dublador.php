@@ -1,106 +1,98 @@
 <?php
 /**
- * Molecule: Card de Personagem e Dublador (card-personagem-dublador)
+ * Molecule: Card de Dublador (card-personagem-dublador)
  *
- * Card horizontal compacto no estilo MAL clássico.
- * Lado esquerdo: avatar + nome + role do personagem.
- * Lado direito (espelhado): idioma + nome + avatar do voice actor.
- * Cada lado é individualmente clicável se uma URL for fornecida.
+ * Card do voice actor com foto circular em destaque.
+ * Mobile/tablet: flex-column centralizado (avatar em cima, info abaixo).
+ * Desktop (≥ 64rem): flex-row (avatar esquerda, info direita).
  *
  * @package hello-elementor-child
  *
- * @param string $character_name  Nome do personagem (obrigatório).
- * @param string $character_image URL da imagem do personagem.
- * @param string $character_role  Role do personagem. Default: 'Principal'.
- * @param string $character_url   URL da página do personagem (opcional).
- * @param string $va_name         Nome do voice actor.
- * @param string $va_image        URL da imagem do voice actor.
- * @param string $va_language     Idioma do VA. Default: 'Japonês'.
- * @param string $va_url          URL da página do VA (opcional).
+ * @param string $va_name         Nome do dublador (obrigatório).
+ * @param string $va_image        URL da foto do dublador.
+ * @param string $va_url          URL do perfil MAL do dublador (opcional).
+ * @param string $va_language     Idioma. Default: 'Japonês'.
+ * @param string $character_name  Nome do personagem dublado (opcional).
+ * @param int    $episodios        Nº de episódios participados (opcional).
+ * @param int    $ano_inicio       Ano de início na obra (opcional).
+ * @param int    $ano_fim          Ano de fim na obra (opcional).
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$character_name  = isset( $args['character_name'] ) ? esc_html( $args['character_name'] ) : '';
-$character_image = isset( $args['character_image'] ) ? esc_url( $args['character_image'] ) : '';
-$character_role  = isset( $args['character_role'] ) ? esc_html( $args['character_role'] ) : 'Principal';
-$character_url   = isset( $args['character_url'] ) ? esc_url( $args['character_url'] ) : '';
-$va_name         = isset( $args['va_name'] ) ? esc_html( $args['va_name'] ) : '';
-$va_image        = isset( $args['va_image'] ) ? esc_url( $args['va_image'] ) : '';
-$va_language     = isset( $args['va_language'] ) ? esc_html( $args['va_language'] ) : 'Japonês';
-$va_url          = isset( $args['va_url'] ) ? esc_url( $args['va_url'] ) : '';
+$va_name        = isset( $args['va_name'] )        ? esc_html( $args['va_name'] )        : '';
+$va_image       = isset( $args['va_image'] )       ? esc_url( $args['va_image'] )        : '';
+$va_url         = isset( $args['va_url'] )         ? esc_url( $args['va_url'] )          : '';
+$va_language    = isset( $args['va_language'] )    ? esc_html( $args['va_language'] )    : __( 'Japonês', 'hello-elementor-child' );
+$character_name = isset( $args['character_name'] ) ? esc_html( $args['character_name'] ) : '';
+$episodios      = isset( $args['episodios'] )      ? intval( $args['episodios'] )        : 0;
+$ano_inicio     = isset( $args['ano_inicio'] )     ? intval( $args['ano_inicio'] )       : 0;
+$ano_fim        = isset( $args['ano_fim'] )        ? intval( $args['ano_fim'] )          : 0;
 
-if ( empty( $character_name ) ) {
+if ( empty( $va_name ) ) {
 	return;
 }
 
-$role_lower = mb_strtolower( $character_role );
-if ( str_contains( $role_lower, 'principal' ) || str_contains( $role_lower, 'main' ) ) {
-	$role_slug = 'main';
-} elseif ( str_contains( $role_lower, 'secund' ) || str_contains( $role_lower, 'supporting' ) ) {
-	$role_slug = 'supporting';
-} else {
-	$role_slug = 'other';
+$meta_parts = array();
+
+if ( $episodios > 0 ) {
+	$meta_parts[] = sprintf(
+		_n( '%d episódio', '%d episódios', $episodios, 'hello-elementor-child' ),
+		$episodios
+	);
 }
 
-$char_tag   = ! empty( $character_url ) ? 'a' : 'div';
-$char_attrs = ! empty( $character_url )
-	? sprintf( 'href="%s" aria-label="%s" ', $character_url, esc_attr( sprintf( __( 'Ver personagem: %s', 'hello-elementor-child' ), $character_name ) ) )
-	: '';
+if ( $ano_inicio > 0 && $ano_fim > 0 ) {
+	$meta_parts[] = $ano_inicio . '–' . $ano_fim;
+} elseif ( $ano_inicio > 0 ) {
+	$meta_parts[] = $ano_inicio . '–';
+} elseif ( $ano_fim > 0 ) {
+	$meta_parts[] = $ano_fim;
+}
 
-$va_tag   = ! empty( $va_url ) ? 'a' : 'div';
-$va_attrs = ! empty( $va_url )
-	? sprintf( 'href="%s" aria-label="%s" ', $va_url, esc_attr( sprintf( __( 'Ver dublador: %s', 'hello-elementor-child' ), $va_name ) ) )
+$meta_str = ! empty( $meta_parts ) ? implode( ' • ', $meta_parts ) : '';
+
+$tag   = ! empty( $va_url ) ? 'a' : 'article';
+$attrs = ! empty( $va_url )
+	? sprintf(
+		'href="%s" aria-label="%s"',
+		$va_url,
+		esc_attr( sprintf( __( 'Ver perfil do dublador: %s', 'hello-elementor-child' ), $va_name ) )
+	)
 	: '';
 ?>
 
-<div class="card-personagem-dublador">
+<<?php echo $tag; ?> <?php echo $attrs; ?> class="card-personagem-dublador" itemscope itemtype="https://schema.org/Person">
 
-	<!-- Lado Esquerdo: Personagem -->
-	<<?php echo $char_tag; ?> <?php echo $char_attrs; ?>class="card-personagem-dublador__side card-personagem-dublador__side--character">
-
+	<div class="card-personagem-dublador__avatar-wrap">
 		<?php
 		mm_render_component( 'atoms', 'avatar-personagem', array(
-			'image_url'      => $character_image,
-			'character_name' => $character_name,
-			'size'           => 54,
+			'image_url'      => $va_image,
+			'character_name' => $va_name,
+			'size'           => 80,
 			'class'          => 'card-personagem-dublador__avatar',
 		) );
 		?>
+	</div>
 
-		<div class="card-personagem-dublador__info">
-			<span class="card-personagem-dublador__name"><?php echo $character_name; ?></span>
-			<span class="card-personagem-dublador__role card-personagem-dublador__role--<?php echo $role_slug; ?>"><?php echo $character_role; ?></span>
-		</div>
+	<div class="card-personagem-dublador__info">
 
-	</<?php echo $char_tag; ?>>
+		<span class="card-personagem-dublador__name" itemprop="name"><?php echo $va_name; ?></span>
 
-	<?php if ( ! empty( $va_name ) ) : ?>
+		<?php if ( ! empty( $character_name ) ) : ?>
+			<span class="card-personagem-dublador__character"><?php echo $character_name; ?></span>
+		<?php endif; ?>
 
-		<!-- Separador Vertical -->
-		<div class="card-personagem-dublador__divider" aria-hidden="true"></div>
+		<?php if ( ! empty( $va_language ) ) : ?>
+			<span class="card-personagem-dublador__language"><?php echo $va_language; ?></span>
+		<?php endif; ?>
 
-		<!-- Lado Direito: Voice Actor (espelhado) -->
-		<<?php echo $va_tag; ?> <?php echo $va_attrs; ?>class="card-personagem-dublador__side card-personagem-dublador__side--va">
+		<?php if ( ! empty( $meta_str ) ) : ?>
+			<span class="card-personagem-dublador__meta"><?php echo esc_html( $meta_str ); ?></span>
+		<?php endif; ?>
 
-			<div class="card-personagem-dublador__info card-personagem-dublador__info--va">
-				<span class="card-personagem-dublador__name"><?php echo $va_name; ?></span>
-				<span class="card-personagem-dublador__language"><?php echo $va_language; ?></span>
-			</div>
+	</div>
 
-			<?php
-			mm_render_component( 'atoms', 'avatar-personagem', array(
-				'image_url'      => $va_image,
-				'character_name' => $va_name,
-				'size'           => 54,
-				'class'          => 'card-personagem-dublador__avatar',
-			) );
-			?>
-
-		</<?php echo $va_tag; ?>>
-
-	<?php endif; ?>
-
-</div>
+</<?php echo $tag; ?>>

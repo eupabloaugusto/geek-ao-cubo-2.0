@@ -202,65 +202,40 @@ get_header();
 				?>
 			</section>
 
-			<!-- A2. SEÇÃO DESTAQUE: ÚLTIMAS NOTÍCIAS (secao-destaque) -->
+			<!-- A2. ÚLTIMAS NOTÍCIAS (secao-noticias-recentes) -->
 			<section class="home-section" style="margin-top: var(--space-600);">
-				<h2 class="home-section__title"><?php _e( 'Últimas notícias', 'hello-elementor-child' ); ?></h2>
-				<?php 
+				<?php
 				// Busca 5 notícias recentes excluindo as que já aparecem no topo
-				$query_news = mm_query_noticias_recentes( 5, $exclude_ids );
-				$post_hero_news = array();
-				$posts_grid_news = array();
+				$query_news   = mm_query_noticias_recentes( 5, $exclude_ids );
+				$noticias_a2  = array();
 
 				if ( $query_news->have_posts() ) {
-					$count = 0;
 					while ( $query_news->have_posts() ) {
 						$query_news->the_post();
-						$n_id = get_the_ID();
-						$exclude_ids[] = $n_id; // Adiciona aos excluídos para a próxima seção "Veja também"
-						
-						$featured_img  = get_the_post_thumbnail_url( $n_id, 'large' );
+						$n_id          = get_the_ID();
+						$exclude_ids[] = $n_id; // Acumula IDs para evitar duplicidade na seção A4
+
 						$categories    = get_the_category();
 						$category_name = ! empty( $categories ) ? $categories[0]->name : __( 'Geral', 'hello-elementor-child' );
 
-						$post_item = array(
+						$noticias_a2[] = array(
 							'titulo'     => get_the_title(),
 							'url'        => get_permalink(),
-							'imagem_url' => $featured_img,
+							'imagem_url' => get_the_post_thumbnail_url( $n_id, 'large' ),
 							'categoria'  => $category_name,
 							'autor'      => get_the_author(),
 							'data'       => get_the_date(),
 							'resumo'     => get_the_excerpt(),
 						);
-
-						if ( $count === 0 ) {
-							$post_hero_news = $post_item;
-						} else {
-							$posts_grid_news[] = $post_item;
-						}
-						$count++;
 					}
 					wp_reset_postdata();
 				}
 
-				if ( ! empty( $post_hero_news ) ) {
-					mm_render_component( 'organisms', 'secao-destaque', array(
-						'post_hero'  => $post_hero_news,
-						'posts_grid' => $posts_grid_news,
+				if ( ! empty( $noticias_a2 ) ) {
+					mm_render_component( 'organisms', 'secao-noticias-recentes', array(
+						'titulo'  => __( 'Últimas notícias', 'hello-elementor-child' ),
+						'noticias' => $noticias_a2,
 					) );
-				} else {
-					// Fallback caso não haja notícias no banco local
-					?>
-					<div class="home-placeholder-news">
-						<div class="home-placeholder-news-hero">
-							<div class="home-placeholder-news-hero__image"></div>
-							<div class="home-placeholder-news-hero__content">
-								<h3 class="home-placeholder-news-hero__title"><?php _e( 'Nenhuma notícia adicional encontrada no banco de dados local.', 'hello-elementor-child' ); ?></h3>
-								<p class="home-placeholder-news-hero__desc"><?php _e( 'Crie mais alguns posts no seu painel administrativo local para ver o layout editorial em ação!', 'hello-elementor-child' ); ?></p>
-								<span class="home-placeholder-news-hero__status"><?php _e( 'Aguardando mais posts', 'hello-elementor-child' ); ?></span>
-							</div>
-						</div>
-					</div>
-					<?php
 				}
 				?>
 			</section>
@@ -324,63 +299,39 @@ get_header();
 				?>
 			</section>
 
-			<!-- A4. SEÇÃO DESTAQUE: VEJA TAMBÉM (secao-destaque) -->
+			<!-- A4. VEJA TAMBÉM (secao-noticias-recentes) -->
 			<section class="home-section" style="margin-top: var(--space-600);">
-				<h2 class="home-section__title"><?php _e( 'Veja também', 'hello-elementor-child' ); ?></h2>
-				<?php 
-				// Busca mais 5 notícias excluindo TODOS os posts que já apareceram acima na home (duplicidade zero)
+				<?php
+				// Busca mais 5 notícias excluindo TODOS os posts já exibidos acima (duplicidade zero)
 				$query_see_also = mm_query_noticias_recentes( 5, $exclude_ids );
-				$post_hero_see_also = array();
-				$posts_grid_see_also = array();
+				$noticias_a4    = array();
 
 				if ( $query_see_also->have_posts() ) {
-					$count = 0;
 					while ( $query_see_also->have_posts() ) {
 						$query_see_also->the_post();
-						$n_id = get_the_ID();
-						
-						$featured_img  = get_the_post_thumbnail_url( $n_id, 'large' );
+						$n_id          = get_the_ID();
+
 						$categories    = get_the_category();
 						$category_name = ! empty( $categories ) ? $categories[0]->name : __( 'Geral', 'hello-elementor-child' );
 
-						$post_item = array(
+						$noticias_a4[] = array(
 							'titulo'     => get_the_title(),
 							'url'        => get_permalink(),
-							'imagem_url' => $featured_img,
+							'imagem_url' => get_the_post_thumbnail_url( $n_id, 'large' ),
 							'categoria'  => $category_name,
 							'autor'      => get_the_author(),
 							'data'       => get_the_date(),
 							'resumo'     => get_the_excerpt(),
 						);
-
-						if ( $count === 0 ) {
-							$post_hero_see_also = $post_item;
-						} else {
-							$posts_grid_see_also[] = $post_item;
-						}
-						$count++;
 					}
 					wp_reset_postdata();
 				}
 
-				if ( ! empty( $post_hero_see_also ) ) {
-					mm_render_component( 'organisms', 'secao-destaque', array(
-						'post_hero'  => $post_hero_see_also,
-						'posts_grid' => $posts_grid_see_also,
+				if ( ! empty( $noticias_a4 ) ) {
+					mm_render_component( 'organisms', 'secao-noticias-recentes', array(
+						'titulo'   => __( 'Veja também', 'hello-elementor-child' ),
+						'noticias' => $noticias_a4,
 					) );
-				} else {
-					// Fallback visual estético caso o banco local de notícias esteja esgotado
-					?>
-					<div class="home-placeholder-news">
-						<div class="home-placeholder-news-hero">
-							<div class="home-placeholder-news-hero__image"></div>
-							<div class="home-placeholder-news-hero__content">
-								<h3 class="home-placeholder-news-hero__title"><?php _e( 'Nenhuma notícia adicional encontrada.', 'hello-elementor-child' ); ?></h3>
-								<span class="home-placeholder-news-hero__status"><?php _e( 'Sem mais posts', 'hello-elementor-child' ); ?></span>
-							</div>
-						</div>
-					</div>
-					<?php
 				}
 				?>
 			</section>

@@ -93,21 +93,21 @@
 /* Estilos de Fechamento & Floating (Task 5.2) */
 .aviso-adblock__close {
     position: absolute;
-    top: var(--space-300, 1rem);
-    right: var(--space-300, 1rem);
+    top: var(--space-300);
+    right: var(--space-300);
     background: transparent;
     border: none;
-    color: var(--neutral-400, #9CA3AF);
+    color: var(--neutral-400);
     cursor: pointer;
-    font-size: var(--text-md-size, 1.25rem);
+    font-size: var(--text-sm-size);
     line-height: 1;
-    padding: var(--space-100, 0.25rem);
+    padding: var(--space-100);
     transition: color 0.2s ease, transform 0.2s ease;
     z-index: 10;
 }
 
 .aviso-adblock__close:hover {
-    color: var(--neutral-100, #F3F4F6);
+    color: var(--neutral-100);
     transform: scale(1.1);
 }
 
@@ -119,8 +119,8 @@
 
 .aviso-adblock--floating {
     position: fixed;
-    bottom: var(--space-400, 1.5rem);
-    right: var(--space-400, 1.5rem);
+    bottom: var(--space-400);
+    right: var(--space-400);
     z-index: 9999;
     max-width: 25rem;
     transform: translateY(150%);

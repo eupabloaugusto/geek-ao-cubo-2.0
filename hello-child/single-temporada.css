@@ -8,7 +8,7 @@
  */
 
 .temporada-page {
-	max-width: var(--container-max-width, 75rem);
+	max-width: var(--container-max, 80rem);
 	margin-inline: auto;
 	padding-inline: var(--space-400);
 	padding-block: var(--space-600);
@@ -30,8 +30,8 @@
 }
 
 .temporada-header__title {
-	font-family: var(--font-family-headings, 'Hanken Grotesk', sans-serif);
-	font-size: clamp(2rem, 5vw, 3rem);
+	font-family: var(--font-heading);
+	font-size: clamp(var(--text-md-size), 5vw, var(--text-lg-size));
 	font-weight: 700;
 	color: var(--neutral-100);
 	margin-bottom: var(--space-300);
@@ -39,7 +39,7 @@
 }
 
 .temporada-header__desc {
-	font-size: var(--font-size-md, 1.125rem);
+	font-size: var(--text-xs-size);
 	color: var(--neutral-300);
 	max-width: 45rem;
 	margin-inline: auto;
@@ -50,7 +50,7 @@
 .temporada-spotlight {
 	margin-bottom: var(--space-800);
 	background-color: var(--neutral-800);
-	border-radius: var(--border-radius-lg, 0.75rem);
+	border-radius: var(--border-radius-300);
 	overflow: hidden;
 	border: 0.0625rem solid var(--neutral-700);
 	box-shadow: var(--shadow-lg);
@@ -59,18 +59,18 @@
 .temporada-spotlight__title {
 	background-color: var(--brand-500);
 	color: var(--neutral-900);
-	font-size: var(--font-size-sm, 0.875rem);
+	font-size: var(--text-xxs-size);
 	font-weight: 700;
 	text-transform: uppercase;
 	padding: var(--space-200) var(--space-400);
 	letter-spacing: 0.05em;
 	display: inline-block;
-	border-bottom-right-radius: var(--border-radius-sm, 0.25rem);
+	border-bottom-right-radius: var(--border-radius-100);
 }
 
 /* Grade de Animes */
 .temporada-grid-title {
-	font-size: var(--font-size-xl, 1.5rem);
+	font-size: var(--text-md-sm-size);
 	font-weight: 600;
 	color: var(--neutral-100);
 	margin-bottom: var(--space-500);

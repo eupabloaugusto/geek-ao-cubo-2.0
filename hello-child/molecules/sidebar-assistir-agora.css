@@ -134,7 +134,7 @@
 /* Descrição de Detalhe */
 .sidebar-assistir-agora__desc {
     font-family: var(--font-body);
-    font-size: 0.875rem;
+    font-size: var(--text-xxs-size);
     color: var(--neutral-300);
     line-height: 1.5;
     font-weight: var(--font-weight-400);

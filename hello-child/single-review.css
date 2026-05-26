@@ -8,7 +8,7 @@
  */
 
 .review-page {
-	max-width: var(--container-max-width, 75rem);
+	max-width: var(--container-max, 80rem);
 	margin-inline: auto;
 	padding-inline: var(--space-400);
 	padding-block: var(--space-600);
@@ -35,8 +35,8 @@
 }
 
 .review-header__title {
-	font-family: var(--font-family-headings, 'Hanken Grotesk', sans-serif);
-	font-size: clamp(2rem, 5vw, 3rem);
+	font-family: var(--font-heading);
+	font-size: clamp(var(--text-md-size), 5vw, var(--text-lg-size));
 	font-weight: 700;
 	color: var(--neutral-100);
 	line-height: 1.1;
@@ -48,15 +48,15 @@
 	flex-wrap: wrap;
 	gap: var(--space-400);
 	align-items: center;
-	font-size: var(--font-size-sm, 0.875rem);
+	font-size: var(--text-xxs-size);
 	color: var(--neutral-400);
 }
 
 /* Bloco de Alerta de Spoiler */
 .review-spoiler-alert {
 	background-color: rgba(239, 68, 68, 0.08);
-	border: 0.0625rem solid var(--color-error, #EF4444);
-	border-radius: var(--border-radius-md, 0.5rem);
+	border: 0.0625rem solid var(--error-500);
+	border-radius: var(--border-radius-200);
 	padding: var(--space-400) var(--space-500);
 	margin-bottom: var(--space-600);
 	display: flex;
@@ -66,7 +66,7 @@
 }
 
 .review-spoiler-alert__icon {
-	color: var(--color-error, #EF4444);
+	color: var(--error-500);
 	flex-shrink: 0;
 	width: 1.5rem;
 	height: 1.5rem;
@@ -74,13 +74,13 @@
 
 .review-spoiler-alert__content {
 	color: var(--neutral-200);
-	font-size: var(--font-size-sm, 0.875rem);
+	font-size: var(--text-xxs-size);
 	line-height: 1.5;
 }
 
 .review-spoiler-alert__title {
 	font-weight: 700;
-	color: var(--color-error, #EF4444);
+	color: var(--error-500);
 	margin-bottom: 0.125rem;
 	text-transform: uppercase;
 	letter-spacing: 0.05em;
@@ -105,7 +105,7 @@
 .review-body {
 	color: var(--neutral-300);
 	line-height: 1.7;
-	font-size: var(--font-size-base, 1rem);
+	font-size: var(--text-xs-size);
 }
 
 .review-body p {
@@ -135,22 +135,22 @@
 
 .review-box {
 	background-color: var(--neutral-800);
-	border-radius: var(--border-radius-md, 0.5rem);
+	border-radius: var(--border-radius-200);
 	padding: var(--space-500);
 	border: 0.0625rem solid var(--neutral-700);
 	box-shadow: var(--shadow-sm);
 }
 
 .review-box--pros {
-	border-left: 0.25rem solid var(--color-success, #10B981);
+	border-left: 0.25rem solid var(--success-500);
 }
 
 .review-box--contras {
-	border-left: 0.25rem solid var(--color-error, #EF4444);
+	border-left: 0.25rem solid var(--error-500);
 }
 
 .review-box__title {
-	font-size: var(--font-size-md, 1.125rem);
+	font-size: var(--text-xs-size);
 	font-weight: 700;
 	margin-bottom: var(--space-400);
 	display: flex;
@@ -161,11 +161,11 @@
 }
 
 .review-box--pros .review-box__title {
-	color: var(--color-success, #10B981);
+	color: var(--success-500);
 }
 
 .review-box--contras .review-box__title {
-	color: var(--color-error, #EF4444);
+	color: var(--error-500);
 }
 
 .review-box__list {
@@ -176,7 +176,7 @@
 }
 
 .review-box__item {
-	font-size: var(--font-size-sm, 0.875rem);
+	font-size: var(--text-xxs-size);
 	color: var(--neutral-300);
 	line-height: 1.4;
 	position: relative;
@@ -193,12 +193,12 @@
 
 .review-box--pros .review-box__item::before {
 	content: "+";
-	color: var(--color-success, #10B981);
+	color: var(--success-500);
 }
 
 .review-box--contras .review-box__item::before {
 	content: "-";
-	color: var(--color-error, #EF4444);
+	color: var(--error-500);
 }
 
 /* Painel Lateral da Review */
@@ -210,23 +210,23 @@
 
 .review-sidebar__card {
 	background-color: var(--neutral-800);
-	border-radius: var(--border-radius-md, 0.5rem);
+	border-radius: var(--border-radius-200);
 	padding: var(--space-500);
 	border: 0.0625rem solid var(--neutral-700);
 }
 
 .review-veredicto {
 	background-color: rgba(231, 138, 81, 0.05);
-	border: 0.0625rem solid var(--color-primary-accessible, #E78A51);
-	border-radius: var(--border-radius-lg, 0.75rem);
+	border: 0.0625rem solid var(--color-primary-accessible);
+	border-radius: var(--border-radius-300);
 	padding: var(--space-600);
 	margin-block: var(--space-800);
 }
 
 .review-veredicto__title {
-	font-size: var(--font-size-lg, 1.25rem);
+	font-size: var(--text-sm-size);
 	font-weight: 700;
-	color: var(--color-primary-accessible, #E78A51);
+	color: var(--color-primary-accessible);
 	margin-bottom: var(--space-300);
 	text-transform: uppercase;
 	letter-spacing: 0.05em;
@@ -234,7 +234,7 @@
 
 .review-veredicto__text {
 	color: var(--neutral-200);
-	font-size: var(--font-size-base, 1rem);
+	font-size: var(--text-xs-size);
 	line-height: 1.6;
 	font-style: italic;
 }

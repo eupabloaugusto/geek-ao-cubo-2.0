@@ -12,7 +12,7 @@
     gap: var(--space-400); /* 24px */
     padding: var(--space-500) var(--space-600); /* 32px 40px */
     border-radius: var(--border-radius-300); /* 16px */
-    background: linear-gradient(135deg, #0d0e11 0%, #1c0e06 50%, #351705 100%);
+    background: linear-gradient(135deg, var(--neutral-900) 0%, #1c0e06 50%, #351705 100%);
     background-size: 200% 200%;
     background-position: left center;
     border: 1px solid var(--color-border);
@@ -80,7 +80,7 @@
 /* Descrição */
 .banner-editorial__description {
     font-family: var(--font-body);
-    font-size: 0.875rem; /* 14px */
+    font-size: var(--text-xxs-size);
     color: var(--neutral-300);
     line-height: 1.45;
     font-weight: var(--font-weight-400);

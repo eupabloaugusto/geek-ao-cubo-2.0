@@ -20,12 +20,15 @@
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     white-space: nowrap;
     border-bottom: none !important; /* Previne vazamento de borda do tema */
+    
+    /* WCAG 2.2 Target Size (24px = 1.5rem) */
+    min-height: 1.5rem;
 }
 
 /* Prefixo Hash '#' sutil */
 .tag-artigo__hash {
     color: var(--neutral-600); /* Tom mais apagado para o hash */
-    margin-right: 2px;
+    margin-right: 0.125rem;
     font-weight: var(--font-weight-700);
 }
 
@@ -34,13 +37,13 @@
     color: var(--neutral-100);
     background-color: var(--neutral-800);
     border-color: var(--neutral-400);
-    transform: translateY(-1px);
+    transform: translateY(-0.0625rem);
 }
 
 /* Foco e Acessibilidade (Tab) */
 .tag-artigo:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+    outline: 0.125rem solid var(--color-focus-ring);
+    outline-offset: 0.125rem;
 }
 
 /* Click ativo */

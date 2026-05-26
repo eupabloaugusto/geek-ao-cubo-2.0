@@ -26,8 +26,8 @@
 }
 
 .meta-data__icon svg {
-    width: 14px;
-    height: 14px;
+    width: 0.875rem;
+    height: 0.875rem;
     fill: currentColor;
     display: block;
 }

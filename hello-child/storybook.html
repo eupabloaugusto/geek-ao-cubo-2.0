@@ -85,8 +85,8 @@
 
     /* Scrollbar Customizada */
     ::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
+      width: 0.5rem;
+      height: 0.5rem;
     }
     ::-webkit-scrollbar-track {
       background: var(--neutral-900);
@@ -102,7 +102,7 @@
     /* Layout Geral */
     .sb-container {
       display: grid;
-      grid-template-columns: 280px 1fr;
+      grid-template-columns: 17.5rem 1fr;
       min-height: 100vh;
     }
 
@@ -148,7 +148,7 @@
       align-items: center;
       gap: var(--space-200);
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.0625rem;
     }
 
     .sb-logo span {
@@ -208,7 +208,7 @@
 
     .sb-sidebar-footer {
       font-size: var(--text-xxs-size);
-      color: var(--neutral-500);
+      color: var(--color-text-muted);
       border-top: 1px solid var(--neutral-800);
       padding-top: var(--space-300);
     }
@@ -217,7 +217,7 @@
     .sb-content {
       padding: var(--space-600) var(--space-800);
       overflow-y: auto;
-      max-width: 1200px;
+      max-width: 75rem;
     }
 
     @media (max-width: 768px) {
@@ -270,8 +270,8 @@
     .sb-section__title::before {
       content: '';
       display: inline-block;
-      width: 4px;
-      height: 24px;
+      width: 0.25rem;
+      height: 1.5rem;
       background-color: var(--color-primary);
       border-radius: var(--border-radius-100);
     }
@@ -279,7 +279,7 @@
     /* Grid de Cores e Tokens */
     .sb-token-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(13.75rem, 1fr));
       gap: var(--space-400);
       margin-bottom: var(--space-600);
     }
@@ -293,11 +293,11 @@
     }
 
     .sb-color-card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-0.25rem);
     }
 
     .sb-color-preview {
-      height: 100px;
+      height: 6.25rem;
       width: 100%;
     }
 
@@ -344,7 +344,7 @@
 
     .sb-component__header-info {
       flex: 1;
-      min-width: 250px;
+      min-width: 15.625rem;
     }
 
     .sb-component__name {
@@ -378,12 +378,12 @@
 
     .sb-component__preview {
       padding: var(--space-600);
-      background-image: radial-gradient(var(--neutral-700) 1px, transparent 0);
-      background-size: 16px 16px;
+      background-image: radial-gradient(var(--neutral-700) 0.0625rem, transparent 0);
+      background-size: 1rem 1rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 150px;
+      min-height: 9.375rem;
     }
 
     .sb-component__code {
@@ -402,7 +402,7 @@
     /* Estilos Tipográficos na Vitrine */
     .sb-typo-row {
       display: grid;
-      grid-template-columns: 200px 1fr;
+      grid-template-columns: 12.5rem 1fr;
       padding: var(--space-400) 0;
       border-bottom: 1px solid var(--neutral-800);
       align-items: center;
@@ -424,7 +424,7 @@
     .sb-typo-meta span {
       display: block;
       font-family: monospace;
-      margin-top: 4px;
+      margin-top: 0.25rem;
     }
 
     .sb-typo-sample {
@@ -446,11 +446,11 @@
     .sb-space-value {
       font-family: monospace;
       font-size: var(--text-xxs-size);
-      width: 100px;
+      width: 6.25rem;
     }
 
     .sb-space-bar {
-      height: 24px;
+      height: 1.5rem;
       background-color: var(--color-primary);
       border-radius: var(--border-radius-100);
       transition: width 0.3s ease;
@@ -479,7 +479,7 @@
       bottom: 0;
       left: 0;
       width: 0;
-      height: 2px;
+      height: 0.125rem;
       background-color: var(--color-primary);
       transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       border-radius: var(--border-radius-100);
@@ -508,20 +508,20 @@
     /* 0.5 Btn Hamburger */
     .btn-hamburger {
       display: inline-flex; align-items: center; justify-content: center;
-      width: 40px; height: 40px; cursor: pointer; background-color: transparent; border: 0; margin: 0;
+      width: 2.5rem; height: 2.5rem; cursor: pointer; background-color: transparent; border: 0; margin: 0;
       padding: 0; border-radius: var(--border-radius-100); color: var(--neutral-100);
       transition: opacity 0.2s ease, background-color 0.2s ease; outline: none;
     }
     .btn-hamburger:hover { background-color: rgba(255, 255, 255, 0.05); }
-    .btn-hamburger:focus-visible { outline: 2px solid var(--color-primary); background-color: rgba(255, 255, 255, 0.1); }
-    .btn-hamburger__box { width: 24px; height: 18px; position: relative; display: block; }
+    .btn-hamburger:focus-visible { outline: 0.125rem solid var(--color-focus-ring); background-color: rgba(255, 255, 255, 0.1); }
+    .btn-hamburger__box { width: 1.5rem; height: 1.125rem; position: relative; display: block; }
     .btn-hamburger__inner, .btn-hamburger__inner::before, .btn-hamburger__inner::after {
-      width: 24px; height: 2px; background-color: currentColor; position: absolute; left: 0; border-radius: var(--border-radius-100);
+      width: 24px; height: 0.125rem; background-color: currentColor; position: absolute; left: 0; border-radius: var(--border-radius-100);
     }
     .btn-hamburger__inner::before, .btn-hamburger__inner::after { content: ""; display: block; }
-    .btn-hamburger__inner { top: 50%; margin-top: -1px; transition: background-color 0.1s 0.2s ease; }
-    .btn-hamburger__inner::before { top: -8px; transition: top 0.1s 0.2s ease, transform 0.1s ease; }
-    .btn-hamburger__inner::after { bottom: -8px; transition: bottom 0.1s 0.2s ease, transform 0.1s ease; }
+    .btn-hamburger__inner { top: 50%; margin-top: -0.0625rem; transition: background-color 0.1s 0.2s ease; }
+    .btn-hamburger__inner::before { top: -0.5rem; transition: top 0.1s 0.2s ease, transform 0.1s ease; }
+    .btn-hamburger__inner::after { bottom: -0.5rem; transition: bottom 0.1s 0.2s ease, transform 0.1s ease; }
     .btn-hamburger--active .btn-hamburger__inner { background-color: transparent !important; transition: background-color 0.1s ease; }
     .btn-hamburger--active .btn-hamburger__inner::before { top: 0; transform: rotate(45deg); transition: top 0.1s ease, transform 0.1s 0.2s ease; }
     .btn-hamburger--active .btn-hamburger__inner::after { bottom: 0; transform: rotate(-45deg); transition: bottom 0.1s ease, transform 0.1s 0.2s ease; }
@@ -529,7 +529,7 @@
     /* 0.6 Drawer Overlay */
     .drawer-overlay {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background-color: rgba(13, 14, 17, 0.8); backdrop-filter: blur(4px); z-index: 900;
+      background-color: rgba(13, 14, 17, 0.8); backdrop-filter: blur(0.25rem); z-index: 900;
       opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease;
     }
     .drawer-overlay--active { opacity: 1; visibility: visible; }
@@ -547,7 +547,7 @@
       padding: var(--space-400) var(--space-500); -webkit-appearance: none; -moz-appearance: none; appearance: none;
     }
     .drawer-link:hover, .drawer-link:focus-visible { background-color: rgba(255, 255, 255, 0.05); color: var(--neutral-100); }
-    .drawer-link:focus-visible { outline: 2px solid var(--color-primary); }
+    .drawer-link:focus-visible { outline: 0.125rem solid var(--color-focus-ring); }
     .drawer-link--active { background-color: rgba(245, 107, 21, 0.1); color: var(--color-primary); }
     .drawer-link__text { flex-grow: 1; text-align: left; }
     .drawer-link__icon { display: flex; align-items: center; justify-content: center; }
@@ -556,7 +556,7 @@
     /* Chevron de dropdown */
     .drawer-link__toggle {
       display: flex; align-items: center; justify-content: center;
-      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); color: var(--neutral-500);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); color: var(--color-text-muted);
     }
     .drawer-link__toggle svg { width: 1.25rem; height: 1.25rem; fill: currentColor; }
     .drawer-link--open .drawer-link__toggle { transform: rotate(180deg); color: var(--neutral-200); }
@@ -570,13 +570,13 @@
       transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
     }
     .drawer-link--open + .drawer-sub-nav {
-      max-height: 500px; opacity: 1;
+      max-height: 31.25rem; opacity: 1;
     }
     .drawer-sub-link {
       display: flex; align-items: center; gap: var(--space-300);
       padding: var(--space-300) var(--space-500);
       padding-left: calc(var(--space-500) + 1.5rem);
-      color: var(--neutral-500); font-family: var(--font-body);
+      color: var(--color-text-muted); font-family: var(--font-body);
       font-size: var(--text-xs-size); font-weight: 500; text-decoration: none;
       border-radius: var(--border-radius-200);
       transition: background-color 0.2s ease, color 0.2s ease; outline: none; position: relative;
@@ -584,9 +584,9 @@
     .drawer-sub-link:hover, .drawer-sub-link:focus-visible {
       background-color: rgba(255, 255, 255, 0.04); color: var(--neutral-200);
     }
-    .drawer-sub-link:focus-visible { outline: 2px solid var(--color-primary); }
+    .drawer-sub-link:focus-visible { outline: 0.125rem solid var(--color-focus-ring); }
     .drawer-sub-link__dot {
-      width: 5px; height: 5px; border-radius: 50%; background-color: var(--neutral-700);
+      width: 0.3125rem; height: 0.3125rem; border-radius: 50%; background-color: var(--neutral-700);
       flex-shrink: 0; transition: background-color 0.2s ease;
     }
     .drawer-sub-link--active { color: var(--color-primary); }
@@ -628,7 +628,7 @@
     .btn--primary[aria-disabled="true"],
     .btn--primary.btn--disabled {
       background-color: var(--neutral-700);
-      color: var(--neutral-500);
+      color: var(--color-text-muted);
       border-color: transparent;
       cursor: not-allowed;
       opacity: 0.45;
@@ -661,7 +661,7 @@
     .btn--secondary[aria-disabled="true"],
     .btn--secondary.btn--disabled {
       background-color: var(--neutral-900);
-      color: var(--neutral-600);
+      color: var(--color-text-muted);
       border-color: var(--neutral-800);
       cursor: not-allowed;
       opacity: 0.45;
@@ -852,7 +852,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 4px;
+      width: 0.25rem;
       height: 100%;
       background-color: var(--color-primary);
     }
@@ -926,7 +926,7 @@
     }
 
     .input-field::placeholder {
-      color: var(--neutral-500);
+      color: var(--color-text-muted);
     }
 
     /* Busca: padding-left para caber a lupa */
@@ -944,7 +944,7 @@
       align-items: center;
       justify-content: center;
       pointer-events: none;
-      color: var(--neutral-500);
+      color: var(--color-text-muted);
       width: var(--icon-sm);
       height: var(--icon-sm);
       flex-shrink: 0;
@@ -1040,13 +1040,13 @@
       font-weight: 700;
       color: var(--neutral-400);
       text-transform: uppercase;
-      letter-spacing: 0.75px;
+      letter-spacing: 0.046875rem;
     }
     .input-helper {
       display: block;
       margin-top: var(--space-200);
       font-size: var(--text-xxs-size);
-      color: var(--neutral-500);
+      color: var(--color-text-muted);
     }
     .input-helper--error { color: var(--error-400); }
 
@@ -1059,9 +1059,9 @@
     }
     .anuncio-adsense__label {
       font-size: var(--text-xxs-size);
-      color: var(--neutral-500);
+      color: var(--color-text-muted);
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.0625rem;
       margin-bottom: var(--space-100);
     }
     .anuncio-adsense__container {
@@ -1141,9 +1141,9 @@
       font-weight: 700;
       color: var(--neutral-100);
       text-transform: uppercase;
-      letter-spacing: 0.75px;
+      letter-spacing: 0.046875rem;
       margin-bottom: var(--space-400);
-      border-bottom: 2px solid var(--neutral-700);
+      border-bottom: 0.125rem solid var(--neutral-700);
       padding-bottom: var(--space-200);
       display: flex;
       align-items: center;
@@ -1152,7 +1152,7 @@
     .sidebar-widget__title::before {
       content: '';
       display: inline-block;
-      width: 4px;
+      width: 0.25rem;
       height: 16px;
       background-color: var(--color-primary);
       border-radius: var(--border-radius-100);
@@ -1193,7 +1193,7 @@
     .input-field[aria-disabled="true"] {
       background-color: var(--neutral-900);
       border-color: var(--neutral-800);
-      color: var(--neutral-600);
+      color: var(--color-text-muted);
       cursor: not-allowed;
       opacity: 0.55;
     }
@@ -1234,7 +1234,7 @@
     }
 
     .input-busca-compact::placeholder {
-      color: var(--neutral-500);
+      color: var(--color-text-muted);
     }
 
     .input-busca-compact:hover {
@@ -1303,7 +1303,7 @@
     .icone-externo-link:hover {
       color: var(--neutral-100);
       background-color: rgba(255, 255, 255, 0.05);
-      border-color: var(--neutral-600);
+      border-color: var(--color-text-muted);
       transform: translateY(-1px);
     }
 
@@ -1354,7 +1354,7 @@
 
     .progress-bar__track {
       width: 100%;
-      height: 8px;
+      height: 0.5rem;
       background-color: var(--neutral-700);
       border-radius: var(--border-radius-100);
       overflow: hidden;
@@ -1568,7 +1568,7 @@
       display: flex; align-items: center; text-decoration: none;
     }
     .navigation-drawer__logo-link svg {
-      max-height: 28px; width: auto; max-width: 140px;
+      max-height: 1.75rem; width: auto; max-width: 140px;
     }
     .navigation-drawer--open .navigation-drawer__panel {
       transform: translateX(0);
@@ -1592,7 +1592,7 @@
       display: flex; flex-direction: column; gap: var(--space-600);
       scrollbar-width: thin; scrollbar-color: var(--neutral-800) transparent;
     }
-    .navigation-drawer__body::-webkit-scrollbar { width: 4px; }
+    .navigation-drawer__body::-webkit-scrollbar { width: 0.25rem; }
     .navigation-drawer__body::-webkit-scrollbar-thumb {
       background-color: var(--neutral-800); border-radius: var(--border-radius-100);
     }
@@ -1616,7 +1616,7 @@
       background-color: var(--color-primary); color: var(--neutral-100); transform: translateY(-2px);
     }
     .navigation-drawer__social-link svg { width: 18px; height: 18px; fill: currentColor; }
-    .navigation-drawer__copyright p { font-size: var(--text-xxs-size); color: var(--neutral-600); margin: 0; line-height: var(--text-xxs-height); }
+    .navigation-drawer__copyright p { font-size: var(--text-xxs-size); color: var(--color-text-muted); margin: 0; line-height: var(--text-xxs-height); }
 
     /* ===== ORGANISM: search-modal ===== */
     .search-modal {
@@ -1627,14 +1627,14 @@
     .search-modal--open { visibility: visible; pointer-events: auto; }
     .search-modal__backdrop {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background-color: var(--neutral-900); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      background-color: var(--neutral-900); backdrop-filter: blur(1rem); -webkit-backdrop-filter: blur(1rem);
       opacity: 0.9; transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .search-modal--open .search-modal__backdrop { opacity: 1; }
     .search-modal__dialog {
       position: relative; width: 100%; max-width: 40rem; margin: 0 var(--space-600);
       padding: var(--space-800) var(--space-600); background-color: transparent; z-index: 2;
-      opacity: 0; transform: scale(0.96) translateY(-20px);
+      opacity: 0; transform: scale(0.96) translateY(-1.25rem);
       transition: opacity 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
     .search-modal--open .search-modal__dialog { opacity: 1; transform: scale(1) translateY(0); }
@@ -1657,7 +1657,7 @@
     .search-modal__suggestions { display: flex; flex-direction: column; align-items: center; gap: var(--space-400); width: 100%; animation: fadeIn 0.5s ease forwards; }
     .search-modal__suggestions-title {
       font-family: var(--font-heading); font-size: var(--text-xxs-size); font-weight: 600;
-      color: var(--neutral-500); text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.08em;
     }
     .search-modal__tags { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-200) var(--space-300); width: 100%; }
     .search-modal__tag {
@@ -1670,13 +1670,13 @@
     .search-modal__tag:focus-visible { border-color: var(--color-primary); outline: none; }
     @media (max-width: 480px) {
       .search-modal__dialog { margin: 0 var(--space-400); padding: var(--space-700) var(--space-400); }
-      .search-modal__close { top: -48px; right: 0; }
+      .search-modal__close { top: -3rem; right: 0; }
     }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
     /* ===== ORGANISM: header ===== */
     .sb-header-demo {
-      position: relative; height: 80px;
+      position: relative; height: 5rem;
       background-color: rgba(13, 14, 17, 0.9);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -1684,13 +1684,13 @@
       overflow: hidden;
       transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .sb-header-demo.is-scrolled, .sb-header-demo.header--scrolled { height: 64px; background-color: rgba(13,14,17,0.97); box-shadow: 0 4px 24px rgba(0,0,0,0.4); }
+    .sb-header-demo.is-scrolled, .sb-header-demo.header--scrolled { height: 4rem; background-color: rgba(13,14,17,0.97); box-shadow: 0 4px 24px rgba(0,0,0,0.4); }
     .sb-header-demo__container {
       display: flex; align-items: center; justify-content: space-between;
       height: 100%; padding: 0 var(--space-500); gap: var(--space-500);
     }
     .sb-header-demo__logo { flex-shrink: 0; display: flex; align-items: center; }
-    .sb-header-demo__logo img { height: 24px; width: auto; transition: height 0.3s ease; display: block; }
+    .sb-header-demo__logo img { height: 1.5rem; width: auto; transition: height 0.3s ease; display: block; }
     .sb-header-demo.is-scrolled .sb-header-demo__logo img,
     .sb-header-demo.header--scrolled .sb-header-demo__logo img { height: 18px; }
     .sb-header-demo__nav { flex: 1; display: flex; justify-content: center; }
@@ -1739,7 +1739,7 @@
       transform: translateY(-50%);
       display: flex;
       align-items: center;
-      color: var(--neutral-500);
+      color: var(--color-text-muted);
       pointer-events: none;
       transition: color 0.3s ease;
     }
@@ -1761,7 +1761,7 @@
       transform: translateY(-50%);
       background: none;
       border: none;
-      color: var(--neutral-500);
+      color: var(--color-text-muted);
       font-size: var(--text-sm-size);
       cursor: pointer;
       display: none;
@@ -1809,7 +1809,7 @@
 
     .sb-subnav__link {
       display: block;
-      color: var(--neutral-500);
+      color: var(--color-text-muted);
       text-decoration: none;
       font-size: var(--text-xxs-size);
       font-family: var(--font-body);
@@ -6964,14 +6964,9 @@ mm_render_component('organisms', 'navigation-drawer', [
               <div id="search-modal" class="search-modal" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
                 <div class="search-modal__backdrop js-close-search-modal"></div>
                 <div class="search-modal__dialog">
-                  <button class="search-modal__close js-close-search-modal" type="button" aria-label="Fechar pesquisa">
-                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
-                    </svg>
-                  </button>
                   <div class="search-modal__content">
                     <div class="search-modal__brand">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="275" height="36" fill="none" viewBox="0 0 275 36"><g fill="#f2f5f9" clip-path="url(#a)"><path d="M15.64 34.972q-4.607 0-8.108-2.206-3.502-2.208-5.517-6.141Q0 22.69 0 17.462t2.015-9.115q2.014-3.934 5.613-6.14Q11.273 0 16.023 0q5.325 0 9.163 2.686 3.885 2.64 5.565 7.292l-5.853 2.16Q23.842 9.21 21.54 7.58q-2.255-1.631-5.517-1.631-2.974 0-5.23 1.39-2.206 1.392-3.405 3.983-1.152 2.543-1.152 6.14 0 3.599 1.152 6.189 1.2 2.59 3.406 3.981 2.255 1.392 5.229 1.392 1.535 0 3.166-.432a8.1 8.1 0 0 0 2.974-1.487q1.392-1.103 2.207-3.023.864-1.918.864-4.893V17.27l1.39 4.318H17.03v-5.565h13.72v18.182h-5.468l-.864-5.421 1.056.815a8.6 8.6 0 0 1-2.351 2.975 9.9 9.9 0 0 1-3.406 1.775q-1.871.623-4.078.623m31.247-.287q-3.069 0-5.277-1.008-2.206-1.008-3.645-2.686a11.7 11.7 0 0 1-2.063-3.886 15.7 15.7 0 0 1-.672-4.606q0-2.302.672-4.51a12.6 12.6 0 0 1 2.014-3.98q1.344-1.776 3.454-2.831 2.159-1.104 5.134-1.104 2.782 0 4.845.96 2.062.91 3.406 2.59 1.343 1.632 2.015 3.838.72 2.206.72 4.701 0 .336-.049.96 0 .576-.095 1.247H41.178q.24 2.542 1.87 3.838 1.68 1.296 4.174 1.295 1.823 0 3.55-.623a10 10 0 0 0 3.07-1.871l2.975 4.03q-1.68 1.295-3.166 2.11-1.487.816-3.119 1.152-1.582.383-3.646.383m4.702-13.29a7 7 0 0 0 .144-.767q.096-.383.096-.72 0-1.006-.384-1.87a4.9 4.9 0 0 0-1.056-1.583 4.26 4.26 0 0 0-1.63-1.008q-.912-.383-2.112-.383-1.774 0-2.974.72-1.2.718-1.823 1.87a6.7 6.7 0 0 0-.72 2.303h12.474zM72.84 34.685q-3.069 0-5.277-1.008-2.206-1.008-3.645-2.686a11.7 11.7 0 0 1-2.063-3.886 15.7 15.7 0 0 1-.672-4.606q0-2.302.672-4.51a12.6 12.6 0 0 1 2.015-3.98q1.343-1.776 3.453-2.831 2.159-1.104 5.134-1.104 2.782 0 4.845.96 2.062.91 3.406 2.59 1.343 1.632 2.015 3.838.72 2.206.72 4.701 0 .336-.049.96 0 .576-.095 1.247H67.132q.24 2.542 1.87 3.838 1.68 1.296 4.174 1.295 1.823 0 3.55-.623a10 10 0 0 0 3.07-1.871l2.975 4.03q-1.68 1.295-3.166 2.11a11.1 11.1 0 0 1-3.119 1.152q-1.582.383-3.645.383m4.702-13.29a7 7 0 0 0 .144-.767q.096-.383.096-.72 0-1.006-.384-1.87a4.9 4.9 0 0 0-1.056-1.583 4.26 4.26 0 0 0-1.63-1.008q-.912-.383-2.112-.383-1.774 0-2.974.72-1.2.718-1.823 1.87a6.7 6.7 0 0 0-.72 2.303h12.474zM98.7 34.685q-3.069 0-5.277-1.008-2.206-1.008-3.645-2.686a11.7 11.7 0 0 1-2.063-3.886 15.7 15.7 0 0 1-.672-4.606q0-2.302.672-4.51a12.6 12.6 0 0 1 2.015-3.98q1.343-1.776 3.453-2.831 2.159-1.104 5.134-1.104 2.782 0 4.845.96 2.062.91 3.406 2.59 1.343 1.632 2.015 3.838.72 2.206.72 4.701 0 .336-.049.96 0 .576-.095 1.247H93.015q.24 2.542 1.87 3.838 1.68 1.296 4.174 1.295 1.823 0 3.55-.623a10 10 0 0 0 3.07-1.871l2.975 4.03q-1.68 1.295-3.166 2.11a11.1 11.1 0 0 1-3.119 1.152q-1.582.383-3.645.383m4.702-13.29a7 7 0 0 0 .144-.767q.096-.383.096-.72 0-1.006-.384-1.87a4.9 4.9 0 0 0-1.056-1.583 4.26 4.26 0 0 0-1.63-1.008q-.912-.383-2.112-.383-1.774 0-2.974.72-1.2.718-1.823 1.87a6.7 6.7 0 0 0-.72 2.303h12.474zM123.9 34.685q-3.069 0-5.277-1.008-2.206-1.008-3.645-2.686a11.7 11.7 0 0 1-2.063-3.886 15.7 15.7 0 0 1-.672-4.606q0-2.302.672-4.51a12.6 12.6 0 0 1 2.015-3.98q1.343-1.776 3.453-2.831 2.159-1.104 5.134-1.104 2.782 0 4.845.96 2.062.91 3.406 2.59 1.343 1.632 2.015 3.838.72 2.206.72 4.701 0 .336-.049.96 0 .576-.095 1.247H118.2q.24 2.542 1.87 3.838 1.68 1.296 4.174 1.295 1.823 0 3.55-.623a10 10 0 0 0 3.07-1.871l2.975 4.03q-1.68 1.295-3.166 2.11a11.1 11.1 0 0 1-3.119 1.152q-1.582.383-3.645.383m4.702-13.29a7 7 0 0 0 .144-.767q.096-.383.096-.72 0-1.006-.384-1.87a4.9 4.9 0 0 0-1.056-1.583 4.26 4.26 0 0 0-1.63-1.008q-.912-.383-2.112-.383-1.774 0-2.974.72-1.2.718-1.823 1.87a6.7 6.7 0 0 0-.72 2.303h12.474zM148.9 34.685q-3.069 0-5.277-1.008-2.206-1.008-3.645-2.686a11.7 11.7 0 0 1-2.063-3.886 15.7 15.7 0 0 1-.672-4.606q0-2.302.672-4.51a12.6 12.6 0 0 1 2.015-3.98q1.343-1.776 3.453-2.831 2.159-1.104 5.134-1.104 2.782 0 4.845.96 2.062.91 3.406 2.59 1.343 1.632 2.015 3.838.72 2.206.72 4.701 0 .336-.049.96 0 .576-.095 1.247H143.2q.24 2.542 1.87 3.838 1.68 1.296 4.174 1.295 1.823 0 3.55-.623a10 10 0 0 0 3.07-1.871l2.975 4.03q-1.68 1.295-3.166 2.11a11.1 11.1 0 0 1-3.119 1.152q-1.582.383-3.645.383m4.702-13.29a7 7 0 0 0 .144-.767q.096-.383.096-.72 0-1.006-.384-1.87a4.9 4.9 0 0 0-1.056-1.583 4.26 4.26 0 0 0-1.63-1.008q-.912-.383-2.112-.383-1.774 0-2.974.72-1.2.718-1.823 1.87a6.7 6.7 0 0 0-.72 2.303h12.474zM174.1 34.685q-3.069 0-5.277-1.008-2.206-1.008-3.645-2.686a11.7 11.7 0 0 1-2.063-3.886 15.7 15.7 0 0 1-.672-4.606q0-2.302.672-4.51a12.6 12.6 0 0 1 2.015-3.98q1.343-1.776 3.453-2.831 2.159-1.104 5.134-1.104 2.782 0 4.845.96 2.062.91 3.406 2.59 1.343 1.632 2.015 3.838.72 2.206.72 4.701 0 .336-.049.96 0 .576-.095 1.247H168.4q.24 2.542 1.87 3.838 1.68 1.296 4.174 1.295 1.823 0 3.55-.623a10 10 0 0 0 3.07-1.871l2.975 4.03q-1.68 1.295-3.166 2.11a11.1 11.1 0 0 1-3.119 1.152q-1.582.383-3.645.383m4.702-13.29a7 7 0 0 0 .144-.767q.096-.383.096-.72 0-1.006-.384-1.87a4.9 4.9 0 0 0-1.056-1.583 4.26 4.26 0 0 0-1.63-1.008q-.912-.383-2.112-.383-1.774 0-2.974.72-1.2.718-1.823 1.87a6.7 6.7 0 0 0-.72 2.303h12.474zM199.3 34.685q-3.069 0-5.277-1.008-2.206-1.008-3.645-2.686a11.7 11.7 0 0 1-2.063-3.886 15.7 15.7 0 0 1-.672-4.606q0-2.302.672-4.51a12.6 12.6 0 0 1 2.015-3.98q1.343-1.776 3.453-2.831 2.159-1.104 5.134-1.104 2.782 0 4.845.96 2.062.91 3.406 2.59 1.343 1.632 2.015 3.838.72 2.206.72 4.701 0 .336-.049.96 0 .576-.095 1.247H193.6q.24 2.542 1.87 3.838 1.68 1.296 4.174 1.295 1.823 0 3.55-.623a10 10 0 0 0 3.07-1.871l2.975 4.03q-1.68 1.295-3.166 2.11a11.1 11.1 0 0 1-3.119 1.152q-1.582.383-3.645.383m4.702-13.29a7 7 0 0 0 .144-.767q.096-.383.096-.72 0-1.006-.384-1.87a4.9 4.9 0 0 0-1.056-1.583 4.26 4.26 0 0 0-1.63-1.008q-.912-.383-2.112-.383-1.774 0-2.974.72-1.2.718-1.823 1.87a6.7 6.7 0 0 0-.72 2.303h12.474zM224.5 34.685q-3.069 0-5.277-1.008-2.206-1.008-3.645-2.686a11.7 11.7 0 0 1-2.063-3.886 15.7 15.7 0 0 1-.672-4.606q0-2.302.672-4.51a12.6 12.6 0 0 1 2.015-3.98q1.343-1.776 3.453-2.831 2.159-1.104 5.134-1.104 2.782 0 4.845.96 2.062.91 3.406 2.59 1.343 1.632 2.015 3.838.72 2.206.72 4.701 0 .336-.049.96 0 .576-.095 1.247H218.8q.24 2.542 1.87 3.838 1.68 1.296 4.174 1.295 1.823 0 3.55-.623a10 10 0 0 0 3.07-1.871l2.975 4.03q-1.68 1.295-3.166 2.11a11.1 11.1 0 0 1-3.119 1.152q-1.582.383-3.645.383m4.702-13.29a7 7 0 0 0 .144-.767q.096-.383.096-.72 0-1.006-.384-1.87a4.9 4.9 0 0 0-1.056-1.583 4.26 4.26 0 0 0-1.63-1.008q-.912-.383-2.112-.383-1.774 0-2.974.72-1.2.718-1.823 1.87a6.7 6.7 0 0 0-.72 2.303h12.474zM249.7 34.685q-3.069 0-5.277-1.008-2.206-1.008-3.645-2.686a11.7 11.7 0 0 1-2.063-3.886 15.7 15.7 0 0 1-.672-4.606q0-2.302.672-4.51a12.6 12.6 0 0 1 2.015-3.98q1.343-1.776 3.453-2.831 2.159-1.104 5.134-1.104 2.782 0 4.845.96 2.062.91 3.406 2.59 1.343 1.632 2.015 3.838.72 2.206.72 4.701 0 .336-.049.96 0 .576-.095 1.247H244q.24 2.542 1.87 3.838 1.68 1.296 4.174 1.295 1.823 0 3.55-.623a10 10 0 0 0 3.07-1.871l2.975 4.03q-1.68 1.295-3.166 2.11a11.1 11.1 0 0 1-3.119 1.152q-1.582.383-3.645.383m4.702-13.29a7 7 0 0 0 .144-.767q.096-.383.096-.72 0-1.006-.384-1.87a4.9 4.9 0 0 0-1.056-1.583 4.26 4.26 0 0 0-1.63-1.008q-.912-.383-2.112-.383-1.774 0-2.974.72-1.2.718-1.823 1.87a6.7 6.7 0 0 0-.72 2.303h12.474zM274.9 34.685q-3.069 0-5.277-1.008-2.206-1.008-3.645-2.686a11.7 11.7 0 0 1-2.063-3.886 15.7 15.7 0 0 1-.672-4.606q0-2.302.672-4.51a12.6 12.6 0 0 1 2.015-3.98q1.343-1.776 3.453-2.831 2.159-1.104 5.134-1.104 2.782 0 4.845.96 2.062.91 3.406 2.59 1.343 1.632 2.015 3.838.72 2.206.72 4.701 0 .336-.049.96 0 .576-.095 1.247H269.2q.24 2.542 1.87 3.838 1.68 1.296 4.174 1.295 1.823 0 3.55-.623a10 10 0 0 0 3.07-1.871l2.975 4.03q-1.68 1.295-3.166 2.11a11.1 11.1 0 0 1-3.119 1.152q-1.582.383-3.645.383m4.702-13.29a7 7 0 0 0 .144-.767q.096-.383.096-.72 0-1.006-.384-1.87a4.9 4.9 0 0 0-1.056-1.583 4.26 4.26 0 0 0-1.63-1.008q-.912-.383-2.112-.383-1.774 0-2.974.72-1.2.718-1.823 1.87a6.7 6.7 0 0 0-.72 2.303h12.474z"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h275v36H0z"/></clipPath></defs></svg>
+                      <div class="logo logo--horizontal-02 search-modal__logo"><span class="logo__svg"><img src="img/logos/logo-horizontal-02.svg" alt="Geek ao Cubo" style="height: 2.25rem; width: auto;"></span></div>
                     </div>
                     <div class="search-modal__form-container">
                       <!-- Formulário Real Unificado -->

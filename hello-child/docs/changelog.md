@@ -2,6 +2,19 @@
 
 Todas as alterações notáveis, adições e exclusões de componentes do projeto serão documentadas neste arquivo de forma contínua.
 
+## [3.5.0] — 2026-05-26
+
+### Alterado
+- **Organismo `navigation-drawer`** (`organisms/navigation-drawer.php`, `.css` & `docs/organisms/navigation-drawer.md`): Alinhado o painel deslizante off-canvas para abrir a partir da **direita** (`right: 0`), com animação de entrada da direita para a esquerda. Além disso, substituímos o formulário de busca tradicional pelo átomo de busca compacto (`input-busca-compact`), alinhando o design com a identidade visual do portal.
+- **Organismo `header`** (`organisms/header.css`): Reposicionado o botão do gatilho hamburger para a **direita** no header em resoluções mobile e tablet, mantendo o logo centralizado no mobile e à esquerda no tablet. Ocultamos também o input de busca compacto nas visualizações de tablet, mantendo-o visível estritamente na resolução de desktop.
+- **Organismo `search-modal`** (`organisms/search-modal.php`, `.js` & `docs/organisms/search-modal.md`): Inserida lógica no script para fechar o `navigation-drawer` de forma automática ao abrir o modal de pesquisa a partir do menu lateral, otimizando a transição de foco e evitando conflito de overlays e travamento do scroll. Além disso, **removemos o botão físico de fechar (`search-modal__close`)**, tornando a usabilidade mais fluida e focada no clique na área externa do modal (backdrop) ou no pressionamento da tecla `Escape`.
+- **`storybook.html`**: Sincronizadas as classes internas, estilos copiados e visualização prévia em HTML do `navigation-drawer` e `search-modal` para refletirem o novo comportamento de deslizamento à direita, busca compacta integrada e a ausência do botão close físico.
+
+### Corrigido
+- **Organismo `search-modal`** (`organisms/search-modal.php` & `docs/organisms/search-modal.md`): Corrigida a chamada do logotipo que apresentava quebra por buscar um caminho obsoleto na pasta temporária `/Novos-arquivos/`. Substituímos o carregamento estático pela chamada oficial do componente atômico `logo` na variante `horizontal-02`, sanando o bug de renderização.
+
+---
+
 ## [3.4.0] — 2026-05-25
 
 ### Adicionado

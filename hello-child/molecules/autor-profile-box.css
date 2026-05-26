@@ -12,18 +12,18 @@
     border: 1px solid var(--color-border);
     border-radius: var(--border-radius-300); /* 16px */
     padding: var(--space-400) var(--space-500); /* 24px 32px */
-    max-width: 720px;
+    max-width: 45rem;
     align-items: flex-start;
 }
 
 /* Moldura do Avatar Grande (80px) */
 .autor-profile-box__avatar-frame {
-    width: 80px;
-    height: 80px;
+    width: 5rem;
+    height: 5rem;
     border-radius: 50%;
     overflow: hidden;
     flex-shrink: 0;
-    border: 2px solid var(--neutral-700);
+    border: 0.125rem solid var(--neutral-700);
     background-color: var(--neutral-900);
 }
 
@@ -44,7 +44,7 @@
     background: linear-gradient(135deg, var(--brand-900) 0%, var(--brand-800) 100%);
     color: var(--brand-200);
     font-family: var(--font-body);
-    font-size: 28px;
+    font-size: 1.75rem;
     font-weight: var(--font-weight-600);
     user-select: none;
 }
@@ -65,7 +65,7 @@
     color: var(--color-primary);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-bottom: 2px;
+    margin-bottom: 0.125rem;
     line-height: 1;
 }
 

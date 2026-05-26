@@ -5,13 +5,14 @@
 **CSS:** `organisms/search-modal.css`  
 **JS:** `organisms/search-modal.js`  
 **Criado em:** 2026-05-23  
-**Última atualização:** 2026-05-23  
+**Última atualização:** 2026-05-26  
 
 ## Descrição
 O Modal de Busca é um painel em tela cheia com efeito premium de desfoque de fundo (`backdrop-filter: blur(16px)`) e opacidade. Ele é projetado para acessibilidade WCAG e ativado por qualquer elemento que tenha a classe `.js-open-search-modal` no cabeçalho ou no portal. Ele hospeda a molécula padrão de busca (`form-busca`) e exibe sugestões de tags clicáveis para o usuário.
 
 ## Componentes Utilizados
 - **Átomos:**
+  - `atoms/logo.php` (logotipo oficial embutido)
   - `atoms/input-busca.php` (através de `form-busca`)
   - `atoms/btn-primary.php` (através de `form-busca`)
 - **Moléculas:**

@@ -7,8 +7,8 @@
     align-items: center;
     gap: var(--space-100);
     background-color: rgba(13, 14, 17, 0.8);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(0.5rem);
+    -webkit-backdrop-filter: blur(0.5rem);
     color: var(--neutral-100);
     border: 1px solid rgba(255, 255, 255, 0.1);
     padding: var(--space-100) var(--space-200);
@@ -16,8 +16,8 @@
     font-family: var(--font-heading);
     font-weight: var(--font-weight-100);
     font-size: var(--text-xxs-size);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    letter-spacing: 0.5px;
+    box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.03125rem;
     line-height: 1;
     transition: all 0.2s ease-in-out;
 }

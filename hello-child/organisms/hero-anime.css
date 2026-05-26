@@ -212,7 +212,7 @@
 	font-family: var(--font-body);
 	font-size: var(--text-xxs-size);
 	font-weight: 600;
-	color: var(--neutral-500);
+	color: var(--color-text-muted); /* WCAG AA accessible contrast text */
 	text-transform: uppercase;
 	letter-spacing: 0.04em;
 	line-height: 1;
@@ -358,4 +358,18 @@
 	.hero-anime__sinopse-toggle {
 		display: none;
 	}
+}
+
+/* ==========================================================================
+   JIKAN — MICRO-ANIMAÇÃO DE ATUALIZAÇÃO DINÂMICA (Task 4.3)
+   Ativada via JS pelo atributo [data-jikan-updating="true"]
+   ========================================================================== */
+
+[data-jikan-field] {
+	transition: opacity 0.15s ease;
+}
+
+[data-jikan-field][data-jikan-updating="true"] {
+	opacity: 0;
+	pointer-events: none;
 }

@@ -15,7 +15,7 @@
     border: 1px solid var(--color-border);
     border-radius: var(--border-radius-200); /* 8px */
     padding: var(--space-400) var(--space-500); /* 24px 32px */
-    min-width: 140px;
+    min-width: 8.75rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     user-select: none;
 }
@@ -23,8 +23,8 @@
 /* Hover interativo sutil */
 .rating-score:hover {
     border-color: var(--neutral-500);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    transform: translateY(-0.125rem);
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.3);
 }
 
 /* Rótulo superior contextual */
@@ -55,7 +55,7 @@
     font-family: var(--font-body);
     font-size: var(--text-xxs-size); /* 12px */
     font-weight: var(--font-weight-400);
-    color: var(--neutral-500);
+    color: var(--color-text-muted); /* WCAG AA accessible contrast */
     line-height: 1;
 }
 

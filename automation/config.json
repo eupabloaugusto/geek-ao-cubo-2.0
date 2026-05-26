@@ -1,0 +1,59 @@
+{
+  "sources": [
+    {
+      "name": "Comic Natalie",
+      "rss_url": "https://natalie.mu/comic/feed/news",
+      "language": "ja",
+      "selectors": [
+        "div.nakabore",
+        "div.main-text",
+        "div.news-text",
+        "article"
+      ]
+    },
+    {
+      "name": "Anime News Network",
+      "rss_url": "https://www.animenewsnetwork.com/news/rss.xml",
+      "language": "en",
+      "selectors": [
+        "div.meat",
+        "div.article-element",
+        "div.main-content",
+        "article"
+      ]
+    }
+  ],
+  "scraper_settings": {
+    "max_articles_per_source": 5,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "timeout_seconds": 10
+  },
+  "paths": {
+    "database_file": "processed_articles.json",
+    "raw_articles_file": "raw_articles.json",
+    "panorama_queue_file": "panorama_queue.json",
+    "editorial_queue_file": "editorial_queue.json",
+    "published_log_file": "published_log.json"
+  },
+  "scheduler": {
+    "editorial_interval_hours": 6,
+    "sync_daily_hour": 7,
+    "sync_daily_minute": 0,
+    "waves_day_of_week": "mon",
+    "waves_hour": 3,
+    "waves_minute": 0,
+    "log_dir": "logs",
+    "lock_file": "scheduler.lock",
+    "max_log_bytes": 5242880,
+    "log_backup_count": 3
+  },
+  "alerts": {
+    "enabled": true,
+    "webhook_url_env": "WEBHOOK_URL",
+    "mention_on_critical": true,
+    "cooldown_seconds": 300,
+    "max_retries": 2,
+    "retry_delay_seconds": 3,
+    "include_log_lines": 10
+  }
+}

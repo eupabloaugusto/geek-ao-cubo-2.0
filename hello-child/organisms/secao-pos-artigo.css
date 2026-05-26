@@ -19,7 +19,7 @@
 @media (min-width: 1025px) {
     .secao-pos-artigo {
         display: grid;
-        grid-template-columns: 1fr 340px;
+        grid-template-columns: 1fr 21.25rem;
         gap: var(--space-500); /* 32px */
         align-items: start;
     }

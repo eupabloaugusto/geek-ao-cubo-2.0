@@ -27,8 +27,8 @@
 }
 
 .card-anime__media:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+    outline: 0.125rem solid var(--color-focus-ring);
+    outline-offset: 0.125rem;
 }
 
 /* Garante que o átomo da imagem ocupe 100% da largura da mídia */
@@ -76,9 +76,9 @@
 }
 
 .card-anime__title-link:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
-    border-radius: 4px;
+    outline: 0.125rem solid var(--color-focus-ring);
+    outline-offset: 0.125rem;
+    border-radius: var(--border-radius-100);
 }
 
 /* D. Pílulas de Gêneros */

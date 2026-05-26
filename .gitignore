@@ -33,3 +33,11 @@ yarn-error.log*
 wp-config.php
 wp-content/uploads/
 *.log
+
+# === AUTOMATION & SEGURANÇA ===
+.env
+*.env
+*.zip
+__pycache__/
+automation/logs/
+automation/alert_cooldown.json

@@ -13,6 +13,7 @@ $class = isset( $args['class'] ) ? esc_attr( $args['class'] ) : '';
 ?>
 
 <div class="aviso-adblock <?php echo $class; ?>" role="alert" aria-live="polite">
+	<button class="aviso-adblock__close" aria-label="<?php esc_attr_e( 'Fechar aviso', 'hello-elementor-child' ); ?>">&times;</button>
 	<div class="aviso-adblock__header">
 		<div class="aviso-adblock__icon" aria-hidden="true">⚡</div>
 		<h4 class="aviso-adblock__title"><?php _e( 'Apoie o Geek ao Cubo!', 'hello-elementor-child' ); ?></h4>

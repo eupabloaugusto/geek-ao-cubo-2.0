@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Desenvolvimento — Modo Maratona</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-500: #F56B15;
+            --brand-600: #B95415;
+            --neutral-100: #F2F5F9;
+            --neutral-200: #E3E8EF;
+            --neutral-300: #CDD5E0;
+            --neutral-400: #97A3B6;
+            --neutral-700: #374153;
+            --neutral-800: #1A1D22;
+            --neutral-900: #0D0E11;
+            
+            --success: #10B981;
+            --warning: #F59E0B;
+            --info: #3B82F6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--neutral-900);
+            color: var(--neutral-100);
+            line-height: 1.6;
+            padding-inline: 1.5rem;
+            padding-block: 3rem;
+        }
+
+        .container {
+            max-width: 50rem;
+            margin-inline: auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--neutral-800);
+            padding-bottom: 2rem;
+        }
+
+        .logo {
+            font-family: 'Hanken Grotesk', sans-serif;
+            font-weight: 900;
+            font-size: 2.25rem;
+            color: var(--brand-500);
+            letter-spacing: -0.05em;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--neutral-100);
+        }
+
+        .subtitle {
+            color: var(--neutral-400);
+            font-size: 1.125rem;
+        }
+
+        /* Card Destaque (Storybook Link) */
+        .cta-card {
+            background: linear-gradient(135deg, var(--neutral-800) 0%, rgba(26, 29, 34, 0.4) 100%);
+            border: 1px solid var(--brand-500);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .cta-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(245, 107, 21, 0.15);
+        }
+
+        .cta-card h2 {
+            font-family: 'Hanken Grotesk', sans-serif;
+            font-size: 1.75rem;
+            margin-bottom: 0.75rem;
+            color: var(--neutral-100);
+        }
+
+        .cta-card p {
+            color: var(--neutral-300);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            max-width: 35rem;
+            margin-inline: auto;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--brand-500);
+            color: white;
+            font-family: 'Hanken Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.125rem;
+            text-decoration: none;
+            padding: 0.875rem 2rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s ease;
+            box-shadow: 0 4px 12px rgba(245, 107, 21, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--brand-600);
+        }
+
+        /* Timeline de Fases */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .phase-card {
+            background-color: var(--neutral-800);
+            border: 1px solid var(--neutral-700);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .phase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .phase-title {
+            font-family: 'Hanken Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .status-badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        .status-badge--success {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .status-badge--warning {
+            background-color: rgba(245, 158, 11, 0.1);
+            color: var(--warning);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .status-badge--info {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: var(--info);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .phase-desc {
+            color: var(--neutral-300);
+            font-size: 0.9375rem;
+        }
+
+        .links-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .link-item {
+            color: var(--brand-500);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .link-item:hover {
+            color: var(--neutral-100);
+            text-decoration: underline;
+        }
+
+        footer {
+            margin-top: 4rem;
+            text-align: center;
+            color: var(--neutral-400);
+            font-size: 0.875rem;
+            border-top: 1px solid var(--neutral-800);
+            padding-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo">Modo <span>Maratona</span></div>
+            <div class="subtitle">Portal Geek ao Cubo 2.0 • Painel de Controle e Recursos</div>
+        </header>
+
+        <!-- CTA Principal: Storybook -->
+        <section class="cta-card">
+            <h2>Vitrine de Componentes (Storybook)</h2>
+            <p>Visualize todos os 79 componentes atômicos (átomos, moléculas e organismos), design tokens (paleta HSL, fontes, sombras) e diretrizes visuais criadas para o portal de forma 100% estática.</p>
+            <a href="hello-child/storybook.html" class="btn-primary" target="_blank">Abrir Storybook do Tema →</a>
+        </section>
+
+        <!-- Roadmap / Timeline -->
+        <section>
+            <h2 style="font-family: 'Hanken Grotesk', sans-serif; font-size: 1.5rem; margin-bottom: 1.5rem;">Fases do Projeto</h2>
+            <div class="timeline">
+                
+                <!-- Fase 1 e 2 -->
+                <div class="phase-card">
+                    <div class="phase-header">
+                        <div class="phase-title">Fase 1 & 2 — Design System & CMS Core</div>
+                        <span class="status-badge status-badge--success">Concluído</span>
+                    </div>
+                    <p class="phase-desc">Mapeamento estático de componentes atômicos em conformidade WCAG 2.2 AA, enfileiramento de assets no Child Theme, criação dos Custom Post Types (Animes, Episódios, Temporadas, Reviews) e automação editorial inicial com IA (Groq).</p>
+                    <div class="links-group">
+                        <a href="backlog-fase-2.md" class="link-item" target="_blank">📄 Ver Backlog Fase 2</a>
+                    </div>
+                </div>
+
+                <!-- Fase 3 -->
+                <div class="phase-card">
+                    <div class="phase-header">
+                        <div class="phase-title">Fase 3 — Ingestão Jikan em Ondas & Orquestrador Python</div>
+                        <span class="status-badge status-badge--warning">Em Andamento (Local)</span>
+                    </div>
+                    <p class="phase-desc">Importação em massa via scripts Python da API MyAnimeList (Jikan Wave 1, 2 e 3), sincronização contínua de status, agendamento de daemon local (APScheduler) e logs/alertas integrados via webhooks de Discord/Slack.</p>
+                    <p class="phase-desc" style="color: var(--warning); font-style: italic; font-size: 0.875rem;">*Nota: As tarefas de apontamento DNS, SSL, cache e implantação no servidor Hostinger permanecem abertas e preparadas para ativação no mês que vem.</p>
+                    <div class="links-group">
+                        <a href="backlog-fase-3.md" class="link-item" target="_blank">📄 Ver Backlog Fase 3</a>
+                    </div>
+                </div>
+
+                <!-- Fase 4 -->
+                <div class="phase-card">
+                    <div class="phase-header">
+                        <div class="phase-title">Fase 4 — Monetização de Elite, Newsletter & Expansão Mangás/Games</div>
+                        <span class="status-badge status-badge--info">Planejado</span>
+                    </div>
+                    <p class="phase-desc">Vitrinas de afiliados customizadas imunes ao AdBlock, banner anti-adblock sutil, sistema de captação de leads (newsletter), compartilhamento social sem scripts, expansão para CPTs de Mangás & Games, e recursos interativos (Favoritos e nota de usuários via LocalStorage).</p>
+                    <div class="links-group">
+                        <a href="backlog-fase-4.md" class="link-item" target="_blank">📄 Ver Backlog Fase 4</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <footer>
+            <p>Ambiente estruturado com Hello Theme Child por Antigravity AI.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.75rem; color: var(--neutral-400);">Última atualização: 2026-05-26</p>
+        </footer>
+    </div>
+
+</body>
+</html>

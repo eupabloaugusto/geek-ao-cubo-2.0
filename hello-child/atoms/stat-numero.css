@@ -28,8 +28,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 2.5rem;
+    height: 2.5rem;
     background-color: rgba(245, 107, 21, 0.08); /* Fundo translúcido sutil laranja */
     color: var(--color-primary); /* Laranja de marca */
     border-radius: 50%;
@@ -38,8 +38,8 @@
 }
 
 .stat-numero__icon svg {
-    width: 20px;
-    height: 20px;
+    width: 1.25rem;
+    height: 1.25rem;
     fill: currentColor;
     display: block;
 }
@@ -62,11 +62,11 @@
     font-family: var(--font-body);
     font-size: var(--text-xxs-size); /* 12px */
     font-weight: var(--font-weight-500);
-    color: var(--neutral-500);
+    color: var(--color-text-muted); /* WCAG AA accessible contrast */
     text-transform: uppercase;
     letter-spacing: 0.05em;
     line-height: 1.2;
-    margin-bottom: 2px;
+    margin-bottom: 0.125rem;
 }
 
 /* Valor Numérico de Destaque */

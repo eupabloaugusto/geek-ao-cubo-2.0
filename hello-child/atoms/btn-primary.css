@@ -5,19 +5,19 @@
 .btn--primary {
     background-color: var(--color-primary);
     color: var(--neutral-100);
-    border: 2px solid transparent;
+    border: 0.125rem solid transparent;
     outline: none;
 }
 
 /* Hover e Micro-animações */
 .btn--primary:hover {
     background-color: var(--brand-600);
-    transform: translateY(-2px);
+    transform: translateY(-0.125rem);
 }
 
 .btn--primary:focus-visible {
-    border-color: var(--neutral-100);
-    outline: 2px solid var(--color-primary);
+    outline: 0.125rem solid var(--color-focus-ring);
+    outline-offset: 0.25rem;
 }
 
 .btn--primary:active {

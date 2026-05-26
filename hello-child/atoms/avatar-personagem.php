@@ -22,8 +22,9 @@ if ( $size <= 0 ) {
 	$size = 80;
 }
 
-// Construção de estilos inline para o tamanho customizado
-$size_style = sprintf( 'width: %1$dpx; height: %1$dpx; min-width: %1$dpx; min-height: %1$dpx;', $size );
+// Construção de estilos inline para o tamanho customizado em rem (1rem = 16px)
+$size_rem = $size / 16;
+$size_style = sprintf( 'width: %1$grem; height: %1$grem; min-width: %1$grem; min-height: %1$grem;', $size_rem );
 ?>
 <div class="avatar-personagem <?php echo $class; ?>" style="<?php echo $size_style; ?>" title="<?php echo $character_name; ?>">
 	<?php if ( ! empty( $image_url ) ) : ?>

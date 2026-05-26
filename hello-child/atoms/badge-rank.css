@@ -15,29 +15,29 @@
 	color: var(--neutral-900);
 	background: linear-gradient(135deg, var(--warning-400) 0%, var(--brand-500) 100%);
 	border-radius: var(--border-radius-200);
-	box-shadow: 0 2px 8px rgba(245, 107, 21, 0.3);
+	box-shadow: 0 0.125rem 0.5rem rgba(245, 107, 21, 0.3);
 	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 	user-select: none;
 }
 
 .badge-rank:hover {
-	transform: translateY(-1px);
-	box-shadow: 0 4px 12px rgba(245, 107, 21, 0.4);
+	transform: translateY(-0.0625rem);
+	box-shadow: 0 0.25rem 0.75rem rgba(245, 107, 21, 0.4);
 }
 
 .badge-rank:focus-visible {
-	outline: none;
-	box-shadow: 0 0 0 3px rgba(245, 107, 21, 0.3);
+	outline: 0.125rem solid var(--color-focus-ring);
+	outline-offset: 0.125rem;
 }
 
 /* Variação Top 10 */
 .badge-rank--top10 {
 	background: linear-gradient(135deg, var(--warning-300) 0%, var(--warning-500) 100%);
-	box-shadow: 0 2px 8px rgba(251, 191, 36, 0.3);
+	box-shadow: 0 0.125rem 0.5rem rgba(251, 191, 36, 0.3);
 }
 
 .badge-rank--top10:hover {
-	box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4);
+	box-shadow: 0 0.25rem 0.75rem rgba(251, 191, 36, 0.4);
 }
 
 /* Responsividade */

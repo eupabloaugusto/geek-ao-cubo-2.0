@@ -1,0 +1,142 @@
+/**
+ * Template Style: Single Episodio (single-episodio)
+ *
+ * Estilos responsivos e premium para o layout da página de detalhes de episódio.
+ *
+ * @package hello-elementor-child
+ * @since   2.0.0
+ */
+
+.episodio-page {
+	max-width: var(--container-max-width, 75rem);
+	margin-inline: auto;
+	padding-inline: var(--space-400);
+	padding-block: var(--space-600);
+}
+
+@media (min-width: 64rem) {
+	.episodio-page {
+		padding-inline: var(--space-600);
+		padding-block: var(--space-800);
+	}
+}
+
+/* Breadcrumb Wrapper */
+.episodio-page__breadcrumb {
+	margin-bottom: var(--space-500);
+}
+
+/* Cabeçalho do Episódio */
+.episodio-header {
+	margin-bottom: var(--space-600);
+}
+
+.episodio-header__badge-row {
+	display: flex;
+	gap: var(--space-300);
+	align-items: center;
+	margin-bottom: var(--space-300);
+}
+
+.episodio-header__title {
+	font-family: var(--font-family-headings, 'Hanken Grotesk', sans-serif);
+	font-size: clamp(1.75rem, 4vw, 2.5rem);
+	font-weight: 700;
+	color: var(--neutral-100);
+	line-height: 1.2;
+	margin-bottom: var(--space-200);
+}
+
+.episodio-header__sub {
+	font-size: var(--font-size-md, 1.125rem);
+	color: var(--neutral-400);
+	font-style: italic;
+}
+
+/* Área de Vídeo */
+.episodio-video {
+	margin-bottom: var(--space-600);
+	border-radius: var(--border-radius-lg, 0.75rem);
+	overflow: hidden;
+	box-shadow: var(--shadow-xl);
+}
+
+/* Layout de Duas Colunas (Descrição + Informações) */
+.episodio-layout {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--space-600);
+	margin-bottom: var(--space-800);
+}
+
+@media (min-width: 64rem) {
+	.episodio-layout {
+		grid-template-columns: 2.2fr 1fr;
+		gap: var(--space-800);
+		align-items: start;
+	}
+}
+
+.episodio-content__body {
+	color: var(--neutral-300);
+	line-height: 1.6;
+	font-size: var(--font-size-base, 1rem);
+}
+
+.episodio-content__body p {
+	margin-bottom: var(--space-400);
+}
+
+/* Sidebar com Informações Técnicas */
+.episodio-sidebar {
+	background-color: var(--neutral-800);
+	border-radius: var(--border-radius-md, 0.5rem);
+	padding: var(--space-500);
+	border: 0.0625rem solid var(--neutral-700);
+}
+
+.episodio-sidebar__title {
+	font-size: var(--font-size-lg, 1.25rem);
+	font-weight: 600;
+	color: var(--neutral-100);
+	margin-bottom: var(--space-400);
+	border-bottom: 0.0625rem solid var(--neutral-700);
+	padding-bottom: var(--space-200);
+}
+
+.episodio-sidebar__list {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-300);
+}
+
+.episodio-sidebar__item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: var(--font-size-sm, 0.875rem);
+}
+
+.episodio-sidebar__label {
+	color: var(--neutral-400);
+	font-weight: 500;
+}
+
+.episodio-sidebar__value {
+	color: var(--neutral-200);
+	font-weight: 600;
+}
+
+/* Controles de Navegação de Episódios */
+.episodio-nav {
+	display: flex;
+	justify-content: space-between;
+	gap: var(--space-400);
+	padding-top: var(--space-600);
+	border-top: 0.0625rem solid var(--neutral-700);
+}
+
+.episodio-nav__btn {
+	flex: 1;
+	max-width: 50%;
+}

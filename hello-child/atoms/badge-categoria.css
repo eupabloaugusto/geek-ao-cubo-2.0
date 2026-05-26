@@ -24,6 +24,9 @@
     /* Cores solicitadas pelo usuário: fundo Brand fill e texto secundário */
     background-color: var(--brand-500);
     color: var(--color-secondary) !important; /* Força cor secundária legível contra vazamentos */
+    
+    /* WCAG 2.2 Target Size (24px = 1.5rem) */
+    min-height: 1.5rem;
 }
 
 /* =========================================
@@ -33,13 +36,13 @@
 /* Hover Interativo Premium */
 .badge-categoria:hover {
     background-color: var(--brand-600);
-    transform: translateY(-1px);
+    transform: translateY(-0.0625rem);
 }
 
 /* Estado de Foco (Acessibilidade via Tab) */
 .badge-categoria:focus-visible {
-    outline: 2px solid var(--neutral-100);
-    outline-offset: 2px;
+    outline: 0.125rem solid var(--color-focus-ring);
+    outline-offset: 0.125rem;
 }
 
 /* Estado de Clique */

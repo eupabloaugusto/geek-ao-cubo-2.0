@@ -64,15 +64,21 @@
        ========================================= */
    --color-primary: var(--brand-500);
    /* #F56B15 */
+   --color-primary-accessible: var(--brand-400);
+   /* #E78A51 - Accessible contrast (6.01:1) on dark backgrounds */
    --color-secondary: var(--neutral-900);
    /* #0D0E11 */
    --color-background: var(--color-secondary);
    --color-text: var(--neutral-100);
    /* #F2F5F9 */
+   --color-text-muted: var(--neutral-400);
+   /* #97A3B6 - Muted text with accessible contrast (4.92:1) on dark backgrounds */
    --color-card-bg: var(--neutral-800);
    /* #1A1D22 */
    --color-border: var(--neutral-700);
    /* #374153 */
+   --color-focus-ring: var(--brand-400);
+   /* #E78A51 - Highly visible focus indicator */
 
    /* =========================================
        TYPOGRAPHY

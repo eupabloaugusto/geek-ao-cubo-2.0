@@ -34,15 +34,15 @@
 
 /* Hover UX Delight - Elevação física, borda brilhante e sombra profunda */
 .card-noticia:hover {
-    transform: translateY(-6px);
+    transform: translateY(-0.375rem);
     border-color: rgba(245, 107, 21, 0.35); /* Brilho sutil do laranja primário */
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45), 
+    box-shadow: 0 1.25rem 2.5rem rgba(0, 0, 0, 0.45), 
                 0 0 0 1px rgba(245, 107, 21, 0.1);
 }
 
 /* Foco Acessível (Keyboard Navigation) */
 .card-noticia:focus-visible {
-    outline: 2px solid var(--color-primary);
+    outline: 0.125rem solid var(--color-focus-ring);
     border-color: var(--color-primary);
 }
 
@@ -129,7 +129,7 @@
 .card-noticia__eyebrow {
     color: var(--color-primary);
     font-family: var(--font-heading);
-    font-size: 11px;
+    font-size: 0.6875rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -137,8 +137,8 @@
     display: inline-flex;
     align-items: center;
     background-color: rgba(245, 107, 21, 0.08); /* Backdrop laranja translúcido */
-    padding: 4px 10px;
-    border-radius: 100px;
+    padding: 0.25rem 0.625rem;
+    border-radius: var(--border-radius-900);
     border: 1px solid rgba(245, 107, 21, 0.15);
     
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
@@ -183,7 +183,7 @@
 .card-noticia__excerpt {
     color: var(--neutral-400);
     font-family: var(--font-body);
-    font-size: 14px; /* Otimizado para leitura */
+    font-size: 0.875rem; /* Otimizado para leitura */
     line-height: 1.55;
     
     /* Truncamento inteligente de 2 linhas */
@@ -211,22 +211,22 @@
     align-items: center;
     flex-wrap: wrap;
     gap: var(--space-200); /* 8px */
-    color: var(--neutral-500);
+    color: var(--color-text-muted); /* WCAG AA accessible contrast text */
     font-family: var(--font-body);
-    font-size: 12px;
+    font-size: var(--text-xxs-size);
     font-weight: 500;
     transition: color 0.3s ease;
 }
 
 .card-noticia:hover .card-noticia__meta {
-    color: var(--neutral-400);
+    color: var(--neutral-300);
 }
 
 /* Micro-itens de Metadados (Ícone + Texto) */
 .card-noticia__meta-item {
     display: inline-flex;
     align-items: center;
-    gap: 6px; /* Distância perfeita ícone-texto */
+    gap: 0.375rem; /* Distância perfeita ícone-texto */
 }
 
 /* Separador do metadado */
@@ -236,7 +236,7 @@
 
 /* Micro-Ícones (SVGs) */
 .card-noticia__icon {
-    color: var(--neutral-500);
+    color: var(--color-text-muted); /* WCAG AA accessible contrast icon */
     flex-shrink: 0;
     transition: color 0.3s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }

@@ -25,6 +25,7 @@
  * @param string       $sinopse         Sinopse do anime — aceita HTML seguro (opcional).
  * @param string       $url_assistir    URL para assistir (opcional).
  * @param string       $url_lista       URL para adicionar à lista (opcional).
+ * @param int|string   $anime_id_mal    ID do anime no MyAnimeList (para atualização dinâmica via Jikan).
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -48,6 +49,7 @@ $generos         = isset( $args['generos'] )         ? (array) $args['generos'] 
 $sinopse         = isset( $args['sinopse'] )         ? wp_kses_post( $args['sinopse'] )     : '';
 $url_assistir    = isset( $args['url_assistir'] )    ? esc_url( $args['url_assistir'] )     : '';
 $url_lista       = isset( $args['url_lista'] )       ? esc_url( $args['url_lista'] )        : '';
+$anime_id_mal    = isset( $args['anime_id_mal'] )    ? absint( $args['anime_id_mal'] )      : 0;
 
 if ( empty( $titulo ) ) {
 	return;
@@ -72,6 +74,8 @@ $backdrop_url = ! empty( $imagem_backdrop ) ? $imagem_backdrop : $imagem_poster;
 	aria-label="<?php echo esc_attr( sprintf( __( 'Detalhes do anime: %s', 'hello-elementor-child' ), $titulo ) ); ?>"
 	itemscope
 	itemtype="https://schema.org/TVSeries"
+	<?php if ( $anime_id_mal > 0 ) : ?>data-anime-id="<?php echo esc_attr( $anime_id_mal ); ?>"<?php endif; ?>
+	id="hero-anime-<?php echo $anime_id_mal > 0 ? esc_attr( $anime_id_mal ) : 'main'; ?>"
 >
 
 	<?php if ( ! empty( $backdrop_url ) ) : ?>
@@ -102,12 +106,14 @@ $backdrop_url = ! empty( $imagem_backdrop ) ? $imagem_backdrop : $imagem_poster;
 			<?php if ( ! empty( $status ) || ! empty( $tipo ) ) : ?>
 				<div class="hero-anime__badges">
 					<?php if ( ! empty( $status ) ) : ?>
-						<?php
-						mm_render_component( 'atoms', 'badge-status', array(
-							'status' => $status,
-						) );
-						?>
-					<?php endif; ?>
+				<span data-jikan-field="status">
+				<?php
+				mm_render_component( 'atoms', 'badge-status', array(
+					'status' => $status,
+				) );
+				?>
+				</span>
+			<?php endif; ?>
 					<?php if ( ! empty( $tipo ) ) : ?>
 						<span class="hero-anime__tipo"><?php echo $tipo; ?></span>
 					<?php endif; ?>
@@ -123,13 +129,15 @@ $backdrop_url = ! empty( $imagem_backdrop ) ? $imagem_backdrop : $imagem_poster;
 
 			<!-- B3. Score MAL -->
 			<?php if ( ! empty( $nota ) ) : ?>
-				<div class="hero-anime__score-row">
+				<div class="hero-anime__score-row" data-jikan-field="score-row">
+					<span data-jikan-field="score">
 					<?php
 					mm_render_component( 'atoms', 'nota-mal', array(
 						'nota'  => $nota,
 						'class' => 'hero-anime__nota',
 					) );
 					?>
+					</span>
 					<span class="hero-anime__score-label"><?php _e( 'no MyAnimeList', 'hello-elementor-child' ); ?></span>
 				</div>
 			<?php endif; ?>
@@ -240,16 +248,15 @@ $backdrop_url = ! empty( $imagem_backdrop ) ? $imagem_backdrop : $imagem_poster;
 
 </section>
 
-<script>
-document.addEventListener( 'DOMContentLoaded', function () {
-	document.querySelectorAll( '.js-hero-sinopse-toggle' ).forEach( function ( btn ) {
-		btn.addEventListener( 'click', function () {
-			var sinopse  = this.closest( '.js-hero-sinopse' );
-			var expanded = sinopse.classList.toggle( 'hero-anime__sinopse--expanded' );
-			this.setAttribute( 'aria-expanded', expanded ? 'true' : 'false' );
-			this.querySelector( '.hero-anime__sinopse-toggle-text' ).textContent =
-				expanded ? this.dataset.labelCollapse : this.dataset.labelExpand;
-		} );
-	} );
-} );
-</script>
+<?php
+// Enfileira o script de atualização dinâmica Jikan apenas quando há um ID MAL válido
+if ( $anime_id_mal > 0 ) :
+	wp_enqueue_script(
+		'mm-hero-anime-jikan',
+		get_stylesheet_directory_uri() . '/organisms/hero-anime.js',
+		array(),
+		'1.0.0',
+		array( 'strategy' => 'defer', 'in_footer' => true )
+	);
+endif;
+?>

@@ -12,11 +12,12 @@
 .btn--secondary:hover {
     background-color: var(--neutral-700);
     border-color: var(--neutral-400);
-    transform: translateY(-2px);
+    transform: translateY(-0.125rem);
 }
 
 .btn--secondary:focus-visible {
-    border-color: var(--color-primary);
+    outline: 0.125rem solid var(--color-focus-ring);
+    outline-offset: 0.25rem;
 }
 
 .btn--secondary:active {

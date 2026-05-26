@@ -76,17 +76,14 @@ mm_render_component( 'atoms', 'drawer-overlay', array(
 		<!-- Cabeçalho do Drawer -->
 		<header class="navigation-drawer__header">
 			<div class="navigation-drawer__logo">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="navigation-drawer__logo-link" aria-label="<?php esc_attr_e( 'Página Inicial - Geek ao Cubo', 'hello-elementor-child' ); ?>">
-					<?php 
-					$logo_path = get_stylesheet_directory() . '/Novos-arquivos/Logo geek ao cubo 02.svg';
-					if ( file_exists( $logo_path ) ) {
-						// Injeta o SVG embutido
-						echo file_get_contents( $logo_path );
-					} else {
-						echo '<span class="navigation-drawer__brand">' . $logo_text . '</span>';
-					}
-					?>
-				</a>
+				<?php 
+				mm_render_component( 'atoms', 'logo', array(
+					'variante' => 'horizontal-02',
+					'link'     => true,
+					'url'      => home_url( '/' ),
+					'class'    => 'navigation-drawer__logo-img'
+				) );
+				?>
 			</div>
 			
 			<!-- Botão Fechar (X animado via btn-hamburger) -->
@@ -105,8 +102,10 @@ mm_render_component( 'atoms', 'drawer-overlay', array(
 			<!-- Barra de busca no topo do menu lateral (opcional) -->
 			<?php if ( $search_enabled ) : ?>
 				<div class="navigation-drawer__search">
-					<?php mm_render_component( 'molecules', 'form-busca', array(
-						'placeholder' => __( 'Pesquisar no site...', 'hello-elementor-child' )
+					<?php mm_render_component( 'atoms', 'input-busca-compact', array(
+						'placeholder' => __( 'Pesquisar no site...', 'hello-elementor-child' ),
+						'readonly'    => true,
+						'class'       => 'drawer-search-compact'
 					) ); ?>
 				</div>
 			<?php endif; ?>

@@ -11,8 +11,8 @@
     border-radius: 50%;
     overflow: hidden;
     background-color: var(--neutral-900);
-    border: 2px solid var(--color-border);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border: 0.125rem solid var(--color-border);
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.2);
     transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
                 box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
                 transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -22,8 +22,8 @@
 /* Efeito de levitação sutil e mudança de borda no hover global */
 .avatar-personagem:hover {
     border-color: var(--color-primary);
-    box-shadow: 0 6px 16px rgba(245, 107, 21, 0.15);
-    transform: translateY(-2px);
+    box-shadow: 0 0.375rem 1rem rgba(245, 107, 21, 0.15);
+    transform: translateY(-0.125rem);
 }
 
 /* Imagem Interna com Efeito Zoom */
@@ -73,4 +73,10 @@
 
 .avatar-personagem:hover .avatar-personagem__fallback path[fill="var(--color-primary)"] {
     fill: var(--brand-300);
+}
+
+/* Foco Visível de Acessibilidade */
+.avatar-personagem:focus-visible {
+    outline: 0.125rem solid var(--color-focus-ring);
+    outline-offset: 0.25rem;
 }

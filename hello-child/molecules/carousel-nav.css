@@ -28,6 +28,6 @@
     }
     
     .carousel-nav__dots {
-        gap: 6px;
+        gap: 0.375rem;
     }
 }

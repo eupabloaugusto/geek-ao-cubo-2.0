@@ -9,6 +9,40 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+// =========================================================================
+// INCLUDES — Carrega módulos de CPT, Taxonomias e ACF separados
+// Cada arquivo tem uma responsabilidade única (Single Responsibility Principle)
+// =========================================================================
+$mm_includes = array(
+	// ---- Infraestrutura (ordem importa) ----
+	'acf-sync',        // 1. ACF Local JSON — deve vir ANTES dos CPTs
+	'acf-dependency',  // 2. Aviso de admin se ACF não estiver instalado
+
+	// ---- CPTs e Taxonomias ----
+	'cpt-anime',       // 3. CPT Anime + Taxonomias: Gênero e Status de Exibição
+	'cpt-episodio',    // 4. CPT Episódio
+	'cpt-temporada',   // 5. CPT Temporada
+	'cpt-review',      // 6. CPT Review
+
+	// ---- Lógica de negócio ----
+	'cpt-helpers',      // 7. Funções de query reutilizáveis (usado por templates e admin)
+	'acf-bidirectional', // 8. Relações bidirecionais Episódio↔Anime, Review↔Anime
+
+	// ---- Infraestrutura de suporte ----
+	'rewrite-flush',   // 9. Flush de rewrite rules na ativação/desativação
+	'admin-columns',   // 10. Colunas personalizadas e metaboxes no wp-admin
+	'monetization',    // 11. Sprint 5: Injeção de AdSense e qualificação de afiliados
+	'seo-schema',      // 12. Sprint 5: Dados estruturados JSON-LD ricos
+);
+
+foreach ( $mm_includes as $mm_file ) {
+	$mm_file_path = get_stylesheet_directory() . "/includes/{$mm_file}.php";
+	if ( file_exists( $mm_file_path ) ) {
+		require_once $mm_file_path;
+	}
+}
+unset( $mm_includes, $mm_file, $mm_file_path );
+
 /**
  * Enqueue scripts and styles.
  */
@@ -110,6 +144,13 @@ function mm_render_global_components() {
 		'search_enabled' => true
 	) );
 	mm_render_component( 'organisms', 'search-modal' );
+
+	// Task 5.2: Renderiza o aviso de Adblock de forma flutuante em posts e análises singulares (alta conversão)
+	if ( is_singular() ) {
+		mm_render_component( 'atoms', 'aviso-adblock', array(
+			'class' => 'aviso-adblock--floating',
+		) );
+	}
 }
 add_action( 'wp_footer', 'mm_render_global_components' );
 

@@ -31,25 +31,17 @@ $sugestoes_tags   = isset( $args['sugestoes_tags'] ) && is_array( $args['sugesto
 	
 	<!-- 2. Painel Centralizado da Busca -->
 	<div class="search-modal__dialog">
-		
-		<!-- Botão Fechar (Micro-animado com X) -->
-		<button class="search-modal__close js-close-search-modal" type="button" aria-label="<?php esc_attr_e( 'Fechar pesquisa', 'hello-elementor-child' ); ?>">
-			<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-				<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
-			</svg>
-		</button>
 
 		<div class="search-modal__content">
 			
 			<!-- Cabeçalho (Logo do Geek ao Cubo sutil) -->
 			<div class="search-modal__brand">
 				<?php 
-				$logo_path = get_stylesheet_directory() . '/Novos-arquivos/Logo geek ao cubo 02.svg';
-				if ( file_exists( $logo_path ) ) {
-					echo file_get_contents( $logo_path );
-				} else {
-					echo esc_html( get_bloginfo( 'name' ) );
-				}
+				mm_render_component( 'atoms', 'logo', array(
+					'variante' => 'horizontal-02',
+					'link'     => false,
+					'class'    => 'search-modal__logo'
+				) );
 				?>
 			</div>
 

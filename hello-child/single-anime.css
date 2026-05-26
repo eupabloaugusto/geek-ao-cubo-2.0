@@ -1,0 +1,41 @@
+/**
+ * Template Style: Single Anime (single-anime)
+ *
+ * Estruturação do layout de grade responsiva para a página de anime detalhada.
+ *
+ * @package hello-elementor-child
+ * @since   2.0.0
+ */
+
+.anime-layout {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--space-600);
+	padding-inline: var(--space-400);
+	padding-block: var(--space-600);
+	max-width: var(--container-max-width, 75rem);
+	margin-inline: auto;
+}
+
+@media (min-width: 64rem) {
+	.anime-layout {
+		grid-template-columns: 2.2fr 1fr;
+		gap: var(--space-800);
+		padding-inline: var(--space-600);
+	}
+}
+
+.anime-layout__main {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-800);
+	min-width: 0; /* Evita que flexboxes com grids internos vazem o container */
+}
+
+.anime-layout__sidebar {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-600);
+	position: sticky;
+	top: calc(var(--header-height, 5rem) + var(--space-400));
+}

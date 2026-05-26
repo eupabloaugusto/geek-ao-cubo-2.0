@@ -5,7 +5,7 @@
 .input-busca-compact-wrapper {
 	position: relative;
 	width: 100%;
-	max-width: 280px;
+	max-width: 17.5rem;
 }
 
 .input-busca-compact {
@@ -23,7 +23,7 @@
 }
 
 .input-busca-compact::placeholder {
-	color: var(--neutral-500);
+	color: var(--color-text-muted); /* WCAG AA accessible contrast placeholder */
 }
 
 .input-busca-compact:hover {
@@ -34,7 +34,7 @@
 .input-busca-compact:focus {
 	border-color: var(--color-primary);
 	background-color: var(--neutral-700);
-	box-shadow: 0 0 0 3px rgba(245, 107, 21, 0.15);
+	box-shadow: 0 0 0 0.1875rem rgba(245, 107, 21, 0.15);
 }
 
 .input-busca-compact[readonly] {

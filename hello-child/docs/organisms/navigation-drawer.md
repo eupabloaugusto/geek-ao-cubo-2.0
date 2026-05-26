@@ -5,10 +5,10 @@
 **CSS:** `organisms/navigation-drawer.css`  
 **JS:** `organisms/navigation-drawer.js`  
 **Criado em:** 2026-05-23  
-**Última atualização:** 2026-05-23  
+**Última atualização:** 2026-05-26  
 
 ## Descrição
-O Menu Lateral Off-Canvas (`navigation-drawer`) é o organismo responsável pela navegação móvel e painel de ações offcanvas do site. Ele se comporta como uma gaveta que desliza da lateral esquerda e fornece uma interface de altíssima fidelidade com foco em acessibilidade e facilidade de clique no celular (touch-friendly targets).
+O Menu Lateral Off-Canvas (`navigation-drawer`) é o organismo responsável pela navegação móvel e painel de ações offcanvas do site. Ele se comporta como uma gaveta que desliza da lateral direita (alinhada com a barra lateral / sidebar no mesmo lado) e fornece uma interface de altíssima fidelidade com foco em acessibilidade e facilidade de clique no celular (touch-friendly targets).
 
 Integra de forma coesa a barra de busca do site, links de navegação simples, acordeões com sublinks expansíveis e links de redes sociais no rodapé.
 

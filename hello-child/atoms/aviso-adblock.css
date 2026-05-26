@@ -7,19 +7,19 @@
     border: 1px solid var(--color-border);
     border-radius: var(--border-radius-300);
     padding: clamp(var(--space-400), 2.5vw, var(--space-600));
-    max-width: 650px;
+    max-width: 40.625rem;
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: var(--space-300);
     position: relative;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0.625rem 1.875rem rgba(0, 0, 0, 0.4);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .aviso-adblock:hover {
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0.9375rem 2.1875rem rgba(0, 0, 0, 0.5);
 }
 
 /* Barra de destaque colorida no lado esquerdo */
@@ -28,7 +28,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 4px;
+    width: 0.25rem;
     height: 100%;
     background: linear-gradient(to bottom, var(--color-primary), var(--brand-700));
 }
@@ -50,7 +50,7 @@
     justify-content: center;
     font-size: var(--text-sm-size);
     font-weight: 700;
-    box-shadow: 0 0 10px rgba(245, 107, 21, 0.2);
+    box-shadow: 0 0 0.625rem rgba(245, 107, 21, 0.2);
 }
 
 .aviso-adblock__title {
@@ -60,7 +60,7 @@
     font-weight: var(--font-weight-100);
     color: var(--color-text);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.03125rem;
 }
 
 .aviso-adblock__text {
@@ -89,3 +89,62 @@
         text-align: center;
     }
 }
+
+/* Estilos de Fechamento & Floating (Task 5.2) */
+.aviso-adblock__close {
+    position: absolute;
+    top: var(--space-300, 1rem);
+    right: var(--space-300, 1rem);
+    background: transparent;
+    border: none;
+    color: var(--neutral-400, #9CA3AF);
+    cursor: pointer;
+    font-size: var(--text-md-size, 1.25rem);
+    line-height: 1;
+    padding: var(--space-100, 0.25rem);
+    transition: color 0.2s ease, transform 0.2s ease;
+    z-index: 10;
+}
+
+.aviso-adblock__close:hover {
+    color: var(--neutral-100, #F3F4F6);
+    transform: scale(1.1);
+}
+
+.aviso-adblock__close:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: var(--border-radius-100);
+}
+
+.aviso-adblock--floating {
+    position: fixed;
+    bottom: var(--space-400, 1.5rem);
+    right: var(--space-400, 1.5rem);
+    z-index: 9999;
+    max-width: 25rem;
+    transform: translateY(150%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+}
+
+.aviso-adblock--floating.is-visible {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+@media (max-width: 480px) {
+    .aviso-adblock--floating {
+        bottom: 0;
+        right: 0;
+        left: 0;
+        max-width: 100%;
+        border-radius: var(--border-radius-300) var(--border-radius-300) 0 0;
+        border-bottom: none;
+        border-left: none;
+        border-right: none;
+    }
+}
+

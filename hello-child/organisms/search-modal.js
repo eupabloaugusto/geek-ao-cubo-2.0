@@ -20,6 +20,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e) e.preventDefault();
         
         previouslyFocusedElement = document.activeElement;
+
+        // Fecha o drawer de navegação se ele estiver aberto
+        const drawer = document.getElementById('nav-drawer');
+        if (drawer && drawer.classList.contains('navigation-drawer--open')) {
+            const drawerCloseBtn = document.getElementById('nav-drawer-close-btn');
+            if (drawerCloseBtn) {
+                drawerCloseBtn.click();
+            }
+        }
         
         modal.classList.add('search-modal--open');
         modal.setAttribute('aria-hidden', 'false');

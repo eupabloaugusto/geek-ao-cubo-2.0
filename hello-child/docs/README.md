@@ -53,3 +53,12 @@ Cada componente deve nascer otimizado para motores de busca:
 2. **Acessibilidade:** Elementos interativos sem texto visível (como ícones de busca ou redes sociais) devem conter o atributo `aria-label`.
 3. **Imagens Otimizadas:** O átomo `atoms/imagem-capa.php` exige o parâmetro `alt` como campo obrigatório. Todas as capas devem conter alt text descritivo e relevante.
 4. **Links de Afiliados:** 100% dos botões e links que apontam para programas de afiliados (Amazon, Shopee, etc.) devem obrigatoriamente conter o atributo `rel="sponsored"`.
+
+---
+
+## 5. Diretriz de Integridade do Design (Muito Importante)
+
+Para evitar quebras visuais graves no tema WordPress, é terminantemente proibido realizar refatorações estruturais ou remoções de classes CSS de componentes estáveis homologados no Storybook. 
+
+Antes de realizar qualquer modificação em arquivos PHP ou CSS de componentes, leia atentamente a [Diretriz de Integridade do Design e Estrutura Atômica](file:///c:/Users/P.%20Augusto/Documents/Geek%20ao%20Cubo/hello-child/docs/preserve-design-structure.md). Ela define as regras absolutas para manter o acoplamento estrito entre o HTML e as folhas de estilo dos componentes sem quebras.
+

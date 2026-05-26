@@ -5112,7 +5112,7 @@ mm_render_component( 'organisms', 'hero-anime', array(
             <header class="sb-component__header">
               <div class="sb-component__header-info">
                 <h3 class="sb-component__name">Seção de Destaque Home (secao-destaque)</h3>
-                <p class="sb-component__desc">Organismo nobre de notícias da homepage. Combina 1 Variação Destaque / Hero gigante na esquerda (60%) e um painel stack de 3 Variações Lista compactas na direita (40%). Adapta-se fluidamente para layout vertical em tablets e celulares.</p>
+                <p class="sb-component__desc">Organismo nobre de manchetes da homepage. Desktop: Organiza 1 Card Destaque / Hero vertical na direita (35%) e uma grade de 4 Cards Variação Grid na esquerda (65%, 2 colunas x 2 linhas). Mobile/A11y: O Card de Destaque é declarado primeiro no DOM para aparecer no topo e colapsa com perfeição.</p>
               </div>
               <div class="sb-component__meta">
                 <code class="sb-component__file">organisms/secao-destaque.php</code>
@@ -5121,20 +5121,20 @@ mm_render_component( 'organisms', 'hero-anime', array(
             <div class="sb-component__preview" style="width: 100%; max-width: 1100px; margin: 0 auto; background: rgba(0,0,0,0.15); padding: var(--space-500); border-radius: var(--border-radius-300);">
               
               <div class="secao-destaque">
-                <!-- Coluna Esquerda: Hero -->
+                <!-- Coluna Principal (Destaque): Hero Card (Lado Direito no Desktop) -->
                 <div class="secao-destaque__main">
-                  <div class="card-noticia card-noticia--hero-vertical">
+                  <a href="#" class="card-noticia card-noticia--hero-vertical" aria-label="Leia mais sobre: Demon Slayer: Filme Trilogia do Castelo Infinito ganha nova arte e confirma estreia mundial">
                     <div class="card-noticia__media-wrapper">
-                      <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=1000&q=80" alt="Capa de Demon Slayer" class="card-noticia__image" />
+                      <img src="https://images.unsplash.com/photo-1580477667995-2b94f01c9516?w=1000&q=80" alt="Capa Demon Slayer" class="card-noticia__image" />
                       <div class="card-noticia__dark-overlay"></div>
                     </div>
                     <div class="card-noticia__content">
                       <div class="card-noticia__header">
-                        <span class="card-noticia__eyebrow">Destaque</span>
-                        <h3 class="card-noticia__title">Demon Slayer: Arco do Treinamento dos Hashira ganha data oficial de estreia no Brasil</h3>
+                        <span class="card-noticia__eyebrow">Destaque Especial</span>
+                        <h3 class="card-noticia__title">Demon Slayer: Filme Trilogia do Castelo Infinito ganha nova arte e confirma estreia mundial para 2026</h3>
                       </div>
                       <div class="card-noticia__body">
-                        <p class="card-noticia__excerpt">Os caçadores de demônios entram na fase final de preparação. A Crunchyroll confirmou a exibição exclusiva com transmissão diária em áudio original e dublagens em português simultâneas.</p>
+                        <p class="card-noticia__excerpt">A Ufotable impressionou fãs com um pôster oficial focado no confronto épico e final contra Muzan Kibutsuji dentro do Castelo Infinito, confirmando lançamento cinematográfico global simultâneo.</p>
                       </div>
                       <div class="card-noticia__footer">
                         <div class="card-noticia__meta">
@@ -5156,25 +5156,25 @@ mm_render_component( 'organisms', 'hero-anime', array(
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </a>
                 </div>
 
-                <!-- Coluna Direita: Stack de 3 List -->
-                <div class="secao-destaque__sidebar">
+                <!-- Coluna Lateral: Grade de 4 Cards em Variação Grid (Lado Esquerdo no Desktop) -->
+                <div class="secao-destaque__grid">
                   
-                  <!-- Card Lista 1 -->
-                  <div class="card-noticia card-noticia--list">
+                  <!-- Card Grid 1 -->
+                  <a href="#" class="card-noticia card-noticia--grid" aria-label="Leia mais sobre: Solo Leveling: Episódio final quebra recordes de audiência mundial">
                     <div class="card-noticia__media-wrapper">
                       <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600&q=80" alt="Capa Solo Leveling" class="card-noticia__image" />
                       <div class="card-noticia__dark-overlay"></div>
                     </div>
                     <div class="card-noticia__content">
                       <div class="card-noticia__header">
-                        <span class="card-noticia__eyebrow">Lista Horizontal</span>
-                        <h3 class="card-noticia__title">Solo Leveling: Episódio final quebra recordes de audiência mundial</h3>
+                        <span class="card-noticia__eyebrow">Anime</span>
+                        <h3 class="card-noticia__title">Solo Leveling: Episódio final quebra recordes absolutos de audiência</h3>
                       </div>
                       <div class="card-noticia__body">
-                        <p class="card-noticia__excerpt">O aclamado anime encerra seu primeiro arco consagrando-se como fenômeno mundial.</p>
+                        <p class="card-noticia__excerpt">O aclamado anime encerra seu primeiro arco consagrando-se como fenômeno mundial do ano.</p>
                       </div>
                       <div class="card-noticia__footer">
                         <div class="card-noticia__meta">
@@ -5196,17 +5196,17 @@ mm_render_component( 'organisms', 'hero-anime', array(
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </a>
 
-                  <!-- Card Lista 2 -->
-                  <div class="card-noticia card-noticia--list">
+                  <!-- Card Grid 2 -->
+                  <a href="#" class="card-noticia card-noticia--grid" aria-label="Leia mais sobre: Hunter x Hunter retorna com capítulos inéditos na Shonen Jump">
                     <div class="card-noticia__media-wrapper">
                       <img src="https://images.unsplash.com/photo-1563089145-599997674d42?w=600&q=80" alt="Capa Hunter x Hunter" class="card-noticia__image" />
                       <div class="card-noticia__dark-overlay"></div>
                     </div>
                     <div class="card-noticia__content">
                       <div class="card-noticia__header">
-                        <span class="card-noticia__eyebrow">Widget Lateral</span>
+                        <span class="card-noticia__eyebrow">Mangá</span>
                         <h3 class="card-noticia__title">Hunter x Hunter retorna com capítulos inéditos na Shonen Jump</h3>
                       </div>
                       <div class="card-noticia__body">
@@ -5232,21 +5232,21 @@ mm_render_component( 'organisms', 'hero-anime', array(
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </a>
 
-                  <!-- Card Lista 3 -->
-                  <div class="card-noticia card-noticia--list">
+                  <!-- Card Grid 3 -->
+                  <a href="#" class="card-noticia card-noticia--grid" aria-label="Leia mais sobre: Chainsaw Man: Filme do Arco de Reze tem trailer divulgado">
                     <div class="card-noticia__media-wrapper">
-                      <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=600&q=80" alt="Capa Jujutsu Kaisen" class="card-noticia__image" />
+                      <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?w=600&q=80" alt="Capa Chainsaw Man" class="card-noticia__image" />
                       <div class="card-noticia__dark-overlay"></div>
                     </div>
                     <div class="card-noticia__content">
                       <div class="card-noticia__header">
-                        <span class="card-noticia__eyebrow">Recomendações</span>
-                        <h3 class="card-noticia__title">Jujutsu Kaisen: Terceira Temporada ganha teaser eletrizante</h3>
+                        <span class="card-noticia__eyebrow">Novidades</span>
+                        <h3 class="card-noticia__title">Chainsaw Man: Filme do Arco de Reze tem trailer de tirar o fôlego divulgado</h3>
                       </div>
                       <div class="card-noticia__body">
-                        <p class="card-noticia__excerpt">O aclamado arco do Jogo do Abate é oficialmente confirmado com animação da MAPPA.</p>
+                        <p class="card-noticia__excerpt">Estúdio MAPPA revela trailer cinematográfico completo focado na misteriosa e explosiva Reze.</p>
                       </div>
                       <div class="card-noticia__footer">
                         <div class="card-noticia__meta">
@@ -5268,7 +5268,43 @@ mm_render_component( 'organisms', 'hero-anime', array(
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </a>
+
+                  <!-- Card Grid 4 -->
+                  <a href="#" class="card-noticia card-noticia--grid" aria-label="Leia mais sobre: Jujutsu Kaisen: Terceira Temporada ganha teaser eletrizante">
+                    <div class="card-noticia__media-wrapper">
+                      <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=600&q=80" alt="Capa Jujutsu Kaisen" class="card-noticia__image" />
+                      <div class="card-noticia__dark-overlay"></div>
+                    </div>
+                    <div class="card-noticia__content">
+                      <div class="card-noticia__header">
+                        <span class="card-noticia__eyebrow">Destaque</span>
+                        <h3 class="card-noticia__title">Jujutsu Kaisen: Terceira Temporada ganha teaser eletrizante do Jogo do Abate</h3>
+                      </div>
+                      <div class="card-noticia__body">
+                        <p class="card-noticia__excerpt">O aclamado arco do Jogo do Abate é oficialmente confirmado com animação da MAPPA.</p>
+                      </div>
+                      <div class="card-noticia__footer">
+                        <div class="card-noticia__meta">
+                          <span class="card-noticia__meta-item card-noticia__author">
+                            <svg class="card-noticia__icon" viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                              <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                            por Redação
+                          </span>
+                          <span class="card-noticia__meta-sep" aria-hidden="true">•</span>
+                          <span class="card-noticia__meta-item card-noticia__date">
+                            <svg class="card-noticia__icon" viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                              <circle cx="12" cy="12" r="10"></circle>
+                              <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            há 1 dia
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
 
                 </div>
               </div>
@@ -5276,36 +5312,43 @@ mm_render_component( 'organisms', 'hero-anime', array(
             </div>
             <div class="sb-component__code">
               <pre>&lt;?php
-// Renderiza a Seção de Destaque Nobre da Homepage
+// Renderiza a Seção de Destaque Nobre da Homepage (Destaque na direita, Grid 2x2 na esquerda)
 mm_render_component('organisms', 'secao-destaque', [
-    'post_hero'     => [
-        'titulo'      => 'Demon Slayer: Arco do Treinamento dos Hashira ganha data oficial',
+    'post_hero'  => [
+        'titulo'      => 'Demon Slayer: Filme Trilogia do Castelo Infinito ganha nova arte e confirma estreia mundial',
         'url'         => '#',
         'imagem_url'  => 'https://unsplash.com/destaque.jpg',
         'categoria'   => 'Destaque',
-        'resumo'      => 'Os caçadores de demônios entram na fase final de preparação. A Crunchyroll confirmou a exibição exclusiva com transmissão diária em áudio original...'
+        'resumo'      => 'A Ufotable impressionou fãs com um pôster oficial focado no confronto épico e final contra Muzan...'
     ],
-    'posts_sidebar' => [
+    'posts_grid' => [
         [
-            'titulo'      => 'Solo Leveling: Episódio final quebra recordes de audiência',
+            'titulo'      => 'Solo Leveling: Episódio final quebra recordes absolutos de audiência',
             'url'         => '#',
             'imagem_url'  => 'https://unsplash.com/anime.jpg',
             'categoria'   => 'Anime',
-            'resumo'      => 'O aclamado anime encerra seu primeiro arco consagrando-se como fenômeno.'
+            'resumo'      => 'O aclamado anime encerra seu primeiro arco consagrando-se como fenômeno mundial do ano.'
         ],
         [
             'titulo'      => 'Hunter x Hunter retorna com capítulos inéditos na Shonen Jump',
             'url'         => '#',
             'imagem_url'  => 'https://unsplash.com/manga.jpg',
             'categoria'   => 'Mangá',
-            'resumo'      => 'Yoshihiro Togashi retoma a publicação da obra mais aguardada.'
+            'resumo'      => 'Yoshihiro Togashi retoma a publicação da obra mais aguardada pelos fãs de shonen.'
         ],
         [
-            'titulo'      => 'Jujutsu Kaisen: Terceira Temporada ganha teaser eletrizante',
+            'titulo'      => 'Chainsaw Man: Filme do Arco de Reze tem trailer de tirar o fôlego divulgado',
             'url'         => '#',
             'imagem_url'  => 'https://unsplash.com/novidades.jpg',
             'categoria'   => 'Novidades',
-            'resumo'      => 'O aclamado arco do Jogo do Abate é oficialmente confirmado.'
+            'resumo'      => 'Estúdio MAPPA revela trailer cinematográfico completo focado na misteriosa e explosiva Reze.'
+        ],
+        [
+            'titulo'      => 'Jujutsu Kaisen: Terceira Temporada ganha teaser eletrizante do Jogo do Abate',
+            'url'         => '#',
+            'imagem_url'  => 'https://unsplash.com/destaque.jpg',
+            'categoria'   => 'Destaque',
+            'resumo'      => 'O aclamado arco do Jogo do Abate é oficialmente confirmado com animação da MAPPA.'
         ]
     ]
 ]);

@@ -2,39 +2,43 @@
  * Organism: Seção de Destaque (secao-destaque) CSS
  *
  * Estrutura responsiva de grid e flexbox para a seção de destaque principal da home.
- * Organiza o card Hero (esquerda) ao lado de um stack vertical de 3 cards List (direita).
+ * Desktop: Organiza 1 Card Destaque / Hero vertical na direita e 4 Cards Variação Grid na esquerda (2 colunas x 2 linhas).
+ * Mobile-First/A11y: O Card Hero é declarado primeiro e renderiza no topo naturalmente, invertendo no desktop.
  */
 
 .secao-destaque {
     display: grid;
-    grid-template-columns: 1.6fr 1fr; /* 60% esquerda, 40% direita */
+    grid-template-columns: 2fr 1.1fr; /* 65% esquerda (grade), 35% direita (destaque) */
     gap: var(--space-500); /* 32px de vão premium */
     width: 100%;
     margin-bottom: var(--space-800); /* 56px de separação inferior para outros blocos */
 }
 
-/* Coluna Principal da Esquerda (Hero) */
+/* Coluna Principal da Direita (Destaque Hero) */
 .secao-destaque__main {
     display: flex;
     flex-direction: column;
     min-width: 0; /* Previne quebras de layout flexbox */
+    grid-column: 2; /* Posiciona na segunda coluna no desktop */
 }
 
-.secao-destaque__main .card-noticia--hero {
-    height: 100%; /* Faz o card Hero ocupar toda a altura disponível da coluna */
+.secao-destaque__main .card-noticia--hero-vertical {
+    height: 100%; /* Faz o card Hero ocupar toda a altura disponível da linha */
 }
 
-/* Coluna Lateral da Direita (Stack de 3 Lista) */
-.secao-destaque__sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-400); /* 24px entre os cards da lista */
+/* Coluna Lateral da Esquerda (Grade 2x2 com cards Grid) */
+.secao-destaque__grid {
+    grid-column: 1; /* Posiciona na primeira coluna no desktop */
+    grid-row: 1;    /* Compartilha a mesma linha do hero para alinhamento */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Duas colunas iguais */
+    grid-template-rows: repeat(2, 1fr);    /* Duas linhas de mesma altura */
+    gap: var(--space-400); /* 24px entre os cards grid */
     min-width: 0;
-    justify-content: space-between; /* Distribui os 3 cards igualmente se o Hero for mais alto */
 }
 
-.secao-destaque__sidebar .card-noticia--list {
-    flex-grow: 1; /* Faz os cards expandirem de forma equilibrada */
+.secao-destaque__grid .card-noticia--grid {
+    height: 100%; /* Garante que os cards preencham a célula do grid */
 }
 
 /* ==========================================================================
@@ -44,12 +48,26 @@
 /* Telas de Tablets / Netbooks (Colapso de Lado a Lado para Empilhado) */
 @media (max-width: 1024px) {
     .secao-destaque {
-        grid-template-columns: 1fr; /* Coluna única */
+        grid-template-columns: 1fr; /* Coluna única no contêiner principal */
         gap: var(--space-500);
     }
 
-    .secao-destaque__sidebar {
-        justify-content: flex-start; /* Sem espalhamento no empilhamento vertical */
+    .secao-destaque__main {
+        grid-column: auto; /* Restaura a ordenação natural do DOM (topo) */
+    }
+
+    .secao-destaque__grid {
+        grid-column: auto; /* Restaura a ordenação natural do DOM (abaixo do hero) */
+        grid-row: auto;
+        grid-template-rows: auto; /* Libera linhas para dimensionamento natural */
+    }
+}
+
+/* Tablets de Tela Média e Celulares Grandes (Colapso do Grid Interno) */
+@media (max-width: 640px) {
+    .secao-destaque__grid {
+        grid-template-columns: 1fr; /* Grade interna vira 1 única coluna */
+        gap: var(--space-400);
     }
 }
 
@@ -60,7 +78,7 @@
         margin-bottom: var(--space-600);
     }
     
-    .secao-destaque__sidebar {
+    .secao-destaque__grid {
         gap: var(--space-300); /* 16px de vão em celulares muito pequenos */
     }
 }

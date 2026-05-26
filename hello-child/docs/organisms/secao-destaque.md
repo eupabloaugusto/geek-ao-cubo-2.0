@@ -12,8 +12,9 @@
 
 A **Seção de Destaque** (`secao-destaque`) é o organismo principal de manchetes localizado no topo da homepage do blog Geek ao Cubo. Sua estrutura adota um layout balanceado e moderno no desktop:
 
-- **Lado Direito (35%):** Apresenta o post principal nobre em um **Card Destaque Vertical** (`card-noticia--hero-vertical`). Ele exibe uma imagem widescreen exuberante com a tipografia de manchete e metadados posicionados abaixo, esticando-se perfeitamente para preencher o espaço vertical e alinhar o rodapé na base via `margin-top: auto`.
-- **Lado Esquerdo (65%):** Apresenta uma grade de duas colunas com 2 cards em cada (totalizando **4 Cards em Variação Grid** - `card-noticia--grid`). Cada card de grid exibe uma mídia widescreen compacta no topo e textos bem distribuídos abaixo.
+- **Lado Direito (60%):** Apresenta o post principal nobre em um **Card Destaque Vertical** (`card-noticia--hero-vertical`). Ele exibe uma imagem widescreen exuberante com a tipografia de manchete e metadados posicionados abaixo, esticando-se perfeitamente para preencher o espaço vertical e alinhar o rodapé na base via `margin-top: auto`.
+- **Lado Esquerdo (40%):** Apresenta uma grade de duas colunas com 2 cards em cada (totalizando **4 Cards em Variação Grid** - `card-noticia--grid`). Cada card de grid exibe uma mídia widescreen compacta no topo e textos bem distribuídos abaixo.
+
 
 ### ♿ SEO Estratégico & Ordenação Acessível (A11y/WCAG)
 
@@ -109,6 +110,7 @@ mm_render_component( 'organisms', 'secao-destaque', array(
 
 ## 📱 Comportamento Responsivo
 
-* **Desktop (> 1024px):** Layout grid horizontal `2fr 1.1fr` (65% / 35%) com vão de `32px` (`var(--space-500)`). A grade esquerda 2x2 com cards Grid (`card-noticia--grid`) se alinha simetricamente com a base e o topo do Hero vertical direito.
+* **Desktop (> 1024px):** Layout grid horizontal `2fr 3fr` (40% / 60%) com vão de `32px` (`var(--space-500)`). A grade esquerda 2x2 com cards Grid (`card-noticia--grid`) se alinha simetricamente com a base e o topo do Hero vertical direito (resultando na proporção clássica de 3fr para o destaque e 1fr + 1fr para a grade de cards).
+
 * **Tablets (640px - 1024px):** O layout de duas colunas colapsa para **coluna única**, colocando o Hero no topo e a grade de cards Grid logo abaixo. A grade interna de cards Grid **mantém** as 2 colunas horizontais, garantindo ótimo aproveitamento de tela.
 * **Smartphones (< 640px):** A grade interna colapsa para **1 única coluna vertical**, empilhando todos os cards individualmente, evitando qualquer compressão física das fotos widescreen e facilitando o toque em telas mobile.

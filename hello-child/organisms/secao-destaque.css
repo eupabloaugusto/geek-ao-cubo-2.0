@@ -8,11 +8,12 @@
 
 .secao-destaque {
     display: grid;
-    grid-template-columns: 2fr 1.1fr; /* 65% esquerda (grade), 35% direita (destaque) */
+    grid-template-columns: 2fr 3fr; /* 40% esquerda (grade de 2 colunas de 1fr), 60% direita (destaque especial de 3fr) */
     gap: var(--space-500); /* 32px de vão premium */
     width: 100%;
     margin-bottom: var(--space-800); /* 56px de separação inferior para outros blocos */
 }
+
 
 /* Coluna Principal da Direita (Destaque Hero) */
 .secao-destaque__main {

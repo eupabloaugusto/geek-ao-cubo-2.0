@@ -56,14 +56,9 @@ $classes = 'card-noticia card-noticia--' . $variacao;
 		
 		<!-- ATO 1: Cabeçalho do Card (Badge + Título) -->
 		<div class="card-noticia__header">
-			<div class="card-noticia__eyebrow-container">
-				<?php 
-				mm_render_component( 'atoms', 'badge-categoria', array(
-					'categoria' => $categoria,
-					'url'       => home_url( '/category/' . sanitize_title( $categoria ) . '/' )
-				) );
-				?>
-			</div>
+			<span class="card-noticia__eyebrow">
+				<?php echo $categoria; ?>
+			</span>
 			<h3 class="card-noticia__title">
 				<?php echo $titulo; ?>
 			</h3>
@@ -82,27 +77,24 @@ $classes = 'card-noticia card-noticia--' . $variacao;
 		<div class="card-noticia__footer">
 			<div class="card-noticia__meta">
 				
-				<!-- Autor Atom -->
-				<span class="card-noticia__meta-item">
-					<?php 
-					mm_render_component( 'atoms', 'meta-autor', array(
-						'author_name' => $autor,
-						'label'       => __( 'por', 'hello-elementor-child' ),
-						'class'       => 'meta-autor--compact'
-					) );
-					?>
+				<!-- Autor com ícone User -->
+				<span class="card-noticia__meta-item card-noticia__author">
+					<svg class="card-noticia__icon" viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+						<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+						<circle cx="12" cy="7" r="4"></circle>
+					</svg>
+					<?php printf( __( 'por %s', 'hello-elementor-child' ), $autor ); ?>
 				</span>
 				
-				<!-- Data de Publicação Atom -->
+				<!-- Data de Publicação com ícone Clock -->
 				<?php if ( ! empty( $data ) ) : ?>
 					<span class="card-noticia__meta-sep" aria-hidden="true">•</span>
-					<span class="card-noticia__meta-item">
-						<?php 
-						mm_render_component( 'atoms', 'meta-data', array(
-							'date'      => $data,
-							'show_icon' => true
-						) );
-						?>
+					<span class="card-noticia__meta-item card-noticia__date">
+						<svg class="card-noticia__icon" viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+							<circle cx="12" cy="12" r="10"></circle>
+							<polyline points="12 6 12 12 16 14"></polyline>
+						</svg>
+						<?php echo $data; ?>
 					</span>
 				<?php endif; ?>
 

@@ -31,10 +31,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const realSlides = Array.from(track.querySelectorAll('.js-trilho__slide'));
         if (realSlides.length === 0) return;
 
-        // Mede a largura do "conjunto real" ANTES de clonar.
-        // Isso é mais robusto do que usar offsetLeft, especialmente com gaps, slides variáveis e padding.
-        const baseSetWidth = track.scrollWidth;
-        if (!baseSetWidth || baseSetWidth <= 0) return;
+        // Mede a largura do conjunto REAL (sem depender de scrollWidth/3).
+        // Usamos geometria dos slides reais para evitar drift por arredondamento:
+        // (último.right - primeiro.left) em coordenadas de scroll.
+        const computeRealSetWidth = () => {
+            const first = realSlides[0];
+            const last = realSlides[realSlides.length - 1];
+            if (!first || !last) return 0;
+            const left = first.offsetLeft;
+            const right = last.offsetLeft + last.offsetWidth;
+            const w = Math.round(right - left);
+            return w > 0 ? w : 0;
+        };
 
         // ── 1. INFINITE LOOP: Clonagem dos slides ─────────────────────────────
         const makeClones = () => realSlides.map((slide) => {
@@ -51,12 +59,11 @@ document.addEventListener('DOMContentLoaded', () => {
         makeClones().forEach((clone) => track.appendChild(clone));
 
         // ── 2. POSIÇÃO INICIAL ────────────────────────────────────────────────
-        // Getter dinâmico: recalcula em resize (não assume largura fixa de slide).
-        // Preferimos usar scrollWidth / 3 quando possível, senão fallback para baseSetWidth.
-        const getSingleSetWidth = () => {
-            const total = track.scrollWidth;
-            const approx = Math.round(total / 3);
-            return approx > 0 ? approx : baseSetWidth;
+        // Largura do set real (atualiza em resize/load).
+        let setWidth = 0;
+        const refreshSetWidth = () => {
+            const w = computeRealSetWidth();
+            if (w > 0) setWidth = w;
         };
 
         // Importante: depois de clonar, o layout pode “assentar” em frames seguintes
@@ -65,12 +72,27 @@ document.addEventListener('DOMContentLoaded', () => {
         track.style.scrollSnapType = 'none';
         requestAnimationFrame(() => {
             requestAnimationFrame(() => {
-                const ssw = getSingleSetWidth();
-                track.scrollLeft = ssw;
+                refreshSetWidth();
+                if (!setWidth) return;
+                track.scrollLeft = setWidth;
                 track.style.scrollSnapType = 'x mandatory';
                 track.style.scrollBehavior = 'smooth';
             });
         });
+
+        window.addEventListener('resize', () => {
+            // Recalibra largura e mantém o usuário no miolo.
+            refreshSetWidth();
+            if (!setWidth) return;
+            const sl = track.scrollLeft;
+            if (sl < setWidth * 0.25) track.scrollLeft = sl + setWidth;
+            else if (sl > setWidth * 1.75) track.scrollLeft = sl - setWidth;
+        }, { passive: true });
+
+        window.addEventListener('load', () => {
+            // Após carregamento de imagens/fontes, mede novamente para evitar drift.
+            refreshSetWidth();
+        }, { once: true });
 
         // ── 3. TELEPORTE INVISÍVEL (loop infinito) ────────────────────────────
         let isTeleporting = false;
@@ -84,15 +106,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (isTeleporting) return;
 
                 const sl  = track.scrollLeft;
-                const ssw = getSingleSetWidth();
+                if (!setWidth) {
+                    refreshSetWidth();
+                }
+                const ssw = setWidth;
                 if (!ssw) return;
 
                 // Usamos thresholds mais folgados para evitar "ping-pong" perto das bordas.
                 // Track é: [clones][reais][clones]. Queremos manter o usuário no miolo.
-                // Mantém o usuário no “miolo” do trilho triplicado.
-                // Thresholds mais centrais reduzem trepidação após uma volta completa.
-                const leftThreshold  = ssw * 0.5;
-                const rightThreshold = ssw * 1.5;
+                const leftThreshold  = ssw * 0.25;
+                const rightThreshold = ssw * 1.75;
 
                 if (sl <= leftThreshold) {
                     isTeleporting = true;

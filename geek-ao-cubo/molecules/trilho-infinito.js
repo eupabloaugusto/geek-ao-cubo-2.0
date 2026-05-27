@@ -51,10 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
         makeClones().forEach((clone) => track.appendChild(clone));
 
         // ── 2. POSIÇÃO INICIAL ────────────────────────────────────────────────
-        track.style.scrollBehavior = 'auto';
-        // Inicia no começo do conjunto real (meio da triplicação).
-        track.scrollLeft = baseSetWidth;
-
         // Getter dinâmico: recalcula em resize (não assume largura fixa de slide).
         // Preferimos usar scrollWidth / 3 quando possível, senão fallback para baseSetWidth.
         const getSingleSetWidth = () => {
@@ -63,8 +59,17 @@ document.addEventListener('DOMContentLoaded', () => {
             return approx > 0 ? approx : baseSetWidth;
         };
 
+        // Importante: depois de clonar, o layout pode “assentar” em frames seguintes
+        // (imagens lazy, fontes, etc.). Ajustamos a posição inicial após 2 RAFs.
+        track.style.scrollBehavior = 'auto';
+        track.style.scrollSnapType = 'none';
         requestAnimationFrame(() => {
-            track.style.scrollBehavior = 'smooth';
+            requestAnimationFrame(() => {
+                const ssw = getSingleSetWidth();
+                track.scrollLeft = ssw;
+                track.style.scrollSnapType = 'x mandatory';
+                track.style.scrollBehavior = 'smooth';
+            });
         });
 
         // ── 3. TELEPORTE INVISÍVEL (loop infinito) ────────────────────────────
@@ -84,16 +89,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Usamos thresholds mais folgados para evitar "ping-pong" perto das bordas.
                 // Track é: [clones][reais][clones]. Queremos manter o usuário no miolo.
-                const leftThreshold  = ssw * 0.25;
-                const rightThreshold = ssw * 1.75;
+                // Mantém o usuário no “miolo” do trilho triplicado.
+                // Thresholds mais centrais reduzem trepidação após uma volta completa.
+                const leftThreshold  = ssw * 0.5;
+                const rightThreshold = ssw * 1.5;
 
                 if (sl <= leftThreshold) {
                     isTeleporting = true;
                     track.style.scrollBehavior = 'auto';
+                    track.style.scrollSnapType = 'none';
                     track.scrollLeft = Math.round(sl + ssw);
+                    // Double RAF: evita “trepidação” (scroll-snap brigando com scrollLeft)
                     requestAnimationFrame(() => {
-                        track.style.scrollBehavior = 'smooth';
-                        isTeleporting = false;
+                        requestAnimationFrame(() => {
+                            track.style.scrollSnapType = 'x mandatory';
+                            track.style.scrollBehavior = 'smooth';
+                            isTeleporting = false;
+                        });
                     });
                     return;
                 }
@@ -101,10 +113,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (sl >= rightThreshold) {
                     isTeleporting = true;
                     track.style.scrollBehavior = 'auto';
+                    track.style.scrollSnapType = 'none';
                     track.scrollLeft = Math.round(sl - ssw);
                     requestAnimationFrame(() => {
-                        track.style.scrollBehavior = 'smooth';
-                        isTeleporting = false;
+                        requestAnimationFrame(() => {
+                            track.style.scrollSnapType = 'x mandatory';
+                            track.style.scrollBehavior = 'smooth';
+                            isTeleporting = false;
+                        });
                     });
                 }
             });

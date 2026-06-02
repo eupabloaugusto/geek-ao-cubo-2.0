@@ -1,0 +1,133 @@
+/**
+ * Organism CSS: Seção de Reviews (secao-reviews)
+ *
+ * Lista reviews de usuários com cabeçalho (título + contador),
+ * lista de review-card e botão "Ver mais reviews".
+ *
+ * @package geek-ao-cubo
+ */
+
+/* ==========================================================================
+   SEÇÃO BASE
+   ========================================================================== */
+
+.secao-reviews {
+	width: 100%;
+}
+
+.secao-reviews__inner {
+	max-width: var(--container-max);
+	margin: 0 auto;
+	padding: var(--space-700) var(--space-400);
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-500);
+}
+
+/* ==========================================================================
+   CABEÇALHO
+   ========================================================================== */
+
+.secao-reviews__header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--space-300);
+	flex-wrap: wrap;
+}
+
+.secao-reviews__title {
+	font-family: var(--font-heading);
+	font-size: var(--text-sm-size);
+	font-weight: 700;
+	color: var(--neutral-100);
+	margin: 0;
+	line-height: 1.2;
+}
+
+/* Pill de contagem total */
+.secao-reviews__count {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-100);
+	font-family: var(--font-heading);
+	font-size: var(--text-xxs-size);
+	font-weight: 700;
+	color: var(--neutral-400);
+	background-color: var(--neutral-800);
+	border: 0.0625rem solid var(--neutral-700);
+	padding: var(--space-100) var(--space-200);
+	border-radius: var(--border-radius-100);
+	white-space: nowrap;
+}
+
+.secao-reviews__count-label {
+	font-weight: 400;
+}
+
+/* ==========================================================================
+   LISTA
+   ========================================================================== */
+
+.secao-reviews__list {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-400);
+	width: 100%;
+}
+
+.secao-reviews__item {
+	width: 100%;
+}
+
+/* ==========================================================================
+   RODAPÉ: botão "Ver mais"
+   ========================================================================== */
+
+.secao-reviews__footer {
+	display: flex;
+	justify-content: center;
+	padding-top: var(--space-200);
+}
+
+.secao-reviews__btn {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-200);
+}
+
+.secao-reviews__btn-icon {
+	width: var(--icon-xs);
+	height: var(--icon-xs);
+	flex-shrink: 0;
+	transition: transform 0.2s ease;
+}
+
+.secao-reviews__btn:hover .secao-reviews__btn-icon {
+	transform: translateX(0.125rem);
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+
+/* Desktop (≥ 64rem) */
+@media (min-width: 64rem) {
+	.secao-reviews__inner {
+		padding-inline: var(--space-600);
+	}
+
+	.secao-reviews__title {
+		font-size: var(--text-md-sm-size);
+	}
+}
+
+/* Desktop largo (≥ 75rem): lista em 2 colunas */
+@media (min-width: 75rem) {
+	.secao-reviews__list {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: var(--space-400);
+		align-items: start;
+	}
+}

@@ -1,0 +1,9 @@
+/* ============================================================
+   Organism: Seção de Anúncios (secao-anuncios)
+   Container reutilizável para blocos AdSense sem título.
+   ============================================================ */
+
+.secao-anuncios {
+	width: 100%;
+	padding-block: var(--space-400);
+}

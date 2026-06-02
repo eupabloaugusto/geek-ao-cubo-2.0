@@ -1,0 +1,16 @@
+/**
+ * Atom CSS: Titulo (titulo)
+ *
+ * Estilos base tipográficos e padronizados para cabeçalhos semânticos.
+ *
+ * @package geek-ao-cubo
+ */
+
+.titulo {
+	font-family: var(--font-heading), sans-serif;
+	font-weight: 700;
+	color: var(--neutral-100);
+	line-height: 1.2;
+	margin: 0;
+	letter-spacing: -0.02em;
+}

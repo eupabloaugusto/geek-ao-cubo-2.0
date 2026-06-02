@@ -1,0 +1,38 @@
+{
+  "key": "group_post_animes_fields",
+  "title": "Títulos Relacionados",
+  "fields": [
+    {
+      "key": "field_post_animes_relacionados",
+      "label": "Títulos (Anime/Mangá) mencionados",
+      "name": "post_animes_relacionados",
+      "type": "relationship",
+      "instructions": "Selecione os animes ou mangás que são o tema principal deste artigo.",
+      "required": 0,
+      "post_type": [ "anime", "manga" ],
+      "taxonomy": "",
+      "filters": [ "search" ],
+      "elements": [ "featured_image" ],
+      "min": 0,
+      "max": 3,
+      "return_format": "object",
+      "wrapper": { "width": "100" }
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "post"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "side",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "description": "Relaciona artigos (news) ao catálogo de Animes"
+}

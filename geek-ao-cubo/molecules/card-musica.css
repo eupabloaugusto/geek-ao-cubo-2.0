@@ -1,0 +1,65 @@
+/*
+ * Molecule: Card de Música
+ */
+
+.card-musica-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-100);
+	width: 100%;
+}
+
+.card-musica__label {
+	font-size: var(--text-xs-size);
+	color: var(--neutral-400);
+	font-weight: 500;
+	margin-left: var(--space-100);
+}
+
+.card-musica {
+	display: flex;
+	align-items: center;
+	gap: var(--space-400);
+	background-color: var(--neutral-800);
+	border: 0.0625rem solid rgba(245, 107, 21, 0.3); /* subtle orange border based on mockup */
+	border-radius: var(--border-radius-300);
+	padding: var(--space-300) var(--space-400);
+	transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card-musica:hover {
+	border-color: var(--color-primary);
+	box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
+}
+
+.card-musica__icon-wrapper {
+	width: 3rem;
+	height: 3rem;
+	border-radius: 50%;
+	background-color: rgba(245, 107, 21, 0.1);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+
+.card-musica__icon {
+	width: 1.5rem;
+	height: 1.5rem;
+	color: var(--color-primary);
+}
+
+.card-musica__content {
+	flex: 1;
+	min-width: 0; /* prevents flex child from blowing out */
+}
+
+.card-musica__title {
+	font-family: var(--font-heading);
+	font-size: var(--text-base-size);
+	font-weight: 500;
+	color: var(--neutral-100);
+	margin: 0;
+	line-height: 1.4;
+	word-break: break-word;
+}

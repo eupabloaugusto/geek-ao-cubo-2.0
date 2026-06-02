@@ -1,0 +1,430 @@
+/**
+ * Organism CSS: Hero Anime (hero-anime)
+ *
+ * Hero principal da página de detalhe do anime.
+ * Mobile-first: poster em cima (centralizado), info abaixo.
+ * Desktop (≥ 48rem): poster esquerda, info direita em flex-row.
+ *
+ * @package geek-ao-cubo
+ */
+
+/* ==========================================================================
+   SECTION BASE
+   ========================================================================== */
+
+.hero-anime {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	background-color: var(--neutral-900);
+}
+
+/* ==========================================================================
+   BACKDROP — imagem desfocada como fundo
+   ========================================================================== */
+
+.hero-anime__backdrop {
+	position: absolute;
+	inset: 0;
+	background-size: cover;
+	background-position: center top;
+	background-repeat: no-repeat;
+	filter: blur(1.25rem) brightness(0.2) saturate(0.6);
+	transform: scale(1.12);
+	z-index: 0;
+}
+
+/* ==========================================================================
+   OVERLAY — gradiente escuro sobre o backdrop
+   ========================================================================== */
+
+.hero-anime__overlay {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(
+		to bottom,
+		rgba(13, 14, 17, 0.4)  0%,
+		rgba(13, 14, 17, 0.75) 50%,
+		var(--neutral-900)     100%
+	);
+	z-index: 0;
+}
+
+/* ==========================================================================
+   INNER CONTAINER
+   ========================================================================== */
+
+.hero-anime__inner {
+	position: relative;
+	z-index: 1;
+	max-width: var(--container-max);
+	margin: 0 auto;
+	padding: var(--space-700) var(--space-400) var(--space-300);
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-500);
+	align-items: flex-start;
+}
+
+/* ==========================================================================
+   POSTER
+   ========================================================================== */
+
+.hero-anime__poster {
+	flex-shrink: 0;
+	width: 8rem;
+	align-self: flex-start;
+}
+
+.hero-anime__poster .imagem-capa-container {
+	border-radius: var(--border-radius-200);
+	border-color: rgba(245, 107, 21, 0.2);
+	box-shadow:
+		0 0.5rem 2rem rgba(0, 0, 0, 0.6),
+		0 0 0 0.0625rem rgba(245, 107, 21, 0.2);
+}
+
+/* ==========================================================================
+   INFO COLUMN
+   ========================================================================== */
+
+.hero-anime__info {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-400);
+	min-width: 0;
+	width: 100%;
+}
+
+/* ==========================================================================
+   B1. BADGES — Status + Tipo
+   ========================================================================== */
+
+.hero-anime__badges {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--space-200);
+}
+
+.hero-anime__tipo {
+	display: inline-flex;
+	align-items: center;
+	padding: 0.1875rem var(--space-300);
+	font-family: var(--font-body);
+	font-size: var(--text-xxs-size);
+	font-weight: 600;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	color: var(--neutral-300);
+	background-color: rgba(255, 255, 255, 0.08);
+	border: 0.0625rem solid rgba(255, 255, 255, 0.15);
+	border-radius: var(--border-radius-100);
+	line-height: 1.25rem;
+}
+
+/* ==========================================================================
+   B2. TÍTULO
+   ========================================================================== */
+
+.hero-anime__title {
+	font-family: var(--font-heading);
+	font-size: clamp(var(--text-md-sm-size), 4vw, var(--text-md-lg-size));
+	font-weight: 700;
+	line-height: 1.15;
+	color: var(--neutral-100);
+	margin: 0;
+	overflow-wrap: break-word;
+	word-break: break-word;
+}
+
+.hero-anime__title-jp {
+	font-family: var(--font-body);
+	font-size: var(--text-xs-size);
+	font-weight: 400;
+	color: var(--neutral-400);
+	margin: calc(-1 * var(--space-200)) 0 0;
+	line-height: 1.4;
+}
+
+/* ==========================================================================
+   B3. SCORE ROW
+   ========================================================================== */
+
+.hero-anime__score-row {
+	display: flex;
+	align-items: center;
+	gap: var(--space-200);
+}
+
+.hero-anime__nota {
+	font-size: var(--text-sm-size) !important;
+}
+
+.hero-anime__nota .nota-mal__val {
+	font-size: var(--text-sm-size);
+	font-weight: 700;
+}
+
+.hero-anime__nota .nota-mal__icon {
+	width: 1.25rem;
+	height: 1.25rem;
+}
+
+.hero-anime__score-label {
+	font-family: var(--font-body);
+	font-size: var(--text-xxs-size);
+	color: var(--neutral-400);
+}
+
+/* ==========================================================================
+   B4. GÊNEROS
+   ========================================================================== */
+
+.hero-anime__genres {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-200);
+}
+
+/* ==========================================================================
+   B5. META INFO — DL grid
+   ========================================================================== */
+
+.hero-anime__meta {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: var(--space-300) var(--space-500);
+	margin: 0;
+	padding: var(--space-400);
+	background-color: rgba(255, 255, 255, 0.04);
+	border-left: 0.1875rem solid var(--color-primary);
+	border-radius: 0 var(--border-radius-200) var(--border-radius-200) 0;
+}
+
+.hero-anime__meta-item {
+	display: flex;
+	flex-direction: column;
+	gap: 0.125rem;
+}
+
+.hero-anime__meta-label {
+	font-family: var(--font-body);
+	font-size: var(--text-xxs-size);
+	font-weight: 600;
+	color: var(--color-text-muted); /* WCAG AA accessible contrast text */
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	line-height: 1;
+}
+
+.hero-anime__meta-value {
+	font-family: var(--font-body);
+	font-size: var(--text-xs-size);
+	font-weight: 400;
+	color: var(--neutral-200);
+	line-height: 1.4;
+	margin: 0;
+}
+
+.hero-anime__meta-link {
+	color: var(--color-primary);
+	text-decoration: none;
+	transition: text-decoration 0.15s ease;
+}
+
+.hero-anime__meta-link:hover {
+	text-decoration: underline;
+}
+
+/* ==========================================================================
+   B6. SINOPSE
+   ========================================================================== */
+
+.hero-anime__sinopse {
+	max-width: 48rem;
+	position: relative;
+	width: 100%;
+}
+
+.hero-anime__sinopse-content {
+	font-family: var(--font-body);
+	font-size: var(--text-xs-size);
+	line-height: 1.75;
+	color: var(--neutral-300);
+	margin: 0;
+	position: relative;
+	max-height: 5.25rem; /* ~3 linhas de texto (3 * 1.75rem = 5.25rem) */
+	overflow: hidden;
+	transition: max-height 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Suporte a múltiplos parágrafos dentro da sinopse do MAL */
+.hero-anime__sinopse-content p {
+	margin: 0 0 1rem;
+	font-size: inherit;
+	line-height: inherit;
+	color: inherit;
+}
+.hero-anime__sinopse-content p:last-child {
+	margin-bottom: 0;
+}
+
+/* Efeito Fade-out de transbordamento premium */
+.hero-anime__sinopse-fade {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 2rem;
+	background: linear-gradient(to bottom, rgba(13, 14, 17, 0) 0%, rgba(13, 14, 17, 0.95) 100%);
+	pointer-events: none;
+	transition: opacity 0.3s ease;
+}
+
+/* Estado Expandido */
+.hero-anime__sinopse--expanded .hero-anime__sinopse-content {
+	max-height: 120rem; /* Limite seguro alto o suficiente para qualquer sinopse do MAL */
+}
+
+.hero-anime__sinopse--expanded .hero-anime__sinopse-fade {
+	opacity: 0;
+}
+
+/* Botão de Alternância */
+.hero-anime__sinopse-toggle {
+	display: none; /* Controlado via JS se houver transbordo real */
+	align-items: center;
+	gap: var(--space-100);
+	margin-top: var(--space-200);
+	padding: 0;
+	background: none;
+	border: none;
+	cursor: pointer;
+	font-family: var(--font-body);
+	font-size: var(--text-xs-size);
+	font-weight: 600;
+	color: var(--color-primary);
+	text-decoration: none;
+	transition: opacity 0.2s ease;
+}
+
+.hero-anime__sinopse-toggle:hover {
+	opacity: 0.75;
+}
+
+.hero-anime__sinopse-toggle-icon {
+	width: 1rem;
+	height: 1rem;
+	transition: transform 0.3s ease;
+}
+
+.hero-anime__sinopse--expanded .hero-anime__sinopse-toggle-icon {
+	transform: rotate(180deg);
+}
+
+/* ==========================================================================
+   B7. CTAs
+   ========================================================================== */
+
+.hero-anime__ctas {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-300);
+	align-items: center;
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+
+/* Tablet / Desktop (≥ 48rem) */
+@media (min-width: 48rem) {
+	.hero-anime__inner {
+		flex-direction: row;
+		align-items: flex-start;
+		gap: var(--space-700);
+		padding: var(--space-700) var(--space-400) var(--space-800);
+	}
+
+	.hero-anime__poster {
+		width: 12rem;
+		align-self: flex-start;
+	}
+
+	.hero-anime__info {
+		gap: var(--space-400);
+	}
+
+	.hero-anime__meta {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+/* Large Desktop (≥ 64rem) */
+@media (min-width: 64rem) {
+	.hero-anime__poster {
+		width: 14rem;
+	}
+
+	.hero-anime__title {
+		font-size: var(--text-md-lg-size);
+	}
+
+	.hero-anime__meta {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+/* ==========================================================================
+   JIKAN — MICRO-ANIMAÇÃO DE ATUALIZAÇÃO DINÂMICA (Task 4.3)
+   Ativada via JS pelo atributo [data-jikan-updating="true"]
+   ========================================================================== */
+
+[data-jikan-field] {
+	transition: opacity 0.15s ease;
+}
+
+[data-jikan-field][data-jikan-updating="true"] {
+	opacity: 0;
+	pointer-events: none;
+}
+
+/* ==========================================================================
+   STATS CONTAINER (stat-numero) BELOW MAL SCORE
+   ========================================================================== */
+
+.hero-anime__stats-container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-400);
+	margin-top: var(--space-200);
+	width: 100%;
+}
+
+.hero-anime__stat-item {
+	background-color: rgba(255, 255, 255, 0.02);
+	border: 0.0625rem solid rgba(255, 255, 255, 0.06);
+	border-radius: var(--border-radius-200);
+	padding: var(--space-250) var(--space-400);
+	min-width: 9.5rem;
+	flex: 1 1 0%;
+	transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.hero-anime__stat-item:hover {
+	background-color: rgba(255, 255, 255, 0.04);
+	border-color: rgba(245, 107, 21, 0.2);
+}
+
+@media (max-width: 32rem) {
+	.hero-anime__stats-container {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--space-250);
+	}
+	.hero-anime__stat-item {
+		width: 100%;
+		min-width: 0;
+	}
+}

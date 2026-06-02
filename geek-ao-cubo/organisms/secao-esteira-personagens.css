@@ -1,0 +1,66 @@
+/**
+ * Organism: Seção de Esteira de Personagens CSS (secao-esteira-personagens)
+ *
+ * Estilização em formato de trilho horizontal (esteira/carousel) otimizada para Core Web Vitals.
+ */
+
+.secao-esteira-personagens {
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+    margin-bottom: 0;
+}
+
+/* ==========================================================================
+   CABEÇALHO DA SEÇÃO (Título + Link "Ver Todos")
+   ========================================================================== */
+.secao-esteira-personagens__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: var(--space-400); 
+}
+
+/* ==========================================================================
+   TRILHO
+   ========================================================================== */
+
+.secao-esteira-personagens__track {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: var(--space-300);
+    padding: var(--space-200) 0 var(--space-400) 0; 
+    width: 100%;
+    
+    /* Ocultar barra de rolagem */
+    scrollbar-width: none; /* Firefox */
+}
+.secao-esteira-personagens__track::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+}
+
+/* Slide Individual (largura sincronizada com card-personagem vertical, aspect-ratio 2:3) */
+.secao-esteira-personagens__slide {
+    flex: 0 0 auto;
+    width: 10rem; /* Um pouco mais estreito que anime */
+    scroll-snap-align: start;
+}
+
+/* Setas: alinhamento vertical ao centro da imagem de capa (proporção 2:3) */
+.secao-esteira-personagens__wrapper .trilho-infinito__arrow {
+    top: calc(10rem * 1.5 * 0.5);
+}
+
+@media (max-width: 48rem) {
+    .secao-esteira-personagens__slide {
+        width: 8.5rem;
+    }
+    .secao-esteira-personagens__wrapper .trilho-infinito__arrow {
+        top: calc(8.5rem * 1.5 * 0.5);
+    }
+}

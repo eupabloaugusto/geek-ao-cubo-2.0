@@ -218,13 +218,101 @@ class MALWavesImporter:
 			return "Brevemente"
 		return "Pausado"
 
+	def _map_genre_ptbr(self, genre_en: str) -> str:
+		"""Traduz gêneros do MAL (inglês) para PT-BR."""
+		TRADUZIR = {
+			"action":            "Ação",
+			"adventure":         "Aventura",
+			"comedy":            "Comédia",
+			"drama":             "Drama",
+			"fantasy":           "Fantasia",
+			"horror":            "Terror",
+			"mystery":           "Mistério",
+			"romance":           "Romance",
+			"sci-fi":            "Ficção Científica",
+			"science fiction":   "Ficção Científica",
+			"supernatural":      "Sobrenatural",
+			"sports":            "Esportes",
+			"psychological":     "Psicológico",
+			"historical":        "Histórico",
+			"military":          "Militar",
+			"school":            "Escola",
+			"music":             "Música",
+			"award winning":     "Premiado",
+			"suspense":          "Suspense",
+			"avant garde":       "Vanguarda",
+			"mythology":         "Mitologia",
+			"racing":            "Corrida",
+			"martial arts":      "Artes Marciais",
+			"super power":       "Superpoderes",
+			"vampire":           "Vampiro",
+			"space":             "Espaço",
+		}
+		return TRADUZIR.get(genre_en.lower(), genre_en)
+
+	def _build_alt_titles(self, anime_data: dict, display_title: str) -> str:
+		"""Monta string de títulos alternativos separados por vírgula."""
+		alts = []
+		raw_title = anime_data.get("title", "")
+		if raw_title and raw_title != display_title:
+			alts.append(raw_title)
+		for t in anime_data.get("titles", []):
+			val = t.get("title", "").strip()
+			if val and val != display_title and val not in alts:
+				alts.append(val)
+		return ", ".join(alts)
+
+	def _extract_broadcast_utc(self, anime_data: dict) -> tuple[str, str]:
+		"""Extrai dia e hora da Jikan (JST=UTC+9) e converte para UTC sem dependência de pytz."""
+		broadcast      = anime_data.get("broadcast") or {}
+		broadcast_time = broadcast.get("time") or ""
+		broadcast_day  = broadcast.get("day")  or ""
+		horario_utc = ""
+		if broadcast_time:
+			try:
+				h, m = map(int, broadcast_time.split(":"))
+				h_utc = (h - 9) % 24
+				horario_utc = f"{h_utc:02d}:{m:02d}"
+			except Exception:
+				horario_utc = ""
+		return horario_utc, broadcast_day
+
+	def _fetch_anilist_banner(self, mal_id: int) -> str:
+		"""Consulta a AniList GraphQL API pelo idMal e retorna o bannerImage horizontal."""
+		query = """
+		query ($idMal: Int) {
+		  Media(idMal: $idMal, type: ANIME) {
+		    bannerImage
+		  }
+		}
+		"""
+		try:
+			resp = requests.post(
+				"https://graphql.anilist.co",
+				json={"query": query, "variables": {"idMal": mal_id}},
+				headers={"Content-Type": "application/json", "Accept": "application/json"},
+				timeout=10,
+			)
+			if resp.status_code == 200:
+				banner = resp.json().get("data", {}).get("Media", {}).get("bannerImage")
+				if banner:
+					logger.info(f"  🖼️ Banner AniList obtido: {banner}")
+					return banner
+			elif resp.status_code == 429:
+				logger.warning("  ⚠️ AniList rate limit. Pulando banner.")
+			else:
+				logger.warning(f"  ⚠️ AniList retornou HTTP {resp.status_code}. Sem banner.")
+		except Exception as e:
+			logger.warning(f"  ⚠️ Erro ao buscar banner AniList para MAL ID {mal_id}: {e}")
+		return ""
+
 	# ------------------------------------------------------------------
 	# Importação física de Item
 	# ------------------------------------------------------------------
 
 	def import_anime(self, anime_data: dict, dry_run: bool = False) -> bool:
 		"""Importa o anime da Jikan para o banco local de dados do WP."""
-		title  = anime_data.get("title", "")
+		title  = anime_data.get("title_english") or anime_data.get("title", "")
 		mal_id = anime_data.get("mal_id")
 
 		if not title or not mal_id:
@@ -248,7 +336,7 @@ class MALWavesImporter:
 
 		if not dry_run and self.wp_url:
 			for g in anime_data.get("genres", []):
-				g_id = self._get_or_create_term("genero", g.get("name", ""))
+				g_id = self._get_or_create_term("genero", self._map_genre_ptbr(g.get("name", "")))
 				if g_id:
 					genre_ids.append(g_id)
 
@@ -261,25 +349,44 @@ class MALWavesImporter:
 		if not dry_run and self.wp_url and image_url:
 			featured_media_id = self._upload_media(image_url, title)
 
+		# URL do trailer (YouTube) retornada pela Jikan
+		trailer_data = anime_data.get("trailer") or {}
+		trailer_url  = trailer_data.get("url") or ""
+		if not trailer_url and trailer_data.get("youtube_id"):
+			trailer_url = f"https://www.youtube.com/watch?v={trailer_data['youtube_id']}"
+
+		# Banner horizontal (AniList GraphQL)
+		banner_url = self._fetch_anilist_banner(int(mal_id))
+
+		# Horário de exibição (broadcast Jikan JST → UTC)
+		horario_utc, broadcast_day = self._extract_broadcast_utc(anime_data)
+
 		payload = {
 			"title":   title,
 			"slug":    slug,
 			"status":  "publish",
 			"content": anime_data.get("synopsis", ""),
 			"acf": {
-				"anime_id_mal":          int(mal_id),
-				"anime_studio":          studio_name,
-				"anime_nota_mal":        float(anime_data.get("score") or 0.0),
-				"anime_membros":         int(anime_data.get("members") or 0),
-				"anime_ranking":         int(anime_data.get("rank") or 0),
-				"anime_popularidade":    int(anime_data.get("popularity") or 0),
-				"anime_imagem_capa_url": image_url or "",
-				"anime_ano":             int(anime_data.get("year") or anime_data.get("aired", {}).get("prop", {}).get("from", {}).get("year") or 0),
-				"anime_total_episodios": int(anime_data.get("episodes") or 0),
-				"anime_duracao":         anime_data.get("duration", ""),
-				"anime_rating":          rating_slug,
-				"anime_source":          anime_data.get("source", "manga").lower(),
-				"anime_sinopse":         anime_data.get("synopsis", ""),
+				"anime_id_mal":               int(mal_id),
+				"anime_studio":               studio_name,
+				"anime_nota_mal":             float(anime_data.get("score") or 0.0),
+				"anime_membros":              int(anime_data.get("members") or 0),
+				"anime_ranking":              int(anime_data.get("rank") or 0),
+				"anime_popularidade":         int(anime_data.get("popularity") or 0),
+				"anime_imagem_capa_url":      image_url or "",
+				"anime_banner_url":           banner_url,
+				"anime_trailer_url":          trailer_url,
+				"anime_ano":                  int(anime_data.get("year") or anime_data.get("aired", {}).get("prop", {}).get("from", {}).get("year") or 0),
+				"anime_total_episodios":      int(anime_data.get("episodes") or 0),
+				"anime_duracao":              anime_data.get("duration", ""),
+				"anime_rating":               rating_slug,
+				"anime_source":               anime_data.get("source", "manga").lower(),
+				"anime_sinopse":              anime_data.get("synopsis", ""),
+				"anime_titulo_japones":       anime_data.get("title_japanese", ""),
+				"anime_titulos_alternativos": self._build_alt_titles(anime_data, title),
+				"anime_idioma":               "legendado",
+				"anime_horario_exibicao":     horario_utc,
+				"anime_dia_semana":           broadcast_day,
 			}
 		}
 

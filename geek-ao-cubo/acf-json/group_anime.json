@@ -1,0 +1,66 @@
+{
+  "key": "group_anime_fields",
+  "title": "Campos do Anime",
+  "fields": [
+    {
+      "key": "field_anime_id_mal",
+      "label": "ID no MyAnimeList",
+      "name": "anime_id_mal",
+      "type": "number",
+      "instructions": "ID numérico do anime no MyAnimeList. A partir deste ID, o Geek ao Cubo puxa os dados ao vivo do Jikan.",
+      "required": 1,
+      "min": 1,
+      "step": 1,
+      "wrapper": { "width": "50" }
+    },
+    {
+      "key": "field_anime_idioma",
+      "label": "Idioma",
+      "name": "anime_idioma",
+      "type": "select",
+      "instructions": "Sincronizado automaticamente a partir dos dubladores Jikan (PT-BR). Default: legendado.",
+      "required": 0,
+      "choices": {
+        "legendado": "Legendado",
+        "dublado": "Dublado"
+      },
+      "default_value": "legendado",
+      "return_format": "value",
+      "allow_null": 0,
+      "wrapper": { "width": "50" }
+    },
+    {
+      "key": "field_anime_reviews",
+      "label": "Reviews Vinculadas",
+      "name": "anime_reviews",
+      "type": "relationship",
+      "instructions": "Lista de reviews (críticas do site) que apontam para este anime.",
+      "required": 0,
+      "post_type": [ "review" ],
+      "filters": [],
+      "elements": [],
+      "min": 0,
+      "max": "",
+      "return_format": "id",
+      "wrapper": { "class": "mm-hidden-field", "width": "100" },
+      "read_only": 1
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "anime"
+      }
+    ]
+  ],
+  "show_in_rest": 1,
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "description": "Campos mínimos locais. Metadados dinâmicos vêm do cache Jikan; anime_idioma e anime_tipo são sincronizados automaticamente."
+}

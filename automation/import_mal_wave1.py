@@ -144,11 +144,10 @@ class MALImporter:
 			logger.error(f"  ❌ Erro no upload de imagem de {title}: {e}")
 		return None
 
-	def _check_anime_exists(self, slug: str) -> bool:
-		"""Verifica se o anime já está cadastrado procurando pelo slug."""
+	def _get_anime_id_by_slug(self, slug: str) -> int | None:
+		"""Retorna o ID WP do anime pelo slug, ou None se não existir."""
 		if not self.wp_url:
-			return False
-
+			return None
 		try:
 			resp = requests.get(
 				f"{self.api_base}/anime",
@@ -158,15 +157,84 @@ class MALImporter:
 			)
 			if resp.status_code == 200:
 				animes = resp.json()
-				return len(animes) > 0
-			return False
+				if animes:
+					return int(animes[0]["id"])
+			return None
 		except Exception as e:
-			logger.error(f"  ❌ Erro ao verificar duplicidade do slug '{slug}': {e}")
-			return False
+			logger.error(f"  ❌ Erro ao buscar slug '{slug}': {e}")
+			return None
+
+	def _check_anime_exists(self, slug: str) -> bool:
+		"""Verifica se o anime já está cadastrado procurando pelo slug."""
+		return self._get_anime_id_by_slug(slug) is not None
 
 	# ------------------------------------------------------------------
 	# Helpers de Classificação e Status
 	# ------------------------------------------------------------------
+
+	def _extract_broadcast_utc(self, anime_data: dict) -> tuple[str, str]:
+		"""Extrai dia e hora de exibição do campo broadcast da Jikan e converte JST (UTC+9) para UTC.
+		Retorna (horario_utc, dia_semana). Ex: ('08:00', 'Saturdays').
+		JST é sempre UTC+9 (sem DST), então basta subtrair 9 horas.
+		"""
+		broadcast = anime_data.get("broadcast") or {}
+		broadcast_time = broadcast.get("time") or ""   # ex: "17:00" (JST)
+		broadcast_day  = broadcast.get("day")  or ""   # ex: "Saturdays"
+		horario_utc = ""
+		if broadcast_time:
+			try:
+				h, m = map(int, broadcast_time.split(":"))
+				h_utc = (h - 9) % 24  # JST é UTC+9
+				horario_utc = f"{h_utc:02d}:{m:02d}"
+			except Exception:
+				horario_utc = ""
+		return horario_utc, broadcast_day
+
+	def _fetch_anilist_banner(self, mal_id: int) -> str:
+		"""Consulta a AniList GraphQL API pelo idMal e retorna o bannerImage horizontal."""
+		query = """
+		query ($idMal: Int) {
+		  Media(idMal: $idMal, type: ANIME) {
+		    bannerImage
+		  }
+		}
+		"""
+		try:
+			resp = requests.post(
+				"https://graphql.anilist.co",
+				json={"query": query, "variables": {"idMal": mal_id}},
+				headers={"Content-Type": "application/json", "Accept": "application/json"},
+				timeout=10,
+			)
+			if resp.status_code == 200:
+				banner = resp.json().get("data", {}).get("Media", {}).get("bannerImage")
+				if banner:
+					logger.info(f"  🖼️ Banner AniList obtido: {banner}")
+					return banner
+			elif resp.status_code == 429:
+				logger.warning("  ⚠️ AniList rate limit. Pulando banner.")
+			else:
+				logger.warning(f"  ⚠️ AniList retornou HTTP {resp.status_code}. Sem banner.")
+		except Exception as e:
+			logger.warning(f"  ⚠️ Erro ao buscar banner AniList para MAL ID {mal_id}: {e}")
+		return ""
+
+	def _map_source(self, source_raw: str) -> str:
+		"""Normaliza o campo 'source' da Jikan para os slugs aceitos pelo ACF."""
+		if not source_raw:
+			return "other"
+		s = source_raw.lower().strip()
+		if s in ("manga", "4-koma manga", "web manga", "manga adaptation"):
+			return "manga"
+		elif s in ("light novel", "light_novel", "novel"):
+			return "light_novel"
+		elif s in ("visual novel", "visual_novel"):
+			return "visual_novel"
+		elif s in ("original",):
+			return "original"
+		elif s in ("game", "card game", "video game"):
+			return "game"
+		return "other"
 
 	def _map_rating(self, rating_raw: str) -> str:
 		"""Mapeia classificação indicativa da Jikan para os slugs do ACF."""
@@ -250,9 +318,55 @@ class MALImporter:
 
 		return animes
 
-	def import_anime(self, anime_data: dict, dry_run: bool = False) -> bool:
+	def _build_alt_titles(self, anime_data: dict, display_title: str) -> str:
+		"""Monta string de títulos alternativos separados por vírgula (exceto o título de exibição)."""
+		alts = []
+		# title original (romanização japonesa), se diferente do display
+		raw_title = anime_data.get("title", "")
+		if raw_title and raw_title != display_title:
+			alts.append(raw_title)
+		# Synonyms e outros títulos do array titles
+		for t in anime_data.get("titles", []):
+			val = t.get("title", "").strip()
+			if val and val != display_title and val not in alts:
+				alts.append(val)
+		return ", ".join(alts)
+
+	def _map_genre_ptbr(self, genre_en: str) -> str:
+		"""Traduz gêneros do MAL (inglês) para PT-BR. Gêneros do nicho mantidos como estão."""
+		TRADUZIR = {
+			"action":       "Ação",
+			"adventure":    "Aventura",
+			"comedy":       "Comédia",
+			"drama":        "Drama",
+			"fantasy":      "Fantasia",
+			"horror":       "Terror",
+			"mystery":      "Mistério",
+			"romance":      "Romance",
+			"sci-fi":       "Ficção Científica",
+			"science fiction": "Ficção Científica",
+			"supernatural": "Sobrenatural",
+			"sports":       "Esportes",
+			"psychological": "Psicológico",
+			"historical":   "Histórico",
+			"military":     "Militar",
+			"school":       "Escola",
+			"music":        "Música",
+			"award winning": "Premiado",
+			"suspense":     "Suspense",
+			"avant garde":  "Vanguarda",
+			"mythology":    "Mitologia",
+			"racing":       "Corrida",
+			"martial arts": "Artes Marciais",
+			"super power":  "Superpoderes",
+			"vampire":      "Vampiro",
+			"space":        "Espaço",
+		}
+		return TRADUZIR.get(genre_en.lower(), genre_en)
+
+	def import_anime(self, anime_data: dict, dry_run: bool = False, update: bool = False) -> bool:
 		"""Monta o payload, resolve taxonomias e publica o anime no WordPress."""
-		title  = anime_data.get("title", "")
+		title  = anime_data.get("title_english") or anime_data.get("title", "")
 		mal_id = anime_data.get("mal_id")
 
 		if not title or not mal_id:
@@ -265,10 +379,13 @@ class MALImporter:
 
 		logger.info(f"Processando Anime: '{title}' (MAL ID: {mal_id})")
 
-		# 1. Validação de duplicidade
-		if not dry_run and self._check_anime_exists(slug):
-			logger.info(f"  ⏭️ Anime slug '/{slug}/' já existente no WordPress. Pulando.")
-			return True
+		# 1. Verificação de duplicidade
+		existing_id = None
+		if not dry_run:
+			existing_id = self._get_anime_id_by_slug(slug)
+			if existing_id and not update:
+				logger.info(f"  ⏭️ Anime slug '/{slug}/' já existente no WordPress. Pulando.")
+				return True
 
 		# 2. Resolve estúdios (pega o primeiro estúdio principal)
 		studios     = anime_data.get("studios", [])
@@ -284,7 +401,7 @@ class MALImporter:
 
 		if not dry_run and self.wp_url:
 			for g in anime_data.get("genres", []):
-				g_id = self._get_or_create_term("genero", g.get("name", ""))
+				g_id = self._get_or_create_term("genero", self._map_genre_ptbr( g.get("name", "") ))
 				if g_id:
 					genre_ids.append(g_id)
 
@@ -297,6 +414,15 @@ class MALImporter:
 		featured_media_id = None
 		if not dry_run and self.wp_url and image_url:
 			featured_media_id = self._upload_media(image_url, title)
+
+		# 5b. URL do trailer (YouTube) retornada pela Jikan
+		trailer_data = anime_data.get("trailer") or {}
+		trailer_url  = trailer_data.get("url") or ""
+		if not trailer_url and trailer_data.get("youtube_id"):
+			trailer_url = f"https://www.youtube.com/watch?v={trailer_data['youtube_id']}"
+
+		# 5c. Horário de exibição (broadcast Jikan JST → UTC)
+		horario_utc, broadcast_day = self._extract_broadcast_utc(anime_data)
 
 		# 6. Monta o payload conforme campos do Custom Post Type 'anime' e ACF
 		payload = {
@@ -312,12 +438,19 @@ class MALImporter:
 				"anime_ranking":         int(anime_data.get("rank") or 0),
 				"anime_popularidade":    int(anime_data.get("popularity") or 0),
 				"anime_imagem_capa_url": image_url or "",
+				"anime_trailer_url":     trailer_url,
+				"anime_banner_url":      self._fetch_anilist_banner( int(mal_id) ),
 				"anime_ano":             int(anime_data.get("year") or anime_data.get("aired", {}).get("prop", {}).get("from", {}).get("year") or 0),
 				"anime_total_episodios": int(anime_data.get("episodes") or 0),
 				"anime_duracao":         anime_data.get("duration", ""),
 				"anime_rating":          rating_slug,
-				"anime_source":          anime_data.get("source", "manga").lower(),
-				"anime_sinopse":         anime_data.get("synopsis", ""),
+				"anime_source":          self._map_source( anime_data.get("source", "") ),
+				"anime_sinopse":              anime_data.get("synopsis", ""),
+				"anime_titulo_japones":       anime_data.get("title_japanese", ""),
+				"anime_titulos_alternativos": self._build_alt_titles(anime_data, title),
+				"anime_idioma":               "legendado",
+				"anime_horario_exibicao":     horario_utc,
+				"anime_dia_semana":           broadcast_day,
 			}
 		}
 
@@ -336,24 +469,28 @@ class MALImporter:
 			logger.error("  ❌ URL do WordPress não configurada. Impossível publicar.")
 			return False
 
-		# 7. Posta para a REST API do WordPress no endpoint '/anime'
+		# 7. Cria ou atualiza via REST API
 		try:
-			resp = requests.post(
-				f"{self.api_base}/anime",
-				json=payload,
-				headers=self.headers,
-				timeout=25,
-			)
+			if update and existing_id:
+				# PATCH no post existente
+				url  = f"{self.api_base}/anime/{existing_id}"
+				resp = requests.post(url, json=payload, headers=self.headers, timeout=25)
+				action_label = f"atualizado (ID: {existing_id})"
+			else:
+				# POST — cria novo
+				url  = f"{self.api_base}/anime"
+				resp = requests.post(url, json=payload, headers=self.headers, timeout=25)
+				action_label = f"importado! ID: {resp.json().get('id') if resp.status_code in (200,201) else '?'}"
 
 			if resp.status_code in (200, 201):
 				post_data = resp.json()
-				logger.info(f"  ✅ Anime importado! ID: {post_data.get('id')} | Link: {post_data.get('link')}")
+				logger.info(f"  ✅ Anime {action_label} | Link: {post_data.get('link')}")
 				return True
 			else:
-				logger.error(f"  ❌ Erro HTTP {resp.status_code} ao cadastrar anime: {resp.text[:300]}")
+				logger.error(f"  ❌ Erro HTTP {resp.status_code} ao salvar anime: {resp.text[:300]}")
 				return False
 		except Exception as e:
-			logger.error(f"  ❌ Erro de conexão ao cadastrar anime '{title}': {e}")
+			logger.error(f"  ❌ Erro de conexão ao salvar anime '{title}': {e}")
 			return False
 
 
@@ -362,6 +499,7 @@ class MALImporter:
 # ---------------------------------------------------------------------------
 def main():
 	dry_run = "--dry-run" in sys.argv
+	update  = "--update"  in sys.argv
 	limit   = 500
 
 	# Lê parâmetro limit caso passado por CLI (ex: --limit=10)
@@ -396,7 +534,7 @@ def main():
 
 	for i, anime in enumerate(anime_list, start=1):
 		logger.info(f"[{i}/{len(anime_list)}]")
-		success = importer.import_anime(anime, dry_run=dry_run)
+		success = importer.import_anime(anime, dry_run=dry_run, update=update)
 		if success:
 			success_count += 1
 		else:

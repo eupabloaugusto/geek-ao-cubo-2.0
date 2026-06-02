@@ -1,0 +1,76 @@
+/**
+ * Molecule: Bio Expansível (bio-expansivel)
+ */
+
+.bio-expansivel {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.bio-expansivel__conteudo {
+	font-family: var(--font-body);
+	font-size: var(--text-sm-size);
+	line-height: 1.6;
+	color: var(--neutral-300);
+	
+	/* Limitação nativa em 4 linhas (fallback para navegadores webkit) */
+	display: -webkit-box;
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	
+	/* Transição suave não funciona bem com line-clamp, mas mantemos o estado visual */
+}
+
+.bio-expansivel__conteudo p {
+	margin-top: 0;
+	margin-bottom: var(--space-300);
+}
+
+.bio-expansivel__conteudo p:last-child {
+	margin-bottom: 0;
+}
+
+.bio-expansivel__conteudo.is-open {
+	-webkit-line-clamp: unset;
+	display: block;
+}
+
+.bio-expansivel__btn {
+	background: none;
+	border: none;
+	padding: 0;
+	margin-top: var(--space-300);
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-100);
+	font-family: var(--font-heading);
+	font-size: var(--text-sm-size);
+	font-weight: 700;
+	color: var(--color-primary);
+	cursor: pointer;
+	text-decoration: underline;
+	text-underline-offset: 4px;
+	text-decoration-color: transparent;
+	transition: text-decoration-color 0.2s ease, color 0.2s ease;
+	align-self: flex-start;
+}
+
+.bio-expansivel__btn:hover {
+	text-decoration-color: var(--color-primary);
+	color: var(--color-primary-light, #ff8c42);
+}
+
+.bio-expansivel__icone {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 1.25rem;
+	height: 1.25rem;
+	transition: transform 0.3s ease;
+}
+
+.bio-expansivel__icone.is-rotated {
+	transform: rotate(180deg);
+}

@@ -109,6 +109,21 @@ class MALSync:
 			logger.error(f"Falha de conexão ao obter animes locais: {e}")
 		return []
 
+	def _extract_broadcast_utc(self, mal_data: dict) -> tuple[str, str]:
+		"""Extrai dia e hora de broadcast da Jikan (JST=UTC+9) e converte para UTC."""
+		broadcast      = mal_data.get("broadcast") or {}
+		broadcast_time = broadcast.get("time") or ""
+		broadcast_day  = broadcast.get("day")  or ""
+		horario_utc = ""
+		if broadcast_time:
+			try:
+				h, m = map(int, broadcast_time.split(":"))
+				h_utc = (h - 9) % 24
+				horario_utc = f"{h_utc:02d}:{m:02d}"
+			except Exception:
+				horario_utc = ""
+		return horario_utc, broadcast_day
+
 	def _map_status_exibicao(self, status_raw: str) -> str:
 		if not status_raw:
 			return "Pausado"
@@ -255,6 +270,16 @@ class MALSync:
 				if remote_eps != local_eps:
 					diffs.append(f"Episódios: {local_eps} -> {remote_eps}")
 					acf_update["anime_total_episodios"] = remote_eps
+
+				# Sincroniza horário de broadcast (JST → UTC) — atualiza sempre que preenchido
+				remote_horario_utc, remote_dia_semana = self._extract_broadcast_utc(mal_data)
+				local_horario = acf.get("anime_horario_exibicao") or ""
+				local_dia     = acf.get("anime_dia_semana") or ""
+				if remote_horario_utc and remote_horario_utc != local_horario:
+					diffs.append(f"Horário: {local_horario} -> {remote_horario_utc} UTC")
+					acf_update["anime_horario_exibicao"] = remote_horario_utc
+				if remote_dia_semana and remote_dia_semana != local_dia:
+					acf_update["anime_dia_semana"] = remote_dia_semana
 
 				payload = {}
 				

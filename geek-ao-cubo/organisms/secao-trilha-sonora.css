@@ -1,0 +1,19 @@
+/*
+ * Organism: Seção Trilha Sonora
+ */
+
+
+
+.secao-trilha-sonora__grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--space-400);
+	margin-top: var(--space-400);
+}
+
+@media (max-width: 768px) {
+	.secao-trilha-sonora__grid {
+		grid-template-columns: 1fr;
+		gap: var(--space-300);
+	}
+}

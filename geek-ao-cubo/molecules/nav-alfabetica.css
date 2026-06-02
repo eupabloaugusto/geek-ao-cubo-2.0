@@ -1,0 +1,90 @@
+/* ============================================================
+   Molecule: Navegação Alfabética (nav-alfabetica)
+   Barra # A B C ... Z para catálogo de animes.
+   Mobile: scroll horizontal com snap.
+   Desktop: exibição completa em linha.
+   ============================================================ */
+
+.nav-alfabetica {
+	width: 100%;
+	background: var(--neutral-900);
+	border-bottom: 1px solid var(--color-border);
+	position: sticky;
+	top: 0;
+	z-index: 9;
+	margin-bottom: var(--space-400);
+}
+
+.nav-alfabetica__lista {
+	display: flex;
+	align-items: center;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	/* Scroll horizontal no mobile */
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	-webkit-overflow-scrolling: touch;
+	scrollbar-width: none; /* Firefox */
+}
+
+.nav-alfabetica__lista::-webkit-scrollbar {
+	display: none;
+}
+
+.nav-alfabetica__item {
+	flex-shrink: 0;
+	scroll-snap-align: start;
+}
+
+/* ── Links e Spans ───────────────────────────────────────── */
+.nav-alfabetica__link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 2.25rem;
+	height: 2.75rem;
+	padding: 0 var(--space-100);
+	font-family: var(--font-body);
+	font-size: var(--text-xs-size);
+	font-weight: 600;
+	color: var(--neutral-400);
+	text-decoration: none;
+	transition: color 0.15s ease;
+	cursor: pointer;
+}
+
+/* Estado ativo (letra selecionada) */
+.nav-alfabetica__link--ativo {
+	color: var(--color-primary);
+	border-bottom: 2px solid var(--color-primary);
+}
+
+/* Estado inativo (sem animes nessa letra) */
+.nav-alfabetica__link--inativo {
+	color: var(--neutral-700);
+	cursor: default;
+	pointer-events: none;
+}
+
+/* Hover apenas em links reais */
+a.nav-alfabetica__link:hover {
+	color: var(--neutral-100);
+}
+
+/* ── Desktop ─────────────────────────────────────────────── */
+@media (min-width: 64rem) {
+	.nav-alfabetica__lista {
+		justify-content: center;
+		overflow-x: visible;
+		flex-wrap: wrap; /* Evita vazamento mesmo em janelas comprimidas */
+		gap: var(--space-100);
+		padding: 0 var(--space-400);
+	}
+
+	.nav-alfabetica__link {
+		min-width: 2rem;
+		font-size: var(--text-sm-size);
+	}
+}

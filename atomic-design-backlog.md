@@ -6,7 +6,7 @@
 
 ## ✅ Inventário — O que já EXISTE
 
-### ⚛️ Átomos (35 componentes)
+### ⚛️ Átomos (39 componentes)
 
 | Componente | Descrição |
 |---|---|
@@ -46,8 +46,11 @@
 | `stat-numero` | Number de destaque com label (ex: "1.2M membros", "Rank #3") |
 | `tag-artigo` | Tag clicável no rodapé do artigo (plana, sem cor de status) |
 | `logo` | Logotipo da marca em 5 variantes: `horizontal-01`, `horizontal-02`, `wordmark`, `icone-quadrado`, `icone-simples`. SVG inline, responsivo, com link opcional |
+| `filtro-chip` | Pílula selecionável para filtros (modo `checkbox` multi-select ou `radio` único). Estado ativo via CSS `:has()` + classe `--ativo` |
+| `btn-filtros-toggle` | Botão de abrir/fechar o bottom sheet de filtros mobile. Badge de contagem de filtros ativos com animação |
+| `separador-letra` | Divisor de seção alfabética no catálogo: letra em destaque + linha horizontal. Serve como âncora para scroll da `nav-alfabetica` |
 
-### 🧬 Moléculas (19 componentes)
+### 🧬 Moléculas (22 componentes)
 
 | Componente | Descrição |
 |---|---|
@@ -70,8 +73,11 @@
 | `tags-artigo` | Linha de tags clicáveis no rodapé do conteúdo |
 | `review-card` | Card de avaliação de usuário: avatar + nome + data + nota MAL + texto com expand/collapse + link opcional para review completa |
 | `trilho-infinito` | Wrapper reutilizável de scroll horizontal infinito: 2 átomos `btn-nav-arrow` + trilho scroll-snap + JS de loop infinito (clonagem) + drag-to-scroll |
+| `grupo-filtros-chips` | Fieldset semântico com legenda e trilho de `filtro-chip`. Suporta modo checkbox (multi-select) e radio (seleção única). Usado no bottom sheet mobile |
+| `card-catalogo` | Card horizontal para listagem alfabética do catálogo: thumbnail widescreen 16:9 (desktop) ou quadrado 1:1 (mobile), título, sinopse truncada (desktop) e label de idioma |
+| `nav-alfabetica` | Barra `# A–Z` para filtrar o catálogo por letra inicial. Links GET (`?letra=M`) para SEO. Letras sem animes desabilitadas. Scroll horizontal snap no mobile + JS de centralização automática |
 
-### 🧫 Organismos (24 componentes)
+### 🧫 Organismos (27 componentes)
 
 | Componente | Descrição |
 |---|---|
@@ -99,6 +105,9 @@
 | `secao-leia-tambem` | Grade/lista de `card-noticia` com título "Leia também" (detalhe pós-artigo) |
 | `secao-pos-artigo` | Seção responsiva pós-artigo: "Leia também" + "Assistir Agora" (sidebar em desktop, inline em mobile) |
 | `sidebar` | Sidebar genérica |
+| `barra-filtros-mobile` | Barra sticky touch-first para o catálogo mobile: campo de busca + botão toggle (`btn-filtros-toggle`). Bottom sheet deslizante com grupos de chips (`grupo-filtros-chips`) para Gênero, Status, Idioma, Tipo de Mídia e Ordenar por. Ações Limpar / Aplicar com persistência GET |
+| `lista-catalogo` | Listagem completa de animes agrupada por letra inicial. `nav-alfabetica` sticky no topo + `separador-letra` por grupo + `card-catalogo` por item. Filtragem via GET `?letra=M`. Cache de letras ativas via transient 12h. Helper `mm_query_animes_por_letra()` no `cpt-helpers.php` |
+| `secao-anuncios` | Organismo que encapsula um bloco `anuncio-adsense` sem título de seção, com parâmetro `variacao` customizável. Usado entre corpo do artigo e footer de tags |
 
 ---
 
@@ -110,20 +119,20 @@
 
 ### ⚛️ Átomos — Faltam 0 componentes
 
-Todos os 36 componentes atômicos estão implementados no projeto físico.
+Todos os 39 componentes atômicos estão implementados no projeto físico.
 
 
 ---
 
 ### 🧬 Moléculas — Faltam 0 componentes
 
-Todas as 19 moléculas estão implementadas no projeto físico.
+Todas as 22 moléculas estão implementadas no projeto físico.
 
 ---
 
 ### 🧫 Organismos — Faltam 0 componentes
 
-Todos os 24 organismos estão implementados no projeto físico.
+Todos os 27 organismos estão implementados no projeto físico.
 
 ---
 
@@ -131,10 +140,10 @@ Todos os 24 organismos estão implementados no projeto físico.
 
 | Nível | Existem | Faltam | Total previsto |
 |---|---|---|---|
-| ⚛️ Átomos | 36 | 0 | 36 |
-| 🧬 Moléculas | 19 | 0 | 19 |
-| 🧫 Organismos | 24 | 0 | 24 |
-| **Total** | **79** | **0** | **79** |
+| ⚛️ Átomos | 39 | 0 | 39 |
+| 🧬 Moléculas | 22 | 0 | 22 |
+| 🧫 Organismos | 27 | 0 | 27 |
+| **Total** | **88** | **0** | **88** |
 
 ---
 
@@ -200,6 +209,19 @@ secao-noticias-recentes         [EXISTE ✅]
 secao-estatisticas
   ├── rating-bar                 [EXISTE ✅]
   └── stat-numero                [EXISTE ✅]
+
+barra-filtros-mobile            [EXISTE ✅]
+  ├── btn-filtros-toggle         [EXISTE ✅]
+  └── grupo-filtros-chips        [EXISTE ✅]
+        └── filtro-chip          [EXISTE ✅]
+
+lista-catalogo                  [EXISTE ✅]
+  ├── nav-alfabetica             [EXISTE ✅]
+  ├── separador-letra            [EXISTE ✅]
+  └── card-catalogo              [EXISTE ✅]
+
+secao-anuncios                  [EXISTE ✅]
+  └── anuncio-adsense            [EXISTE ✅]
 ```
 
 ---

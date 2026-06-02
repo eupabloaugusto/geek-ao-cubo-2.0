@@ -1,0 +1,101 @@
+/**
+ * Organism CSS: Seção Notícias Recentes (secao-noticias-recentes)
+ *
+ * Layout editorial de alta fidelidade:
+ * Destaque horizontal hero (100% de largura) + grade de 3 colunas para posts secundários.
+ *
+ * @package geek-ao-cubo
+ */
+
+/* ==========================================================================
+   SEÇÃO BASE
+   ========================================================================== */
+
+.secao-noticias-recentes {
+	width: 100%;
+}
+
+.secao-noticias-recentes__inner {
+	max-width: var(--container-max);
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-600);
+}
+
+/* ==========================================================================
+   TÍTULO PRINCIPAL
+   ========================================================================== */
+
+.secao-noticias-recentes__title {
+	font-family: var(--font-heading);
+	font-size: var(--text-sm-size);
+	font-weight: 700;
+	color: var(--neutral-100);
+	margin: 0;
+	line-height: 1.2;
+}
+
+/* ==========================================================================
+   DESTAQUE EDITORIAL (100% LARGURA)
+   ========================================================================== */
+
+.secao-noticias-recentes__destaque {
+	width: 100%;
+}
+
+/* ==========================================================================
+   GRADE RESPONSIVA (GRID)
+   ========================================================================== */
+
+.secao-noticias-recentes__grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--space-500);
+	width: 100%;
+}
+
+/* Tablet (≥ 48rem) — Grade com 2 colunas */
+@media (min-width: 48rem) {
+	.secao-noticias-recentes__grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+/* Desktop (≥ 64rem) — Grade com 2 colunas */
+@media (min-width: 64rem) {
+	.secao-noticias-recentes__title {
+		font-size: var(--text-md-sm-size);
+	}
+
+	.secao-noticias-recentes__grid {
+		grid-template-columns: repeat(2, 1fr);
+		gap: var(--space-600);
+	}
+}
+
+/* ==========================================================================
+   RODAPÉ E BOTÃO VER MAIS
+   ========================================================================== */
+
+.secao-noticias-recentes__footer {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	margin-top: var(--space-200);
+}
+
+.secao-noticias-recentes__button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	transition: 
+		background-color 0.25s ease,
+		border-color     0.25s ease,
+		transform        0.25s ease;
+}
+
+.secao-noticias-recentes__button:hover {
+	transform: translateY(-0.125rem);
+}

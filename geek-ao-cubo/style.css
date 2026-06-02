@@ -1,0 +1,90 @@
+/*
+Theme Name:   Geek ao Cubo
+Theme URI:    https://geekaocubo.com.br/
+Description:  Tema standalone do portal Geek ao Cubo. Arquitetura 100% Atomic Design sem dependência de tema pai.
+Author:       Antigravity AI Designer
+Author URI:   https://geekaocubo.com.br/
+Version:      1.0.0
+Text Domain:  geek-ao-cubo
+*/
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    background-color: var(--color-background, #0D0E11) !important;
+    color: var(--color-text, #F2F5F9) !important;
+    font-family: var(--font-body), sans-serif;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+/* ==========================================================================
+   BASE BTN — Reset de browser + base compartilhada de todos os botões
+   Garante que <button type="button|submit"> respeite o Atomic Design
+   ========================================================================== */
+
+/* Base exclusiva do átomo .btn — não contamina carousel-dot, btn-nav-arrow, etc. */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-200);
+    padding: var(--space-300) var(--space-500);
+    border-radius: var(--border-radius-900);
+    font-family: var(--font-heading);
+    font-size: var(--text-xs-size);
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    border: none;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    appearance: none;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+                background-color 0.25s ease,
+                border-color 0.25s ease,
+                box-shadow 0.25s ease;
+}
+
+/* Botões nativos do WordPress sem classe própria (search, comment form, etc.)
+   Aplica visual primário sem afetar átomos com classes dedicadas */
+button[type="submit"]:not([class]),
+button[type="submit"][class=""],
+input[type="submit"]:not([class]),
+input[type="submit"][class=""] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-300) var(--space-500);
+    border-radius: var(--border-radius-900);
+    font-family: var(--font-heading);
+    font-size: var(--text-xs-size);
+    font-weight: 700;
+    cursor: pointer;
+    border: 0.125rem solid transparent;
+    background-color: var(--color-primary);
+    color: var(--neutral-100);
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+button[type="submit"]:not([class]):hover,
+input[type="submit"]:not([class]):hover {
+    background-color: var(--brand-600);
+    transform: translateY(-0.125rem);
+}
+
+button[type="submit"]:not([class]):focus-visible,
+input[type="submit"]:not([class]):focus-visible {
+    outline: 0.125rem solid var(--color-focus-ring);
+    outline-offset: 0.25rem;
+}

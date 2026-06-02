@@ -1,0 +1,57 @@
+/**
+ * Molecule Style: home-placeholder-episodes
+ *
+ * Estilos para a grade esqueleto de novos episódios pendentes de importação.
+ *
+ * @package geek-ao-cubo
+ * @since   4.1.0
+ */
+
+.home-placeholder-episodes {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(8.75rem, 1fr));
+	gap: var(--space-300);
+}
+
+.home-placeholder-card {
+	background-color: var(--neutral-800);
+	border: 1px dashed var(--neutral-700);
+	border-radius: var(--border-radius-200);
+	padding: var(--space-300);
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-200);
+	transition: border-color 0.2s ease;
+}
+
+.home-placeholder-card:hover {
+	border-color: var(--brand-500);
+}
+
+.home-placeholder-card__image {
+	aspect-ratio: 16 / 9;
+	background-color: var(--neutral-900);
+	border-radius: var(--border-radius-100);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--neutral-400);
+	font-weight: 700;
+	font-size: var(--text-xxs-size);
+}
+
+.home-placeholder-card__title {
+	font-family: var(--font-heading);
+	font-size: var(--text-xs-size);
+	font-weight: 700;
+	color: var(--neutral-100);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.home-placeholder-card__status {
+	font-size: var(--text-xxs-size);
+	color: var(--neutral-400);
+	font-weight: 600;
+}

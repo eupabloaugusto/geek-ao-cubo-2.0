@@ -1,0 +1,134 @@
+/**
+ * Molecule CSS: Trilho Infinito (trilho-infinito)
+ *
+ * Posicionamento das setas, trilho rolável e classes de estado compartilhadas.
+ * Usada por secao-esteira-animes, secao-recomendacoes, secao-estatisticas
+ * e qualquer futuro organismo com scroll horizontal infinito.
+ *
+ * @package geek-ao-cubo
+ */
+
+/* ==========================================================================
+   WRAPPER — contexto de posicionamento para as setas absolutas
+   ========================================================================== */
+
+.trilho-infinito {
+	--trilho-fade: var(--space-400); /* 1.5rem mobile — sincronizado com padding-inline do track */
+	position: relative;
+	width: 100%;
+}
+
+@media (min-width: 64rem) {
+	.trilho-infinito {
+		--trilho-fade: var(--space-600); /* 2.5rem desktop */
+	}
+}
+
+/* ==========================================================================
+   DEGRADÊ LATERAL — mascara o corte dos cards nas bordas da esteira
+   ========================================================================== */
+
+.trilho-infinito::before,
+.trilho-infinito::after {
+	content: '';
+	position: absolute;
+	top: var(--space-200); /* alinha com o topo real dos cards */
+	bottom: var(--space-400); /* exclui a área do padding inferior do track */
+	width: var(--trilho-fade); /* sincronizado com o padding-inline do track */
+	z-index: 6; /* acima do track (1), abaixo das setas (10) */
+	pointer-events: none;
+}
+
+.trilho-infinito::before {
+	left: 0;
+	background: linear-gradient(
+		to right,
+		var(--color-background) 0%,
+		transparent 100%
+	);
+}
+
+.trilho-infinito::after {
+	right: 0;
+	background: linear-gradient(
+		to left,
+		var(--color-background) 0%,
+		transparent 100%
+	);
+}
+
+/* ==========================================================================
+   TRILHO — container rolável horizontal
+   ========================================================================== */
+
+.trilho-infinito__track {
+	display: flex !important;
+	flex-direction: row !important;
+	flex-wrap: nowrap !important;
+	overflow-x: auto !important;
+	overflow-y: hidden !important;
+	scroll-behavior: auto;
+	scroll-snap-type: x mandatory;
+	-webkit-overflow-scrolling: touch;
+	scroll-padding-inline: var(--trilho-fade); /* snap respect padding */
+
+	/* Scrollbar oculta — Firefox */
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+
+	/* Drag-to-scroll premium */
+	cursor: grab;
+	user-select: none;
+	-webkit-user-select: none;
+}
+
+/* Garante que os slides reais e clonados NUNCA encolham horizontalmente */
+.js-trilho__slide,
+.js-trilho__clone {
+	flex: 0 0 auto !important;
+	flex-shrink: 0 !important;
+}
+
+/* Scrollbar oculta — WebKit */
+.trilho-infinito__track::-webkit-scrollbar {
+	display: none;
+	width: 0;
+	height: 0;
+}
+
+/* Estado ativo de arrasto */
+.trilho-infinito__track.is-dragging {
+	cursor: grabbing;
+	scroll-behavior: auto !important;
+}
+
+/* Bloqueia eventos de pointer em links/imagens durante o drag */
+.trilho-infinito__track.is-dragging a,
+.trilho-infinito__track.is-dragging img {
+	pointer-events: none !important;
+	-webkit-user-drag: none;
+}
+
+/* ==========================================================================
+   SETAS DE NAVEGAÇÃO — posicionamento absoluto sobre o trilho
+   ========================================================================== */
+
+.trilho-infinito__arrow {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 10;
+	pointer-events: all;
+	transition: opacity 0.3s ease,
+	            transform 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+	            background-color 0.3s ease;
+}
+
+.trilho-infinito__arrow--prev {
+	left: 0;
+}
+
+.trilho-infinito__arrow--next {
+	right: 0;
+}
+

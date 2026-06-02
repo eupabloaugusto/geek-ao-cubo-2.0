@@ -1,0 +1,45 @@
+{
+  "key": "group_manga_fields",
+  "title": "Campos do Mangá",
+  "fields": [
+    {
+      "key": "field_manga_id_mal",
+      "label": "ID no MyAnimeList",
+      "name": "manga_id_mal",
+      "type": "number",
+      "instructions": "ID numérico do mangá no MyAnimeList. A partir deste ID, o Geek ao Cubo puxa os dados ao vivo do Jikan.",
+      "required": 1,
+      "min": 1,
+      "step": 1,
+      "wrapper": { "width": "50" }
+    },
+    {
+      "key": "field_manga_sinopse_manual",
+      "label": "Sinopse Manual (Opcional)",
+      "name": "manga_sinopse_manual",
+      "type": "textarea",
+      "instructions": "Preencha apenas se quiser sobrescrever a sinopse automática vinda da API.",
+      "required": 0,
+      "wrapper": { "width": "50" },
+      "rows": 4,
+      "new_lines": "br"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "manga"
+      }
+    ]
+  ],
+  "show_in_rest": 1,
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "description": "Banco central esvaziado. O Cache Jikan substitui estes metadados."
+}

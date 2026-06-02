@@ -1,0 +1,282 @@
+/**
+ * Organism CSS: Seção de Personagens em Acordeão (secao-personagens)
+ *
+ * Estilos modernos premium contendo grid responsivo de 3 colunas (desktop/tablet)
+ * e 2 colunas (mobile). Totalmente integrado aos design tokens oficiais.
+ *
+ * @package geek-ao-cubo
+ */
+
+.secao-personagens {
+	width: 100%;
+}
+
+.secao-personagens__inner {
+	max-width: var(--container-max);
+	margin: 0 auto;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-500);
+}
+
+@media (min-width: 64rem) {
+	.secao-personagens__inner {
+		padding-inline: 0;
+	}
+}
+
+/* TÍTULO DA SEÇÃO */
+.secao-personagens__title {
+	font-family: var(--font-heading);
+	font-size: var(--text-sm-size);
+	font-weight: 700;
+	color: var(--neutral-100);
+	margin: 0;
+	line-height: 1.2;
+}
+
+@media (min-width: 64rem) {
+	.secao-personagens__title {
+		font-size: var(--text-md-sm-size);
+	}
+}
+
+/* LISTA DE ACORDEÕES */
+.secao-personagens__list {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-300);
+	width: 100%;
+}
+
+/* CAIXA INDIVIDUAL DO ACORDEÃO */
+.secao-personagens__item {
+	background-color: var(--neutral-800);
+	border: 0.0625rem solid var(--neutral-700);
+	border-radius: var(--border-radius-300);
+	overflow: hidden;
+	box-sizing: border-box;
+	transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.secao-personagens__item:hover {
+	border-color: rgba(245, 107, 21, 0.3);
+	box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
+}
+
+.secao-personagens__item[data-state="open"] {
+	border-color: rgba(245, 107, 21, 0.4);
+}
+
+/* GATILHO / BOTÃO DE EXPANSÃO */
+.secao-personagens__trigger {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	padding: var(--space-300) var(--space-300);
+	background: none;
+	border: none;
+	cursor: pointer;
+	text-align: left;
+	color: inherit;
+	gap: var(--space-300);
+	transition: background-color 0.2s ease;
+}
+
+.secao-personagens__trigger:hover {
+	background-color: rgba(255, 255, 255, 0.02);
+}
+
+.secao-personagens__trigger:focus-visible {
+	outline: 0.125rem solid var(--color-primary);
+	outline-offset: -0.125rem;
+}
+
+.secao-personagens__trigger-title {
+	font-family: var(--font-heading);
+	font-size: var(--text-sm-size);
+	font-weight: var(--font-weight-100);
+	color: var(--neutral-100);
+	flex: 1;
+	line-height: 1.3;
+	word-break: break-word;
+	overflow-wrap: break-word;
+}
+
+/* Badge do total de integrantes */
+.secao-personagens__trigger-badge {
+	font-family: var(--font-body);
+	font-size: var(--text-xs-size);
+	font-weight: 600;
+	color: var(--color-primary);
+	background-color: rgba(245, 107, 21, 0.1);
+	padding: var(--space-100) var(--space-200);
+	border-radius: var(--border-radius-100);
+	line-height: 1;
+	flex-shrink: 0;
+}
+
+/* Ícone de Seta (Chevron) */
+.secao-personagens__trigger-icon {
+	width: 1.125rem;
+	height: 1.125rem;
+	color: var(--neutral-400);
+	flex-shrink: 0;
+	transition: transform 0.25s cubic-bezier(0.2, 0, 0, 1), color 0.2s ease;
+}
+
+.secao-personagens__trigger:hover .secao-personagens__trigger-icon {
+	color: var(--color-primary);
+}
+
+.secao-personagens__item[data-state="open"] .secao-personagens__trigger-icon {
+	transform: rotate(180deg);
+	color: var(--color-primary);
+}
+
+/* CONTEÚDO DO ACORDEÃO (ÁREA EXPANSÍVEL) */
+.secao-personagens__content {
+	border-top: 0.0625rem solid var(--neutral-700);
+	background-color: rgba(13, 14, 17, 0.3);
+}
+
+.secao-personagens__content-inner {
+	padding: var(--space-400);
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-400);
+}
+
+/* ==========================================================================
+   GRID RESPONSIVO (DESKTOP E MOBILE)
+   ========================================================================== */
+
+.secao-personagens__grid {
+	display: grid;
+	gap: var(--space-400);
+	width: 100%;
+	box-sizing: border-box;
+	
+	/* Layout Padrão Mobile: 2 colunas */
+	grid-template-columns: repeat(2, 1fr);
+}
+
+/* Layout Desktop e Tablet: 3 colunas */
+@media (min-width: 48rem) {
+	.secao-personagens__grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+/* ==========================================================================
+   AÇÕES DE PAGINAÇÃO (VER MAIS / VER MENOS)
+   ========================================================================== */
+
+.secao-personagens__actions {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--space-400);
+	margin-top: var(--space-300);
+	width: 100%;
+}
+
+.btn-char-action {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--space-200);
+	padding: var(--space-300) var(--space-500);
+	font-family: var(--font-heading);
+	font-size: var(--text-xxs-size);
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: var(--neutral-200);
+	background-color: var(--neutral-900);
+	border: 0.0625rem solid var(--neutral-700);
+	border-radius: var(--border-radius-200);
+	cursor: pointer;
+	transition:
+		border-color     0.2s ease,
+		background-color 0.2s ease,
+		color            0.2s ease,
+		transform        0.2s ease;
+}
+
+.btn-char-action:hover {
+	border-color: var(--color-primary);
+	color: var(--neutral-100);
+	background-color: rgba(245, 107, 21, 0.05);
+	transform: translateY(-0.0625rem);
+}
+
+.btn-char-action:active {
+	transform: translateY(0);
+}
+
+.btn-char-action svg {
+	width: 0.875rem;
+	height: 0.875rem;
+	transition: transform 0.2s ease;
+}
+
+.btn-char-action--more:hover svg {
+	transform: translateY(0.0625rem);
+}
+
+.btn-char-action--less:hover svg {
+	transform: translateY(-0.0625rem);
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE EXTRA MOBILE COMPACTO
+   ========================================================================== */
+
+@media (max-width: 40rem) {
+	.secao-personagens__inner {
+		padding-block: 0;
+		padding-inline: 0;
+		gap: var(--space-400);
+	}
+
+	.secao-personagens__trigger {
+		padding: var(--space-300) var(--space-200);
+		gap: var(--space-200);
+	}
+
+	.secao-personagens__trigger-title {
+		font-size: var(--text-xs-size);
+	}
+
+	.secao-personagens__trigger-badge {
+		font-size: 0.7rem;
+		padding: 0.3rem 0.3rem;
+	}
+
+	.secao-personagens__trigger-icon {
+		width: 1rem;
+		height: 1rem;
+	}
+
+	.secao-personagens__content-inner {
+		padding: var(--space-300) var(--space-100);
+		gap: var(--space-300);
+	}
+
+	.secao-personagens__grid {
+		gap: 0.75rem; /* 12px para maximizar a área de leitura dos textos no mobile */
+	}
+
+	.secao-personagens__actions {
+		flex-direction: column;
+		gap: var(--space-200);
+	}
+
+	.btn-char-action {
+		width: 100%;
+		justify-content: center;
+	}
+}

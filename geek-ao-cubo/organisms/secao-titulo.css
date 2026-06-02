@@ -1,0 +1,82 @@
+/**
+ * Organism CSS: Secao Titulo (secao-titulo)
+ *
+ * Estilos unificados para os cabeçalhos de seções, incluindo o link "Ver tudo" com micro-animação.
+ *
+ * @package geek-ao-cubo
+ */
+
+.secao-titulo {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	margin-bottom: var(--space-200);
+	gap: var(--space-300);
+}
+
+.secao-titulo__left {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: var(--space-300);
+}
+
+.secao-titulo__main {
+	font-family: var(--font-heading);
+	font-size: var(--text-sm-size); /* 20px */
+	font-weight: 700;
+	color: var(--neutral-100);
+	line-height: 1.2;
+}
+
+@media (min-width: 48rem) {
+	.secao-titulo__main {
+		font-size: var(--text-md-sm-size); /* 24px */
+	}
+}
+
+/* Sub-badge (ex: 'HOJE' nos novos episódios) */
+.secao-titulo__sub-badge {
+	display: inline-block;
+	background-color: var(--color-primary);
+	color: var(--neutral-900);
+	padding: 0.15rem 0.4rem;
+	border-radius: var(--border-radius-100);
+	font-family: var(--font-body);
+	font-size: 0.65rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	line-height: 1.2;
+	letter-spacing: 0.05em;
+}
+
+/* Link de ação 'Ver tudo' na direita */
+.secao-titulo__link-all {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-200);
+	text-decoration: none;
+	color: var(--color-primary-accessible);
+	font-family: var(--font-heading);
+	font-size: var(--text-xxs-size);
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	transition: color 0.25s ease;
+	flex-shrink: 0;
+}
+
+.secao-titulo__link-all:hover {
+	color: var(--brand-300);
+}
+
+.secao-titulo__link-icon {
+	width: 0.875rem;
+	height: 0.875rem;
+	transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.secao-titulo__link-all:hover .secao-titulo__link-icon {
+	transform: translateX(0.125rem);
+}

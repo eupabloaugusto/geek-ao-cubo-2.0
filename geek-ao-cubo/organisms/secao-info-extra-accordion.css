@@ -1,0 +1,111 @@
+/**
+ * Organism CSS: Seção de Informações Adicionais em Acordeão
+ *
+ * @package geek-ao-cubo
+ */
+
+.secao-info-extra-accordion {
+	margin-top: var(--space-800);
+}
+
+.secao-info-extra-accordion__list {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-300);
+}
+
+.secao-info-extra-accordion__item {
+	background: var(--neutral-800);
+	border: 1px solid var(--color-border);
+	border-radius: var(--border-radius-300);
+	overflow: hidden;
+}
+
+.secao-info-extra-accordion__trigger {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: var(--space-400);
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	color: var(--color-text);
+	transition: background-color 0.2s ease;
+}
+
+.secao-info-extra-accordion__trigger:hover {
+	background: rgba(255, 255, 255, 0.02);
+}
+
+.secao-info-extra-accordion__trigger-title {
+	font-family: var(--font-heading);
+	font-size: var(--text-md-sm-size);
+	font-weight: 700;
+	color: var(--color-primary);
+}
+
+.secao-info-extra-accordion__trigger-icon {
+	width: 1.25rem;
+	height: 1.25rem;
+	color: var(--neutral-400);
+	transition: transform 0.3s ease;
+}
+
+/* Estado Aberto */
+.secao-info-extra-accordion__item[data-state="open"] .secao-info-extra-accordion__trigger-icon {
+	transform: rotate(180deg);
+}
+
+.secao-info-extra-accordion__content {
+	border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.secao-info-extra-accordion__content-inner {
+	padding: var(--space-400);
+}
+
+/* Estilos internos: listas */
+.secao-info-extra-accordion__lista {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+	gap: var(--space-300);
+}
+
+.secao-info-extra-accordion__lista li {
+	font-family: var(--font-body);
+	font-size: var(--text-sm-size);
+	color: var(--neutral-200);
+	background: rgba(255,255,255,0.03);
+	padding: var(--space-300);
+	border-radius: var(--border-radius-200);
+	border-left: 2px solid var(--color-primary);
+}
+
+.secao-info-extra-accordion__lista strong {
+	color: var(--neutral-100);
+	display: block;
+	font-size: var(--text-xs-size);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	margin-bottom: 0.25rem;
+}
+
+/* Estilos internos: texto */
+.secao-info-extra-accordion__texto {
+	font-family: var(--font-body);
+	font-size: var(--text-sm-size);
+	color: var(--neutral-300);
+	line-height: 1.7;
+}
+
+.secao-info-extra-accordion__texto p {
+	margin-bottom: 1rem;
+}
+
+.secao-info-extra-accordion__texto p:last-child {
+	margin-bottom: 0;
+}

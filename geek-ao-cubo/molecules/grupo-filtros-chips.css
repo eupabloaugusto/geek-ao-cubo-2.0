@@ -1,0 +1,26 @@
+/* ============================================================
+   Molecule: Grupo de Chips de Filtro (grupo-filtros-chips)
+   ============================================================ */
+
+.grupo-filtros-chips {
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+
+.grupo-filtros-chips__titulo {
+	display: block;
+	font-family: var(--font-body);
+	font-size: var(--text-xxs-size);
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: var(--neutral-400);
+	margin-bottom: var(--space-200);
+}
+
+.grupo-filtros-chips__lista {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-100) var(--space-200);
+}

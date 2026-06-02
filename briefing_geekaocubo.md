@@ -1,6 +1,6 @@
 # Briefing v4 — modomaratona.com
 > Blog de anime com renda passiva orgânica via SEO, Adsense e afiliados  
-> Atualizado com: Atomic Design via IA, tema Hello (Elementor), sistema de documentação estruturado, vitrine de componentes, design tokens definitivos
+> Atualizado com: Atomic Design via IA, tema geek-ao-cubo (standalone), sistema de documentação estruturado, vitrine de componentes, design tokens definitivos
 
 ---
 
@@ -11,7 +11,7 @@
 | **Domínio** | modomaratona.com |
 | **Nicho principal** | Anime (expansão futura: games, mangá, tech geek) |
 | **Plataforma** | WordPress |
-| **Tema** | Hello (Elementor) — base limpa, zero bloat, 100% controlado via CSS |
+| **Tema** | geek-ao-cubo — tema standalone, zero bloat, 100% controlado via CSS |
 | **Monetização principal** | Google Adsense |
 | **Monetização secundária** | Afiliados (Shopee, Mercado Livre, Amazon), Mediavine (meta futura) |
 | **Meta de tráfego** | 300.000 visitas/mês |
@@ -58,20 +58,20 @@
 
 ## 3. Stack técnico
 
-### Tema: Hello (Elementor)
+### Tema: geek-ao-cubo
 
-O tema Hello é a base oficial do Elementor — extremamente leve, sem estilos próprios e sem jQuery no frontend. Toda a identidade visual é 100% responsabilidade do CSS customizado, sem interferência do tema.
+Tema WordPress standalone — extremamente leve, sem estilos próprios de terceiros e sem jQuery no frontend. Toda a identidade visual é 100% responsabilidade do CSS customizado via Atomic Design.
 
-**Por que Hello:**
-- Zero CSS desnecessário — sem resetar estilos genéricos do tema
+**Por que geek-ao-cubo:**
+- Zero CSS desnecessário — sem resetar estilos genéricos de tema pai
 - Estrutura semântica limpa — fácil de sobrescrever com BEM
-- Compatível com Child Theme para proteção do código customizado
-- Nenhum bloat de pagebuilder — a IA gera o HTML/PHP, o Elementor é usado apenas onde necessário
+- Tema standalone — não depende de tema pai, sem risco de updates quebrarem o visual
+- Nenhum bloat de pagebuilder — a IA gera o HTML/PHP diretamente
 
 **Estrutura de arquivos do tema:**
 ```
-hello-child/
-├── style.css              ← identificação do child theme
+geek-ao-cubo/
+├── style.css              ← identificação do tema
 ├── functions.php          ← enqueue de estilos e scripts
 ├── design-tokens.css      ← TODAS as CSS custom properties (fonte única da verdade)
 ├── atoms/                 ← componentes atômicos (botão, input, badge, tag...)
@@ -258,7 +258,7 @@ Essa vitrine é a referência visual viva do Atomic Design. Ela permite ao desig
 ### Localização
 
 ```
-hello-child/
+geek-ao-cubo/
 └── storybook.html    ← vitrine visual, sempre atualizada
 ```
 
@@ -351,7 +351,7 @@ Designer deposita arquivo em Novos-arquivos/
 ## 8. Regras absolutas de desenvolvimento (`.windsurfrules`)
 
 ```
-TEMA: Hello (child theme) — sem modificar arquivos do tema pai
+TEMA: geek-ao-cubo — tema standalone, sem tema pai
 
 ATOMIC DESIGN:
 - Nada é criado de forma avulsa — tudo segue a hierarquia atoms → molecules → organisms

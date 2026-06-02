@@ -1,0 +1,197 @@
+/**
+ * Organism: Navigation Drawer CSS
+ *
+ * Menu lateral (off-canvas) com animação suave e design premium escuro.
+ */
+
+.navigation-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10200;
+    visibility: hidden;
+    pointer-events: none;
+    transition: visibility 0.3s ease;
+}
+
+/* Estado Aberto */
+.navigation-drawer--open {
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Painel Lateral Deslizante */
+.navigation-drawer__panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: auto;
+    width: clamp(17.5rem, 85vw, 21.25rem);
+    height: 100%;
+    background-color: var(--neutral-900);
+    border-left: 1px solid var(--neutral-800);
+    border-right: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--shadow-lg);
+    z-index: 10250; /* Garante que fique acima do overlay */
+}
+
+.navigation-drawer--open .navigation-drawer__panel {
+    transform: translateX(0);
+}
+
+/* Cabeçalho do Drawer */
+.navigation-drawer__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-500) var(--space-600);
+    border-bottom: 1px solid var(--neutral-800);
+    background-color: rgba(255, 255, 255, 0.01);
+}
+
+.navigation-drawer__logo {
+    display: flex;
+    align-items: center;
+}
+
+.navigation-drawer__logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.navigation-drawer__logo-link svg {
+    max-height: 1.75rem;
+    width: auto;
+    max-width: 8.75rem;
+}
+
+.navigation-drawer__brand {
+    font-family: var(--font-heading);
+    font-size: var(--text-sm-size);
+    font-weight: 700;
+    color: var(--neutral-100);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: linear-gradient(135deg, var(--neutral-100) 0%, var(--color-primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Ajustes no botão fechar dentro do header */
+.navigation-drawer__close {
+    margin-right: calc(-1 * var(--space-200));
+}
+
+/* Corpo do Drawer (Área com Scroll) */
+.navigation-drawer__body {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: var(--space-600);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-600);
+    scrollbar-width: thin;
+    scrollbar-color: var(--neutral-800) transparent;
+}
+
+.navigation-drawer__body::-webkit-scrollbar {
+    width: 0.25rem;
+}
+
+.navigation-drawer__body::-webkit-scrollbar-thumb {
+    background-color: var(--neutral-800);
+    border-radius: var(--border-radius-100);
+}
+
+/* Barra de busca */
+.navigation-drawer__search {
+    width: 100%;
+}
+
+/* Menu de navegação */
+.navigation-drawer__nav {
+    width: 100%;
+}
+
+.navigation-drawer__menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-100);
+}
+
+.navigation-drawer__item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Rodapé do Drawer */
+.navigation-drawer__footer {
+    padding: var(--space-600);
+    border-top: 1px solid var(--neutral-800);
+    background-color: rgba(255, 255, 255, 0.01);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-400);
+}
+
+/* Redes Sociais */
+.navigation-drawer__social {
+    display: flex;
+    gap: var(--space-400);
+    justify-content: center;
+}
+
+.navigation-drawer__social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: var(--border-radius-100);
+    background-color: var(--neutral-800);
+    color: var(--neutral-400);
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    outline: none;
+}
+
+.navigation-drawer__social-link:hover {
+    background-color: var(--color-primary);
+    color: var(--neutral-100);
+    transform: translateY(-0.125rem);
+}
+
+.navigation-drawer__social-link:focus-visible {
+    outline: 0.125rem solid var(--color-focus-ring);
+    outline-offset: 0.125rem;
+}
+
+.navigation-drawer__social-link svg {
+    width: 1.125rem;
+    height: 1.125rem;
+    fill: currentColor;
+}
+
+/* Direitos autorais */
+.navigation-drawer__copyright {
+    text-align: center;
+}
+
+.navigation-drawer__copyright p {
+    font-size: var(--text-xxs-size);
+    font-weight: var(--font-weight-100);
+    color: var(--color-text-muted); /* WCAG AA accessible contrast text */
+    margin: 0;
+    line-height: var(--text-xxs-height);
+}

@@ -1,0 +1,22 @@
+/**
+ * Template: Single Dublador (single-dublador)
+ * Carrega todos os estilos necessários para a página de perfil do dublador.
+ */
+
+@import url('atoms/foto-perfil.css');
+@import url('atoms/tag-dado-pessoal.css');
+@import url('molecules/bio-expansivel.css');
+@import url('molecules/card-dublagem.css');
+@import url('organisms/hero-dublador.css');
+@import url('organisms/grid-trabalhos-voz.css');
+
+.single-dublador-page {
+	background: var(--color-background);
+	min-height: 100vh;
+}
+
+.single-dublador-page__empty {
+	padding: var(--space-800) var(--space-400);
+	text-align: center;
+	color: var(--neutral-100);
+}

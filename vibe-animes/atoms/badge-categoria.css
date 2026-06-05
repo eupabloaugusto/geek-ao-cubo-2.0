@@ -1,0 +1,52 @@
+/**
+ * Atom: Badge de Categoria CSS (badge-categoria)
+ *
+ * Estilização premium com preenchimento sólido cor Brand e texto na cor secundária.
+ * Segue estritamente as diretrizes de design do Geek ao Cubo.
+ */
+
+.badge-categoria {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-size: var(--text-xxs-size); /* 0.75rem / 12px */
+    font-weight: var(--font-weight-700); /* Destaque editorial bold */
+    letter-spacing: 0.05em; /* Caixa alta espaçada premium */
+    text-transform: uppercase;
+    padding: var(--space-100) var(--space-300); /* 4px 16px */
+    border-radius: var(--border-radius-100); /* 4px */
+    text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+    border-bottom: none !important; /* Previne vazamento de borda do tema */
+    
+    /* Cores solicitadas pelo usuário: fundo Brand fill e texto secundário */
+    background-color: var(--brand-500);
+    color: var(--color-secondary) !important; /* Força cor secundária legível contra vazamentos */
+    
+    /* WCAG 2.2 Target Size (24px = 1.5rem) */
+    min-height: 1.5rem;
+}
+
+/* =========================================
+   COMPORTAMENTOS INTERATIVOS & ACESSIBILIDADE
+   ========================================= */
+
+/* Hover Interativo Premium */
+.badge-categoria:hover {
+    background-color: var(--brand-600);
+    transform: translateY(-0.0625rem);
+}
+
+/* Estado de Foco (Acessibilidade via Tab) */
+.badge-categoria:focus-visible {
+    outline: 0.125rem solid var(--color-focus-ring);
+    outline-offset: 0.125rem;
+}
+
+/* Estado de Clique */
+.badge-categoria:active {
+    transform: translateY(0);
+    box-shadow: none;
+}

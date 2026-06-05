@@ -1,0 +1,52 @@
+/**
+ * Atom: Tag de Artigo CSS (tag-artigo)
+ *
+ * Estilização plana (flat), elegante e discreta para links de taxonomia no rodapé do artigo.
+ * Segue estritamente os design tokens do projeto.
+ */
+
+.tag-artigo {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-body);
+    font-size: var(--text-xxs-size); /* 0.75rem / 12px */
+    font-weight: var(--font-weight-500); /* Semi-bold para boa legibilidade */
+    color: var(--neutral-400);
+    background-color: var(--neutral-900); /* Fundo plano sutil */
+    border: 1px solid var(--color-border); /* Borda fina */
+    border-radius: var(--border-radius-100); /* 4px */
+    padding: var(--space-100) var(--space-300); /* 4px 16px */
+    text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+    border-bottom: none !important; /* Previne vazamento de borda do tema */
+    
+    /* WCAG 2.2 Target Size (24px = 1.5rem) */
+    min-height: 1.5rem;
+}
+
+/* Prefixo Hash '#' sutil */
+.tag-artigo__hash {
+    color: var(--neutral-600); /* Tom mais apagado para o hash */
+    margin-right: 0.125rem;
+    font-weight: var(--font-weight-700);
+}
+
+/* Hover Interativo Neutro */
+.tag-artigo:hover {
+    color: var(--neutral-100);
+    background-color: var(--neutral-800);
+    border-color: var(--neutral-400);
+    transform: translateY(-0.0625rem);
+}
+
+/* Foco e Acessibilidade (Tab) */
+.tag-artigo:focus-visible {
+    outline: 0.125rem solid var(--color-focus-ring);
+    outline-offset: 0.125rem;
+}
+
+/* Click ativo */
+.tag-artigo:active {
+    transform: translateY(0);
+}

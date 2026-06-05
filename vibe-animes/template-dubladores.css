@@ -1,0 +1,109 @@
+/* ============================================================
+   Template: Catálogo de Dubladores (archive-dublador.css)
+   Layout full-width do catálogo: hero header + filtros + lista.
+   Clone estrutural de template-personagens.css — apenas entidade trocada.
+   ============================================================ */
+
+/* ── Container principal ─────────────────────────────────── */
+.archive-dublador {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	min-height: 100vh;
+	background: var(--color-background);
+}
+
+/* ── Hero Header ─────────────────────────────────────────── */
+.archive-dublador__hero {
+	background: var(--neutral-800);
+	border-bottom: 1px solid var(--neutral-700);
+	padding: var(--space-500) 0 var(--space-400);
+}
+
+.archive-dublador__hero-inner {
+	max-width: var(--container-max);
+	margin: 0 auto;
+	padding: 0 var(--space-400);
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-200);
+}
+
+.archive-dublador__titulo {
+	font-family: var(--font-heading);
+	font-size: clamp(var(--text-md-size), 4vw, var(--text-md-lg-size));
+	font-weight: var(--text-md-lg-weight);
+	color: var(--color-text);
+	line-height: 1.2;
+	margin: 0;
+}
+
+.archive-dublador__subtitulo {
+	font-size: var(--text-xxs-size);
+	color: var(--neutral-400);
+	margin: 0;
+}
+
+/* ── Anúncio leaderboard ─────────────────────────────────── */
+.archive-dublador__anuncio {
+	padding: var(--space-400) var(--space-300);
+	max-width: var(--container-max);
+	margin: 0 auto;
+	width: 100%;
+}
+
+/* ── Alternância desktop ↔ mobile das barras de filtro ────── */
+.archive-dublador__filtros-desktop {
+	display: none; /* oculto em mobile */
+}
+
+.archive-dublador__filtros-mobile {
+	display: block;
+	width: 100%;
+	max-width: var(--container-max);
+	margin: 0 auto;
+	padding: var(--space-400); /* Margem de segurança de 16px lateral e respiro topo/base */
+	box-sizing: border-box;
+}
+
+/* ── Container da lista ───────────────────────────────────── */
+.archive-dublador__lista {
+	flex: 1;
+	width: 100%;
+}
+
+/* ── Desktop (≥ 64rem / 1024px) ──────────────────────────── */
+@media (min-width: 64rem) {
+	.archive-dublador__hero-inner {
+		padding: 0 var(--space-600);
+	}
+
+	.archive-dublador__anuncio {
+		padding: var(--space-500) var(--space-600) 0;
+	}
+
+	.archive-dublador__filtros-desktop {
+		display: block; /* visível em desktop */
+		max-width: var(--container-max);
+		margin: 0 auto;
+		padding: var(--space-400) var(--space-600);
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+	.archive-dublador__filtros-mobile {
+		display: none; /* oculto em desktop */
+	}
+}
+
+/* ── Sobrescritas específicas ──────────────────────────────── */
+
+/* Força exibição do idioma do dublador (sinopse) no mobile (oculto por padrão no componente de card) */
+@media (max-width: 1023px) {
+	.archive-dublador .card-catalogo__sinopse {
+		display: block;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+}

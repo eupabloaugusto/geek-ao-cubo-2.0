@@ -1,0 +1,95 @@
+{
+  "key": "group_temporada_fields",
+  "title": "Campos da Temporada",
+  "fields": [
+    {
+      "key": "field_temp_periodo",
+      "label": "Período",
+      "name": "temp_periodo",
+      "type": "select",
+      "instructions": "Período sazonal da temporada.",
+      "required": 1,
+      "choices": {
+        "inverno":    "❄️ Inverno (Janeiro–Março)",
+        "primavera":  "🌸 Primavera (Abril–Junho)",
+        "verao":      "☀️ Verão (Julho–Setembro)",
+        "outono":     "🍂 Outono (Outubro–Dezembro)"
+      },
+      "default_value": "inverno",
+      "allow_null": 0,
+      "multiple": 0,
+      "ui": 1,
+      "wrapper": { "width": "50" }
+    },
+    {
+      "key": "field_temp_ano",
+      "label": "Ano",
+      "name": "temp_ano",
+      "type": "number",
+      "instructions": "Ano calendário desta temporada (ex: 2025).",
+      "required": 1,
+      "min": 2000,
+      "max": 2100,
+      "step": 1,
+      "wrapper": { "width": "50" }
+    },
+    {
+      "key": "field_temp_animes",
+      "label": "Animes desta Temporada",
+      "name": "temp_animes",
+      "type": "relationship",
+      "instructions": "Selecione todos os animes que estrearam nesta temporada. Use a busca para encontrá-los pelo título.",
+      "required": 0,
+      "post_type": [ "anime" ],
+      "taxonomy": "",
+      "filters": [ "search", "taxonomy" ],
+      "elements": [ "featured_image" ],
+      "min": 0,
+      "max": "",
+      "return_format": "object",
+      "wrapper": { "width": "100" }
+    },
+    {
+      "key": "field_temp_destaque",
+      "label": "Anime em Destaque",
+      "name": "temp_destaque",
+      "type": "relationship",
+      "instructions": "Anime principal desta temporada, exibido no hero da página da temporada.",
+      "required": 0,
+      "post_type": [ "anime" ],
+      "taxonomy": "",
+      "filters": [ "search" ],
+      "elements": [ "featured_image" ],
+      "min": 0,
+      "max": 1,
+      "return_format": "object",
+      "wrapper": { "width": "100" }
+    },
+    {
+      "key": "field_temp_descricao",
+      "label": "Descrição da Temporada",
+      "name": "temp_descricao",
+      "type": "textarea",
+      "instructions": "Breve descrição editorial sobre os destaques desta temporada. Usada como meta description da página.",
+      "required": 0,
+      "rows": 4,
+      "new_lines": "br"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "temporada"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "description": "Campos para agrupamento de animes por período sazonal. Suporta seleção múltipla de animes relacionados."
+}

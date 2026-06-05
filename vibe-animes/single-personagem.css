@@ -1,0 +1,71 @@
+/**
+ * CSS Exclusivo da Página de Personagem
+ *
+ * @package geek-ao-cubo
+ */
+
+.personagem-layout {
+	max-width: var(--container-max);
+	margin: 0 auto;
+	padding: var(--space-600) var(--space-400);
+}
+
+.personagem-layout__main {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-800);
+}
+
+/* ── Seção de Obras (Animes) ── */
+.secao-obras-personagem__grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: var(--space-400);
+	margin-top: var(--space-400);
+}
+
+@media (min-width: 48rem) {
+	.secao-obras-personagem__grid {
+		grid-template-columns: repeat(3, 1fr);
+		gap: var(--space-500);
+	}
+}
+
+@media (min-width: 64rem) {
+	.secao-obras-personagem__grid {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+
+
+/* ── Espaçamento entre seções ── */
+.secao-obras-personagem__spacer {
+	margin-top: var(--space-800);
+}
+
+/* ── Container de anúncios ── */
+.ad-container {
+	margin-top: 0;
+}
+
+/* ── Seção de Dubladores ── */
+.secao-vozes-personagem__grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--space-400);
+	margin-top: var(--space-400);
+}
+
+@media (min-width: 48rem) {
+	.secao-vozes-personagem__grid {
+		grid-template-columns: repeat(2, 1fr);
+		gap: var(--space-500);
+	}
+}
+
+@media (min-width: 64rem) {
+	.secao-vozes-personagem__grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}

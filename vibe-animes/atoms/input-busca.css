@@ -1,0 +1,162 @@
+/**
+ * Atom: Biblioteca de Inputs CSS (input-busca)
+ */
+
+.input-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* O campo de input real */
+.input-field {
+    width: 100%;
+    background-color: var(--neutral-800);
+    color: var(--neutral-100);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-200);
+    padding: var(--space-300) var(--space-400);
+    font-family: var(--font-body);
+    font-size: var(--text-xs-size);
+    font-weight: var(--font-weight-100);
+    line-height: 1.5;
+    outline: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover e Foco do Input */
+.input-field:hover {
+    border-color: var(--neutral-400);
+}
+
+.input-field:focus {
+    border-color: var(--color-primary);
+    background-color: var(--neutral-900);
+}
+
+/* Placeholder Styling */
+.input-field::placeholder {
+    color: var(--neutral-500);
+}
+
+/* --- MODELO: BUSCA COM ÍCONE --- */
+.input-wrapper--search .input-field {
+    padding-left: 2.75rem; /* Abre espaço para o ícone à esquerda */
+}
+
+.input-search-icon {
+    position: absolute;
+    left: var(--space-300);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-search-icon svg {
+    width: var(--icon-sm);
+    height: var(--icon-sm);
+    fill: var(--neutral-400);
+    transition: fill 0.3s ease;
+}
+
+/* Altera a cor do ícone quando o input ganha foco */
+.input-field:focus + .input-search-icon svg {
+    fill: var(--color-primary);
+}
+
+/* --- MODELO: SELECT DROPDOWN --- */
+.input-field--select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-right: 2.5rem; /* Espaço para a seta customizada */
+    cursor: pointer;
+}
+
+.input-select-arrow {
+    position: absolute;
+    right: var(--space-300);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-select-arrow svg {
+    width: var(--icon-sm);
+    height: var(--icon-sm);
+    fill: var(--neutral-400);
+    transition: transform 0.3s ease, fill 0.3s ease;
+}
+
+/* Rotação da seta do select ao focar/clicar (simulação visual no foco) */
+.input-field--select:focus ~ .input-select-arrow svg {
+    fill: var(--color-primary);
+    transform: rotate(180deg);
+}
+
+/* Estilização básica das tags option */
+.input-field--select option {
+    background-color: var(--neutral-800);
+    color: var(--neutral-100);
+}
+
+/* --- ESTADO: DESABILITADO --- */
+
+/*
+ * 1. O atributo HTML :disabled aplica o estilo diretamente no <input> e <select>.
+ * 2. A classe .input-wrapper--disabled permite desabilitar visualmente um wrapper
+ *    inteiro (ex.: esconde o ícone e bloqueia pointer-events).
+ */
+
+.input-field:disabled,
+.input-field[aria-disabled="true"] {
+    background-color: var(--neutral-900);
+    border-color: var(--neutral-800);
+    color: var(--neutral-600);
+    cursor: not-allowed;
+    opacity: 0.55;
+    -webkit-text-fill-color: var(--neutral-600); /* Safari */
+}
+
+.input-field:disabled::placeholder,
+.input-field[aria-disabled="true"]::placeholder {
+    color: var(--neutral-700);
+}
+
+/* Remove hover e foco quando desabilitado */
+.input-field:disabled:hover,
+.input-field[aria-disabled="true"]:hover {
+    border-color: var(--neutral-800);
+}
+
+.input-field:disabled:focus,
+.input-field[aria-disabled="true"]:focus {
+    border-color: var(--neutral-800);
+    outline: none;
+}
+
+/* O cursor de texto dentro do wrapper também muda */
+.input-wrapper--disabled {
+    cursor: not-allowed;
+    pointer-events: none; /* bloqueia interações no ícone e na seta */
+    opacity: 0.55;
+}
+
+/* Ícones ficam apagados no estado desabilitado */
+.input-wrapper--disabled .input-search-icon svg {
+    fill: var(--neutral-700);
+}
+
+.input-wrapper--disabled .input-select-arrow svg {
+    fill: var(--neutral-700);
+}
+
+/* Remove a rotação do select desabilitado */
+.input-field--select:disabled ~ .input-select-arrow svg,
+.input-field--select[aria-disabled="true"] ~ .input-select-arrow svg {
+    transform: none;
+    fill: var(--neutral-700);
+}

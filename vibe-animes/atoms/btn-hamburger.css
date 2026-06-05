@@ -1,0 +1,91 @@
+/**
+ * Atom: Botão Hamburger CSS
+ * Animação suave transformando as 3 barras horizontais em um "X".
+ */
+
+.btn-hamburger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    border-radius: var(--border-radius-100);
+    color: var(--neutral-100);
+    transition: opacity 0.2s ease, background-color 0.2s ease;
+    outline: none;
+}
+
+.btn-hamburger:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.btn-hamburger:focus-visible {
+    outline: 2px solid var(--color-primary);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Container do ícone */
+.btn-hamburger__box {
+    width: 24px;
+    height: 18px; /* Altura exata do ícone */
+    position: relative;
+    display: block;
+}
+
+/* As 3 barras */
+.btn-hamburger__inner,
+.btn-hamburger__inner::before,
+.btn-hamburger__inner::after {
+    width: 24px;
+    height: 2px;
+    background-color: currentColor;
+    position: absolute;
+    left: 0;
+    border-radius: var(--border-radius-100);
+}
+
+.btn-hamburger__inner::before,
+.btn-hamburger__inner::after {
+    content: "";
+    display: block;
+}
+
+/* Posicionamento Inicial */
+.btn-hamburger__inner {
+    top: 50%;
+    margin-top: -1px;
+    transition: background-color 0.1s 0.2s ease;
+}
+
+.btn-hamburger__inner::before {
+    top: -8px;
+    transition: top 0.1s 0.2s ease, transform 0.1s ease;
+}
+
+.btn-hamburger__inner::after {
+    bottom: -8px;
+    transition: bottom 0.1s 0.2s ease, transform 0.1s ease;
+}
+
+/* === ESTADO ATIVO (Animação para "X") === */
+.btn-hamburger--active .btn-hamburger__inner {
+    background-color: transparent !important;
+    transition: background-color 0.1s ease;
+}
+
+.btn-hamburger--active .btn-hamburger__inner::before {
+    top: 0;
+    transform: rotate(45deg);
+    transition: top 0.1s ease, transform 0.1s 0.2s ease;
+}
+
+.btn-hamburger--active .btn-hamburger__inner::after {
+    bottom: 0;
+    transform: rotate(-45deg);
+    transition: bottom 0.1s ease, transform 0.1s 0.2s ease;
+}

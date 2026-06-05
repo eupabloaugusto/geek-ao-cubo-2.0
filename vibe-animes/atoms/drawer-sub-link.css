@@ -1,0 +1,72 @@
+/**
+ * Atom: Drawer Sub-Link CSS
+ */
+
+/* ============================
+   WRAPPER DA LISTA DE SUB-LINKS
+   ============================ */
+.drawer-sub-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity   0.25s ease;
+}
+
+/* Aberto (controlado por JS adicionando .drawer-link--open no pai) */
+.drawer-link--open + .drawer-sub-nav {
+    max-height: 500px;
+    opacity: 1;
+}
+
+/* ============================
+   ITEM DE SUB-LINK
+   ============================ */
+.drawer-sub-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-300);
+    padding: var(--space-300) var(--space-500);
+    padding-left: calc(var(--space-500) + 1.5rem); /* Recuo extra para indicar hierarquia */
+    color: var(--neutral-500);
+    font-family: var(--font-body);
+    font-size: var(--text-xs-size);
+    font-weight: var(--font-weight-100);
+    text-decoration: none;
+    border-radius: var(--border-radius-200);
+    transition: background-color 0.2s ease, color 0.2s ease;
+    outline: none;
+    position: relative;
+}
+
+.drawer-sub-link:hover,
+.drawer-sub-link:focus-visible {
+    background-color: rgba(255, 255, 255, 0.04);
+    color: var(--neutral-200);
+}
+
+.drawer-sub-link:focus-visible {
+    outline: 2px solid var(--color-primary);
+}
+
+/* Ponto indicador */
+.drawer-sub-link__dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: var(--neutral-700);
+    flex-shrink: 0;
+    transition: background-color 0.2s ease;
+}
+
+/* Estado ativo */
+.drawer-sub-link--active {
+    color: var(--color-primary);
+}
+
+.drawer-sub-link--active .drawer-sub-link__dot {
+    background-color: var(--color-primary);
+}

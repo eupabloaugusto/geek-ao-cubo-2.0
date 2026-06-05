@@ -1,0 +1,79 @@
+/**
+ * Organism: Grid Trabalhos de Voz (grid-trabalhos-voz)
+ */
+
+.grid-trabalhos-voz {
+	width: 100%;
+	max-width: var(--container-max);
+	margin: 0 auto;
+	padding: var(--space-600) var(--space-400);
+}
+
+.grid-trabalhos-voz__header {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-200);
+	margin-bottom: var(--space-600);
+	border-bottom: 1px solid var(--color-border);
+	padding-bottom: var(--space-300);
+}
+
+.grid-trabalhos-voz__titulo {
+	font-family: var(--font-heading);
+	font-size: var(--text-md-size);
+	font-weight: 700;
+	color: var(--neutral-100);
+	margin: 0;
+}
+
+.grid-trabalhos-voz__contador {
+	font-family: var(--font-body);
+	font-size: var(--text-sm-size);
+	color: var(--neutral-400);
+}
+
+.grid-trabalhos-voz__grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--space-400);
+}
+
+/* Responsivo */
+@media (min-width: 48rem) {
+	.grid-trabalhos-voz__header {
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.grid-trabalhos-voz__grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: 64rem) {
+	.grid-trabalhos-voz__grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+/* ==========================================================================
+   PAGINAÇÃO — Separação visual da área de navegação
+   ========================================================================== */
+.grid-trabalhos-voz__paginacao {
+	margin-top: var(--space-600);
+	padding-top: var(--space-400);
+	border-top: 1px solid var(--color-border);
+	max-width: var(--container-max);
+	margin-inline: auto;
+}
+
+/* ==========================================================================
+   CÉLULA DE ANÚNCIO — Wrapper de grid item para conter o ad
+   Separa a responsabilidade de "item do grid" do componente de anúncio.
+   ========================================================================== */
+.grid-trabalhos-voz__ad-cell {
+	display: flex;          /* Estica o filho (.anuncio-adsense) verticalmente */
+	flex-direction: column;
+	min-height: 8rem;       /* Altura mínima quando na linha incompleta */
+}

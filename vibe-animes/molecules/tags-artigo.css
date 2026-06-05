@@ -1,0 +1,32 @@
+/**
+ * Molecule: Linha de Tags do Artigo CSS (tags-artigo)
+ *
+ * Estilização flexível e contêiner para o agrupamento horizontal de tag-artigo
+ * no rodapé do conteúdo do post.
+ */
+
+.tags-artigo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-300); /* 16px */
+    flex-wrap: wrap;
+}
+
+/* Rótulo "Tags:" */
+.tags-artigo__label {
+    font-family: var(--font-body);
+    font-size: var(--text-xxs-size); /* 12px */
+    font-weight: var(--font-weight-600);
+    color: var(--neutral-500);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    user-select: none;
+}
+
+/* Lista de Tags */
+.tags-artigo__list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-200); /* 8px */
+    flex-wrap: wrap;
+}

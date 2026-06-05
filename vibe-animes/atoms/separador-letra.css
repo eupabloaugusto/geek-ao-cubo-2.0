@@ -1,0 +1,30 @@
+/* ============================================================
+   Atom: Separador de Letra (separador-letra)
+   Divisor de seção alfabética no catálogo.
+   ============================================================ */
+
+.separador-letra {
+	display: flex;
+	align-items: center;
+	gap: var(--space-300);
+	padding-top: var(--space-200);
+	padding-bottom: var(--space-200);
+	scroll-margin-top: 5rem; /* Compensa header fixo + nav-alfabetica */
+}
+
+.separador-letra__letra {
+	font-family: var(--font-heading);
+	font-size: var(--text-md-size);
+	font-weight: 700;
+	color: var(--neutral-100);
+	line-height: 1;
+	flex-shrink: 0;
+}
+
+.separador-letra__linha {
+	flex: 1;
+	height: 1px;
+	background-color: var(--color-border);
+	border: none;
+	margin: 0;
+}

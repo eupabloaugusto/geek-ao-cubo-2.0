@@ -1,0 +1,82 @@
+/**
+ * Atom: Badge de Status CSS
+ */
+
+.badge-status {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-200);
+    font-size: var(--text-xxs-size);
+    font-weight: var(--font-weight-100);
+    padding: var(--space-100) var(--space-300);
+    border-radius: var(--border-radius-100);
+    text-transform: uppercase;
+    letter-spacing: 0.03125rem;
+    border: 1px solid transparent;
+}
+
+/* Estado: Em Exibição (Airing) */
+.badge-status--airing {
+    background-color: rgba(52, 216, 68, 0.1);
+    color: var(--success-600);
+    border-color: rgba(52, 216, 68, 0.2);
+}
+
+.badge-status--airing::before {
+    content: '';
+    display: inline-block;
+    width: 0.375rem;
+    height: 0.375rem;
+    background-color: var(--success-500);
+    border-radius: 50%;
+    box-shadow: 0 0 0.5rem var(--success-500);
+    animation: mm-badge-pulse 1.5s infinite;
+}
+
+/* Estado: Finalizado (Completed) */
+.badge-status--completed {
+    background-color: rgba(151, 163, 182, 0.1);
+    color: var(--neutral-300);
+    border-color: rgba(151, 163, 182, 0.2);
+}
+
+.badge-status--completed::before {
+    content: '';
+    display: inline-block;
+    width: 0.375rem;
+    height: 0.375rem;
+    background-color: var(--neutral-400);
+    border-radius: 50%;
+}
+
+/* Estado: Em breve (Upcoming) */
+.badge-status--upcoming {
+    background-color: rgba(245, 107, 21, 0.1);
+    color: var(--brand-400);
+    border-color: rgba(245, 107, 21, 0.2);
+}
+
+.badge-status--upcoming::before {
+    content: '';
+    display: inline-block;
+    width: 0.375rem;
+    height: 0.375rem;
+    background-color: var(--brand-400);
+    border-radius: 50%;
+}
+
+/* Animação Pulsante para Airing */
+@keyframes mm-badge-pulse {
+    0% {
+        opacity: 0.4;
+        transform: scale(0.9);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 0.4;
+        transform: scale(0.9);
+    }
+}

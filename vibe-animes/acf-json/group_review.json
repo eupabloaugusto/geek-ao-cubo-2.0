@@ -1,0 +1,153 @@
+{
+  "key": "group_review_fields",
+  "title": "Campos da Review",
+  "fields": [
+    {
+      "key": "field_review_anime_relacionado",
+      "label": "Anime Avaliado",
+      "name": "review_anime_relacionado",
+      "type": "relationship",
+      "instructions": "Vincule esta review ao anime que está sendo avaliado. Campo obrigatório.",
+      "required": 1,
+      "post_type": [ "anime" ],
+      "taxonomy": "",
+      "filters": [ "search" ],
+      "elements": [ "featured_image" ],
+      "min": 1,
+      "max": 1,
+      "return_format": "object",
+      "wrapper": { "width": "100" }
+    },
+    {
+      "key": "field_review_nota",
+      "label": "Nota Final",
+      "name": "review_nota",
+      "type": "number",
+      "instructions": "Nota da review de 0.0 a 10.0 (ex: 8.5). Exibida no componente 'rating-score'.",
+      "required": 1,
+      "min": 0,
+      "max": 10,
+      "step": 0.1,
+      "wrapper": { "width": "33" }
+    },
+    {
+      "key": "field_review_recomenda",
+      "label": "Recomenda?",
+      "name": "review_recomenda",
+      "type": "button_group",
+      "instructions": "Veredicto de recomendação exibido no card da review.",
+      "required": 1,
+      "choices": {
+        "sim":     "✅ Sim",
+        "depende": "⚠️ Depende",
+        "nao":     "❌ Não"
+      },
+      "default_value": "sim",
+      "layout": "horizontal",
+      "return_format": "value",
+      "wrapper": { "width": "67" }
+    },
+    {
+      "key": "field_review_pros",
+      "label": "Pontos Positivos",
+      "name": "review_pros",
+      "type": "repeater",
+      "instructions": "Liste os pontos positivos do anime. Mínimo de 1 item.",
+      "required": 0,
+      "min": 0,
+      "max": 10,
+      "layout": "table",
+      "button_label": "Adicionar Ponto Positivo",
+      "sub_fields": [
+        {
+          "key": "field_review_pro_item",
+          "label": "Positivo",
+          "name": "item",
+          "type": "text",
+          "required": 1,
+          "placeholder": "ex: Animação excepcional"
+        }
+      ],
+      "wrapper": { "width": "50" }
+    },
+    {
+      "key": "field_review_contras",
+      "label": "Pontos Negativos",
+      "name": "review_contras",
+      "type": "repeater",
+      "instructions": "Liste os pontos negativos do anime.",
+      "required": 0,
+      "min": 0,
+      "max": 10,
+      "layout": "table",
+      "button_label": "Adicionar Ponto Negativo",
+      "sub_fields": [
+        {
+          "key": "field_review_contra_item",
+          "label": "Negativo",
+          "name": "item",
+          "type": "text",
+          "required": 1,
+          "placeholder": "ex: Ritmo lento nos arcos de preenchimento"
+        }
+      ],
+      "wrapper": { "width": "50" }
+    },
+    {
+      "key": "field_review_veredicto",
+      "label": "Veredicto",
+      "name": "review_veredicto",
+      "type": "textarea",
+      "instructions": "Parágrafo conclusivo da review. Resumo final da opinião editorial sobre o anime.",
+      "required": 0,
+      "rows": 5,
+      "new_lines": "wpautop"
+    },
+    {
+      "key": "field_review_publico_alvo",
+      "label": "Público-Alvo",
+      "name": "review_publico_alvo",
+      "type": "text",
+      "instructions": "Para quem este anime é indicado? (ex: 'Fãs de shonen e aventura épica').",
+      "required": 0,
+      "wrapper": { "width": "100" }
+    },
+    {
+      "key": "field_review_spoilers",
+      "label": "Contém Spoilers?",
+      "name": "review_spoilers",
+      "type": "true_false",
+      "instructions": "Se marcado, um aviso de spoiler será exibido no topo da review.",
+      "required": 0,
+      "message": "Esta review contém spoilers",
+      "default_value": 0,
+      "ui": 1,
+      "wrapper": { "width": "50" }
+    },
+    {
+      "key": "field_review_temporada_avaliada",
+      "label": "Temporada / Arco Avaliado",
+      "name": "review_temporada_avaliada",
+      "type": "text",
+      "instructions": "Se a review cobre apenas parte do anime, especifique aqui (ex: 'Temporada 1', 'Arco de Dressrosa').",
+      "required": 0,
+      "wrapper": { "width": "50" }
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "review"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "active": true,
+  "description": "Campos editoriais de review com sistema de pontos positivos/negativos, nota e veredicto de recomendação."
+}

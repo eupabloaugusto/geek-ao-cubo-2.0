@@ -1,0 +1,46 @@
+/**
+ * Atom: Tag Dado Pessoal (tag-dado-pessoal)
+ */
+
+.tag-dado-pessoal {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-200);
+	background: var(--neutral-800);
+	border: 1px solid var(--color-border);
+	border-radius: var(--border-radius-200);
+	padding: var(--space-200) var(--space-300);
+}
+
+.tag-dado-pessoal__icone {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--color-primary);
+	width: 1.25rem;
+	height: 1.25rem;
+	flex-shrink: 0;
+}
+
+.tag-dado-pessoal__textos {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	line-height: 1.2;
+}
+
+.tag-dado-pessoal__label {
+	font-family: var(--font-body);
+	font-size: var(--text-xxs-size);
+	color: var(--neutral-400);
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	margin-bottom: 2px;
+}
+
+.tag-dado-pessoal__valor {
+	font-family: var(--font-heading);
+	font-size: var(--text-sm-size);
+	color: var(--neutral-100);
+	font-weight: 600;
+}

@@ -1,0 +1,68 @@
+/**
+ * Atom: Botão de Seta de Navegação (btn-nav-arrow) CSS
+ *
+ * Estilização premium de botão de ação lateral de carrossel.
+ */
+
+.btn-nav-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem; /* 44px - Touch Target perfeito de acessibilidade */
+    height: 2.75rem;
+    border-radius: 50%;
+    background-color: rgba(26, 29, 34, 0.65); /* Fundo neutral-800 translúcido */
+    backdrop-filter: blur(0.75rem);
+    -webkit-backdrop-filter: blur(0.75rem);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--neutral-300);
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.35);
+    
+    /* Transições aceleradas por hardware para alta fluidez */
+    transition: background-color 0.3s ease,
+                border-color 0.3s ease,
+                color 0.3s ease,
+                transform 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+                box-shadow 0.3s ease;
+}
+
+/* Ícone Chevron */
+.btn-nav-arrow__icon {
+    width: 1.25rem; /* 20px */
+    height: 1.25rem;
+    stroke-width: 0.1875rem; /* Garante visibilidade e contraste WCAG */
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Hover UX Delight - Mudança para tom laranja translúcido e glow */
+.btn-nav-arrow:hover {
+    background-color: rgba(245, 107, 21, 0.15);
+    border-color: rgba(245, 107, 21, 0.4);
+    color: var(--color-primary);
+    box-shadow: 0 0 1rem rgba(245, 107, 21, 0.35),
+                0 0.25rem 1rem rgba(0, 0, 0, 0.35);
+}
+
+/* Micro-translação do Chevron ao pairar (Direção Intuitiva) */
+.btn-nav-arrow--prev:hover .btn-nav-arrow__icon {
+    transform: translateX(-0.1875rem);
+}
+
+.btn-nav-arrow--next:hover .btn-nav-arrow__icon {
+    transform: translateX(0.1875rem);
+}
+
+/* Estado de Clique físico */
+.btn-nav-arrow:active {
+    transform: scale(0.92);
+}
+
+/* Foco Acessível (Teclado) */
+.btn-nav-arrow:focus-visible {
+    outline: 0.125rem solid var(--color-focus-ring);
+    border-color: var(--color-primary);
+    outline-offset: 0.125rem;
+}

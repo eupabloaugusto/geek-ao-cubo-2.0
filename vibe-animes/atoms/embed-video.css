@@ -1,0 +1,107 @@
+/**
+ * Atom: Vídeo Incorporado CSS (embed-video)
+ *
+ * Wrapper responsivo de alta fidelidade para embeds mantendo proporção de 16:9.
+ * Utiliza variáveis de design do Geek ao Cubo para harmonização e efeitos premium.
+ */
+
+.embed-video {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* Proporção perfeita 16:9 (9 / 16 = 56.25%) */
+    background-color: var(--neutral-900);
+    border-radius: var(--border-radius-300); /* 16px */
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 0.625rem 1.875rem rgba(0, 0, 0, 0.4);
+}
+
+/* Placeholder leve contendo a miniatura do vídeo */
+.embed-video__placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Película escura de overlay por cima da miniatura */
+.embed-video__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(13, 14, 17, 0.1) 0%, rgba(13, 14, 17, 0.6) 100%);
+    transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Escurece sutilmente no hover do card */
+.embed-video__placeholder:hover .embed-video__overlay {
+    background: linear-gradient(180deg, rgba(13, 14, 17, 0.2) 0%, rgba(13, 14, 17, 0.7) 100%);
+}
+
+/* Botão de Play Central Premium */
+.embed-video__play-btn {
+    position: relative;
+    z-index: 10;
+    width: clamp(3.5rem, 8vw, 5rem); /* 56px a 80px */
+    height: clamp(3.5rem, 8vw, 5rem);
+    background-color: var(--color-primary); /* Laranja vibrante */
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--neutral-100);
+    box-shadow: 0 0.5rem 1.5rem rgba(245, 107, 21, 0.4);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.embed-video__play-btn svg {
+    width: 40%;
+    height: 40%;
+    fill: currentColor;
+    margin-left: 4%; /* Correção óptica de centralização do triângulo de play */
+    transition: transform 0.3s ease;
+}
+
+/* Efeito Hover do Play Button */
+.embed-video__placeholder:hover .embed-video__play-btn {
+    transform: scale(1.1);
+    background-color: var(--brand-600);
+    box-shadow: 0 0.625rem 1.875rem rgba(245, 107, 21, 0.6);
+}
+
+.embed-video__placeholder:hover .embed-video__play-btn svg {
+    transform: scale(1.05);
+}
+
+/* Efeito Clique */
+.embed-video__placeholder:active .embed-video__play-btn {
+    transform: scale(0.95);
+}
+
+/* Acessibilidade de Foco (Teclado) */
+.embed-video__play-btn:focus-visible {
+    outline: 0.25rem solid var(--color-focus-ring);
+    outline-offset: 0.25rem;
+}
+
+/* Iframe Injetado Dinamicamente */
+.embed-video__iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: var(--border-radius-300);
+}

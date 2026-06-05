@@ -1,0 +1,58 @@
+/**
+ * Atom: Botão Primário CSS
+ */
+
+.btn--primary {
+    background-color: var(--color-primary);
+    color: var(--neutral-100);
+    border: 0.125rem solid transparent;
+    outline: none;
+}
+
+/* Hover e Micro-animações */
+.btn--primary:hover {
+    background-color: var(--brand-600);
+    transform: translateY(-0.125rem);
+}
+
+.btn--primary:focus-visible {
+    outline: 0.125rem solid var(--color-focus-ring);
+    outline-offset: 0.25rem;
+}
+
+.btn--primary:active {
+    transform: translateY(0);
+}
+
+/* --- ESTADO: DESABILITADO --- */
+
+/*
+ * Duas formas de desabilitar um botão primário:
+ * 1. <button disabled> — atributo HTML nativo (bloqueia submit e interações).
+ * 2. .btn--disabled — para <a> tags que simulam botão (sem href ou com aria-disabled).
+ * Ambas compartilham o mesmo visual: apagado, sem cursor de texto, sem hover.
+ */
+.btn--primary:disabled,
+.btn--primary[aria-disabled="true"],
+.btn--primary.btn--disabled {
+    background-color: var(--neutral-700);
+    color: var(--neutral-500);
+    border-color: transparent;
+    cursor: not-allowed;
+    opacity: 0.45;
+    pointer-events: none; /* bloqueia hover e click */
+}
+
+/* Cancela hover e active quando desabilitado */
+.btn--primary:disabled:hover,
+.btn--primary[aria-disabled="true"]:hover,
+.btn--primary.btn--disabled:hover {
+    background-color: var(--neutral-700);
+    transform: none;
+}
+
+.btn--primary:disabled:active,
+.btn--primary[aria-disabled="true"]:active,
+.btn--primary.btn--disabled:active {
+    transform: none;
+}

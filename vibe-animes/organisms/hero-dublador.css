@@ -1,0 +1,353 @@
+/**
+ * Organism CSS: Hero Dublador (hero-dublador)
+ *
+ * Hero principal da página de detalhe do dublador.
+ * Espelha a arquitetura do hero-anime.
+ * Mobile-first: poster em cima (centralizado), info abaixo.
+ * Desktop (≥ 48rem): poster esquerda, info direita em flex-row.
+ *
+ * @package geek-ao-cubo
+ */
+
+/* ==========================================================================
+   SECTION BASE
+   ========================================================================== */
+
+.hero-dublador {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	background-color: var(--neutral-900);
+}
+
+/* ==========================================================================
+   BACKDROP — imagem desfocada como fundo
+   ========================================================================== */
+
+.hero-dublador__backdrop {
+	position: absolute;
+	inset: 0;
+	background-size: cover;
+	background-position: center top;
+	background-repeat: no-repeat;
+	filter: blur(1.25rem) brightness(0.2) saturate(0.6);
+	transform: scale(1.12);
+	z-index: 0;
+}
+
+/* ==========================================================================
+   OVERLAY — gradiente escuro sobre o backdrop
+   ========================================================================== */
+
+.hero-dublador__overlay {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(
+		to bottom,
+		rgba(13, 14, 17, 0.4)  0%,
+		rgba(13, 14, 17, 0.75) 50%,
+		var(--neutral-900)     100%
+	);
+	z-index: 0;
+}
+
+/* ==========================================================================
+   INNER CONTAINER
+   ========================================================================== */
+
+.hero-dublador__inner {
+	position: relative;
+	z-index: 1;
+	max-width: var(--container-max);
+	margin: 0 auto;
+	padding: var(--space-700) var(--space-400) var(--space-300);
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-500);
+	align-items: flex-start;
+}
+
+/* ==========================================================================
+   POSTER (Adaptado para Dublador)
+   ========================================================================== */
+
+.hero-dublador__poster {
+	flex-shrink: 0;
+	width: 10rem;
+	align-self: center; /* No mobile fica no centro */
+}
+
+.hero-dublador__imagem-container {
+	width: 100%;
+	aspect-ratio: 2 / 3;
+	border-radius: var(--border-radius-200);
+	border-color: rgba(245, 107, 21, 0.2);
+	box-shadow:
+		0 0.5rem 2rem rgba(0, 0, 0, 0.6),
+		0 0 0 0.0625rem rgba(245, 107, 21, 0.2);
+	overflow: hidden;
+}
+
+.hero-dublador__imagem {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center top;
+	display: block;
+}
+
+/* ==========================================================================
+   INFO COLUMN
+   ========================================================================== */
+
+.hero-dublador__info {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-400);
+	min-width: 0;
+	width: 100%;
+	text-align: center; /* Mobile centralizado */
+}
+
+/* ==========================================================================
+   TÍTULO
+   ========================================================================== */
+
+.hero-dublador__title {
+	font-family: var(--font-heading);
+	font-size: clamp(var(--text-md-sm-size), 4vw, var(--text-md-lg-size));
+	font-weight: 700;
+	line-height: 1.15;
+	color: var(--neutral-100);
+	margin: 0;
+	overflow-wrap: break-word;
+	word-break: break-word;
+}
+
+.hero-dublador__title-jp {
+	font-family: var(--font-body);
+	font-size: var(--text-xs-size);
+	font-weight: 400;
+	color: var(--neutral-400);
+	margin: calc(-1 * var(--space-200)) 0 0;
+	line-height: 1.4;
+}
+
+/* ==========================================================================
+   STATS CONTAINER
+   ========================================================================== */
+
+.hero-dublador__stats-container {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-400);
+	margin-top: var(--space-200);
+	width: 100%;
+	justify-content: center;
+}
+
+.hero-dublador__stat-item {
+	background-color: rgba(255, 255, 255, 0.02);
+	border: 0.0625rem solid rgba(255, 255, 255, 0.06);
+	border-radius: var(--border-radius-200);
+	padding: var(--space-250) var(--space-400);
+	min-width: 9.5rem;
+	flex: 1 1 0%;
+	transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.hero-dublador__stat-item:hover {
+	background-color: rgba(255, 255, 255, 0.04);
+	border-color: rgba(245, 107, 21, 0.2);
+}
+
+.hero-dublador__stat-item--heart .stat-numero__icon {
+	color: #ff4d4d;
+}
+
+/* ==========================================================================
+   META INFO — DL grid
+   ========================================================================== */
+
+.hero-dublador__meta {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: var(--space-300) var(--space-500);
+	margin: 0;
+	padding: var(--space-400);
+	background-color: rgba(255, 255, 255, 0.04);
+	border-left: 0.1875rem solid var(--color-primary);
+	border-radius: 0 var(--border-radius-200) var(--border-radius-200) 0;
+	text-align: left;
+}
+
+.hero-dublador__meta-item {
+	display: flex;
+	flex-direction: column;
+	gap: 0.125rem;
+}
+
+.hero-dublador__meta-label {
+	font-family: var(--font-body);
+	font-size: var(--text-xxs-size);
+	font-weight: 600;
+	color: var(--color-text-muted);
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	line-height: 1;
+}
+
+.hero-dublador__meta-value {
+	font-family: var(--font-body);
+	font-size: var(--text-xs-size);
+	font-weight: 400;
+	color: var(--neutral-200);
+	line-height: 1.4;
+	margin: 0;
+}
+
+.hero-dublador__meta-link {
+	color: var(--color-primary);
+	text-decoration: none;
+	transition: text-decoration 0.15s ease;
+}
+
+.hero-dublador__meta-link:hover {
+	text-decoration: underline;
+}
+
+/* ==========================================================================
+   SINOPSE (Bio)
+   ========================================================================== */
+
+.hero-dublador__sinopse {
+	max-width: 48rem;
+	position: relative;
+	width: 100%;
+	text-align: left;
+}
+
+.hero-dublador__sinopse-content {
+	font-family: var(--font-body);
+	font-size: var(--text-xs-size);
+	line-height: 1.75;
+	color: var(--neutral-300);
+	margin: 0;
+	position: relative;
+	max-height: 5.25rem; /* ~3 linhas de texto */
+	overflow: hidden;
+	transition: max-height 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.hero-dublador__sinopse-content p {
+	margin: 0 0 1rem;
+	font-size: inherit;
+	line-height: inherit;
+	color: inherit;
+}
+.hero-dublador__sinopse-content p:last-child {
+	margin-bottom: 0;
+}
+
+.hero-dublador__sinopse-fade {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 2rem;
+	background: linear-gradient(to bottom, rgba(13, 14, 17, 0) 0%, rgba(13, 14, 17, 0.95) 100%);
+	pointer-events: none;
+	transition: opacity 0.3s ease;
+}
+
+/* Estado Expandido */
+.hero-dublador__sinopse--expanded .hero-dublador__sinopse-content {
+	max-height: 120rem; 
+}
+
+.hero-dublador__sinopse--expanded .hero-dublador__sinopse-fade {
+	opacity: 0;
+}
+
+/* Botão de Alternância */
+.hero-dublador__sinopse-toggle {
+	display: none; /* Controlado via JS se houver transbordo */
+	align-items: center;
+	gap: var(--space-100);
+	margin-top: var(--space-200);
+	padding: 0;
+	background: none;
+	border: none;
+	cursor: pointer;
+	font-family: var(--font-body);
+	font-size: var(--text-xs-size);
+	font-weight: 600;
+	color: var(--color-primary);
+	text-decoration: none;
+	transition: opacity 0.2s ease;
+}
+
+.hero-dublador__sinopse-toggle:hover {
+	opacity: 0.75;
+}
+
+.hero-dublador__sinopse-toggle-icon {
+	width: 1rem;
+	height: 1rem;
+	transition: transform 0.3s ease;
+}
+
+.hero-dublador__sinopse--expanded .hero-dublador__sinopse-toggle-icon {
+	transform: rotate(180deg);
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE
+   ========================================================================== */
+
+/* Tablet / Desktop (≥ 48rem) */
+@media (min-width: 48rem) {
+	.hero-dublador__inner {
+		flex-direction: row;
+		align-items: flex-start;
+		gap: var(--space-700);
+		padding: var(--space-700) var(--space-400) var(--space-800);
+	}
+
+	.hero-dublador__poster {
+		width: 14rem; /* Alinhado ao anime */
+		align-self: flex-start;
+	}
+
+	.hero-dublador__info {
+		gap: var(--space-400);
+		text-align: left;
+	}
+
+	.hero-dublador__stats-container {
+		justify-content: flex-start;
+	}
+
+	.hero-dublador__meta {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+/* Large Desktop (≥ 64rem) */
+@media (min-width: 64rem) {
+	.hero-dublador__title {
+		font-size: var(--text-md-lg-size);
+	}
+}
+
+@media (max-width: 32rem) {
+	.hero-dublador__stats-container {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--space-250);
+	}
+	.hero-dublador__stat-item {
+		width: 100%;
+		min-width: 0;
+	}
+}

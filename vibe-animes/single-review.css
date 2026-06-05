@@ -1,0 +1,296 @@
+/**
+ * Template Style: Single Review (single-review)
+ *
+ * Estilos refinados e modernos para o layout da análise crítica de anime.
+ *
+ * @package geek-ao-cubo
+ * @since   2.0.0
+ */
+
+.review-page {
+	max-width: var(--container-max, 80rem);
+	margin-inline: auto;
+	padding-inline: var(--space-400);
+	padding-block: var(--space-600);
+}
+
+@media (min-width: 64rem) {
+	.review-page {
+		padding-inline: var(--space-600);
+		padding-block: var(--space-800);
+	}
+}
+
+/* Header da Análise */
+.review-header {
+	margin-bottom: var(--space-600);
+	position: relative;
+}
+
+.review-page__breadcrumb {
+	margin-bottom: var(--space-500);
+}
+
+.review-header__badge-row {
+	display: flex;
+	gap: var(--space-300);
+	align-items: center;
+	margin-bottom: var(--space-400);
+}
+
+.review-header__title {
+	font-family: var(--font-heading);
+	font-size: clamp(var(--text-md-size), 5vw, var(--text-lg-size));
+	font-weight: 700;
+	color: var(--neutral-100);
+	line-height: 1.1;
+	margin-bottom: var(--space-300);
+}
+
+.review-header__meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-400);
+	align-items: center;
+	font-size: var(--text-xxs-size);
+	color: var(--neutral-400);
+}
+
+/* Bloco de Alerta de Spoiler */
+.review-spoiler-alert {
+	background-color: rgba(239, 68, 68, 0.08);
+	border: 0.0625rem solid var(--error-500);
+	border-radius: var(--border-radius-200);
+	padding: var(--space-400) var(--space-500);
+	margin-bottom: var(--space-600);
+	display: flex;
+	align-items: center;
+	gap: var(--space-400);
+	animation: pulseSlow 3s infinite ease-in-out;
+}
+
+.review-spoiler-alert__icon {
+	color: var(--error-500);
+	flex-shrink: 0;
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+.review-spoiler-alert__content {
+	color: var(--neutral-200);
+	font-size: var(--text-xxs-size);
+	line-height: 1.5;
+}
+
+.review-spoiler-alert__title {
+	font-weight: 700;
+	color: var(--error-500);
+	margin-bottom: 0.125rem;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+/* Grade de Conteúdo Principal da Review */
+.review-layout {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--space-600);
+	margin-bottom: var(--space-800);
+}
+
+@media (min-width: 64rem) {
+	.review-layout {
+		grid-template-columns: 2.2fr 1fr;
+		gap: var(--space-800);
+		align-items: start;
+	}
+}
+
+.review-body {
+	color: var(--neutral-300);
+	line-height: 1.7;
+	font-size: var(--text-xs-size);
+}
+
+.review-body p {
+	margin-bottom: var(--space-500);
+}
+
+.review-body h2, .review-body h3 {
+	color: var(--neutral-100);
+	margin-top: var(--space-600);
+	margin-bottom: var(--space-300);
+}
+
+/* Tabela de Prós e Contras */
+.review-pros-contras {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--space-500);
+	margin-block: var(--space-800);
+}
+
+@media (min-width: 48rem) {
+	.review-pros-contras {
+		grid-template-columns: 1fr 1fr;
+		gap: var(--space-600);
+	}
+}
+
+.review-box {
+	background-color: var(--neutral-800);
+	border-radius: var(--border-radius-200);
+	padding: var(--space-500);
+	border: 0.0625rem solid var(--neutral-700);
+	box-shadow: var(--shadow-sm);
+}
+
+.review-box--pros {
+	border-left: 0.25rem solid var(--success-500);
+}
+
+.review-box--contras {
+	border-left: 0.25rem solid var(--error-500);
+}
+
+.review-box__title {
+	font-size: var(--text-xs-size);
+	font-weight: 700;
+	margin-bottom: var(--space-400);
+	display: flex;
+	align-items: center;
+	gap: var(--space-200);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.review-box--pros .review-box__title {
+	color: var(--success-500);
+}
+
+.review-box--contras .review-box__title {
+	color: var(--error-500);
+}
+
+.review-box__list {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-300);
+}
+
+.review-box__item {
+	font-size: var(--text-xxs-size);
+	color: var(--neutral-300);
+	line-height: 1.4;
+	position: relative;
+	padding-left: var(--space-500);
+}
+
+.review-box__item::before {
+	position: absolute;
+	left: 0;
+	top: 0.125rem;
+	font-weight: 700;
+	font-size: 1rem;
+}
+
+.review-box--pros .review-box__item::before {
+	content: "+";
+	color: var(--success-500);
+}
+
+.review-box--contras .review-box__item::before {
+	content: "-";
+	color: var(--error-500);
+}
+
+/* Painel Lateral da Review */
+.review-sidebar {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-500);
+}
+
+.review-sidebar__card {
+	background-color: var(--neutral-800);
+	border-radius: var(--border-radius-200);
+	padding: var(--space-500);
+	border: 0.0625rem solid var(--neutral-700);
+}
+
+.review-sidebar__card--centered {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--space-400);
+}
+
+.review-sidebar__heading {
+	font-weight: 700;
+	color: var(--neutral-100);
+}
+
+.review-sidebar__heading--spaced {
+	margin-bottom: var(--space-200);
+}
+
+.review-sidebar__anime-title {
+	font-weight: 600;
+	color: var(--neutral-200);
+	margin-top: var(--space-200);
+}
+
+.review-sidebar__text {
+	font-size: var(--font-size-sm, 0.875rem);
+	color: var(--neutral-300);
+	line-height: 1.5;
+	font-style: italic;
+}
+
+/* Ícones dos boxes Prós/Contras */
+.review-box__icon {
+	width: 1.25rem;
+	height: 1.25rem;
+}
+
+.review-box__icon--success {
+	color: var(--color-success, #10B981);
+}
+
+.review-box__icon--error {
+	color: var(--color-error, #EF4444);
+}
+
+.review-veredicto {
+	background-color: rgba(231, 138, 81, 0.05);
+	border: 0.0625rem solid var(--color-primary-accessible);
+	border-radius: var(--border-radius-300);
+	padding: var(--space-600);
+	margin-block: var(--space-800);
+}
+
+.review-veredicto__title {
+	font-size: var(--text-sm-size);
+	font-weight: 700;
+	color: var(--color-primary-accessible);
+	margin-bottom: var(--space-300);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.review-veredicto__text {
+	color: var(--neutral-200);
+	font-size: var(--text-xs-size);
+	line-height: 1.6;
+	font-style: italic;
+}
+
+@keyframes pulseSlow {
+	0%, 100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.85;
+	}
+}

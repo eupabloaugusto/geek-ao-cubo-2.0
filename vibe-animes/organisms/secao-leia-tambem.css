@@ -1,0 +1,61 @@
+/**
+ * Organism: Seção Leia Também CSS (secao-leia-tambem)
+ *
+ * Estilização para o grid editorial de posts relacionados.
+ * Define grids de 3 colunas fluídas e adaptativas para diferentes larguras.
+ */
+
+.secao-leia-tambem {
+    width: 100%;
+    margin-bottom: var(--space-600); /* 40px */
+}
+
+/* Cabeçalho da Seção */
+.secao-leia-tambem__header {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--neutral-800);
+    margin-bottom: var(--space-400); /* 24px */
+    padding-bottom: 2px;
+}
+
+/* Título com acento de borda na cor de marca */
+.secao-leia-tambem__title {
+    font-family: var(--font-heading);
+    font-size: var(--text-xs-size); /* 16px */
+    font-weight: var(--font-weight-700);
+    color: var(--neutral-100);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding-bottom: var(--space-200); /* 8px */
+    border-bottom: 3px solid var(--color-primary);
+    margin-bottom: -2px; /* Transpõe a borda inferior do contêiner */
+    display: inline-block;
+    line-height: 1;
+    user-select: none;
+}
+
+/* Grade Responsiva de Três Colunas (Grid) */
+.secao-leia-tambem__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-400); /* 24px */
+}
+
+/* =========================================
+   RESPONSIVIDADE (Mobile & Tablet)
+   ========================================= */
+
+@media (max-width: 900px) {
+    .secao-leia-tambem__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-300); /* 16px */
+    }
+}
+
+@media (max-width: 600px) {
+    .secao-leia-tambem__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-400); /* 24px */
+    }
+}

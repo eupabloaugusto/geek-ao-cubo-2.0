@@ -1,0 +1,32 @@
+/**
+ * Molecule: Formulário de Busca CSS (form-busca)
+ */
+
+.form-busca {
+    width: 100%;
+    max-width: 37.5rem;
+}
+
+.form-busca__wrapper {
+    display: flex;
+    gap: var(--space-200); /* 8px de espaçamento entre o campo e o botão */
+    width: 100%;
+    align-items: stretch; /* Garante que o input e o botão tenham a mesma altura */
+}
+
+.form-busca__input {
+    flex: 1; /* O input ocupa todo o espaço restante */
+}
+
+.form-busca__btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+    border-radius: var(--border-radius-200);
+}
+
+/* Responsividade: para telas extremamente pequenas, pode empilhar se necessário, mas o flex horizontal é ideal para barras de busca */
+@media (max-width: 375px) {
+    .form-busca__wrapper {
+        gap: var(--space-100);
+    }
+}

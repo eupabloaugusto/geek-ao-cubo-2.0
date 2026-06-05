@@ -1,0 +1,33 @@
+/**
+ * Molecule: Controles de Carrossel (carousel-nav) CSS
+ *
+ * Estruturação de grade flexbox centralizada para docking de setas e indicativos.
+ */
+
+.carousel-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-400); /* 24px - Vão refinado e espaçoso para mouse e toque */
+    width: 100%;
+    margin-top: var(--space-400); /* 24px de respiro em relação ao trilho de slides */
+    user-select: none;
+}
+
+/* Trilho de bolinhas central */
+.carousel-nav__dots {
+    display: flex;
+    align-items: center;
+    gap: var(--space-200); /* 8px - Espaço regular entre cada dot */
+}
+
+/* Responsividade Acentuada para Celulares Compactos */
+@media (max-width: 480px) {
+    .carousel-nav {
+        gap: var(--space-300); /* 16px de vão em celulares pequenos para evitar quebras */
+    }
+    
+    .carousel-nav__dots {
+        gap: 0.375rem;
+    }
+}

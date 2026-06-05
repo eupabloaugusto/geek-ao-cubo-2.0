@@ -1,0 +1,114 @@
+/**
+ * Molecule: Card de Anime CSS (card-anime)
+ *
+ * Estilização moderna e reativa para listagem vertical de animes.
+ * Prioriza micro-interações elegantes e layouts robustos.
+ */
+
+.card-anime {
+    display: flex;
+    flex-direction: column;
+    width: 12.5rem;
+    min-width: 12.5rem;
+    position: relative;
+    border-radius: var(--border-radius-300);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: transparent;
+}
+
+/* A. Seção de Mídia (Link Principal da Capa) */
+.card-anime__media {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    outline: none;
+    flex-shrink: 0;
+    border-radius: var(--border-radius-300);
+}
+
+.card-anime__media:focus-visible {
+    outline: 0.125rem solid var(--color-focus-ring);
+    outline-offset: 0.125rem;
+}
+
+/* Garante que o átomo da imagem ocupe 100% da largura da mídia */
+.card-anime .imagem-capa-container {
+    width: 100%;
+}
+
+/* B. Seção de Conteúdo */
+.card-anime__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-200); /* 8px */
+    padding: var(--space-300) var(--space-200) var(--space-100) var(--space-200);
+    flex-grow: 1;
+    min-width: 0; /* Previne overflow no flexbox */
+    width: 100%;
+    box-sizing: border-box; /* IMPRESCINDÍVEL: mantém o padding para dentro e impede o card de estourar a grade */
+}
+
+/* C. Título do Anime */
+.card-anime__title {
+    font-family: var(--font-heading);
+    font-size: var(--text-xs-size); /* 16px */
+    line-height: 1.4;
+    font-weight: var(--font-weight-100);
+    margin: 0;
+    
+    /* Limita o título a no máximo 2 linhas com elipse (Truncate elegante) */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: calc(var(--text-xs-size) * 1.4 * 2); /* Evita desalinhamento em títulos curtos */
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+.card-anime__title-link {
+    color: var(--neutral-100);
+    text-decoration: none;
+    transition: color 0.25s ease;
+    outline: none;
+}
+
+.card-anime__title-link:focus-visible {
+    outline: 0.125rem solid var(--color-focus-ring);
+    outline-offset: 0.125rem;
+    border-radius: var(--border-radius-100);
+}
+
+/* D. Pílulas de Gêneros */
+.card-anime__genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-100); /* 4px */
+    margin-top: auto; /* Empurra os gêneros para o rodapé do flex-container */
+}
+
+.card-anime__genre-badge {
+    font-size: 0.7rem;
+    padding: var(--space-100) var(--space-200);
+}
+
+/* ==========================================================================
+   INTERAÇÕES & MICRO-ANIMAÇÕES
+   ========================================================================== */
+
+/* Hover sobre QUALQUER parte do card ativa a cor primária no título */
+.card-anime:hover .card-anime__title-link {
+    color: var(--color-primary);
+}
+
+/* Hover propaga a micro-animação para o átomo (imagem-capa-container) */
+.card-anime:hover .imagem-capa-container {
+    transform: scale(1.02);
+    border-color: var(--color-primary);
+}
+
+.card-anime:hover .imagem-capa {
+    transform: scale(1.08);
+}

@@ -1,0 +1,45 @@
+/**
+ * Molecule: Trilha de Navegação CSS (breadcrumb)
+ *
+ * Estilização para o agrupador da trilha de navegação (breadcrumb),
+ * controlando o fluxo horizontal flexível dos itens individuais.
+ */
+
+.breadcrumb {
+    display: block;
+    width: 100%;
+}
+
+.breadcrumb__list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Garante comportamento limpo se o Yoast SEO injetar marcações alternativas */
+.breadcrumb #breadcrumbs {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    font-family: var(--font-body);
+    font-size: var(--text-xxs-size);
+    color: var(--neutral-400);
+}
+
+.breadcrumb #breadcrumbs a {
+    color: var(--neutral-400);
+    text-decoration: none;
+    font-weight: var(--font-weight-500);
+    transition: color 0.2s ease;
+}
+
+.breadcrumb #breadcrumbs a:hover {
+    color: var(--color-primary);
+}
+
+.breadcrumb #breadcrumbs span {
+    color: var(--neutral-200);
+}

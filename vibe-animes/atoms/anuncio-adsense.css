@@ -1,0 +1,271 @@
+/**
+ * Atom: Container de Anúncio Adsense CSS (anuncio-adsense)
+ */
+
+.anuncio-adsense {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    clear: both;
+}
+
+.anuncio-adsense__label {
+    font-family: var(--font-body);
+    font-size: var(--text-xxs-size);
+    font-size: var(--text-xs-size);
+    font-weight: var(--font-weight-100);
+    color: var(--neutral-500);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: var(--space-100);
+    text-align: center;
+}
+
+.anuncio-adsense__frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: var(--space-400);
+    background-color: var(--neutral-900);
+    border: 1px solid var(--neutral-800);
+    border-radius: var(--border-radius-300);
+}
+
+.anuncio-adsense__container {
+    width: 100%;
+    min-height: 250px; /* Previne CLS mantendo altura mínima reservada */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Visualização local de placeholder em debug/vitrine */
+.anuncio-adsense__placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-100);
+    padding: var(--space-400);
+    text-align: center;
+}
+
+.anuncio-adsense__slot-info {
+    font-family: monospace;
+    font-size: var(--text-xs-size);
+    color: var(--color-primary);
+    font-size: var(--text-xs-size);
+    font-weight: var(--font-weight-100);
+}
+
+.anuncio-adsense__size-info {
+    font-family: var(--font-body);
+    font-size: var(--text-xs-size);
+    font-weight: var(--font-weight-100);
+    color: var(--neutral-400);
+}
+
+/* ==========================================================================
+   VARIAÇÕES DE PROPORÇÃO — Cada modificador constrainge o container para
+   orientar o algoritmo do AdSense ao formato ideal para o slot.
+   ========================================================================== */
+
+/* AUTO — Totalmente fluido, Google escolhe o melhor tamanho */
+.anuncio-adsense--auto .anuncio-adsense__container {
+    min-height: 15.625rem; /* 250px — reserva espaço contra CLS */
+}
+
+/* LEADERBOARD — 728×90 desktop → 320×50 mobile (banner topo/rodapé) */
+.anuncio-adsense--leaderboard .anuncio-adsense__container {
+    min-height: 3.125rem; /* 50px mobile mínimo */
+    max-width: 45.5rem;   /* 728px */
+}
+@media (min-width: 48rem) {
+    .anuncio-adsense--leaderboard .anuncio-adsense__container {
+        min-height: 5.625rem; /* 90px desktop */
+    }
+}
+/* BANNER — Full-width horizontal (In-line otimizado) */
+.anuncio-adsense--banner .anuncio-adsense__frame {
+    padding: var(--space-200) var(--space-400); /* Reduz "gordura" vertical mantendo margem lateral */
+}
+.anuncio-adsense--banner .anuncio-adsense__container {
+    width: 100%;
+    min-height: 3.125rem; /* 50px mobile banner */
+}
+@media (min-width: 48rem) {
+    .anuncio-adsense--banner .anuncio-adsense__container {
+        min-height: 5.625rem; /* 90px desktop leaderboard */
+    }
+}
+
+/* RETÂNGULO — 300×250 (medium rectangle, mais eficiente por CTR) */
+.anuncio-adsense--retangulo .anuncio-adsense__container {
+    min-height: 15.625rem; /* 250px */
+    max-width: 18.75rem;   /* 300px */
+    width: 100%;
+}
+
+/* RETÂNGULO GRANDE — 336×280 (maior CTR em conteúdo longo) */
+.anuncio-adsense--retangulo-grande .anuncio-adsense__container {
+    min-height: 17.5rem;  /* 280px */
+    max-width: 21rem;     /* 336px */
+    width: 100%;
+}
+
+/* MEIA PÁGINA — 300×600 (alto impacto visual, sidebar larga) */
+.anuncio-adsense--meia-pagina .anuncio-adsense__container {
+    min-height: 37.5rem; /* 600px */
+    max-width: 18.75rem; /* 300px */
+    width: 100%;
+}
+
+/* QUADRADO — 250×250 (sidebar estreita ou mobile) */
+.anuncio-adsense--quadrado .anuncio-adsense__container {
+    min-height: 15.625rem; /* 250px */
+    max-width: 15.625rem;  /* 250px */
+    width: 100%;
+}
+
+/* ARTIGO — In-article nativo fluido (entre parágrafos) */
+.anuncio-adsense--artigo .anuncio-adsense__container {
+    min-height: 12.5rem; /* 200px — Google preenche ao detectar o espaço */
+    background-color: transparent;
+    border: none;
+}
+
+/* MULTIPLEX — Grade nativa de artigos recomendados (rodapé de post) */
+.anuncio-adsense--multiplex .anuncio-adsense__container {
+    min-height: 25rem; /* 400px — grade de cards requer mais altura */
+}
+
+/* IN-FEED — Nativo, mimetiza um item da listagem (card-catalogo) */
+.anuncio-adsense--in-feed {
+    padding: var(--space-300) 0;
+    border-bottom: 1px solid var(--neutral-800);
+}
+.anuncio-adsense--in-feed .anuncio-adsense__label {
+    text-align: left;
+    width: 100%;
+    margin-bottom: var(--space-200);
+    opacity: 0.6;
+}
+.anuncio-adsense--in-feed .anuncio-adsense__frame {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    border-radius: 0;
+}
+.anuncio-adsense--in-feed .anuncio-adsense__container {
+    min-height: 7.5rem; /* ~120px */
+}
+@media (min-width: 48rem) {
+    .anuncio-adsense--in-feed {
+        padding: var(--space-400) 0;
+    }
+}
+
+/* ==========================================================================
+   VISIBILIDADE CONTROLADA
+   ========================================================================== */
+.anuncio-adsense--mobile-only {
+    display: none;
+}
+
+.anuncio-adsense--desktop-only {
+    display: block;
+    width: 100%;
+}
+
+@media (max-width: 63.9375rem) {
+    .anuncio-adsense--mobile-only {
+        display: block;
+        width: 100%;
+    }
+
+    .anuncio-adsense--desktop-only {
+        display: none;
+    }
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE ADAPTATIVA
+   Em mobile, as variações de tamanho fixo (retângulo, meia-página, quadrado)
+   se expandem para o container pai para aproveitar a largura disponível.
+   ========================================================================== */
+@media (max-width: 47.9375rem) {
+    .anuncio-adsense__frame {
+        padding: var(--space-200);
+    }
+
+    .anuncio-adsense--retangulo .anuncio-adsense__container,
+    .anuncio-adsense--retangulo-grande .anuncio-adsense__container,
+    .anuncio-adsense--meia-pagina .anuncio-adsense__container,
+    .anuncio-adsense--quadrado .anuncio-adsense__container {
+        max-width: 100%;
+    }
+}
+
+/* ==========================================================================
+   MODIFICADOR: Grid Dubladores (camuflado como card)
+   Anúncio in-feed que mimetiza visualmente o card-dublagem.
+   Ocupa exatamente 1 slot do grid (sem alterar o layout ao redor).
+   ========================================================================== */
+.anuncio-adsense--grid-dubladores {
+    clear: none;
+    flex: 1;                /* Cresce para preencher o wrapper .grid-trabalhos-voz__ad-cell */
+    min-height: 0;
+}
+
+.anuncio-adsense--grid-dubladores .anuncio-adsense__label {
+    font-size: 0.5rem;
+    letter-spacing: 0.5px;
+    color: var(--neutral-600);
+    margin-bottom: 0;
+    text-align: left;
+    padding: var(--space-100) var(--space-200) 0;
+    text-transform: uppercase;
+    flex-shrink: 0;
+}
+
+/* Frame copia visual do card */
+.anuncio-adsense--grid-dubladores .anuncio-adsense__frame {
+    background: var(--neutral-800);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-200);
+    padding: 0;
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    transition: border-color 0.2s ease;
+}
+
+.anuncio-adsense--grid-dubladores:hover .anuncio-adsense__frame {
+    border-color: var(--neutral-600);
+}
+
+.anuncio-adsense--grid-dubladores .anuncio-adsense__container {
+    height: 100%;
+    width: 100%;
+    min-height: 0;
+}
+
+/* Placeholder de debug */
+.anuncio-adsense--grid-dubladores .anuncio-adsense__placeholder {
+    background: repeating-linear-gradient(
+        135deg,
+        var(--neutral-800),
+        var(--neutral-800) 10px,
+        var(--neutral-900) 10px,
+        var(--neutral-900) 20px
+    );
+    width: 100%;
+    height: 100%;
+    min-height: 6rem;
+    border-radius: var(--border-radius-200);
+    justify-content: center;
+}

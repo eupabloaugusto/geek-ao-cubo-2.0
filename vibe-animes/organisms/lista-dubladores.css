@@ -1,0 +1,43 @@
+﻿/* ============================================================
+   Organism: Lista do CatÃ¡logo (lista-catalogo)
+   Listagem alfabÃ©tica de animes com nav sticky e grupos por letra.
+   ============================================================ */
+
+.lista-catalogo {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+/* â”€â”€ Corpo da lista â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.lista-catalogo__corpo {
+	padding: 0 var(--space-400);
+	max-width: var(--container-max, 80rem);
+	margin: 0 auto;
+	width: 100%;
+}
+
+/* â”€â”€ Grupos por letra â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.lista-catalogo__grupo {
+	display: flex;
+	flex-direction: column;
+}
+
+/* â”€â”€ Estado vazio â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.lista-catalogo__vazio {
+	padding: var(--space-800) var(--space-400);
+	text-align: center;
+}
+
+.lista-catalogo__vazio-msg {
+	font-size: var(--text-sm-size);
+	color: var(--neutral-500);
+}
+
+/* â”€â”€ Desktop â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+@media (min-width: 48rem) {
+	.lista-catalogo__corpo {
+		padding: 0 var(--space-600);
+	}
+}
+

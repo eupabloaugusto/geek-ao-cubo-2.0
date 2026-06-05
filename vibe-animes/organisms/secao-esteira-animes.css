@@ -1,0 +1,108 @@
+/**
+ * Organism: Seção de Esteira de Animes CSS (secao-esteira-animes)
+ *
+ * Estilização em formato de trilho horizontal (esteira/carousel) otimizada para Core Web Vitals.
+ * Utiliza Scroll Snap nativo acelerado por hardware para rolagem gestual perfeita.
+ */
+
+.secao-esteira-animes {
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+}
+
+/* ==========================================================================
+   CABEÇALHO DA SEÇÃO (Título + Link "Ver Todos")
+   ========================================================================== */
+.secao-esteira-animes__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: var(--space-500); /* 32px */
+    padding: 0 var(--space-400); /* inline = --trilho-fade mobile */
+}
+
+.secao-esteira-animes__title {
+    font-family: var(--font-heading);
+    font-size: clamp(var(--text-sm-size), 4vw, var(--text-md-sm-size)); /* 20px a 24px */
+    font-weight: 700;
+    color: var(--neutral-100);
+    margin: 0;
+    text-transform: capitalize;
+}
+
+.secao-esteira-animes__link-all {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-100);
+    font-size: var(--text-xxs-size); /* 12px */
+    font-weight: var(--font-weight-100);
+    color: var(--neutral-400);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.0625rem;
+    transition: color 0.25s ease;
+}
+
+.secao-esteira-animes__link-icon {
+    width: 1rem;
+    height: 1rem;
+    stroke-width: 0.15625rem;
+    transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Hover no link "Ver Todos" */
+.secao-esteira-animes__link-all:hover {
+    color: var(--color-primary);
+}
+
+.secao-esteira-animes__link-all:hover .secao-esteira-animes__link-icon {
+    transform: translateX(0.1875rem);
+}
+
+/* ==========================================================================
+   TRILHO — estilos específicos do organismo
+   Scroll, drag, scrollbar e posicionamento de setas são gerenciados
+   pela molécula trilho-infinito (trilho-infinito.css / trilho-infinito.js).
+   ========================================================================== */
+
+/* Track: layout essencial + gap e padding específicos desta esteira */
+.secao-esteira-animes__track {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: var(--space-300);
+    padding: var(--space-200) var(--space-400) var(--space-400) var(--space-400); /* inline = --trilho-fade mobile */
+    width: 100%;
+}
+
+/* Desktop (≥ 64rem) */
+@media (min-width: 64rem) {
+    .secao-esteira-animes__header {
+        padding-inline: var(--space-600); /* inline = --trilho-fade desktop */
+    }
+
+    .secao-esteira-animes__track {
+        padding-inline: var(--space-600);
+    }
+}
+
+/* Slide Individual (largura sincronizada com card-anime) */
+.secao-esteira-animes__slide {
+    flex: 0 0 auto;
+    width: var(--width-card-anime, 12.5rem);
+    scroll-snap-align: start;
+}
+
+/* Setas: alinhamento vertical ao centro da imagem de capa (proporção 2:3) */
+.secao-esteira-animes__wrapper .trilho-infinito__arrow {
+    top: calc(var(--width-card-anime, 12.5rem) * 1.5 * 0.5);
+}
+
+
+
+

@@ -1,0 +1,120 @@
+/**
+ * Molecule: Caixa de Perfil de Autor CSS (autor-profile-box)
+ *
+ * Estilização premium para a caixa de perfil/biografia do autor
+ * exibida no encerramento de artigos.
+ */
+
+.autor-profile-box {
+    display: flex;
+    gap: var(--space-400); /* 24px */
+    background-color: var(--neutral-800);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-300); /* 16px */
+    padding: var(--space-400) var(--space-500); /* 24px 32px */
+    max-width: 45rem;
+    align-items: flex-start;
+}
+
+/* Moldura do Avatar Grande (80px) */
+.autor-profile-box__avatar-frame {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 0.125rem solid var(--neutral-700);
+    background-color: var(--neutral-900);
+}
+
+.autor-profile-box__avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Fallback de Capitular Grande */
+.autor-profile-box__avatar-fallback {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--brand-900) 0%, var(--brand-800) 100%);
+    color: var(--brand-200);
+    font-family: var(--font-body);
+    font-size: 1.75rem;
+    font-weight: var(--font-weight-600);
+    user-select: none;
+}
+
+/* Conteúdos */
+.autor-profile-box__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+}
+
+/* Etiqueta Superior de Cargo */
+.autor-profile-box__role-label {
+    font-family: var(--font-body);
+    font-size: var(--text-xxs-size); /* 12px */
+    font-weight: var(--font-weight-600);
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.125rem;
+    line-height: 1;
+}
+
+/* Nome do Autor */
+.autor-profile-box__name {
+    font-family: var(--font-heading);
+    font-size: var(--text-xs-size); /* 16px */
+    font-weight: var(--font-weight-700);
+    margin-bottom: var(--space-200); /* 8px */
+    line-height: 1.2;
+}
+
+.autor-profile-box__name-link {
+    color: var(--neutral-100);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.autor-profile-box__name-link:hover {
+    color: var(--color-primary);
+}
+
+/* Texto de Biografia */
+.autor-profile-box__bio {
+    font-family: var(--font-body);
+    font-size: 0.875rem; /* 14px */
+    color: var(--neutral-300);
+    line-height: 1.5;
+    font-weight: var(--font-weight-400);
+}
+
+.autor-profile-box__bio--empty {
+    font-style: italic;
+    color: var(--neutral-400);
+}
+
+/* =========================================
+   RESPONSIVIDADE (Mobile)
+   ========================================= */
+@media (max-width: 500px) {
+    .autor-profile-box {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: var(--space-300);
+        padding: var(--space-400);
+    }
+
+    .autor-profile-box__content {
+        align-items: center;
+    }
+}

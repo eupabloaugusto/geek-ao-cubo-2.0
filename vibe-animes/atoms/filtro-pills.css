@@ -1,0 +1,112 @@
+/* ==========================================================================
+   MOLÉCULA: Filtro Pills
+   Navegação horizontal de pílulas para ordenação.
+   Responsivo: Permite deslize horizontal (swipe) em dispositivos móveis.
+   ========================================================================== */
+
+.filtro-pills {
+    width: 100%;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+/* Container com scroll horizontal no mobile */
+.filtro-pills__container {
+    width: 100%;
+    overflow-x: auto;
+    /* Comportamento de deslize nativo no iOS e Android */
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 1rem;
+    
+    /* Esconder a barra de rolagem (Chrome, Safari, Edge) */
+    -ms-overflow-style: none;  /* IE e Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.filtro-pills__container::-webkit-scrollbar {
+    display: none;
+}
+
+.filtro-pills__list {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    /* Garante que o último item tenha um respiro na direita no scroll */
+    padding-right: 1rem;
+}
+
+.filtro-pills__item {
+    flex-shrink: 0; /* Impede que as pílulas encolham no flex */
+    scroll-snap-align: start;
+}
+
+/* Estilo Base da Pílula (Desativada) */
+.filtro-pills__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem;
+    padding: 0 1.25rem;
+    border-radius: 9999px; /* Formato pílula arredondada */
+    
+    font-family: var(--font-primary, sans-serif);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+    
+    /* Cores neutras / Glassmorphism leve */
+    background-color: var(--color-surface-hover, rgba(255,255,255,0.05));
+    color: var(--color-text-secondary, #9ca3af);
+    border: 1px solid var(--color-border, rgba(255,255,255,0.1));
+    
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Estado Hover (Desktops) */
+@media (hover: hover) and (pointer: fine) {
+    .filtro-pills__link:hover:not(.filtro-pills__link--active) {
+        background-color: var(--color-surface-active, rgba(255,255,255,0.1));
+        color: var(--color-text-primary, #f9fafb);
+        border-color: var(--color-border-hover, rgba(255,255,255,0.2));
+        transform: translateY(-1px);
+    }
+}
+
+/* Estado Ativo (Pílula Selecionada) */
+.filtro-pills__link--active {
+    background-color: var(--color-primary, #e62429); /* Cor primária Geek ao Cubo */
+    color: #ffffff;
+    border-color: var(--color-primary, #e62429);
+    box-shadow: 0 4px 12px rgba(230, 36, 41, 0.25);
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   BREAKPOINT DESKTOP
+   ========================================================================== */
+@media (min-width: 768px) {
+    .filtro-pills__container {
+        /* Desativa scroll horizontal se a tela for grande o suficiente */
+        overflow-x: visible;
+        padding-left: 0;
+    }
+    
+    .filtro-pills__list {
+        padding-right: 0;
+        /* Centraliza ou alinha à esquerda, dependendo do design. 
+           Vou alinhar à esquerda para casar com o grid abaixo */
+        justify-content: flex-start; 
+        gap: 1rem;
+    }
+    
+    .filtro-pills__link {
+        font-size: 0.9375rem; /* Levemente maior no desktop */
+        height: 2.75rem;
+        padding: 0 1.5rem;
+    }
+}

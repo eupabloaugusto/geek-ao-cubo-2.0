@@ -1,0 +1,104 @@
+/**
+ * Atom: Barra de Avaliação CSS (rating-bar)
+ *
+ * Layout horizontal rígido em 3 colunas baseado em Grid para perfeita harmonia visual
+ * e alinhamento em cascata.
+ */
+
+.rating-bar {
+    display: grid;
+    grid-template-columns: 1.75rem 1fr 5.3125rem;
+    align-items: center;
+    gap: var(--space-300); /* 16px */
+    padding: var(--space-100) var(--space-200); /* 4px 8px */
+    border-radius: var(--border-radius-100);
+    transition: background-color 0.2s ease;
+    user-select: none;
+    cursor: pointer;
+    outline: none;
+}
+
+/* Hover feedback discreto na linha inteira */
+.rating-bar:hover {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.rating-bar:focus-visible {
+    outline: 0.125rem solid var(--color-focus-ring);
+    outline-offset: 0.125rem;
+}
+
+/* Coluna 1: Nota */
+.rating-bar__score {
+    font-family: var(--font-body);
+    font-size: var(--text-xxs-size); /* 12px */
+    font-weight: var(--font-weight-600);
+    color: var(--neutral-400);
+    text-align: right;
+    transition: color 0.2s ease;
+}
+
+.rating-bar:hover .rating-bar__score {
+    color: var(--neutral-100);
+}
+
+/* Coluna 2: Trilho da Barra */
+.rating-bar__track {
+    background-color: var(--neutral-800);
+    height: 0.5rem;
+    border-radius: var(--border-radius-100);
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+/* Preenchimento Dinâmico com Animação Nativa */
+.rating-bar__fill {
+    background-color: var(--color-primary);
+    height: 100%;
+    border-radius: var(--border-radius-100);
+    width: 0; /* Fallback caso animação falhe */
+    animation: rating-bar-fill-keyframe 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    transition: filter 0.2s ease;
+}
+
+.rating-bar:hover .rating-bar__fill {
+    filter: brightness(1.15);
+}
+
+/* Coluna 3: Metadados (Porcentagem + Votos) */
+.rating-bar__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-100);
+    justify-content: flex-start;
+}
+
+.rating-bar__percentage {
+    font-family: var(--font-body);
+    font-size: var(--text-xxs-size);
+    font-weight: var(--font-weight-600);
+    color: var(--neutral-300);
+    transition: color 0.2s ease;
+}
+
+.rating-bar:hover .rating-bar__percentage {
+    color: var(--neutral-100);
+}
+
+.rating-bar__votes-count {
+    font-family: var(--font-body);
+    font-size: var(--text-xxs-size);
+    color: var(--neutral-500);
+    font-weight: var(--font-weight-400);
+}
+
+/* Keyframes de Animação de Entrada */
+@keyframes rating-bar-fill-keyframe {
+    from {
+        width: 0;
+    }
+    to {
+        width: var(--rating-bar-width, 0%);
+    }
+}

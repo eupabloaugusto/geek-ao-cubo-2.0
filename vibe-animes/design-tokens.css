@@ -1,0 +1,233 @@
+:root {
+
+   /* =========================================
+       BRAND
+       ========================================= */
+   --brand-100: #FDE2D1;
+   --brand-200: #FBC5A4;
+   --brand-300: #F3A574;
+   --brand-400: #E78A51;
+   --brand-500: #F56B15;
+   --brand-600: #B95415;
+   --brand-700: #9B440E;
+   --brand-800: #7D3509;
+   --brand-900: #672B05;
+
+   /* =========================================
+       NEUTRAL
+       ========================================= */
+   --neutral-100: #F2F5F9;
+   --neutral-200: #E3E8EF;
+   --neutral-300: #CDD5E0;
+   --neutral-400: #97A3B6;
+   --neutral-500: #687489;
+   --neutral-600: #4A5567;
+   --neutral-700: #374153;
+   --neutral-800: #1A1D22;
+   --neutral-900: #0D0E11;
+
+   /* =========================================
+       STATUS
+       ========================================= */
+   --error-100: #FCE6D2;
+   --error-200: #FAC7A7;
+   --error-300: #F09E78;
+   --error-400: #E17655;
+   --error-500: #CE3F23;
+   --error-600: #B12619;
+   --error-700: #941211;
+   --error-800: #770B12;
+   --error-900: #620613;
+
+   --success-100: #E0FDD6;
+   --success-200: #BCFBAE;
+   --success-300: #8DF384;
+   --success-400: #63E764;
+   --success-500: #34D844;
+   --success-600: #26B941;
+   --success-700: #1A9B3E;
+   --success-800: #107D38;
+   --success-900: #096735;
+
+   --warning-100: #FDF5CA;
+   --warning-200: #FBE896;
+   --warning-300: #F4DE61;
+   --warning-400: #E9CF3A;
+   --warning-500: #EBCA0E;
+   --warning-600: #BCA000;
+   --warning-700: #9D8500;
+   --warning-800: #7F6C00;
+   --warning-900: #695900;
+
+   /* =========================================
+       SEMANTIC COLORS
+       ========================================= */
+   --color-primary: var(--brand-500);
+   /* #F56B15 */
+   --color-primary-accessible: var(--brand-400);
+   /* #E78A51 - Accessible contrast (6.01:1) on dark backgrounds */
+   --color-secondary: var(--neutral-900);
+   /* #0D0E11 */
+   --color-background: var(--color-secondary);
+   --color-text: var(--neutral-100);
+   /* #F2F5F9 */
+   --color-text-muted: var(--neutral-400);
+   /* #97A3B6 - Muted text with accessible contrast (4.92:1) on dark backgrounds */
+   --color-card-bg: var(--neutral-800);
+   /* #1A1D22 */
+   --color-border: var(--neutral-700);
+   /* #374153 */
+   --color-focus-ring: var(--brand-400);
+   /* #E78A51 - Highly visible focus indicator */
+
+   /* =========================================
+       TYPOGRAPHY
+       ========================================= */
+   --font-heading: 'Hanken Grotesk', sans-serif;
+   --font-body: 'Inter', sans-serif;
+
+   --font-weight-100: 100;
+   --font-weight-200: 200;
+   --font-weight-300: 300;
+   --font-weight-400: 400;
+   --font-weight-500: 500;
+   --font-weight-600: 600;
+   --font-weight-700: 700;
+   --font-weight-800: 800;
+   --font-weight-900: 900;
+
+   --text-xxl-size: 4.5rem;
+   /* 72px  */
+   --text-xxl-height: 6.75rem;
+   --text-xxl-weight: var(--font-weight-700);
+   --text-xl-size: 3.5rem;
+   /* 56px  */
+   --text-xl-height: 5.25rem;
+   --text-xl-weight: var(--font-weight-700);
+   --text-lg-size: 3rem;
+   /* 48px  */
+   --text-lg-height: 3.625rem;
+   --text-lg-weight: var(--font-weight-700);
+   --text-md-lg-size: 2.5rem;
+   /* 40px  */
+   --text-md-lg-height: 3.125rem;
+   --text-md-lg-weight: var(--font-weight-600);
+   --text-md-size: 2rem;
+   /* 32px  */
+   --text-md-height: 2.5rem;
+   --text-md-weight: var(--font-weight-600);
+   --text-md-sm-size: 1.5rem;
+   /* 24px  */
+   --text-md-sm-height: 2.375rem;
+   --text-md-sm-weight: var(--font-weight-600);
+   --text-sm-size: 1.25rem;
+   /* 20px  */
+   --text-sm-height: 1.875rem;
+   --text-sm-weight: var(--font-weight-400);
+   --text-xs-size: 1rem;
+   /* 16px  */
+   --text-xs-height: 1.5rem;
+   --text-xs-weight: var(--font-weight-100);
+   --text-xxs-size: 0.75rem;
+   /* 12px  */
+   --text-xxs-height: 1.25rem;
+   --text-xxs-weight: var(--font-weight-100);
+
+   /* =========================================
+       LAYOUT & SPACING
+       ========================================= */
+   --container-max: 80rem;
+   /* 1280px */
+   --height-header: 4.5rem;
+   /* 72px   */
+   --height-card-list-max: 12.25rem;
+   /* 196px - Altura máxima ideal para a Variação Lista */
+   --width-card-anime: 12.5rem;
+   /* 190px - Largura fixa do card de anime */
+
+   --space-100: 0.25rem;
+   /* 4px  */
+   --space-200: 0.5rem;
+   /* 8px  */
+   --space-300: 1rem;
+   /* 16px */
+   --space-400: 1.5rem;
+   /* 24px */
+   --space-500: 2rem;
+   /* 32px */
+   --space-600: 2.5rem;
+   /* 40px */
+   --space-700: 3rem;
+   /* 48px */
+   --space-800: 3.5rem;
+   /* 56px */
+   --space-900: 4rem;
+   /* 64px */
+
+   /* =========================================
+       BORDERS & RADIUS
+       ========================================= */
+   --border-radius-100: 0.25rem;
+   /* 4px  */
+   --border-radius-200: 0.5rem;
+   /* 8px  */
+   --border-radius-300: 1rem;
+   /* 16px */
+   --border-radius-400: 1.5rem;
+   /* 24px */
+   --border-radius-500: 2rem;
+   /* 32px */
+   --border-radius-600: 2.5rem;
+   /* 40px */
+   --border-radius-700: 3rem;
+   /* 48px */
+   --border-radius-800: 3.5rem;
+   /* 56px */
+   --border-radius-900: 4rem;
+   /* 64px */
+
+   /* =========================================
+       ICONS
+       ========================================= */
+   --icon-xs: 1rem;
+   /* 16px */
+   --icon-sm: 1.25rem;
+   /* 20px */
+   --icon-md: 1.5rem;
+   /* 24px */
+   --icon-lg: 2rem;
+   /* 32px */
+   --icon-xl: 2.5rem;
+   /* 40px */
+
+   /* =========================================
+       BREAKPOINTS (referência)
+       ========================================= */
+   --bp-mobile: 375px;
+   --bp-tablet: 768px;
+   --bp-desktop: 1280px;
+}
+
+/* =========================================
+    GLOBAL BASE — Tap Highlight & Selection
+    Remove o realce azul/cinza que o browser
+    aplica ao clicar ou tocar em elementos.
+   ========================================= */
+
+*,
+*::before,
+*::after {
+   -webkit-tap-highlight-color: transparent;
+}
+
+a,
+button,
+[role="button"],
+input,
+label,
+select,
+summary,
+textarea {
+   -webkit-tap-highlight-color: transparent;
+   touch-action: manipulation;
+}

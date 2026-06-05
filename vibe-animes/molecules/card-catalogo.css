@@ -1,0 +1,140 @@
+/* ============================================================
+   Molecule: Card do Catálogo (card-catalogo)
+   Card horizontal para listagem alfabética de animes.
+   ============================================================ */
+
+.card-catalogo {
+	display: flex;
+	align-items: flex-start;
+	gap: var(--space-400);
+	padding: var(--space-300) 0;
+	border-bottom: 1px solid var(--color-border);
+	transition: background-color 0.15s ease;
+}
+
+.card-catalogo:last-child {
+	border-bottom: none;
+}
+
+/* ── Thumbnail ───────────────────────────────────────────── */
+.card-catalogo__media {
+	flex-shrink: 0;
+	display: block;
+	width: 5rem;          /* 80px — mobile first */
+	aspect-ratio: 2 / 3;
+	border-radius: var(--border-radius-200);
+	overflow: hidden;
+	background: var(--neutral-800);
+}
+
+.card-catalogo__img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: top center;
+	transition: transform 0.3s ease;
+}
+
+.card-catalogo__media:hover .card-catalogo__img {
+	transform: scale(1.04);
+}
+
+.card-catalogo__img-placeholder {
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(135deg, var(--neutral-800), var(--neutral-700));
+}
+
+/* ── Conteúdo ────────────────────────────────────────────── */
+.card-catalogo__content {
+	flex: 1;
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-100);
+	padding-top: var(--space-100);
+}
+
+.card-catalogo__titulo {
+	font-family: var(--font-heading);
+	font-size: var(--text-sm-size);
+	font-weight: 700;
+	line-height: var(--text-sm-height);
+	margin: 0;
+}
+
+.card-catalogo__titulo-link {
+	color: var(--neutral-100);
+	text-decoration: none;
+	transition: color 0.15s ease;
+}
+
+.card-catalogo__titulo-link:hover {
+	color: var(--color-primary);
+}
+
+/* Sinopse: oculta no mobile, visível no desktop */
+.card-catalogo__sinopse {
+	display: none;
+	font-size: var(--text-xs-size);
+	line-height: var(--text-sm-height);
+	color: var(--neutral-400);
+	margin: 0;
+}
+
+.card-catalogo__idioma {
+	margin-top: var(--space-200);
+	display: inline-block;
+	width: fit-content;
+	max-width: 100%;
+	font-size: var(--text-xxs-size);
+	padding: var(--space-200);
+	border-radius: var(--border-radius-pill);
+	border: 1px solid var(--neutral-600);
+	background: transparent;
+	color: var(--neutral-300);
+	letter-spacing: 0.02em;
+}
+
+.card-catalogo__generos {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-100);
+	margin-top: var(--space-200);
+}
+
+.card-catalogo__genero {
+	font-size: var(--text-xxs-size);
+	padding: var(--space-100) var(--space-200);
+	border-radius: var(--border-radius-pill);
+	background: var(--neutral-800);
+	color: var(--neutral-300);
+	border: 1px solid var(--neutral-700);
+}
+@media (min-width: 48rem) {
+	.card-catalogo {
+		gap: var(--space-500);
+		padding: var(--space-400) 0;
+	}
+
+	.card-catalogo__media {
+		width: 7rem;        /* 112px — poster 2:3 */
+		aspect-ratio: 2 / 3;
+	}
+
+	.card-catalogo__media .card-catalogo__img {
+		object-position: top center;
+	}
+
+	.card-catalogo__sinopse {
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+
+	.card-catalogo__titulo {
+		font-size: var(--text-md-sm-size);
+	}
+}

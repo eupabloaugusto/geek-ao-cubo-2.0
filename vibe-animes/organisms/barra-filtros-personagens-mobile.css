@@ -1,0 +1,249 @@
+/* ============================================================
+   Organism: Barra de Filtros Mobile (barra-filtros-mobile)
+   Barra sticky + Bottom Sheet para telas touch.
+   ============================================================ */
+
+/* ── Container principal ──────────────────────────────────── */
+.barra-filtros-mobile {
+	width: 100%;
+	position: relative;
+}
+
+/* ── Barra Sticky (search + toggle) ──────────────────────── */
+.barra-filtros-mobile__bar {
+	display: flex;
+	align-items: stretch; /* Garante que os elementos filhos tenham exatamente a mesma altura */
+	gap: var(--space-200);
+	width: 100%;
+}
+
+/* ── Campo de Busca ──────────────────────────────────────── */
+.barra-filtros-mobile__search-wrap {
+	display: flex;
+	align-items: center;
+	flex: 1 1 0;
+	min-width: 0;
+	position: relative;
+	background: var(--neutral-800);
+	border: 1px solid var(--color-border);
+	border-radius: var(--border-radius-200);
+	padding: 0 var(--space-300);
+	gap: var(--space-200);
+	transition: border-color 0.15s ease;
+}
+
+.barra-filtros-mobile__search-wrap:focus-within {
+	border-color: var(--color-primary);
+}
+
+.barra-filtros-mobile__search-icon {
+	width: 1rem;
+	height: 1rem;
+	color: var(--neutral-400);
+	flex-shrink: 0;
+}
+
+.barra-filtros-mobile__search-input {
+	flex: 1;
+	min-width: 0;
+	width: 100%;
+	background: transparent;
+	border: none;
+	outline: none;
+	font-family: var(--font-body);
+	font-size: var(--text-sm-size);
+	color: var(--color-text);
+	padding: var(--space-200) 0;
+}
+
+.barra-filtros-mobile__search-input::placeholder {
+	color: var(--neutral-500);
+}
+
+/* Remove o ícone nativo de busca */
+.barra-filtros-mobile__search-input::-webkit-search-cancel-button,
+.barra-filtros-mobile__search-input::-webkit-search-decoration {
+	display: none;
+}
+
+/* ── Chips de Filtros Ativos ─────────────────────────────── */
+.barra-filtros-mobile__ativos {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-100) var(--space-200);
+	margin-top: var(--space-200);
+}
+
+.barra-filtros-mobile__ativo-chip {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-100);
+	padding: var(--space-100) var(--space-200);
+	border: 1px solid var(--color-primary);
+	border-radius: var(--border-radius-pill, 624.9375rem);
+	background: rgba(245, 107, 21, 0.1);
+	color: var(--color-primary);
+	font-size: var(--text-xxs-size);
+	font-weight: 600;
+}
+
+.barra-filtros-mobile__ativo-chip--ordem {
+	border-color: var(--neutral-500);
+	background: transparent;
+	color: var(--neutral-300);
+}
+
+.barra-filtros-mobile__ativo-remove {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 0.875rem;
+	height: 0.875rem;
+	background: transparent;
+	border: none;
+	color: inherit;
+	cursor: pointer;
+	padding: 0;
+	font-size: 0.875rem;
+	line-height: 1;
+	opacity: 0.7;
+	transition: opacity 0.1s ease;
+}
+
+.barra-filtros-mobile__ativo-remove:hover {
+	opacity: 1;
+}
+
+/* ── Overlay ─────────────────────────────────────────────── */
+.barra-filtros-mobile__overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.65);
+	z-index: 998;
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.25s ease;
+}
+
+.barra-filtros-mobile__overlay.is-open {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+/* ── Bottom Sheet ────────────────────────────────────────── */
+.barra-filtros-mobile__sheet {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 999;
+	background: var(--neutral-800);
+	border-top: 1px solid var(--color-border);
+	border-radius: var(--border-radius-300) var(--border-radius-300) 0 0;
+	max-height: 85dvh;
+	display: flex;
+	flex-direction: column;
+	transform: translateY(100%);
+	transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+	will-change: transform;
+}
+
+.barra-filtros-mobile__sheet.is-open {
+	transform: translateY(0);
+}
+
+/* Handle de arrastar */
+.barra-filtros-mobile__handle {
+	width: 2.5rem;
+	height: 0.25rem;
+	background: var(--neutral-600);
+	border-radius: var(--border-radius-pill, 624.9375rem);
+	margin: var(--space-200) auto var(--space-100);
+	flex-shrink: 0;
+}
+
+/* Cabeçalho do Sheet */
+.barra-filtros-mobile__sheet-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: var(--space-200) var(--space-400);
+	border-bottom: 1px solid var(--color-border);
+	flex-shrink: 0;
+}
+
+.barra-filtros-mobile__sheet-title {
+	font-family: var(--font-heading);
+	font-size: var(--text-sm-size);
+	font-weight: 700;
+	color: var(--neutral-100);
+}
+
+.barra-filtros-mobile__close {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 2rem;
+	height: 2rem;
+	background: var(--neutral-700);
+	border: none;
+	border-radius: var(--border-radius-100);
+	color: var(--neutral-300);
+	cursor: pointer;
+	transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.barra-filtros-mobile__close svg {
+	width: 1rem;
+	height: 1rem;
+}
+
+.barra-filtros-mobile__close:hover {
+	background: var(--neutral-600);
+	color: var(--neutral-100);
+}
+
+/* Corpo: scroll dos grupos de chips */
+.barra-filtros-mobile__sheet-body {
+	flex: 1 1 auto;
+	overflow-y: auto;
+	overscroll-behavior: contain;
+	padding: var(--space-400);
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-300);
+	-webkit-overflow-scrolling: touch;
+}
+
+/* Fieldset e Legenda (Inputs) */
+.barra-filtros-mobile__fieldset {
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+
+.barra-filtros-mobile__legend {
+	font-family: var(--font-heading);
+	font-size: var(--text-sm-size);
+	font-weight: 600;
+	color: var(--neutral-100);
+	margin-bottom: var(--space-200);
+}
+
+/* Ações do Sheet */
+.barra-filtros-mobile__sheet-actions {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	gap: var(--space-200);
+	padding: var(--space-300) var(--space-400);
+	border-top: 1px solid var(--color-border);
+	flex-shrink: 0;
+	/* Safe area para dispositivos com barra de navegação */
+	padding-bottom: calc(var(--space-300) + env(safe-area-inset-bottom, 0px));
+}
+
+.barra-filtros-mobile__btn-limpar,
+.barra-filtros-mobile__btn-aplicar {
+	width: 100%;
+	justify-content: center;
+}

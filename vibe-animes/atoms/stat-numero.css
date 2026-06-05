@@ -1,0 +1,95 @@
+/**
+ * Atom: Estatística Numérica CSS (stat-numero)
+ *
+ * Estilização premium e moderna para exibição de métricas do anime na barra lateral.
+ * Segue estritamente o sistema de design tokens do Geek ao Cubo.
+ */
+
+.stat-numero {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-300); /* 16px */
+    padding: var(--space-200) var(--space-300); /* 8px 16px */
+    background-color: rgba(255, 255, 255, 0.01);
+    border: 1px solid transparent;
+    border-radius: var(--border-radius-200); /* 8px */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
+}
+
+/* Transição de Destaque no Hover */
+.stat-numero:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+    border-color: var(--color-border);
+}
+
+/* Círculo do Ícone */
+.stat-numero__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: rgba(245, 107, 21, 0.08); /* Fundo translúcido sutil laranja */
+    color: var(--color-primary); /* Laranja de marca */
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.stat-numero__icon svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    fill: currentColor;
+    display: block;
+}
+
+.stat-numero:hover .stat-numero__icon {
+    background-color: var(--color-primary);
+    color: var(--neutral-900);
+    transform: scale(1.05);
+}
+
+/* Alinhamento de Textos */
+.stat-numero__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Rótulo Superior Contextual */
+.stat-numero__label {
+    font-family: var(--font-body);
+    font-size: var(--text-xxs-size); /* 12px */
+    font-weight: var(--font-weight-500);
+    color: var(--color-text-muted); /* WCAG AA accessible contrast */
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+    margin-bottom: 0.125rem;
+}
+
+/* Valor Numérico de Destaque */
+.stat-numero__value {
+    font-family: var(--font-heading);
+    font-size: var(--text-md-sm-size); /* 1.5rem / 24px */
+    font-weight: var(--text-md-sm-weight);
+    color: var(--neutral-100);
+    line-height: 1;
+}
+
+/* VARIANTE ESPECIAL: RANKING (Tema Ouro/Âmbar) */
+.stat-numero--ranking .stat-numero__icon {
+    background-color: rgba(255, 179, 0, 0.12); /* Fundo ouro translúcido */
+    color: #ffb300; /* Cor amarela ouro premium */
+}
+
+.stat-numero--ranking:hover {
+    border-color: rgba(255, 179, 0, 0.4);
+    background-color: rgba(255, 179, 0, 0.02);
+}
+
+.stat-numero--ranking:hover .stat-numero__icon {
+    background-color: #ffb300;
+    color: var(--neutral-900);
+}

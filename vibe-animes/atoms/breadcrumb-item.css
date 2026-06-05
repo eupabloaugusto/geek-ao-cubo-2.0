@@ -1,0 +1,60 @@
+/**
+ * Atom: Item de Breadcrumb CSS (breadcrumb-item)
+ *
+ * Estilização moderna, responsiva e acessível para itens de trilha de navegação.
+ * Utiliza as variáveis semânticas do Geek ao Cubo.
+ */
+
+.breadcrumb-item {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-body);
+    font-size: var(--text-xxs-size); /* 0.75rem / 12px */
+    line-height: var(--text-xxs-height);
+    color: var(--neutral-400);
+}
+
+/* Link clicável do breadcrumb */
+.breadcrumb-item__link {
+    color: var(--neutral-400);
+    text-decoration: none;
+    font-weight: var(--font-weight-500);
+    transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+}
+
+/* Hover e Foco do Link */
+.breadcrumb-item__link:hover,
+.breadcrumb-item__link:focus-visible {
+    color: var(--color-primary); /* Laranja vibrante no hover */
+}
+
+/* Estado de Foco (Acessibilidade via Tab) */
+.breadcrumb-item__link:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: var(--border-radius-100);
+}
+
+/* Item da Página Atual (inativo/estático) */
+.breadcrumb-item__current {
+    color: var(--neutral-200); /* Destaque mais claro para a página atual */
+    font-weight: var(--font-weight-400);
+    user-select: none;
+}
+
+/* Ícone Separador */
+.breadcrumb-item__separator {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--neutral-600);
+    margin: 0 var(--space-200); /* 8px de margem lateral */
+    flex-shrink: 0;
+}
+
+.breadcrumb-item__separator svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+}

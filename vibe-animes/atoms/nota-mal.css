@@ -1,0 +1,52 @@
+/**
+ * Atom: Nota MAL CSS
+ */
+
+.nota-mal {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-100);
+    background-color: rgba(235, 202, 14, 0.08);
+    color: var(--warning-400);
+    border: 1px solid rgba(235, 202, 14, 0.2);
+    padding: var(--space-100) var(--space-200);
+    border-radius: var(--border-radius-100);
+    font-weight: var(--font-weight-100);
+    font-size: var(--text-xs-size);
+    font-family: var(--font-heading);
+    transition: all 0.2s ease-in-out;
+}
+
+.nota-mal__icon {
+    fill: var(--warning-400);
+    width: var(--icon-xs);
+    height: var(--icon-xs);
+    transition: transform 0.2s ease;
+}
+
+/* Hover interativo */
+.nota-mal:hover {
+    background-color: rgba(235, 202, 14, 0.15);
+    border-color: var(--warning-300);
+}
+
+.nota-mal:hover .nota-mal__icon {
+    transform: rotate(15deg) scale(1.1);
+}
+
+/* Modificador para Notas Baixas (abaixo de 5.0) */
+.nota-mal--error {
+    background-color: rgba(206, 63, 35, 0.08); /* --error-500 equivalent */
+    color: var(--error-400);
+    border-color: rgba(206, 63, 35, 0.2);
+}
+
+.nota-mal--error .nota-mal__icon {
+    fill: var(--error-400);
+}
+
+.nota-mal--error:hover {
+    background-color: rgba(206, 63, 35, 0.15);
+    border-color: var(--error-300);
+}
+

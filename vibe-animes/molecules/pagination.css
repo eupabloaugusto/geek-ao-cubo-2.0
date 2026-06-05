@@ -1,0 +1,114 @@
+/* ============================================================
+   Molecule: Pagination (pagination)
+   Navegação de páginas com botões arredondados, de acordo com o atomic design.
+   ============================================================ */
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+/* O WordPress gera uma <ul class="page-numbers"> nativa */
+/* ==========================================================================
+   ESTADOS DE AJAX (Loading Progressivo Universal)
+   ========================================================================== */
+.js-ajax-replace.is-loading {
+	opacity: 0.5;
+	pointer-events: none;
+	transition: opacity 0.3s ease;
+}
+
+.pagination ul.page-numbers {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: var(--space-200);
+}
+
+.pagination li {
+	margin: 0;
+	padding: 0;
+}
+
+/* Base de todos os botões/links */
+.pagination .page-numbers {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	min-width: 2.75rem; /* ~44px */
+	height: 2.75rem;
+	padding: 0 0.5rem; /* Permite que números maiores não quebrem (ex: 100) */
+	
+	font-family: var(--font-heading);
+	font-size: var(--text-base-size);
+	font-weight: 600;
+	text-decoration: none;
+	color: var(--color-text);
+	
+	/* Estilo de caixa (Design do print adaptado para Dark Mode) */
+	background: transparent;
+	border: 1px solid var(--color-border);
+	border-radius: var(--border-radius-200); /* Arredondado suave como na imagem */
+	
+	transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Efeito Hover (apenas para links) */
+a.page-numbers:hover,
+a.page-numbers:focus {
+	background-color: var(--neutral-800); /* Dark mode subtil */
+	border-color: var(--neutral-600);
+	color: var(--neutral-100);
+	outline: none;
+}
+
+/* Estado Ativo (Current Page) */
+span.page-numbers.current {
+	background-color: var(--color-primary); /* Azul/Cor principal como na imagem */
+	border-color: var(--color-primary);
+	color: #ffffff; /* Texto branco puro para contraste no botão ativo */
+	cursor: default;
+}
+
+/* Ellipsis (três pontinhos) */
+span.page-numbers.dots {
+	background: transparent;
+	border-color: transparent;
+	color: var(--neutral-400);
+	min-width: 1.5rem;
+	padding: 0;
+	cursor: default;
+}
+
+/* SVG icons no prev/next */
+.pagination .page-numbers svg {
+	width: 1.25rem;
+	height: 1.25rem;
+	opacity: 0.8;
+}
+
+a.page-numbers:hover svg {
+	opacity: 1;
+}
+
+/* ── Responsividade ──────────────────────────────────────── */
+@media (max-width: 48rem) {
+	/* No mobile, deixamos os botões ligeiramente mais compactos se o gap apertar */
+	.pagination ul.page-numbers {
+		gap: var(--space-100);
+		flex-wrap: wrap; /* Evita quebrar para fora da tela em muitos números */
+		justify-content: center;
+	}
+	
+	.pagination .page-numbers {
+		min-width: 2.5rem;
+		height: 2.5rem;
+		font-size: var(--text-sm-size);
+	}
+}

@@ -1,0 +1,38 @@
+/**
+ * Molecule: Meta Artigo Header CSS (meta-artigo-header)
+ *
+ * Agrupamento de categoria, autor e data com alinhamento flexível e
+ * responsivo para topo de artigos.
+ */
+
+.meta-artigo-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-400); /* 24px */
+    flex-wrap: wrap;
+}
+
+/* Grupo unificado de autor + data */
+.meta-artigo-header__meta-group {
+    display: flex;
+    align-items: center;
+    gap: var(--space-200); /* 8px */
+    flex-wrap: wrap;
+}
+
+/* Divisor em ponto */
+.meta-artigo-header__divider {
+    color: var(--neutral-600);
+    font-size: var(--text-xxs-size);
+    user-select: none;
+    display: inline-block;
+}
+
+/* Responsividade Mobile */
+@media (max-width: 600px) {
+    .meta-artigo-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-200);
+    }
+}

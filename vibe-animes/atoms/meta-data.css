@@ -1,0 +1,38 @@
+/**
+ * Atom: Meta Data CSS (meta-data)
+ *
+ * Estilização premium e acessível para exibição de datas de publicação.
+ * Utiliza variáveis de design do Geek ao Cubo para perfeita harmonia.
+ */
+
+.meta-data {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-body);
+    font-size: var(--text-xxs-size); /* 0.75rem / 12px */
+    line-height: var(--text-xxs-height);
+    color: var(--neutral-400);
+    user-select: none;
+}
+
+/* Container do ícone de calendário */
+.meta-data__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--neutral-500); /* Tom ligeiramente mais discreto que o texto */
+    margin-right: var(--space-200); /* 8px de espaçamento lateral */
+    flex-shrink: 0;
+}
+
+.meta-data__icon svg {
+    width: 0.875rem;
+    height: 0.875rem;
+    fill: currentColor;
+    display: block;
+}
+
+/* Texto da data */
+.meta-data__text {
+    font-weight: var(--font-weight-400);
+}

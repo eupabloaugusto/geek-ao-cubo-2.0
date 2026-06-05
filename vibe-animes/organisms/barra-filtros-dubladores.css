@@ -1,0 +1,72 @@
+﻿/**
+ * Organism: Painel de Filtros e Busca de Animes CSS (barra-filtros)
+ */
+
+.barra-filtros {
+    background: linear-gradient(135deg, var(--neutral-800) 0%, var(--neutral-900) 100%);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-300);
+    padding: clamp(var(--space-300), 2vw, var(--space-400));
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    width: 100%;
+}
+
+.barra-filtros__form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-300); /* 16px de espaÃ§amento entre colunas */
+    align-items: flex-end; /* Garante que alinhem perfeitamente */
+    width: 100%;
+}
+
+.barra-filtros__item {
+    flex: 1 1 180px; /* Cresce e encolhe fluidamente */
+}
+
+/* O campo de busca ganha mais destaque horizontal */
+.barra-filtros__item--search {
+    flex: 1.8 1 240px;
+}
+
+/* O botÃ£o de submit se adapta ao final do grid */
+.barra-filtros__item--submit {
+    flex: 0 1 auto;
+    min-width: 120px;
+}
+
+.barra-filtros__btn {
+    width: 100%;
+    height: 100%;
+    padding: var(--space-300) var(--space-400);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--border-radius-200);
+}
+
+/* Remove a margem inferior padrÃ£o da molÃ©cula de formulÃ¡rio dentro da barra */
+.barra-filtros__form .form-field--inline {
+    margin-bottom: 0 !important;
+}
+
+/* --- RESPONSIVIDADE FLUIDA --- */
+@media (max-width: 768px) {
+    .barra-filtros__item {
+        flex: 1 1 45%; /* Vira grid de 2 colunas no tablet/mobile mÃ©dio */
+    }
+    
+    .barra-filtros__item--search {
+        flex: 1 1 100%; /* Busca ocupa a linha inteira */
+    }
+    
+    .barra-filtros__item--submit {
+        flex: 1 1 100%; /* BotÃ£o ocupa a linha inteira no mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .barra-filtros__item {
+        flex: 1 1 100%; /* Todos os campos empilhados 100% no mobile pequeno */
+    }
+}
+

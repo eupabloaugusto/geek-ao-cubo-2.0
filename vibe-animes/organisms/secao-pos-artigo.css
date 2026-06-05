@@ -1,0 +1,61 @@
+/**
+ * Organism: Seção Pós-Artigo CSS (secao-pos-artigo)
+ *
+ * Estilização master para o bloco pós-artigo.
+ * Gerencia a disposição assimétrica em grid com coluna de sidebar colada (sticky)
+ * e inverte reativamente a ordem das seções no mobile usando a flex-direction.
+ */
+
+.secao-pos-artigo {
+    max-width: var(--container-max); /* 1280px */
+    margin: var(--space-600) auto 0 auto; /* 40px no topo */
+    padding: 0 var(--space-400); /* 16px lateral */
+    width: 100%;
+}
+
+/* =========================================
+   LAYOUT DESKTOP (Grid Assimétrico + Sticky)
+   ========================================= */
+@media (min-width: 1025px) {
+    .secao-pos-artigo {
+        display: grid;
+        grid-template-columns: 1fr 21.25rem;
+        gap: var(--space-500); /* 32px */
+        align-items: start;
+    }
+
+    /* Ordenação padrão */
+    .secao-pos-artigo__primary {
+        order: 1;
+    }
+
+    /* Coluna Lateral Sticky Premium */
+    .secao-pos-artigo__secondary {
+        order: 2;
+        position: sticky;
+        top: var(--space-500); /* Fixa no topo ao rolar a página */
+        z-index: 10;
+    }
+}
+
+/* =========================================
+   LAYOUT MOBILE/TABLET (Inversão Semântica)
+   ========================================= */
+@media (max-width: 1024px) {
+    .secao-pos-artigo {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-500); /* 32px */
+    }
+
+    /* Inverte a ordem das colunas no mobile: CTA de streaming no topo */
+    .secao-pos-artigo__secondary {
+        order: 1;
+        width: 100%;
+    }
+
+    .secao-pos-artigo__primary {
+        order: 2;
+        width: 100%;
+    }
+}

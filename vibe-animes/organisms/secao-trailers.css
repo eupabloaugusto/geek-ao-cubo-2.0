@@ -1,0 +1,124 @@
+/**
+ * Organism: Seção de Trailers (secao-trailers)
+ *
+ * Slider scroll-snap de trailers/PVs sem autoplay.
+ * Mobile-first | design tokens do sistema de design.
+ * Estrutura visual alinhada com a secao-carrossel-destaque.
+ */
+
+/* ─── Wrapper ─── */
+.secao-trailers {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-300);
+	width: 100%;
+	position: relative;
+}
+
+/* ─── Trilho Scroll-Snap (Alinhado com o carrossel de destaques) ─── */
+.secao-trailers__track {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	overflow-x: auto;
+	overflow-y: hidden;
+	scroll-behavior: smooth;
+	scroll-snap-type: x mandatory;
+	width: 100%;
+	border-radius: var(--border-radius-400); /* 24px - Cantos unificados */
+	gap: 0;
+	margin: 0;
+	padding: 0;
+	-webkit-overflow-scrolling: touch;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+.secao-trailers__track::-webkit-scrollbar {
+	display: none;
+}
+
+/* ─── Slide individual ─── */
+.secao-trailers__slide {
+	flex: 0 0 100%;
+	width: 100%;
+	scroll-snap-align: start;
+	scroll-snap-stop: always;
+}
+
+/* Atom embed-video dentro do slide: sem bordas/sombras conflitantes */
+.secao-trailers__slide .embed-video {
+	width: 100%;
+	height: 100%;
+	border-radius: 0; /* O trilho controla os cantos arredondados */
+	border: none;
+	box-shadow: none;
+}
+
+/* ─── Barra de Navegação (Centralizada como o carrossel-destaque) ─── */
+.secao-trailers__nav {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--space-400); /* 24px - Espaço confortável entre botões */
+	margin-top: var(--space-400); /* 24px - Distância do vídeo */
+	background-color: transparent;
+}
+
+/* ─── Pills de Label ─── */
+.secao-trailers__labels {
+	display: flex;
+	align-items: center;
+	gap: var(--space-200); /* 8px */
+	overflow-x: auto;
+	scrollbar-width: none;
+	padding-block: var(--space-100);
+	max-width: 100%;
+}
+
+.secao-trailers__labels::-webkit-scrollbar {
+	display: none;
+}
+
+.secao-trailers__label {
+	flex-shrink: 0;
+	display: inline-flex;
+	align-items: center;
+	padding: var(--space-100) var(--space-300); /* 4px 16px */
+	border-radius: 2rem;
+	border: 1px solid var(--neutral-700);
+	background: transparent;
+	color: var(--neutral-400);
+	font-family: var(--font-body);
+	font-size: var(--text-xxs-size); /* 12px */
+	font-weight: 500;
+	line-height: 1;
+	white-space: nowrap;
+	cursor: pointer;
+	transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.secao-trailers__label:hover {
+	background: var(--neutral-700);
+	color: var(--neutral-100);
+	border-color: var(--neutral-600);
+}
+
+.secao-trailers__label.is-active {
+	background: var(--color-primary);
+	color: var(--neutral-100);
+	border-color: var(--color-primary);
+}
+
+/* ─── Setas de Navegação ─── */
+.secao-trailers__arrow {
+	flex-shrink: 0;
+}
+
+/* ─── Responsivo: oculta setas no mobile pequeno ─── */
+@media (max-width: 37.5rem) {
+	.secao-trailers__arrow {
+		display: none;
+	}
+}

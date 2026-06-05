@@ -1,0 +1,45 @@
+/**
+ * Organism CSS: Seção de Obras do Personagem (secao-obras-personagem)
+ *
+ * @package geek-ao-cubo
+ */
+
+.secao-obras-personagem__grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: var(--space-400);
+	margin-top: var(--space-400);
+}
+
+.secao-obras-personagem__actions {
+	display: flex;
+	flex-wrap: nowrap;
+	gap: var(--space-400);
+	justify-content: center;
+	align-items: center;
+	margin-top: var(--space-600);
+}
+
+.secao-obras-personagem__btn-less {
+	background-color: transparent !important;
+	border-color: transparent !important;
+	color: var(--neutral-400) !important;
+}
+
+.secao-obras-personagem__btn-less:hover {
+	color: var(--neutral-100) !important;
+	transform: none !important;
+}
+
+@media (min-width: 48rem) {
+	.secao-obras-personagem__grid {
+		grid-template-columns: repeat(3, 1fr);
+		gap: var(--space-500);
+	}
+}
+
+@media (min-width: 64rem) {
+	.secao-obras-personagem__grid {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}

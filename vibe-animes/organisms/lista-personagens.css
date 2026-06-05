@@ -1,0 +1,42 @@
+/* ============================================================
+   Organism: Lista do Catálogo (lista-catalogo)
+   Listagem alfabética de animes com nav sticky e grupos por letra.
+   ============================================================ */
+
+.lista-catalogo {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+/* ── Corpo da lista ──────────────────────────────────────── */
+.lista-catalogo__corpo {
+	padding: 0 var(--space-400);
+	max-width: var(--container-max, 80rem);
+	margin: 0 auto;
+	width: 100%;
+}
+
+/* ── Grupos por letra ────────────────────────────────────── */
+.lista-catalogo__grupo {
+	display: flex;
+	flex-direction: column;
+}
+
+/* ── Estado vazio ────────────────────────────────────────── */
+.lista-catalogo__vazio {
+	padding: var(--space-800) var(--space-400);
+	text-align: center;
+}
+
+.lista-catalogo__vazio-msg {
+	font-size: var(--text-sm-size);
+	color: var(--neutral-500);
+}
+
+/* ── Desktop ─────────────────────────────────────────────── */
+@media (min-width: 48rem) {
+	.lista-catalogo__corpo {
+		padding: 0 var(--space-600);
+	}
+}
